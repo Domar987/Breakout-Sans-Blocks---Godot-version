@@ -1,24 +1,29 @@
 extends RigidBody2D
 
-@onready var sprite = $AnimatedSprite2D
+#@onready var sprite = $AnimatedSprite2D
 var timer = 0
+@export var lightcolor = Color("ff5555")
+@export var maincolor = Color("aa0000")
+@export var darkcolor = Color("000000")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$BallLight.modulate = lightcolor
+	$BallMain.modulate = maincolor
+	$BallDark.modulate = darkcolor
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer -= 1
-	if linear_velocity.y < 10:
-		sprite.frame = 0
-	elif linear_velocity.y < 20:
-		sprite.frame = 1
-	elif linear_velocity.y < 40:
-		sprite.frame = 2
-	else:
-		sprite.frame = 3
+	#if linear_velocity.y < 10:
+	#	sprite.frame = 0
+	#elif linear_velocity.y < 20:
+	#	sprite.frame = 1
+	#elif linear_velocity.y < 40:
+	#	sprite.frame = 2
+	#else:
+	#	sprite.frame = 3
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if !$/root/Ingame/RuleManager.walls:
