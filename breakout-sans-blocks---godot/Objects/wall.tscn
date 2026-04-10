@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ben8t4nfwcfhn"]
+
+[ext_resource type="Script" uid="uid://cy3mknkxa6i7l" path="res://Scripts/wall.gd" id="1_c13ep"]
+
+[node name="Wall" type="StaticBody2D"]
+script = ExtResource("1_c13ep")
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]

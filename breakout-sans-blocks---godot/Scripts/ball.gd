@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @onready var sprite = $AnimatedSprite2D
+var timer = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	timer -= 1
 	if linear_velocity.y < 10:
 		sprite.frame = 0
 	elif linear_velocity.y < 20:
@@ -22,4 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body == $/root/Ingame/Platform:
-		linear_velocity.x = (position.x - body.position.x) * body.length/40
+		linear_velocity.x = (position.x - body.position.x) * body.length/30
+	elif body == $/root/Ingame/Wall and timer <= 0:
+		timer = 100
+		linear_velocity.x *= -1
