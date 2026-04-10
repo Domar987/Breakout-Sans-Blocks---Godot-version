@@ -18,3 +18,8 @@ func _process(delta: float) -> void:
 	else:
 		sprite.frame = 3
 	pass
+
+
+func _on_body_entered(body: Node) -> void:
+	if body == $/root/Ingame/Platform:
+		linear_velocity.x = (position.x - body.position.x) * body.length/40

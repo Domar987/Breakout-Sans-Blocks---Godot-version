@@ -6,6 +6,7 @@
 [node name="Ingame" type="Node2D"]
 
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
+max_contacts_reported = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

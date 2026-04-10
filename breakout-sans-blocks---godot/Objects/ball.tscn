@@ -47,6 +47,8 @@ size = Vector2(7, 7)
 mass = 0.001
 physics_material_override = ExtResource("1_u2s6y")
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1024
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_ogllh")
@@ -58,3 +60,5 @@ offset = Vector2(0, -1.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_af24q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
