@@ -11,16 +11,18 @@ var rectShape = RectangleShape2D.new()
 @onready var collisionShape = $CollisionShape2D
 var mousepos:float
 
+const wallwidth = 7
+
 
 func _physics_process(delta: float) -> void:
 	rectShape.size = Vector2(length, 4)
 	collisionShape.set_shape(rectShape)
 	rect = Rect2(Vector2(-length/2,-2),Vector2(length,4))
 	mousepos = get_global_mouse_position().x
-	if mousepos > get_viewport().size.x/(2*3) - length/2 - int($/root/Ingame/RuleManager.walls)*5:
-		mousepos = get_viewport().size.x/(2*3) - length/2 - int($/root/Ingame/RuleManager.walls)*5
-	elif mousepos < -get_viewport().size.x/(2*3) + length/2 + int($/root/Ingame/RuleManager.walls)*5:
-		mousepos = -get_viewport().size.x/(2*3) + length/2 + int($/root/Ingame/RuleManager.walls)*5
+	if mousepos > get_viewport().size.x/(2*3) - length/2 - int($/root/Ingame/RuleManager.walls)*wallwidth:
+		mousepos = get_viewport().size.x/(2*3) - length/2 - int($/root/Ingame/RuleManager.walls)*wallwidth
+	elif mousepos < -get_viewport().size.x/(2*3) + length/2 + int($/root/Ingame/RuleManager.walls)*wallwidth:
+		mousepos = -get_viewport().size.x/(2*3) + length/2 + int($/root/Ingame/RuleManager.walls)*wallwidth
 	position = Vector2(mousepos,y)
 	
 func _draw():
