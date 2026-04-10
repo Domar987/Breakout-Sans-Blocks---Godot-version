@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg0el6mhfpp5a"]
+
+[ext_resource type="Texture2D" uid="uid://cn6c5f80ws5q8" path="res://Sprites/ball.png" id="1_af24q"]
+[ext_resource type="Script" uid="uid://btosa5p038mm1" path="res://Scripts/ball.gd" id="1_ogllh"]
+[ext_resource type="PhysicsMaterial" uid="uid://cqerj1xhc1wbx" path="res://Objects/ball.tres" id="1_u2s6y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogllh"]
+atlas = ExtResource("1_af24q")
+region = Rect2(0, 0, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2s6y"]
+atlas = ExtResource("1_af24q")
+region = Rect2(7, 0, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2bt6"]
+atlas = ExtResource("1_af24q")
+region = Rect2(14, 0, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_weel1"]
+atlas = ExtResource("1_af24q")
+region = Rect2(21, 0, 7, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojni7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogllh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2s6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2bt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_weel1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af24q"]
+size = Vector2(7, 7)
+
+[node name="Ball" type="RigidBody2D"]
+mass = 0.001
+physics_material_override = ExtResource("1_u2s6y")
+lock_rotation = true
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_ogllh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ojni7")
+offset = Vector2(0, -1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_af24q")

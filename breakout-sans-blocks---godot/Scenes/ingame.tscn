@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bepfbskuj7i54"]
+
+[ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
+[ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
+
+[node name="Ingame" type="Node2D"]
+
+[node name="Ball" parent="." instance=ExtResource("1_oybcm")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Platform" parent="." instance=ExtResource("2_vmfbn")]
