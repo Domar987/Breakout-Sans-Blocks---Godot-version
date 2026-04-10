@@ -20,7 +20,8 @@ func _process(delta: float) -> void:
 	else:
 		sprite.frame = 3
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:	if !$/root/Ingame/RuleManager.walls:
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if !$/root/Ingame/RuleManager.walls:
 		if position.x > get_viewport().size.x/(2*3):
 			position.x = -get_viewport().size.x/(2*3)
 		elif position.x < -get_viewport().size.x/(2*3):
