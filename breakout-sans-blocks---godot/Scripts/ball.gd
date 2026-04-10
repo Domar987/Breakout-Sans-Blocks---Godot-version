@@ -5,9 +5,13 @@ var timer = 0
 @export var lightcolor = Color("ff5555")
 @export var maincolor = Color("aa0000")
 @export var darkcolor = Color("000000")
+@onready var RuleManager = $/root/Ingame/RuleManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	lightcolor = Color(RuleManager.activecolor["lightcolor"])
+	maincolor = Color(RuleManager.activecolor["maincolor"])
+	darkcolor = Color(RuleManager.activecolor["darkcolor"])
 	$BallLight.modulate = lightcolor
 	$BallMain.modulate = maincolor
 	$BallDark.modulate = darkcolor
@@ -26,7 +30,7 @@ func _process(delta: float) -> void:
 	#	sprite.frame = 3
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if !$/root/Ingame/RuleManager.walls:
+	if !RuleManager.walls:
 		if position.x > get_viewport().size.x/(2*3):
 			position.x = -get_viewport().size.x/(2*3)
 		elif position.x < -get_viewport().size.x/(2*3):

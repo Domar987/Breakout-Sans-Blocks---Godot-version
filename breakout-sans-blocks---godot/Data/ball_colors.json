@@ -1,0 +1,38 @@
+[
+	{
+		"name":"Red Ball",
+		"lightcolor":"ff5555",
+		"maincolor":"aa0000",
+		"darkcolor":"000000"
+	},
+	{
+		"name":"Blue Ball",
+		"lightcolor":"55ffff",
+		"maincolor":"5555ff",
+		"darkcolor":"0000aa"
+	},
+	{
+		"name":"Green Ball",
+		"lightcolor":"55ff55",
+		"maincolor":"00aa00",
+		"darkcolor":"000000"
+	},
+	{
+		"name":"Yellow Ball",
+		"lightcolor":"aaaaaa",
+		"maincolor":"ffff55",
+		"darkcolor":"aa5500"
+	},
+	{
+		"name":"Pinky Ball ^_^",
+		"lightcolor":"aaaaaa",
+		"maincolor":"ff55ff",
+		"darkcolor":"aa00aa"
+	},
+	{
+		"name":"Shitty Ball :(",
+		"lightcolor":"ffff55",
+		"maincolor":"aa5500",
+		"darkcolor":"000000"
+	}
+]
