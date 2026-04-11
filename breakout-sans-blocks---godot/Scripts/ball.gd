@@ -2,9 +2,9 @@ extends RigidBody2D
 
 #@onready var sprite = $AnimatedSprite2D
 var timer = 0
-@export var lightcolor = Color("ff5555")
-@export var maincolor = Color("aa0000")
-@export var darkcolor = Color("000000")
+@export var lightcolor:Color
+@export var maincolor:Color
+@export var darkcolor:Color
 @onready var RuleManager = $/root/Ingame/RuleManager
 
 # Called when the node enters the scene tree for the first time.
