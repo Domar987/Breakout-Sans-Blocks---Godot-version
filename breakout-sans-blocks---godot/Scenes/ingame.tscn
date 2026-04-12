@@ -11,10 +11,12 @@
 script = ExtResource("4_lq36l")
 
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
+continuous_cd = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
 [node name="Platform" parent="." instance=ExtResource("2_vmfbn")]
+physics_material_override = null
 
 [node name="Wall" parent="." instance=ExtResource("3_kd26p")]
