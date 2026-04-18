@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export var y = 100.0
+@export var y = 75.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 #@export var color1 = Color()

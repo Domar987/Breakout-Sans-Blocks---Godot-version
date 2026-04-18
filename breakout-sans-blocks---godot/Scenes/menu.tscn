@@ -1,0 +1,230 @@
+[gd_scene load_steps=24 format=3 uid="uid://bryxfhduq757w"]
+
+[ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
+[ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/title.png" id="1_rfqti"]
+[ext_resource type="Texture2D" uid="uid://de3v6nv1abr3a" path="res://Sprites/menubutton.png" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://f5tywin5kvn5" path="res://Sprites/menuconcept.png" id="2_cayip"]
+[ext_resource type="Texture2D" uid="uid://5m05vgtwa6md" path="res://Sprites/howtoplaytextaskew.png" id="3_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://ck5pywmsvbw87" path="res://Sprites/buttonfocusoutline.png" id="3_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://c84qe5twqhqkg" path="res://Sprites/optionstextaskew.png" id="4_6swd7"]
+[ext_resource type="Texture2D" uid="uid://di2abf8c3ubmw" path="res://Sprites/menubuttonbig.png" id="5_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://cohimsl2x6vrs" path="res://Sprites/buttonfocusoutlinebig.png" id="6_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://cwi84w0g16dne" path="res://Sprites/playtextaskew.png" id="7_7qvly"]
+[ext_resource type="Texture2D" uid="uid://dnkr2yu7kf27p" path="res://Sprites/youknowtext.png" id="8_7qvly"]
+[ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/fella.png" id="9_rfqti"]
+[ext_resource type="Script" uid="uid://dq72xqe5i60ts" path="res://Scripts/fella.gd" id="12_23t3j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
+texture = ExtResource("5_wbdvm")
+texture_margin_left = 30.0
+region_rect = Rect2(0, 0, 31, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7qvly"]
+texture = ExtResource("5_wbdvm")
+texture_margin_left = 30.0
+region_rect = Rect2(62, 0, 31, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3rjx"]
+texture = ExtResource("5_wbdvm")
+texture_margin_left = 30.0
+region_rect = Rect2(31, 0, 31, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwsa2"]
+texture = ExtResource("1_xhh6f")
+texture_margin_left = 30.0
+region_rect = Rect2(93, 0, 31, 23)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8i7c"]
+texture = ExtResource("6_q3rjx")
+texture_margin_left = 31.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cayip"]
+texture = ExtResource("1_xhh6f")
+texture_margin_left = 30.0
+region_rect = Rect2(0, 0, 31, 23)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_158mb"]
+texture = ExtResource("1_xhh6f")
+texture_margin_left = 30.0
+region_rect = Rect2(62, 0, 31, 23)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhh6f"]
+texture = ExtResource("1_xhh6f")
+texture_margin_left = 30.0
+region_rect = Rect2(31, 0, 31, 23)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbdvm"]
+texture = ExtResource("3_wwsa2")
+texture_margin_left = 31.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsrd8"]
+texture = ExtResource("3_wwsa2")
+texture_margin_left = 31.0
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_g8i7c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Title" type="TextureRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6.0
+offset_top = -67.0
+offset_right = 154.0
+offset_bottom = -35.0
+grow_horizontal = 0
+texture = ExtResource("1_rfqti")
+
+[node name="PlayButtonBig" type="Button" parent="."]
+offset_left = 49.0
+offset_top = -30.0
+offset_right = 194.0
+offset_bottom = 2.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.6894815, 0.6894815, 0.6894815, 1)
+theme_override_colors/icon_hover_color = Color(1.459, 1.459, 1.459, 1)
+theme_override_colors/icon_disabled_color = Color(0.89856935, 0.89856935, 0.89856935, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_6swd7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7qvly")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q3rjx")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_g8i7c")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayButtonBig"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="PlayText" type="TextureRect" parent="PlayButtonBig/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_7qvly")
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 194.0
+offset_bottom = 33.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.6894815, 0.6894815, 0.6894815, 1)
+theme_override_colors/icon_hover_color = Color(1.459, 1.459, 1.459, 1)
+theme_override_colors/icon_disabled_color = Color(0.89856935, 0.89856935, 0.89856935, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_cayip")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_158mb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xhh6f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wbdvm")
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="OptionsText" type="TextureRect" parent="OptionsButton/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_6swd7")
+
+[node name="HowToPlayButton" type="Button" parent="."]
+offset_left = -31.0
+offset_top = 41.0
+offset_right = 194.0
+offset_bottom = 64.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.6894815, 0.6894815, 0.6894815, 1)
+theme_override_colors/icon_hover_color = Color(1.459, 1.459, 1.459, 1)
+theme_override_colors/icon_disabled_color = Color(0.89856935, 0.89856935, 0.89856935, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_cayip")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_158mb")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xhh6f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_jsrd8")
+
+[node name="MarginContainer" type="MarginContainer" parent="HowToPlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HowToPlayText" type="TextureRect" parent="HowToPlayButton/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_q3rjx")
+
+[node name="Control" type="Control" parent="HowToPlayButton"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="*fella*" type="TextureRect" parent="HowToPlayButton/Control"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -3.0
+offset_right = 43.0
+offset_bottom = 32.0
+grow_vertical = 2
+rotation = -0.19320275
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_rfqti")
+script = ExtResource("12_23t3j")
+
+[node name="YouKnowText" type="TextureRect" parent="HowToPlayButton/Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -25.0
+offset_right = -1.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("8_7qvly")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cayip")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nvcv88mtfhcg"
-path="res://.godot/imported/egapalette.png-9196b598433ceb534b1459a2df7ebc02.ctex"
+uid="uid://diwup15mckvmx"
+path="res://.godot/imported/fella.png-bba53bd1ef640b8a2000776b1df68598.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/egapalette.png"
-dest_files=["res://.godot/imported/egapalette.png-9196b598433ceb534b1459a2df7ebc02.ctex"]
+source_file="res://Sprites/fella.png"
+dest_files=["res://.godot/imported/fella.png-bba53bd1ef640b8a2000776b1df68598.ctex"]
 
 [params]
 

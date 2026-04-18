@@ -10,6 +10,7 @@ var activecolor:Dictionary
 var difficulty = 0
 
 @onready var camera = $/root/Ingame/Camera2D
+@onready var ball = $/root/Ingame/Ball
 @onready var zoom = camera.zoom.x
 
 # Called when the node enters the scene tree for the first time.

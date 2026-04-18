@@ -11,15 +11,15 @@
 friction = 0.0
 bounce = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af24q"]
+size = Vector2(7, 7)
+
 [sub_resource type="Curve" id="Curve_7y7mc"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(1, 1), 1.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_7y7mc"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_af24q"]
-size = Vector2(7, 7)
 
 [node name="Ball" type="RigidBody2D"]
 mass = 0.001
@@ -30,6 +30,9 @@ max_contacts_reported = 2
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_ogllh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_af24q")
 
 [node name="BallWhite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -63,8 +66,5 @@ script = ExtResource("6_7y7mc")
 [node name="BallDark" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("6_qs2t0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_af24q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
