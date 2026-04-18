@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [physics]
 
+common/max_physics_steps_per_frame=32
 2d/default_gravity=750.0
 
 [rendering]

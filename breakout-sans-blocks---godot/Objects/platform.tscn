@@ -1,13 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq8bir56n74nc"]
+[gd_scene load_steps=2 format=3 uid="uid://dq8bir56n74nc"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://cqerj1xhc1wbx" path="res://Objects/ball.tres" id="1_08hf0"]
 [ext_resource type="Script" uid="uid://dpv0vlbcypjo1" path="res://Scripts/platform.gd" id="1_ygx5w"]
 
 [node name="Platform" type="StaticBody2D"]
 texture_filter = 1
-physics_material_override = ExtResource("1_08hf0")
 script = ExtResource("1_ygx5w")
-color1 = Color(0.33333334, 1, 1, 1)
-color2 = Color(0, 0, 0.6666667, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)

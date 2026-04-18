@@ -37,14 +37,14 @@ func _process(delta: float) -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if !RuleManager.walls:
-		if position.x > get_viewport().size.x/(2*3):
+		if position.x > get_viewport().size.x/(2*RuleManager.zoom):
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = -get_viewport().size.x/(2*3)
-		elif position.x < -get_viewport().size.x/(2*3):
+			position.x = -get_viewport().size.x/(2*RuleManager.zoom)
+		elif position.x < -get_viewport().size.x/(2*RuleManager.zoom):
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = get_viewport().size.x/(2*3)
+			position.x = get_viewport().size.x/(2*RuleManager.zoom)
 
 func _on_body_entered(body: Node) -> void:
 	if body == $/root/Ingame/Platform:

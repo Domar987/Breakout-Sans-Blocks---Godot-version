@@ -17,6 +17,5 @@ continuous_cd = 2
 zoom = Vector2(3, 3)
 
 [node name="Platform" parent="." instance=ExtResource("2_vmfbn")]
-physics_material_override = null
 
 [node name="Wall" parent="." instance=ExtResource("3_kd26p")]
