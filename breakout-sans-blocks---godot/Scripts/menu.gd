@@ -12,7 +12,11 @@ func _ready() -> void:
 
 func _button_pressed(button):
 	if button.name == "PlayButtonBig":
-		get_tree().change_scene_to_file("res://Scenes/ingame.tscn")
+		var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false)
+		tween.tween_property(self,"modulate",Color.DIM_GRAY,0.4)
+		tween.tween_property(self,"modulate",Color.WHITE,0.3)
+		tween.tween_property(self,"modulate",Color.BLACK,0.8)
+		tween.tween_callback(changescene)
 	elif button.name == "OptionsButton":
 		pass
 	elif button.name == "HowToPlayButton":
@@ -22,3 +26,6 @@ func _button_pressed(button):
 			cont.visible = true
 	else:
 		pass
+
+func changescene()->void:
+	get_tree().change_scene_to_file("res://Scenes/ingame.tscn")
