@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://p552imo4ypvk"]
+
+[ext_resource type="Texture2D" uid="uid://wnknpifpltxq" path="res://Sprites/alien1.png" id="1_fuj7y"]
+[ext_resource type="Script" uid="uid://lexsn4bsrjrq" path="res://Scripts/alien.gd" id="1_hg8i3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg8i3"]
+atlas = ExtResource("1_fuj7y")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txtql"]
+atlas = ExtResource("1_fuj7y")
+region = Rect2(22, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gisjj"]
+atlas = ExtResource("1_fuj7y")
+region = Rect2(44, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogcde"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_hg8i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txtql")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_gisjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txtql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Alien" type="Area2D"]
+script = ExtResource("1_hg8i3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ogcde")
+autoplay = "default"
+frame_progress = 0.6330836
