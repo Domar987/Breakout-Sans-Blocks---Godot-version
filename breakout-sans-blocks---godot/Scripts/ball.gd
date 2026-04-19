@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	if position.x > get_viewport().size.x/(2*RuleManager.zoom):
 		if RuleManager.walls:
 			position = Vector2.ZERO
+			velocity = Vector2.ZERO
 		else:
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
@@ -39,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	elif position.x < -get_viewport().size.x/(2*RuleManager.zoom):
 		if RuleManager.walls:
 			position = Vector2.ZERO
+			velocity = Vector2.ZERO
 		else:
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
@@ -56,6 +58,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body == $/root/Ingame/Platform:
+		if position.y > body.position.y:
+			pass
 		hitcounter += 1
 		if hitcounter % 10 == 0:
 			RuleManager.difficulty += 1
