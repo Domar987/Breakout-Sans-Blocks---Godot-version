@@ -3,27 +3,35 @@ extends StaticBody2D
 var colShape1 = WorldBoundaryShape2D.new()
 var colShape2 = WorldBoundaryShape2D.new()
 
-var walltex = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/wall.png"))
-const wallwidth = 7
+var walltexleft:Texture2D = load("res://Sprites/wallleft.png")
+var walltexright:Texture2D = load("res://Sprites/wallright.png")
+const wallwidth = 12
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 var oldzoom:float
+var ySpeed:float = 0.0
+var ySpeedAddition:float = 0.0
 
 func _ready() -> void:
 	colShape1.normal = Vector2(1,0)
 	colShape2.normal = Vector2(-1,0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	ySpeedAddition -= ySpeed
+	if ySpeedAddition <= -10:
+		ySpeedAddition = 0
 	colShape1.distance = -get_viewport().size.x/(2*RuleManager.zoom) + wallwidth
 	colShape2.distance = -get_viewport().size.x/(2*RuleManager.zoom) + wallwidth
-	if RuleManager.zoom != oldzoom:
+	if RuleManager.zoom != oldzoom or ySpeed != 0:
 		queue_redraw()
 	$CollisionShape2D1.shape = colShape1
 	$CollisionShape2D2.shape = colShape2
 	oldzoom = RuleManager.zoom
 
 func _draw() -> void:
-	if $/root/Ingame/RuleManager.walls:
+	if RuleManager.walls:
 		for i in range(0,get_viewport().size.y/(5*RuleManager.zoom)+1): #kamera boyutu carpi duvar sprite'inin yuksekligi
-			draw_texture(walltex,Vector2(-get_viewport().size.x/(2*RuleManager.zoom)-1,i*5-get_viewport().size.y/(2*RuleManager.zoom)))
-			draw_texture(walltex,Vector2(get_viewport().size.x/(2*RuleManager.zoom)-wallwidth,i*5-get_viewport().size.y/(2*RuleManager.zoom)))
+			var x = get_viewport().size.x/(2*RuleManager.zoom) + 1
+			var y = i*10-get_viewport().size.y/(2*RuleManager.zoom)
+			draw_texture(walltexleft,Vector2(-x, y + ySpeedAddition))
+			draw_texture(walltexright,Vector2(x - wallwidth, y + ySpeedAddition))

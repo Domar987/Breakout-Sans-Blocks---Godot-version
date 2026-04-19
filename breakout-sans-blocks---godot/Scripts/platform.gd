@@ -5,11 +5,13 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 #@export var color1 = Color()
 #@export var color2 = Color()
-var starttex = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/platformstart.png"))
-var segtex = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/platformsegment.png"))
-var endtex = ImageTexture.create_from_image(Image.load_from_file("res://Sprites/platformend.png"))
+var starttex:Texture2D = load("res://Sprites/platformstart.png")
+var segtex:Texture2D = load("res://Sprites/platformsegment.png")
+var endtex:Texture2D = load("res://Sprites/platformend.png")
 
+var redraw:bool = false
 var length = 100
+var oldlength:int
 var rect = Rect2()
 var rectShape = RectangleShape2D.new()
 @onready var collisionShape = $CollisionShape2D
@@ -18,7 +20,7 @@ var rectShape = RectangleShape2D.new()
 
 var mousepos:float
 
-const wallwidth = 7
+const wallwidth = 12
 
 
 func _physics_process(delta: float) -> void:
@@ -26,11 +28,13 @@ func _physics_process(delta: float) -> void:
 	collisionShape.set_shape(rectShape)
 	rect = Rect2(Vector2(-length/2,-2),Vector2(length,4))
 	mousepos = get_global_mouse_position().x
-	if mousepos > get_viewport().size.x/(2*RuleManager.zoom) - length/2 - int($/root/Ingame/RuleManager.walls)*wallwidth:
-		mousepos = get_viewport().size.x/(2*RuleManager.zoom) - length/2 - int($/root/Ingame/RuleManager.walls)*wallwidth
-	elif mousepos < -get_viewport().size.x/(2*RuleManager.zoom) + length/2 + int($/root/Ingame/RuleManager.walls)*wallwidth:
-		mousepos = -get_viewport().size.x/(2*RuleManager.zoom) + length/2 + int($/root/Ingame/RuleManager.walls)*wallwidth
+	if mousepos > get_viewport().size.x/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth:
+		mousepos = get_viewport().size.x/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth
+	elif mousepos < -get_viewport().size.x/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth:
+		mousepos = -get_viewport().size.x/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth
 	position = Vector2(mousepos,y)
+	if redraw:
+		queue_redraw()
 	
 func _draw():
 	#draw_rect(Rect2(Vector2(-length/2,-2),Vector2(length,4)),color)

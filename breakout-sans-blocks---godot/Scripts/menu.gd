@@ -12,10 +12,14 @@ func _ready() -> void:
 
 func _button_pressed(button):
 	if button.name == "PlayButtonBig":
+		$Miamiclick.play()
+		$Miamiorchit.play()
+		$TitleMusic.stop()
 		var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false)
 		tween.tween_property(self,"modulate",Color.DIM_GRAY,0.4)
 		tween.tween_property(self,"modulate",Color.WHITE,0.3)
-		tween.tween_property(self,"modulate",Color.BLACK,0.8)
+		tween.tween_property(self,"modulate",Color.BLACK,1.2)
+		tween.tween_property(self,"modulate",Color.BLACK,0.2)
 		tween.tween_callback(changescene)
 	elif button.name == "OptionsButton":
 		pass

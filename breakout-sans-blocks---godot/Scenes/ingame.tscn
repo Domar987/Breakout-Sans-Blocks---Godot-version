@@ -11,9 +11,9 @@
 script = ExtResource("4_lq36l")
 
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
-continuous_cd = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
 zoom = Vector2(3, 3)
 
 [node name="Platform" parent="." instance=ExtResource("2_vmfbn")]

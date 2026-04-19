@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=27 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/title.png" id="1_rfqti"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dnkr2yu7kf27p" path="res://Sprites/youknowtext.png" id="8_7qvly"]
 [ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/fella.png" id="9_rfqti"]
 [ext_resource type="Script" uid="uid://dq72xqe5i60ts" path="res://Scripts/fella.gd" id="12_23t3j"]
+[ext_resource type="AudioStream" uid="uid://cm1obukvl8bi6" path="res://Audio/SFX/miamiclick.mp3" id="14_5ti5v"]
+[ext_resource type="AudioStream" uid="uid://dydnbxfxdivdi" path="res://Audio/SFX/miamiorchit.mp3" id="15_1by5w"]
+[ext_resource type="AudioStream" uid="uid://bsrh1cehevhvb" path="res://Audio/Music/title.wav" id="16_1by5w"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -228,3 +231,13 @@ texture = ExtResource("8_7qvly")
 z_index = -10
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cayip")
+
+[node name="Miamiclick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_5ti5v")
+
+[node name="Miamiorchit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_1by5w")
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_1by5w")
+autoplay = true
