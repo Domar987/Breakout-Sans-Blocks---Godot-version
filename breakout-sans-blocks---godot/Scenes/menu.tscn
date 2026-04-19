@@ -79,18 +79,26 @@ script = ExtResource("1_g8i7c")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="RightSide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="TextureRect" parent="RightSide"]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -6.0
+offset_left = -46.0
 offset_top = -67.0
-offset_right = 154.0
+offset_right = 114.0
 offset_bottom = -35.0
 grow_horizontal = 0
 texture = ExtResource("1_rfqti")
 
-[node name="PlayButtonBig" type="Button" parent="."]
+[node name="PlayButtonBig" type="Button" parent="RightSide"]
+layout_mode = 0
 offset_left = 49.0
 offset_top = -30.0
 offset_right = 194.0
@@ -107,7 +115,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_q3rjx")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_g8i7c")
 
-[node name="MarginContainer" type="MarginContainer" parent="PlayButtonBig"]
+[node name="MarginContainer" type="MarginContainer" parent="RightSide/PlayButtonBig"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,12 +127,13 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PlayText" type="TextureRect" parent="PlayButtonBig/MarginContainer"]
+[node name="PlayText" type="TextureRect" parent="RightSide/PlayButtonBig/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("7_7qvly")
 
-[node name="OptionsButton" type="Button" parent="."]
+[node name="OptionsButton" type="Button" parent="RightSide"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 10.0
 offset_right = 194.0
@@ -141,7 +150,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xhh6f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_wbdvm")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionsButton"]
+[node name="MarginContainer" type="MarginContainer" parent="RightSide/OptionsButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,12 +162,13 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="OptionsText" type="TextureRect" parent="OptionsButton/MarginContainer"]
+[node name="OptionsText" type="TextureRect" parent="RightSide/OptionsButton/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_6swd7")
 
-[node name="HowToPlayButton" type="Button" parent="."]
+[node name="HowToPlayButton" type="Button" parent="RightSide"]
+layout_mode = 0
 offset_left = -31.0
 offset_top = 41.0
 offset_right = 194.0
@@ -175,7 +185,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_xhh6f")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_wwsa2")
 theme_override_styles/focus = SubResource("StyleBoxTexture_jsrd8")
 
-[node name="MarginContainer" type="MarginContainer" parent="HowToPlayButton"]
+[node name="MarginContainer" type="MarginContainer" parent="RightSide/HowToPlayButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,18 +197,18 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="HowToPlayText" type="TextureRect" parent="HowToPlayButton/MarginContainer"]
+[node name="HowToPlayText" type="TextureRect" parent="RightSide/HowToPlayButton/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_q3rjx")
 
-[node name="Control" type="Control" parent="HowToPlayButton"]
+[node name="Control" type="Control" parent="RightSide/HowToPlayButton"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="*fella*" type="TextureRect" parent="HowToPlayButton/Control"]
+[node name="*fella*" type="TextureRect" parent="RightSide/HowToPlayButton/Control"]
 z_index = 2
 layout_mode = 1
 anchors_preset = 4
@@ -214,7 +224,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_rfqti")
 script = ExtResource("12_23t3j")
 
-[node name="YouKnowText" type="TextureRect" parent="HowToPlayButton/Control"]
+[node name="YouKnowText" type="TextureRect" parent="RightSide/HowToPlayButton/Control"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 4
@@ -227,7 +237,13 @@ offset_bottom = 5.0
 grow_vertical = 2
 texture = ExtResource("8_7qvly")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="LeftSide" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftSide"]
 z_index = -10
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cayip")

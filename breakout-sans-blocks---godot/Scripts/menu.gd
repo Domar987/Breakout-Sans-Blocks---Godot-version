@@ -1,14 +1,19 @@
 extends Node2D
 
 var buttons:Array
-
+var mousePos:Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	buttons = Array([], TYPE_OBJECT, "Node", Button)
-	for child in get_children():
+	for child in get_child(1).get_children():
 		if child is Button:
 			child.pressed.connect(_button_pressed.bind(child))
 			buttons.append(child)
+
+func _process(_delta: float) -> void:
+	mousePos = get_viewport().get_mouse_position() - get_viewport().size / 2.0
+	get_child(1).position = mousePos / 100.0
+	get_child(2).position = -mousePos / 100.0
 
 func _button_pressed(button):
 	if button.name == "PlayButtonBig":
