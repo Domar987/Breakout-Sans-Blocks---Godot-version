@@ -11,16 +11,17 @@ var aliensprites = ["res://Sprites/Alien/alienlight","res://Sprites/Alien/alienm
 @onready var Ball = $/root/Ingame/Ball
 @onready var Wall = $/root/Ingame/Wall
 @onready var sprites:Array[AnimatedSprite2D] = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
-@onready var deathsprite:AnimatedSprite2D = $DeathSprite
 
 var fromLorR:bool = false
 var xSpeed:float = 0.5
 var entered:bool = false
+
+var variant:int = randi_range(1,2)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var alientexture:Array[Texture2D] = []
 	for i in range(0,5):
-		alientexture.append(load(aliensprites[i]+str(randi_range(1,2))+".png"))
+		alientexture.append(load(aliensprites[i]+str(variant)+".png"))
 	#for x in range(alientexture.get_width()):
 		#for y in range(alientexture.get_height()):
 			#var pixel:Color = alientexture.get_image().get_pixel(x,y)
@@ -68,8 +69,9 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area == Ball:
 		xSpeed = 0
-		for i in range(0,5):
-			sprites[i].play("death")
+		for i in range(1,5):
+			sprites[i].queue_free()
+		sprites[0].play("death")
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:

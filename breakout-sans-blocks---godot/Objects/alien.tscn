@@ -48,22 +48,12 @@ animations = [{
 animations = [{
 "frames": [],
 "loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
 "name": &"idle",
 "speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_txtql"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
 "frames": [],
 "loop": true,
 "name": &"idle",
@@ -74,22 +64,12 @@ animations = [{
 animations = [{
 "frames": [],
 "loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
 "name": &"idle",
 "speed": 10.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7the"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
 "frames": [],
 "loop": true,
 "name": &"idle",
@@ -109,22 +89,22 @@ autoplay = "idle"
 
 [node name="Main" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hg8i3")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Dark" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_txtql")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="OutlineLight" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gisjj")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="OutlineDark" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t7the")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
