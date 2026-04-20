@@ -1,0 +1,34 @@
+[
+	{
+		"name":"Green",
+		"lightcolor":"c4f129",
+		"maincolor":"8fd032",
+		"darkcolor":"61a53f",
+		"lightoutline":"477238",
+		"darkoutline":"293f21"
+	},
+	{
+		"name":"Cyan",
+		"lightcolor":"73efe8",
+		"maincolor":"42bfe8",
+		"darkcolor":"2789cd",
+		"lightoutline":"2b4e95",
+		"darkoutline":"1b2447"
+	},
+	{
+		"name":"Pink",
+		"lightcolor":"fad6ff",
+		"maincolor":"d480bb",
+		"darkcolor":"966888",
+		"lightoutline":"9052bc",
+		"darkoutline":"64364b"
+	},
+	{
+		"name":"Yellow",
+		"lightcolor":"fff089",
+		"maincolor":"f8c53a",
+		"darkcolor":"e88a36",
+		"lightoutline":"b05b2c",
+		"darkoutline":"673931"
+	}
+]

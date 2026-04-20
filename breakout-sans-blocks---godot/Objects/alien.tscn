@@ -1,44 +1,114 @@
-[gd_scene load_steps=7 format=3 uid="uid://p552imo4ypvk"]
+[gd_scene load_steps=13 format=3 uid="uid://p552imo4ypvk"]
 
-[ext_resource type="Texture2D" uid="uid://wnknpifpltxq" path="res://Sprites/alien1.png" id="1_fuj7y"]
 [ext_resource type="Script" uid="uid://lexsn4bsrjrq" path="res://Scripts/alien.gd" id="1_hg8i3"]
+[ext_resource type="Texture2D" path="res://Sprites/alienexplosion.png" id="2_txtql"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hg8i3"]
-atlas = ExtResource("1_fuj7y")
-region = Rect2(0, 0, 22, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogcde"]
+atlas = ExtResource("2_txtql")
+region = Rect2(0, 0, 26, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_txtql"]
-atlas = ExtResource("1_fuj7y")
-region = Rect2(22, 0, 22, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7the"]
+atlas = ExtResource("2_txtql")
+region = Rect2(26, 0, 26, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gisjj"]
-atlas = ExtResource("1_fuj7y")
-region = Rect2(44, 0, 22, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycsfr"]
+atlas = ExtResource("2_txtql")
+region = Rect2(52, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osicy"]
+atlas = ExtResource("2_txtql")
+region = Rect2(78, 0, 26, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ogcde"]
 animations = [{
 "frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_hg8i3")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogcde")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_txtql")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_gisjj")
+"texture": SubResource("AtlasTexture_t7the")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_txtql")
+"texture": SubResource("AtlasTexture_ycsfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osicy")
 }],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 10.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hg8i3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txtql"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gisjj"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7the"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg8i3"]
+size = Vector2(24, 20)
 
 [node name="Alien" type="Area2D"]
 script = ExtResource("1_hg8i3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Light" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ogcde")
-autoplay = "default"
-frame_progress = 0.6330836
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Main" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hg8i3")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Dark" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_txtql")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="OutlineLight" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gisjj")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="OutlineDark" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t7the")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hg8i3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="Light" to="." method="_on_animated_sprite_2d_animation_finished"]

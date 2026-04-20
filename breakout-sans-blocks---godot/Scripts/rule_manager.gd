@@ -27,7 +27,8 @@ func _init() -> void:
 	activecolor = ballcolors[randi()%6]
 	if !wallspreselected:
 		walls = randi()%2
-
+func _ready() -> void:
+	Input.warp_mouse(get_viewport().size/2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

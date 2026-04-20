@@ -8,6 +8,8 @@ var timer:int = 0
 @export var darkcolor:Color
 
 @onready var RuleManager = $/root/Ingame/RuleManager
+@onready var platform = $/root/Ingame/Platform
+@onready var wall = $/root/Ingame/Wall
 
 var velocity:Vector2 = Vector2.ZERO
 var ballgravity:float = 9.81
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == $/root/Ingame/Platform:
+	if body == platform:
 		if position.y > body.position.y:
 			pass
 		hitcounter += 1
@@ -65,6 +67,6 @@ func _on_body_entered(body: Node2D) -> void:
 			RuleManager.difficulty += 1
 		velocity.y = -(5.0 + RuleManager.difficulty)
 		velocity.x = (position.x - body.position.x) * (10.0/body.length) * (1+RuleManager.difficulty/4.0)
-	elif body == $/root/Ingame/Wall and timer <= 0:
+	elif body == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
