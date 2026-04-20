@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=5 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
 [ext_resource type="PackedScene" uid="uid://ben8t4nfwcfhn" path="res://Objects/wall.tscn" id="3_kd26p"]
 [ext_resource type="Script" uid="uid://b56q3xu775yxo" path="res://Scripts/rule_manager.gd" id="4_lq36l"]
-[ext_resource type="PackedScene" uid="uid://p552imo4ypvk" path="res://Objects/alien.tscn" id="5_165j7"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -20,5 +19,3 @@ zoom = Vector2(3, 3)
 [node name="Platform" parent="." instance=ExtResource("2_vmfbn")]
 
 [node name="Wall" parent="." instance=ExtResource("3_kd26p")]
-
-[node name="Alien" parent="." instance=ExtResource("5_165j7")]
