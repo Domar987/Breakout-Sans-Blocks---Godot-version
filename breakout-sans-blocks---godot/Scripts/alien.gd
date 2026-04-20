@@ -17,6 +17,9 @@ var xSpeed:float = 0.5
 var entered:bool = false
 
 var variant:int = randi_range(1,2)
+var attacktimer:int = randi_range(250,500)
+var projectilesource = preload("res://Objects/Projectile.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var alientexture:Array[Texture2D] = []
@@ -53,7 +56,12 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	attacktimer -= 1
+	if attacktimer <= 0:
+		shootProjectile()
+		attacktimer = randi_range(250, 500)
+	
 	position.x += xSpeed
 	if abs(position.x) < abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2* Wall.wallwidth and !entered:
 		entered = true
@@ -63,11 +71,10 @@ func _process(delta: float) -> void:
 		selectedcolors = selectColor(position.y)
 		for i in range(0,5):
 			sprites[i].modulate = Color(selectedcolors[i])
-	pass
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == Ball:
+	if area == Ball and sprites[0].animation == "idle":
 		xSpeed = 0
 		for i in range(1,5):
 			sprites[i].queue_free()
@@ -79,11 +86,21 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 
 func selectColor(y:float)->Array:
-	if y >= 32:
+	if y >= 36:
 		return aliencolors[3]
-	elif y >= 0:
+	elif y >= 4:
 		return aliencolors[2]
-	elif y >= -16:
+	elif y >= -12:
 		return aliencolors[1]
 	else:
 		return aliencolors[0]
+
+func shootProjectile()->void:
+	var projectile = projectilesource.instantiate()
+	var projectilevariant:int = randi_range(1,2)
+	projectile.texturepath = "res://Sprites/Alien/alienprojectile"+str(projectilevariant)+".png"
+	projectile.frames = projectilevariant*2 + 2
+	projectile.damage = 1
+	projectile.speed = 20
+	projectile.position = position
+	add_sibling(projectile)
