@@ -82,7 +82,7 @@ func _physics_process(_delta: float) -> void:
 	
 	xSpeedModifier = RuleManager.kill - currentKill
 	
-	position.x += xSpeed * (1 + xSpeedModifier / 5.0)
+	position.x += xSpeed * (1 + xSpeedModifier * (RuleManager.difficulty / 2) / 5.0)
 	if abs(position.x) < abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2* Wall.wallwidth and !entered:
 		entered = true
 	if entered and abs(position.x) >= abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2 * Wall.wallwidth:
