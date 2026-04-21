@@ -14,6 +14,8 @@ var aliensprites = ["res://Sprites/Alien/alienlight","res://Sprites/Alien/alienm
 
 var fromLorR:bool = false
 var xSpeed:float = 0.5
+var xSpeedModifier:int
+var currentKill:int
 var entered:bool = false
 
 var variant:int = randi_range(1,3)
@@ -22,6 +24,7 @@ var projectilesource = preload("res://Objects/Projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	currentKill = RuleManager.kill
 	var alientexture:Array[Texture2D] = []
 	for i in range(0,5):
 		sprites[i].sprite_frames = SpriteFrames.new()
@@ -77,7 +80,9 @@ func _physics_process(_delta: float) -> void:
 		shootProjectile()
 		attacktimer = randi_range(250, 500)
 	
-	position.x += xSpeed
+	xSpeedModifier = RuleManager.kill - currentKill
+	
+	position.x += xSpeed * (1 + xSpeedModifier / 5.0)
 	if abs(position.x) < abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2* Wall.wallwidth and !entered:
 		entered = true
 	if entered and abs(position.x) >= abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2 * Wall.wallwidth:
@@ -98,6 +103,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprites[0].animation == "death":
+		RuleManager.kill += 1
 		queue_free()
 
 func selectColor(y:float)->Array:
@@ -120,4 +126,5 @@ func shootProjectile()->void:
 	projectile.damage = 1
 	projectile.speed = 20
 	projectile.position = position
+	projectile.modulate = sprites[0].modulate
 	add_sibling(projectile)
