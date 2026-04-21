@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 @export var y = 75.0
 const SPEED = 300.0

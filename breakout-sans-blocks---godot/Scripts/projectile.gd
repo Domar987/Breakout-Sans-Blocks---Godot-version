@@ -9,6 +9,10 @@ var direction:Vector2
 
 var texture:Texture2D
 
+@onready var ball:Area2D = $/root/Ingame/Ball
+@onready var platform:Area2D = $/root/Ingame/Platform
+@onready var RuleManager = $/root/Ingame/RuleManager
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if direction == null or direction == Vector2.ZERO:
@@ -28,3 +32,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	position += speed * delta * direction
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area == ball:
+		queue_free()
+	elif area == platform:
+		RuleManager.health -= 1
+		queue_free()

@@ -58,15 +58,15 @@ func _physics_process(delta: float) -> void:
 	position += velocity
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body == platform:
-		if position.y > body.position.y:
+func _on_area_entered(area: Area2D) -> void:
+	if area == platform:
+		if position.y > area.position.y:
 			pass
 		hitcounter += 1
 		if hitcounter % 10 == 0:
 			RuleManager.difficulty += 1
 		velocity.y = -(5.0 + RuleManager.difficulty)
-		velocity.x = (position.x - body.position.x) * (10.0/body.length) * (1+RuleManager.difficulty/4.0)
-	elif body == wall and timer <= 0:
+		velocity.x = (position.x - area.position.x) * (10.0/area.length) * (1+RuleManager.difficulty/4.0)
+	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1

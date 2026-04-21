@@ -16,7 +16,7 @@ var fromLorR:bool = false
 var xSpeed:float = 0.5
 var entered:bool = false
 
-var variant:int = randi_range(1,2)
+var variant:int = randi_range(1,3)
 var attacktimer:int = randi_range(250,500)
 var projectilesource = preload("res://Objects/Projectile.tscn")
 
@@ -24,13 +24,28 @@ var projectilesource = preload("res://Objects/Projectile.tscn")
 func _ready() -> void:
 	var alientexture:Array[Texture2D] = []
 	for i in range(0,5):
+		sprites[i].sprite_frames = SpriteFrames.new()
+		sprites[i].sprite_frames.add_animation("idle")
+		sprites[i].sprite_frames.set_animation_loop("idle",true)
+		sprites[i].sprite_frames.set_animation_speed("idle",10.0)
 		alientexture.append(load(aliensprites[i]+str(variant)+".png"))
+	var deathtex = load("res://Sprites/Alien/alienexplosion.png")
+	var texwidth = deathtex.get_width() / 4
+	var texheight = deathtex.get_height()
+	sprites[0].sprite_frames.add_animation("death")
+	sprites[0].sprite_frames.set_animation_loop("death",false)
+	sprites[0].sprite_frames.set_animation_speed("death",10.0)
+	for i in range(0,4):
+		var atlas = AtlasTexture.new()
+		atlas.atlas = deathtex
+		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
+		sprites[0].sprite_frames.add_frame("death",atlas,1.0)
 	#for x in range(alientexture.get_width()):
 		#for y in range(alientexture.get_height()):
 			#var pixel:Color = alientexture.get_image().get_pixel(x,y)
 			#if pixel == Color.WHITE:
-	var texwidth = alientexture[0].get_width() / 3
-	var texheight = alientexture[0].get_height()
+	texwidth = alientexture[0].get_width() / 3
+	texheight = alientexture[0].get_height()
 	for i1 in range(0,5):
 		for i in range(0,4):
 			var atlas = AtlasTexture.new()

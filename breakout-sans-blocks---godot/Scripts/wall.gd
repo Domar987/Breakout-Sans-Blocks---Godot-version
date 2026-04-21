@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 var colShape1 = WorldBoundaryShape2D.new()
 var colShape2 = WorldBoundaryShape2D.new()

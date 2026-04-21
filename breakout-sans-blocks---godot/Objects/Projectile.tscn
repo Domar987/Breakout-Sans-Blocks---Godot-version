@@ -7,3 +7,5 @@ script = ExtResource("1_5o0d0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

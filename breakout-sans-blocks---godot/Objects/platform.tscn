@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpv0vlbcypjo1" path="res://Scripts/platform.gd" id="1_ygx5w"]
 
-[node name="Platform" type="StaticBody2D"]
+[node name="Platform" type="Area2D"]
 texture_filter = 1
 script = ExtResource("1_ygx5w")
 

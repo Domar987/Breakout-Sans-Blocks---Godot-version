@@ -10,10 +10,12 @@ var activecolor:Dictionary
 var difficulty = 0
 var oldDifficulty = 0
 
+var health = 3
+
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
 @onready var ball:Area2D = $/root/Ingame/Ball
-@onready var platform:StaticBody2D = $/root/Ingame/Platform
-@onready var wall:StaticBody2D = $/root/Ingame/Wall
+@onready var platform:Area2D = $/root/Ingame/Platform
+@onready var wall:Area2D = $/root/Ingame/Wall
 @onready var zoom:float = camera.zoom.x
 
 var rotate:float = 0.0

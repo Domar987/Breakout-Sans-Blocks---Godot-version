@@ -56,4 +56,4 @@ script = ExtResource("6_7y7mc")
 texture_filter = 1
 texture = ExtResource("6_qs2t0")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
