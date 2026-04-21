@@ -25,28 +25,14 @@ var projectilesource = preload("res://Objects/Projectile.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	currentKill = RuleManager.kill
-	var alientexture:Array[Texture2D] = []
+	
 	for i in range(0,5):
 		sprites[i].sprite_frames = SpriteFrames.new()
-		sprites[i].sprite_frames.add_animation("idle")
-		alientexture.append(load(aliensprites[i]+str(variant)+".png"))
-		#Animator.new().createAnimation(sprites[0].sprite_frames,"death",false,10.0)
-		#Animator.new().createFrames("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
+		Animator.new().createAnimation(sprites[i].sprite_frames,"idle",true,10.0)
+		Animator.new().createFramesManual(aliensprites[i]+str(variant)+".png",sprites[i].sprite_frames,3,[0,1,2,1],[3,1,3,1],"idle")
+		sprites[i].play("idle")
 	Animator.new().createAnimation(sprites[0].sprite_frames,"death",false,10.0)
-	Animator.new().createFrames("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
-	var texwidth = alientexture[0].get_width() / 3
-	var texheight = alientexture[0].get_height()
-	for i1 in range(0,5):
-		for i in range(0,4):
-			var atlas = AtlasTexture.new()
-			atlas.atlas = alientexture[i1]
-			if i % 2 == 0:
-				atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
-				sprites[i1].sprite_frames.add_frame("idle",atlas, 3.0)
-			else:
-				atlas.region = Rect2(texwidth, 0, texwidth, texheight)
-				sprites[i1].sprite_frames.add_frame("idle",atlas, 1.0)
-		sprites[i1].play("idle")
+	Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
 	
 	if randi_range(0,1):
 		fromLorR = true

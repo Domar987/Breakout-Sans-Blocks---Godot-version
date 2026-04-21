@@ -20,33 +20,19 @@ func _ready() -> void:
 	if direction == null or direction == Vector2.ZERO:
 		direction = Vector2.DOWN
 	sprite.sprite_frames = SpriteFrames.new()
+	
 	texture = load(texturepath)
-	sprite.sprite_frames.add_animation("default")
-	sprite.sprite_frames.add_animation("blast")
-	sprite.sprite_frames.set_animation_loop("default",true)
-	sprite.sprite_frames.set_animation_loop("blast",false)
-	sprite.sprite_frames.set_animation_speed("default",10.0)
-	sprite.sprite_frames.set_animation_speed("blast",10.0)
 	var texwidth = texture.get_width() / frames
 	var texheight = texture.get_height()
-	for i in range(0,frames):
-		var atlas = AtlasTexture.new()
-		atlas.atlas = texture
-		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
-		sprite.sprite_frames.add_frame("default",atlas, 1.0)
-	
 	var rectShape = RectangleShape2D.new()
 	rectShape.size = Vector2(texwidth,texheight)
 	$CollisionShape2D.set_shape(rectShape)
 	
-	texture = load(blasttexturepath)
-	texwidth = texture.get_width() / blastframes
-	texheight = texture.get_height()
-	for i in range(0,blastframes):
-		var atlas = AtlasTexture.new()
-		atlas.atlas = texture
-		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
-		sprite.sprite_frames.add_frame("blast",atlas, 1.0)
+	Animator.new().createAnimation(sprite.sprite_frames,"default",true,10.0)
+	Animator.new().createFramesAuto(texturepath,sprite.sprite_frames,frames,"default")
+	Animator.new().createAnimation(sprite.sprite_frames,"blast",false,10.0)
+	Animator.new().createFramesAuto(blasttexturepath,sprite.sprite_frames,blastframes,"blast")
+	
 	sprite.play("default")
 
 
