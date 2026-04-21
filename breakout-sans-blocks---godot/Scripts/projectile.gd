@@ -53,7 +53,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if sprite.animation != "blast":
-		position += speed * delta * direction
+		position += speed * delta * direction * (1 + RuleManager.difficulty/10)
 
 
 func _on_area_entered(area: Area2D) -> void:
