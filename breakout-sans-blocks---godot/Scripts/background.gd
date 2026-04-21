@@ -40,3 +40,6 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	gr.colors = colors
 	#gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
 	return gr
+
+func _draw() -> void:
+	pass
