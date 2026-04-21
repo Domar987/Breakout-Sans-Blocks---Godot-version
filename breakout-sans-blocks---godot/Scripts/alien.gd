@@ -114,7 +114,9 @@ func shootProjectile()->void:
 	var projectile = projectilesource.instantiate()
 	var projectilevariant:int = randi_range(1,2)
 	projectile.texturepath = "res://Sprites/Alien/alienprojectile"+str(projectilevariant)+".png"
+	projectile.blasttexturepath = "res://Sprites/Alien/alienprojectileexplosion.png"
 	projectile.frames = projectilevariant*2 + 2
+	projectile.blastframes = 4
 	projectile.damage = 1
 	projectile.speed = 20
 	projectile.position = position

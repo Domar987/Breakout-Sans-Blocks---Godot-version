@@ -8,4 +8,7 @@ script = ExtResource("1_5o0d0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "default"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
