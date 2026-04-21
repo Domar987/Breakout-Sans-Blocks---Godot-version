@@ -36,7 +36,6 @@ spawn = ExtResource("6_6toak")
 spawnWeight = 1.0
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.2509804, 0.2509804, 0.2509804, 1)
 z_index = -5
 rotation = 4.712389
 texture = SubResource("GradientTexture1D_35pev")

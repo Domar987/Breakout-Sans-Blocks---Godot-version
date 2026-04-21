@@ -11,7 +11,6 @@ func _ready() -> void:
 	texture.gradient = Gradient.new()
 	texture.gradient.interpolation_mode = 2
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	yvalue += delta / 1000.0
@@ -31,6 +30,12 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 			colors.append(gradient.sample(point))
 	offsets.append(1.0)
 	colors.append(gradient.sample(point2))
+	var gray:float
+	for i in range(len(colors)):
+		#gray = (colors[i].r + colors[i].g + colors[i].b) / 3.0
+		#colors[i] = lerp(Color(gray,gray,gray),colors[i],0.5)
+		colors[i].s *= 0.7
+		colors[i].v *= 0.75
 	gr.offsets = offsets
 	gr.colors = colors
 	#gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
