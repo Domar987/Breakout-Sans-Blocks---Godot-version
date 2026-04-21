@@ -1,6 +1,7 @@
 extends Sprite2D
 
 var grad:GradientTexture1D = GradientTexture1D.new()
+var yvalue:float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,16 +14,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	texture.gradient = getGradient(grad.gradient,0.5,1.0)
+	yvalue += delta / 1000.0
+	texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
 	scale.y = get_viewport().size.x
-	#Color(0.3373, 0.3098, 0.3216, 1.0)
-	#Color(0.3804, 0.1529, 0.1294, 1.0)
-	#Color(0.1608, 0.2471, 0.1294, 1.0)
-	#Color(0.3922, 0.2118, 0.2941, 1.0)
-
-
-
-
 
 func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	var gr = Gradient.new()
@@ -39,4 +33,5 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	colors.append(gradient.sample(point2))
 	gr.offsets = offsets
 	gr.colors = colors
+	#gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
 	return gr
