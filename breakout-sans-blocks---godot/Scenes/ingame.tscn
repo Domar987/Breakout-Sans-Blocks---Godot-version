@@ -24,4 +24,4 @@ zoom = Vector2(3, 3)
 
 [node name="Spawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
-spawnWeight = 5
+spawnWeight = 0.1

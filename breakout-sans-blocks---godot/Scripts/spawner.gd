@@ -1,7 +1,7 @@
 extends Node
 
 @export var spawn:PackedScene
-@export var spawnWeight:int
+@export var spawnWeight:float
 var timer:int
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +14,7 @@ func _physics_process(delta: float) -> void:
 	timer -= 1
 	if timer <= 0:
 		spawnEnemy()
-		timer = spawnWeight * randi_range(50, 200)
-	pass
+		timer = randi_range(50, 200) / spawnWeight
 
 func spawnEnemy()->void:
 	var newSpawn = spawn.instantiate()
