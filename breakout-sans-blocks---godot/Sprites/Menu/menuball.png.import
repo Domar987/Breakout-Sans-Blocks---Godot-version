@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnkr2yu7kf27p"
-path="res://.godot/imported/youknowtext.png-24e2ffe4e77ef101c6468d974ae1b30d.ctex"
+uid="uid://sp1os1k6b2t1"
+path="res://.godot/imported/menuball.png-5469557ea64d11e08b66fa186046b4a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/youknowtext.png"
-dest_files=["res://.godot/imported/youknowtext.png-24e2ffe4e77ef101c6468d974ae1b30d.ctex"]
+source_file="res://Sprites/Menu/menuball.png"
+dest_files=["res://.godot/imported/menuball.png-5469557ea64d11e08b66fa186046b4a4.ctex"]
 
 [params]
 

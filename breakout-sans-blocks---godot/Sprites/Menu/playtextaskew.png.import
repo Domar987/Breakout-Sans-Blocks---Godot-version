@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cohimsl2x6vrs"
-path="res://.godot/imported/buttonfocusoutlinebig.png-b4ab6898f5816b17588d982bc9730a8d.ctex"
+uid="uid://cwi84w0g16dne"
+path="res://.godot/imported/playtextaskew.png-e43837f548e69b4a26782885b883c6b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/buttonfocusoutlinebig.png"
-dest_files=["res://.godot/imported/buttonfocusoutlinebig.png-b4ab6898f5816b17588d982bc9730a8d.ctex"]
+source_file="res://Sprites/Menu/playtextaskew.png"
+dest_files=["res://.godot/imported/playtextaskew.png-e43837f548e69b4a26782885b883c6b2.ctex"]
 
 [params]
 

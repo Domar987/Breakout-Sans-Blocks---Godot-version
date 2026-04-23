@@ -1,21 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=31 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
-[ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/title.png" id="1_rfqti"]
-[ext_resource type="Texture2D" uid="uid://de3v6nv1abr3a" path="res://Sprites/menubutton.png" id="1_xhh6f"]
-[ext_resource type="Texture2D" uid="uid://f5tywin5kvn5" path="res://Sprites/menuconcept.png" id="2_cayip"]
-[ext_resource type="Texture2D" uid="uid://5m05vgtwa6md" path="res://Sprites/howtoplaytextaskew.png" id="3_q3rjx"]
-[ext_resource type="Texture2D" uid="uid://ck5pywmsvbw87" path="res://Sprites/buttonfocusoutline.png" id="3_wwsa2"]
-[ext_resource type="Texture2D" uid="uid://c84qe5twqhqkg" path="res://Sprites/optionstextaskew.png" id="4_6swd7"]
-[ext_resource type="Texture2D" uid="uid://di2abf8c3ubmw" path="res://Sprites/menubuttonbig.png" id="5_wbdvm"]
-[ext_resource type="Texture2D" uid="uid://cohimsl2x6vrs" path="res://Sprites/buttonfocusoutlinebig.png" id="6_q3rjx"]
-[ext_resource type="Texture2D" uid="uid://cwi84w0g16dne" path="res://Sprites/playtextaskew.png" id="7_7qvly"]
-[ext_resource type="Texture2D" uid="uid://dnkr2yu7kf27p" path="res://Sprites/youknowtext.png" id="8_7qvly"]
-[ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/fella.png" id="9_rfqti"]
+[ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
+[ext_resource type="Texture2D" uid="uid://de3v6nv1abr3a" path="res://Sprites/Menu/menubutton.png" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://f5tywin5kvn5" path="res://Sprites/Menu/menuconcept.png" id="2_cayip"]
+[ext_resource type="Texture2D" uid="uid://5m05vgtwa6md" path="res://Sprites/Menu/howtoplaytextaskew.png" id="3_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://ck5pywmsvbw87" path="res://Sprites/Menu/buttonfocusoutline.png" id="3_wwsa2"]
+[ext_resource type="Texture2D" uid="uid://c84qe5twqhqkg" path="res://Sprites/Menu/optionstextaskew.png" id="4_6swd7"]
+[ext_resource type="Texture2D" uid="uid://di2abf8c3ubmw" path="res://Sprites/Menu/menubuttonbig.png" id="5_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://cohimsl2x6vrs" path="res://Sprites/Menu/buttonfocusoutlinebig.png" id="6_q3rjx"]
+[ext_resource type="Texture2D" uid="uid://cwi84w0g16dne" path="res://Sprites/Menu/playtextaskew.png" id="7_7qvly"]
+[ext_resource type="Texture2D" uid="uid://dnkr2yu7kf27p" path="res://Sprites/Menu/youknowtext.png" id="8_7qvly"]
+[ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/Menu/fella.png" id="9_rfqti"]
 [ext_resource type="Script" uid="uid://dq72xqe5i60ts" path="res://Scripts/fella.gd" id="12_23t3j"]
+[ext_resource type="Texture2D" uid="uid://daqef23it1e78" path="res://Sprites/Menu/menuenemy.png" id="13_d77ms"]
 [ext_resource type="AudioStream" uid="uid://cm1obukvl8bi6" path="res://Audio/SFX/miamiclick.mp3" id="14_5ti5v"]
+[ext_resource type="Texture2D" uid="uid://sp1os1k6b2t1" path="res://Sprites/Menu/menuball.png" id="14_dldpb"]
 [ext_resource type="AudioStream" uid="uid://dydnbxfxdivdi" path="res://Audio/SFX/miamiorchit.mp3" id="15_1by5w"]
+[ext_resource type="Texture2D" uid="uid://bb8f5i15nvdvv" path="res://Sprites/Menu/menuballtrail.png" id="15_d77ms"]
 [ext_resource type="AudioStream" uid="uid://bsrh1cehevhvb" path="res://Audio/Music/title.wav" id="16_1by5w"]
+[ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -80,6 +84,7 @@ script = ExtResource("1_g8i7c")
 zoom = Vector2(3, 3)
 
 [node name="RightSide" type="Control" parent="."]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -237,7 +242,22 @@ offset_bottom = 5.0
 grow_vertical = 2
 texture = ExtResource("8_7qvly")
 
+[node name="Centerish" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Enemy" type="TextureRect" parent="Centerish"]
+layout_mode = 0
+offset_left = -36.095
+offset_top = -18.83
+offset_right = 19.904999
+offset_bottom = 42.17
+texture = ExtResource("13_d77ms")
+
 [node name="LeftSide" type="Control" parent="."]
+z_index = -1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -247,6 +267,30 @@ offset_bottom = 40.0
 z_index = -10
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cayip")
+
+[node name="Ball" type="TextureRect" parent="LeftSide"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = -46.0
+offset_right = -26.0
+offset_bottom = 17.0
+texture = ExtResource("14_dldpb")
+
+[node name="Trail" type="TextureRect" parent="LeftSide"]
+layout_mode = 0
+offset_left = -154.0
+offset_top = -99.0
+offset_right = -60.0
+offset_bottom = -25.0
+texture = ExtResource("15_d77ms")
+
+[node name="Platform" type="TextureRect" parent="LeftSide"]
+layout_mode = 0
+offset_left = -162.0
+offset_top = -66.0
+offset_right = -135.0
+offset_bottom = -47.0
+texture = ExtResource("16_3p34a")
 
 [node name="Miamiclick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_5ti5v")

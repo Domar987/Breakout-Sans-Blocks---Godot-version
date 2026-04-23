@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwup15mckvmx"
-path="res://.godot/imported/fella.png-bba53bd1ef640b8a2000776b1df68598.ctex"
+uid="uid://5m05vgtwa6md"
+path="res://.godot/imported/howtoplaytextaskew.png-15da741d36c447a42ac06cb4bab33e3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/fella.png"
-dest_files=["res://.godot/imported/fella.png-bba53bd1ef640b8a2000776b1df68598.ctex"]
+source_file="res://Sprites/Menu/howtoplaytextaskew.png"
+dest_files=["res://.godot/imported/howtoplaytextaskew.png-15da741d36c447a42ac06cb4bab33e3d.ctex"]
 
 [params]
 

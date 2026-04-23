@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck5pywmsvbw87"
-path="res://.godot/imported/buttonfocusoutline.png-ea67a8212bbb386c2e29fac1241ff90f.ctex"
+uid="uid://daqef23it1e78"
+path="res://.godot/imported/menuenemy.png-d551996e7b77d58650c8241e47584157.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/buttonfocusoutline.png"
-dest_files=["res://.godot/imported/buttonfocusoutline.png-ea67a8212bbb386c2e29fac1241ff90f.ctex"]
+source_file="res://Sprites/Menu/menuenemy.png"
+dest_files=["res://.godot/imported/menuenemy.png-d551996e7b77d58650c8241e47584157.ctex"]
 
 [params]
 

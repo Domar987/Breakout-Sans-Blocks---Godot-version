@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5m05vgtwa6md"
-path="res://.godot/imported/howtoplaytextaskew.png-b07f9b70ba21f6c85956a1a98f5ee435.ctex"
+uid="uid://cmnj4wquroh17"
+path="res://.godot/imported/menuplatform.png-04d5fbdcfc6a1d90a772fed6091df2ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/howtoplaytextaskew.png"
-dest_files=["res://.godot/imported/howtoplaytextaskew.png-b07f9b70ba21f6c85956a1a98f5ee435.ctex"]
+source_file="res://Sprites/Menu/menuplatform.png"
+dest_files=["res://.godot/imported/menuplatform.png-04d5fbdcfc6a1d90a772fed6091df2ea.ctex"]
 
 [params]
 
