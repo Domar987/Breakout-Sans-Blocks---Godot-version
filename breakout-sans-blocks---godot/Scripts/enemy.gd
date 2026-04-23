@@ -10,6 +10,7 @@ var mainSprite:AnimatedSprite2D
 var fromLorCorR:int
 var fromYvalue:int
 var xSpeed:float = 1.0
+var enterValue:int
 var entered:bool = false
 
 var attacktimer:int
@@ -38,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		shootProjectile()
 		attacktimer = attackTimerBase
 	
-	if abs(position.x) < abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2* Wall.wallwidth and !entered:
+	if abs(position.x) < abs(960/(2*RuleManager.zoom)) - enterValue and !entered:
 		entered = true
 
 

@@ -1,38 +1,50 @@
 [
 	{
-		"name":"Red Ball",
-		"lightcolor":"ff6666",
-		"maincolor":"d10000",
-		"darkcolor":"5c0000"
+		"name":"Red(-dish) Ball",
+		"lightcolor":"f8c53a",
+		"maincolor":"f1641f",
+		"darkcolor":"b9451d",
+		"outlinelightcolor":"612721",
+		"outlinedarkcolor":"2d1b1e"
 	},
 	{
 		"name":"Blue Ball",
-		"lightcolor":"809bff",
-		"maincolor":"0831c5",
-		"darkcolor":"001166"
+		"lightcolor":"73efe8",
+		"maincolor":"42bfe8",
+		"darkcolor":"2789cd",
+		"outlinelightcolor":"2b4e95",
+		"outlinedarkcolor":"1b2447"
 	},
 	{
 		"name":"Green Ball",
-		"lightcolor":"94ed7f",
-		"maincolor":"4ec431",
-		"darkcolor":"137209"
+		"lightcolor":"c4f129",
+		"maincolor":"8fd032",
+		"darkcolor":"61a53f",
+		"outlinelightcolor":"477238",
+		"outlinedarkcolor":"293f21"
 	},
 	{
 		"name":"Yellow Ball",
-		"lightcolor":"ffe485",
-		"maincolor":"e6b400",
-		"darkcolor":"855400"
+		"lightcolor":"fff089",
+		"maincolor":"f8c53a",
+		"darkcolor":"e88a36",
+		"outlinelightcolor":"b05b2c",
+		"outlinedarkcolor":"673931"
 	},
 	{
 		"name":"Pinky Ball ^_^",
-		"lightcolor":"ff75e8",
-		"maincolor":"d706b5",
-		"darkcolor":"85006e"
+		"lightcolor":"fdc9c9",
+		"maincolor":"f6a2a8",
+		"darkcolor":"e27285",
+		"outlinelightcolor":"b25266",
+		"outlinedarkcolor":"64364b"
 	},
 	{
 		"name":"Shitty Ball :(",
-		"lightcolor":"e6b400",
-		"maincolor":"855400",
-		"darkcolor":"661d00"
+		"lightcolor":"e88a36",
+		"maincolor":"b05b2c",
+		"darkcolor":"673931",
+		"outlinelightcolor":"4c3d2e",
+		"outlinedarkcolor":"271f1b"
 	}
 ]

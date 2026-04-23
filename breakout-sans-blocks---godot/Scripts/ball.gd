@@ -6,6 +6,8 @@ var timer:int = 0
 @export var lightcolor:Color
 @export var maincolor:Color
 @export var darkcolor:Color
+@export var outlinelightcolor:Color
+@export var outlinedarkcolor:Color
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var platform = $/root/Ingame/Platform
@@ -20,33 +22,37 @@ func _ready() -> void:
 	lightcolor = Color(RuleManager.activecolor["lightcolor"])
 	maincolor = Color(RuleManager.activecolor["maincolor"])
 	darkcolor = Color(RuleManager.activecolor["darkcolor"])
+	outlinelightcolor = Color(RuleManager.activecolor["outlinelightcolor"])
+	outlinedarkcolor = Color(RuleManager.activecolor["outlinedarkcolor"])
 	$BallLight.modulate = lightcolor
 	$BallMain.modulate = maincolor
 	$BallMain/BallTrail.modulate = maincolor
 	$BallMain/BallTrail2.modulate = maincolor
 	$BallDark.modulate = darkcolor
+	$BallOutlineLight.modulate = outlinelightcolor
+	$BallOutlineDark.modulate = outlinedarkcolor
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	timer -= 1
 	velocity.y += delta * ballgravity
-	if position.x > get_viewport().size.x/(2*RuleManager.zoom):
+	if position.x > 960/(2*RuleManager.zoom):
 		if RuleManager.walls:
 			position = Vector2.ZERO
 			velocity = Vector2.ZERO
 		else:
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = -get_viewport().size.x/(2*RuleManager.zoom)
-	elif position.x < -get_viewport().size.x/(2*RuleManager.zoom):
+			position.x = -960/(2*RuleManager.zoom)
+	elif position.x < -960/(2*RuleManager.zoom):
 		if RuleManager.walls:
 			position = Vector2.ZERO
 			velocity = Vector2.ZERO
 		else:
 			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = get_viewport().size.x/(2*RuleManager.zoom)
+			position.x = 960/(2*RuleManager.zoom)
 	#if linear_velocity.y < 10:
 	#	sprite.frame = 0
 	#elif linear_velocity.y < 20:

@@ -10,8 +10,8 @@ var activecolor:Dictionary
 var difficulty = 0
 var oldDifficulty = 0
 
-var health:int = 3
-var oldhealth:int = 3
+var health:int = 10
+var oldhealth:int = 10
 var kill:int = 0
 
 @onready var camera:Camera2D = $/root/Ingame/Camera2D

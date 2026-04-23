@@ -19,6 +19,7 @@ var movedDown:bool = true
 func _ready() -> void:
 	sprites = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
 	mainSprite = sprites[0]
+	enterValue = 32
 	xSpeed = 1.0
 	attacktimer = randi_range(250,500)
 	projectilesource = preload("res://Objects/Projectile.tscn")
@@ -46,8 +47,8 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -get_viewport().size.y/(2*RuleManager.zoom) + 32 * randi_range(0, 4) + 4
-	var x = fromLorCorR * (get_viewport().size.x/(2*RuleManager.zoom) - 32)
+	fromYvalue = -540/(2*RuleManager.zoom) + 32 * randi_range(0, 4) + 4
+	var x = fromLorCorR * (960/(2*RuleManager.zoom))
 	var y = fromYvalue
 	position = Vector2(x, y)
 	xSpeed *= -fromLorCorR
@@ -65,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	moveTimer -= delta * (xSpeedModifier + 1)
 	if moveTimer <= 0:
 		moveTimer = 1.0
-		if not movedDown and entered and abs(position.x) >= get_viewport().size.x/(2*RuleManager.zoom) - 32:
+		if not movedDown and entered and abs(position.x) >= 960/(2*RuleManager.zoom) - 32:
 			movedDown = true
 			xSpeed *= -1
 			position.y += 32

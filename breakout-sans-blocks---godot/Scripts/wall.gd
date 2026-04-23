@@ -20,8 +20,8 @@ func _process(_delta: float) -> void:
 	ySpeedAddition -= ySpeed
 	if ySpeedAddition <= -10:
 		ySpeedAddition = 0
-	colShape1.distance = -get_viewport().size.x/(2*RuleManager.zoom) + wallwidth
-	colShape2.distance = -get_viewport().size.x/(2*RuleManager.zoom) + wallwidth
+	colShape1.distance = -960/(2*RuleManager.zoom) + wallwidth
+	colShape2.distance = -960/(2*RuleManager.zoom) + wallwidth
 	if RuleManager.zoom != oldzoom or ySpeed != 0:
 		queue_redraw()
 	$CollisionShape2D1.shape = colShape1
@@ -30,8 +30,8 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if RuleManager.walls:
-		for i in range(0,get_viewport().size.y/(5*RuleManager.zoom)+1): #kamera boyutu carpi duvar sprite'inin yuksekligi
-			var x = get_viewport().size.x/(2*RuleManager.zoom) + 1
-			var y = i*10-get_viewport().size.y/(2*RuleManager.zoom)
+		for i in range(0,540/(5*RuleManager.zoom)+1): #kamera boyutu carpi duvar sprite'inin yuksekligi
+			var x = 960/(2*RuleManager.zoom) + 1
+			var y = i*10-540/(2*RuleManager.zoom)
 			draw_texture(walltexleft,Vector2(-x, y + ySpeedAddition))
 			draw_texture(walltexright,Vector2(x - wallwidth, y + ySpeedAddition))
