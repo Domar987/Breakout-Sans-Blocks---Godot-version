@@ -5,8 +5,8 @@ var colShape2 = WorldBoundaryShape2D.new()
 
 
 func _ready() -> void:
-	lefttexture = load("res://Sprites/wallleft.png")
-	righttexture = load("res://Sprites/wallright.png")
+	lefttexture = [load("res://Sprites/wallleft.png")]
+	righttexture = [load("res://Sprites/wallright.png")]
 	wallwidth = 12
 	wallheight = 10
 	colShape1.normal = Vector2(1,0)

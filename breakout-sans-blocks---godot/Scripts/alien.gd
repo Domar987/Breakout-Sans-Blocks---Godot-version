@@ -31,6 +31,7 @@ func _ready() -> void:
 		2:
 			hp = 2
 			dmg = 1
+			moveTimer *= 2
 		3:
 			hp = 1
 			dmg = 2
@@ -60,22 +61,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	super(delta)
-	xSpeedModifier = RuleManager.kill - currentKill
-	
-	moveTimer -= delta * (xSpeedModifier + 1)
-	if moveTimer <= 0:
-		moveTimer = 1.0
-		if not movedDown and entered and abs(position.x) >= 960/(2*RuleManager.zoom) - 32:
-			movedDown = true
-			xSpeed *= -1
-			position.y += 32
-			selectedcolors = selectColor(position.y)
-			for i in range(len(sprites)):
-				sprites[i].modulate = Color(selectedcolors[i])
-		else:
-			movedDown = false
-			position.x += xSpeed * 16
+	if hp > 0:
+		super(delta)
+		xSpeedModifier = RuleManager.kill - currentKill
+		
+		moveTimer -= delta * (xSpeedModifier/2.0 + 1)
+		if moveTimer <= 0:
+			moveTimer = 1.0 + int(variant == 2)
+			if not movedDown and entered and abs(position.x) >= 960/(2*RuleManager.zoom) - 32:
+				movedDown = true
+				xSpeed *= -1
+				position.y += 32
+				selectedcolors = selectColor(position.y)
+				for i in range(len(sprites)):
+					sprites[i].modulate = Color(selectedcolors[i])
+			else:
+				movedDown = false
+				position.x += xSpeed * 16
 
 func selectColor(y:float)->Array:
 	if y >= 36:

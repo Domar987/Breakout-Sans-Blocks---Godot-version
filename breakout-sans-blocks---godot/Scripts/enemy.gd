@@ -34,13 +34,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	attacktimer -= 1
-	if attacktimer <= 0:
-		shootProjectile()
-		attacktimer = attackTimerBase
-	
-	if abs(position.x) < abs(960/(2*RuleManager.zoom)) - enterValue and !entered:
-		entered = true
+	if hp > 0:
+		attacktimer -= 1
+		if attacktimer <= 0:
+			shootProjectile()
+			attacktimer = attackTimerBase
+		
+		if abs(position.x) < abs(960/(2*RuleManager.zoom)) - enterValue and !entered:
+			entered = true
 
 
 func _on_area_entered(area: Area2D) -> void:

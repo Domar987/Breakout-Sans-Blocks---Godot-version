@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://rvhrhupc0ewm" path="res://Sprites/balloutlinedark.png" id="8_qs2t0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af24q"]
-size = Vector2(7, 7)
+size = Vector2(16, 16)
 
 [sub_resource type="Curve" id="Curve_7y7mc"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(1, 1), 1.0, 0.0, 0, 0]

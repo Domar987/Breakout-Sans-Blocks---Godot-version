@@ -1,20 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=12 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
 [ext_resource type="PackedScene" uid="uid://ben8t4nfwcfhn" path="res://Objects/wall.tscn" id="3_kd26p"]
 [ext_resource type="Script" uid="uid://b56q3xu775yxo" path="res://Scripts/rule_manager.gd" id="4_lq36l"]
 [ext_resource type="PackedScene" uid="uid://6thhn8ki4g0f" path="res://Objects/spawner.tscn" id="5_165j7"]
+[ext_resource type="PackedScene" uid="uid://rvvsqweon8i5" path="res://Objects/portalvisual.tscn" id="5_mpua3"]
 [ext_resource type="PackedScene" uid="uid://p552imo4ypvk" path="res://Objects/alien.tscn" id="6_6toak"]
+[ext_resource type="Script" uid="uid://cal5slrlr6bpm" path="res://Scripts/portalvisual.gd" id="6_35pev"]
 [ext_resource type="Script" uid="uid://bxcnaa6hstmq2" path="res://Scripts/background.gd" id="7_yl4g2"]
-
-[sub_resource type="Gradient" id="Gradient_mpua3"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.19, 0.19999999, 0.39, 0.39999998, 0.59, 0.6, 0.79, 0.8, 0.99, 1)
-colors = PackedColorArray(0.15294118, 0.5372549, 0.8039216, 1, 0.15294118, 0.5372549, 0.8039216, 1, 0.25882354, 0.6431373, 0.34901962, 1, 0.25882354, 0.6431373, 0.34901962, 1, 0.56078434, 0.8156863, 0.19607843, 1, 0.56078434, 0.8156863, 0.19607843, 1, 0.972549, 0.9647059, 0.26666668, 1, 0.972549, 0.9647059, 0.26666668, 1, 0.7254902, 0.27058825, 0.11372549, 1, 0.7254902, 0.27058825, 0.11372549, 1, 0.38039216, 0.15294118, 0.12941177, 1)
+[ext_resource type="Gradient" uid="uid://blj01eng0kvlf" path="res://Objects/BackgroundGradient.tres" id="9_jy764"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_35pev"]
-gradient = SubResource("Gradient_mpua3")
+gradient = ExtResource("9_jy764")
 
 [node name="Ingame" type="Node"]
 
@@ -30,6 +28,9 @@ zoom = Vector2(3, 3)
 [node name="Platform" parent="." instance=ExtResource("2_vmfbn")]
 
 [node name="Wall" parent="." instance=ExtResource("3_kd26p")]
+
+[node name="PortalVisual" parent="." instance=ExtResource("5_mpua3")]
+script = ExtResource("6_35pev")
 
 [node name="Spawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
