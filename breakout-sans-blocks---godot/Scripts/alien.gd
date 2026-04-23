@@ -67,13 +67,6 @@ func _physics_process(_delta: float) -> void:
 		for i in range(0,5):
 			sprites[i].modulate = Color(selectedcolors[i])
 
-
-func _on_area_entered(area: Area2D) -> void:
-	super(area)
-	if hp <= 0:
-		for i in range(1,len(sprites)):
-			sprites[i].queue_free()
-
 func selectColor(y:float)->Array:
 	if y >= 36:
 		return aliencolors[3]

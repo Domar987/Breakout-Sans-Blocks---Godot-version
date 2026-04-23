@@ -49,6 +49,9 @@ func _on_area_entered(area: Area2D) -> void:
 		xSpeed = 0
 		if hp <= 0:
 			mainSprite.play("death")
+			if len(sprites) > 1:
+				for i in range(1,len(sprites)):
+					sprites[i].queue_free()
 		else:
 			for i in range(len(sprites)):
 				sprites[i].play("hurt")
