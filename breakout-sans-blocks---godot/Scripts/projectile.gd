@@ -47,7 +47,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if area == ball:
 			sprite.play("blast")
 		elif area == platform:
-			RuleManager.health -= 1
+			RuleManager.health -= damage
 			sprite.play("blast")
 
 

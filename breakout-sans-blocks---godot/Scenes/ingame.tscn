@@ -16,7 +16,7 @@ colors = PackedColorArray(0.15294118, 0.5372549, 0.8039216, 1, 0.15294118, 0.537
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_35pev"]
 gradient = SubResource("Gradient_mpua3")
 
-[node name="Ingame" type="Node2D"]
+[node name="Ingame" type="Node"]
 
 [node name="RuleManager" type="Node" parent="."]
 script = ExtResource("4_lq36l")
@@ -37,6 +37,6 @@ spawnWeight = 1.0
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
-rotation = 4.712389
+rotation = -1.5707964
 texture = SubResource("GradientTexture1D_35pev")
 script = ExtResource("7_yl4g2")

@@ -35,6 +35,10 @@ func _physics_process(delta: float) -> void:
 	position = Vector2(mousepos,y)
 	if redraw:
 		queue_redraw()
+	if length == 0:
+		visible = false
+		set_collision_layer_value(1,false)
+		set_collision_mask_value(1,false)
 	
 func _draw():
 	#draw_rect(Rect2(Vector2(-length/2,-2),Vector2(length,4)),color)

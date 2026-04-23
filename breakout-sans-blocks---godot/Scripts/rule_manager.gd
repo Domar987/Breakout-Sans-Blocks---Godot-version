@@ -11,6 +11,7 @@ var difficulty = 0
 var oldDifficulty = 0
 
 var health:int = 3
+var oldhealth:int = 3
 var kill:int = 0
 
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
@@ -39,6 +40,8 @@ func _process(delta: float) -> void:
 		difficulty += 1
 	if oldDifficulty != difficulty:
 		difficultyChange()
+	if oldhealth != health:
+		healthChange()
 	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
 	camera.zoom = Vector2(zoom,zoom)
 	if rotate > 0:
@@ -52,14 +55,19 @@ func _process(delta: float) -> void:
 			oldRotate = camera.rotation
 		timer += delta
 	oldDifficulty = difficulty
+	oldhealth = health
 
 func difficultyChange()->void:
 	cameraZoom()
 	if difficulty % 3 == 0:
-		platformLength()
+		platformLength(platform.length * 0.8)
 	if difficulty % 5 == 0:
 		cameraRotate()
 		ySpeedIncrease()
+
+func healthChange()->void:
+	if health <= 0:
+		platformLength(0)
 
 func cameraZoom()->void:
 	var tween = create_tween()
@@ -71,11 +79,10 @@ func cameraZoom()->void:
 	#	timer += get_physics_process_delta_time()
 	#	camera.zoom = lerp(oldzoom,oldzoom*0.9,timer)
 
-func platformLength()->void:
+func platformLength(newLength:int)->void:
 	platform.redraw = true
 	var tween = create_tween()
-	var tmp = platform.length * 0.8
-	tween.tween_property(platform, "length", tmp, 1.0)
+	tween.tween_property(platform, "length", newLength, 1.0)
 	tween.tween_callback(platformLengthEnd)
 
 func platformLengthEnd()->void:
