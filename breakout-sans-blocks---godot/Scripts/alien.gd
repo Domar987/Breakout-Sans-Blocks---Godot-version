@@ -12,11 +12,14 @@ var currentKill:int
 
 var variant:int = randi_range(1,3)
 
+var moveTimer:float = 1.0
+var movedDown:bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprites = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
 	mainSprite = sprites[0]
-	xSpeed = 0.5
+	xSpeed = 1.0
 	attacktimer = randi_range(250,500)
 	projectilesource = preload("res://Objects/Projectile.tscn")
 	currentKill = RuleManager.kill
@@ -30,7 +33,7 @@ func _ready() -> void:
 		3:
 			hp = 1
 			dmg = 2
-	for i in range(0,5):
+	for i in range(len(sprites)):
 		sprites[i].sprite_frames = SpriteFrames.new()
 		Animator.new().createAnimation(sprites[i].sprite_frames,"idle",true,10.0)
 		Animator.new().createFramesManual(aliensprites[i]+str(variant)+".png",sprites[i].sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
@@ -44,28 +47,34 @@ func _ready() -> void:
 	if randi_range(0,1):
 		fromLorCorR *= -1
 	fromYvalue = -get_viewport().size.y/(2*RuleManager.zoom) + 32 * randi_range(0, 4) + 4
-	var x = fromLorCorR * (get_viewport().size.x/(2*RuleManager.zoom) + 11)
+	var x = fromLorCorR * (get_viewport().size.x/(2*RuleManager.zoom) - 32)
 	var y = fromYvalue
 	position = Vector2(x, y)
 	xSpeed *= -fromLorCorR
 	selectedcolors = selectColor(y)
-	for i in range(0,5):
+	for i in range(len(sprites)):
 		sprites[i].modulate = Color(selectedcolors[i])
 	super()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
-	super(_delta)
+func _physics_process(delta: float) -> void:
+	super(delta)
 	xSpeedModifier = RuleManager.kill - currentKill
 	
-	position.x += xSpeed * (1 + xSpeedModifier * (RuleManager.difficulty / 2) / 5.0)
-	if entered and abs(position.x) >= abs(get_viewport().size.x/(2*RuleManager.zoom)) - 2 * Wall.wallwidth:
-		xSpeed *= -1
-		position.y += 32
-		selectedcolors = selectColor(position.y)
-		for i in range(0,5):
-			sprites[i].modulate = Color(selectedcolors[i])
+	moveTimer -= delta * (xSpeedModifier + 1)
+	if moveTimer <= 0:
+		moveTimer = 1.0
+		if not movedDown and entered and abs(position.x) >= get_viewport().size.x/(2*RuleManager.zoom) - 32:
+			movedDown = true
+			xSpeed *= -1
+			position.y += 32
+			selectedcolors = selectColor(position.y)
+			for i in range(len(sprites)):
+				sprites[i].modulate = Color(selectedcolors[i])
+		else:
+			movedDown = false
+			position.x += xSpeed * 16
 
 func selectColor(y:float)->Array:
 	if y >= 36:

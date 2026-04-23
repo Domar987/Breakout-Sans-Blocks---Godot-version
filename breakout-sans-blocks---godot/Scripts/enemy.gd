@@ -32,7 +32,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	attacktimer -= 1
 	if attacktimer <= 0:
 		shootProjectile()
