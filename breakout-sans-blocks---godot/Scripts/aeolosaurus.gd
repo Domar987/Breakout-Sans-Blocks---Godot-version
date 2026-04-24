@@ -35,6 +35,7 @@ func _on_area_entered(area: Area2D) -> void:
 			else:
 				for i in range(len(sprites)):
 					mainSprite.play("hurt")
+					sprites[2].pause()
 					sineTimer = 0
 		elif area == platform and not dealtDamage:
 			RuleManager.health -= dmg
