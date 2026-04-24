@@ -2,12 +2,12 @@ class_name Animator
 
 extends Node
 
-func createAnimation(sprite:SpriteFrames,name:String,loop:bool,speed:float)->void:
-	sprite.add_animation(name)
-	sprite.set_animation_loop(name,loop)
-	sprite.set_animation_speed(name,speed)
+func createAnimation(sprite:SpriteFrames,animname:String,loop:bool,speed:float)->void:
+	sprite.add_animation(animname)
+	sprite.set_animation_loop(animname,loop)
+	sprite.set_animation_speed(animname,speed)
 
-func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,name:String)->void:
+func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,animname:String)->void:
 	var tex = load(path)
 	var texwidth = tex.get_width() / frames
 	var texheight = tex.get_height()
@@ -15,9 +15,9 @@ func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,name:String)->v
 		var atlas = AtlasTexture.new()
 		atlas.atlas = tex
 		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
-		sprite.add_frame(name,atlas,1.0)
+		sprite.add_frame(animname,atlas,1.0)
 
-func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],name:String)->void:
+func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
 	var tex = load(path)
 	var texwidth = tex.get_width() / originalframelen
 	var texheight = tex.get_height()
@@ -25,4 +25,4 @@ func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,fra
 		var atlas = AtlasTexture.new()
 		atlas.atlas = tex
 		atlas.region = Rect2(texwidth * frames[i], 0, texwidth, texheight)
-		sprite.add_frame(name,atlas,durations[i])
+		sprite.add_frame(animname,atlas,durations[i])

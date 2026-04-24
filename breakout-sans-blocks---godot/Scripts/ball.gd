@@ -16,6 +16,7 @@ var timer:int = 0
 var velocity:Vector2 = Vector2.ZERO
 var ballgravity:float = 9.81
 var hitcounter:int = 0
+var dmg:int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

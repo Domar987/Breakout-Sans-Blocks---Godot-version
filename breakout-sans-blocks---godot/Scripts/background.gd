@@ -30,7 +30,7 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 			colors.append(gradient.sample(point))
 	offsets.append(1.0)
 	colors.append(gradient.sample(point2))
-	var gray:float
+	#var gray:float
 	for i in range(len(colors)):
 		#gray = (colors[i].r + colors[i].g + colors[i].b) / 3.0
 		#colors[i] = lerp(Color(gray,gray,gray),colors[i],0.5)

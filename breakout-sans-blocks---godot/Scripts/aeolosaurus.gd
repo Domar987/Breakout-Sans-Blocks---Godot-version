@@ -1,7 +1,8 @@
 extends Enemy
 
-var speedTween:Tween
 
+var speedTween:Tween
+var sineTimer:float = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp = 6
@@ -17,27 +18,34 @@ func _ready() -> void:
 	var x = randi_range(-960/(2*RuleManager.zoom) + 60,960/(2*RuleManager.zoom) - 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
-	speedTween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	
 	super()
 
 func _on_area_entered(area: Area2D) -> void:
+	super(area)
 	if area == Ball and mainSprite.animation != "death":
-		hp -= 1
-		xSpeedOld = xSpeed
-		xSpeed = 0
-		ySpeedOld = ySpeed
-		ySpeed = 0
 		if hp <= 0:
 			mainSprite.play("death")
+			speedTween = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN).set_parallel(true)
+			speedTween.tween_property(self,"xSpeed",3.5,2.5)
+			speedTween.tween_property(self,"ySpeed",2,4)
 		else:
 			for i in range(len(sprites)):
 				mainSprite.play("hurt")
+				sineTimer = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if hp > 0:
+		if mainSprite.animation == "idle":
+			sineTimer += 25 * delta
+			xSpeed = sin(deg_to_rad(sineTimer)) / 10
+			if randi_range(0, 10) == 2:
+				if ySpeed > 0.2:
+					ySpeed += randf_range(-0.015, 0.01)
+				else:
+					ySpeed += randf_range(0, 0.01)
 		super(delta)
-		position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
 	else:
-		speedTween.tween_property(self,"xSpeed",10,2.0)
-		speedTween.tween_property(self,"ySpeed",0.075,1.5)
+		pass
+	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))

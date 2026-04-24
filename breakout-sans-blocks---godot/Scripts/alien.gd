@@ -91,6 +91,19 @@ func selectColor(y:float)->Array:
 	else:
 		return aliencolors[0]
 
+func _on_area_entered(area: Area2D) -> void:
+	super(area)
+	if area == Ball and mainSprite.animation != "death":
+		if hp <= 0:
+			mainSprite.play("death")
+			if len(sprites) > 1:
+				for i in range(1,len(sprites)):
+					sprites[i].queue_free()
+		else:
+			for i in range(len(sprites)):
+				sprites[i].play("hurt")
+
+
 func shootProjectile()->void:
 	var projectilevariant = randi_range(1,2)
 	projectileTexturePath = "res://Sprites/Alien/alienprojectile"+str(projectilevariant)+".png"

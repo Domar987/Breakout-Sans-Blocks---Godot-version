@@ -38,6 +38,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		difficulty += 1
+	if Input.is_key_pressed(KEY_C):
+		ball.dmg = 10
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health:

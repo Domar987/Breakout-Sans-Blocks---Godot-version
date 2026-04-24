@@ -20,6 +20,7 @@ func _ready() -> void:
 	if direction == null or direction == Vector2.ZERO:
 		direction = Vector2.DOWN
 	sprite.sprite_frames = SpriteFrames.new()
+	sprite.sprite_frames.remove_animation("default")
 	
 	texture = load(texturepath)
 	var texwidth = texture.get_width() / frames
