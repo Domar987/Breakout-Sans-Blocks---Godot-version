@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=13 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cal5slrlr6bpm" path="res://Scripts/portalvisual.gd" id="6_35pev"]
 [ext_resource type="Script" uid="uid://bxcnaa6hstmq2" path="res://Scripts/background.gd" id="7_yl4g2"]
 [ext_resource type="Gradient" uid="uid://blj01eng0kvlf" path="res://Objects/BackgroundGradient.tres" id="9_jy764"]
+[ext_resource type="PackedScene" uid="uid://5c5h7kgmry21" path="res://Objects/aeolosaurus.tscn" id="11_csxpc"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_35pev"]
 gradient = ExtResource("9_jy764")
@@ -41,3 +42,5 @@ z_index = -5
 rotation = -1.5707964
 texture = SubResource("GradientTexture1D_35pev")
 script = ExtResource("7_yl4g2")
+
+[node name="Aeolosaurus" parent="." instance=ExtResource("11_csxpc")]

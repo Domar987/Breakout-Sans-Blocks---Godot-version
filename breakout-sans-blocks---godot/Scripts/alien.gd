@@ -17,10 +17,12 @@ var movedDown:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	shoots = true
 	sprites = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
 	mainSprite = sprites[0]
 	enterValue = 32
 	xSpeed = 1.0
+	ySpeed = 0.0
 	attacktimer = randi_range(250,500)
 	projectilesource = preload("res://Objects/Projectile.tscn")
 	currentKill = RuleManager.kill

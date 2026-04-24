@@ -9,7 +9,7 @@ size = Vector2(24, 20)
 script = ExtResource("1_hg8i3")
 
 [node name="Light" type="AnimatedSprite2D" parent="."]
-animation = &"death"
+animation = &""
 autoplay = "idle"
 
 [node name="Main" type="AnimatedSprite2D" parent="."]
@@ -30,6 +30,3 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hg8i3")
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="animation_finished" from="Light" to="." method="_on_animated_sprite_2d_animation_finished"]

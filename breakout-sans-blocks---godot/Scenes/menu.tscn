@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=37 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/Menu/fella.png" id="9_rfqti"]
 [ext_resource type="Script" uid="uid://dq72xqe5i60ts" path="res://Scripts/fella.gd" id="12_23t3j"]
 [ext_resource type="Texture2D" uid="uid://daqef23it1e78" path="res://Sprites/Menu/menuenemy.png" id="13_d77ms"]
+[ext_resource type="Texture2D" uid="uid://cvtjm45r7ghjg" path="res://Sprites/Menu/menuenemypressed2.png" id="14_3p34a"]
 [ext_resource type="AudioStream" uid="uid://cm1obukvl8bi6" path="res://Audio/SFX/miamiclick.mp3" id="14_5ti5v"]
 [ext_resource type="Texture2D" uid="uid://sp1os1k6b2t1" path="res://Sprites/Menu/menuball.png" id="14_dldpb"]
 [ext_resource type="AudioStream" uid="uid://dydnbxfxdivdi" path="res://Audio/SFX/miamiorchit.mp3" id="15_1by5w"]
@@ -76,6 +77,22 @@ texture_margin_left = 31.0
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d77ms"]
+texture = ExtResource("13_d77ms")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owyel"]
+texture = ExtResource("14_3p34a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3p34a"]
+texture = ExtResource("13_d77ms")
+modulate_color = Color(1.4156048, 1.4156048, 1.4156048, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h63v2"]
+texture = ExtResource("13_d77ms")
+modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_g8i7c")
@@ -248,13 +265,17 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Enemy" type="TextureRect" parent="Centerish"]
+[node name="Enemy" type="Button" parent="Centerish"]
 layout_mode = 0
 offset_left = -36.095
 offset_top = -18.83
 offset_right = 19.904999
 offset_bottom = 42.17
-texture = ExtResource("13_d77ms")
+theme_override_styles/normal = SubResource("StyleBoxTexture_d77ms")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_owyel")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3p34a")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_h63v2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3p34a")
 
 [node name="LeftSide" type="Control" parent="."]
 z_index = -1

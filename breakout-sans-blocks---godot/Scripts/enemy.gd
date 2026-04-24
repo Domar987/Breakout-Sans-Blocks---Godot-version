@@ -10,10 +10,11 @@ var mainSprite:AnimatedSprite2D
 var fromLorCorR:int
 var fromYvalue:int
 var xSpeed:float = 1.0
+var ySpeed:float = 1.0
 var enterValue:int
 var entered:bool = false
 
-var attacktimer:int
+var attacktimer:int = 1
 var hp:int
 var dmg:int
 var projectileSpeed:int
@@ -25,20 +26,26 @@ var projectileblastFrames:int
 
 var attackTimerBase:int
 var xSpeedOld:float
+var ySpeedOld:float
+
+var shoots:bool = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attackTimerBase = attacktimer
+	mainSprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	area_entered.connect(_on_area_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if hp > 0:
-		attacktimer -= 1
-		if attacktimer <= 0:
-			shootProjectile()
-			attacktimer = attackTimerBase
+		if shoots:
+			attacktimer -= 1
+			if attacktimer <= 0:
+				shootProjectile()
+				attacktimer = attackTimerBase
 		
 		if abs(position.x) < abs(960/(2*RuleManager.zoom)) - enterValue and !entered:
 			entered = true
@@ -49,6 +56,8 @@ func _on_area_entered(area: Area2D) -> void:
 		hp -= 1
 		xSpeedOld = xSpeed
 		xSpeed = 0
+		ySpeedOld = ySpeed
+		ySpeed = 0
 		if hp <= 0:
 			mainSprite.play("death")
 			if len(sprites) > 1:
@@ -65,6 +74,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 	else:
 		xSpeed = xSpeedOld
+		ySpeed = ySpeedOld
 		for i in range(len(sprites)):
 			sprites[i].play("idle")
 
