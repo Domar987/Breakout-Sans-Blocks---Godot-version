@@ -11,6 +11,7 @@ var difficulty = 0
 var oldDifficulty = 0
 
 var health:int = 10
+var damage:int = 1
 var oldhealth:int = 10
 var kill:int = 0
 
@@ -39,11 +40,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		difficulty += 1
 	if Input.is_key_pressed(KEY_C):
-		ball.dmg = 10
+		damage = 10
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health:
-		healthChange()
+		healthChange(oldhealth-health)
 	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
 	camera.zoom = Vector2(zoom,zoom)
 	if rotate > 0:
@@ -67,7 +68,15 @@ func difficultyChange()->void:
 		cameraRotate()
 		ySpeedIncrease()
 
-func healthChange()->void:
+func healthChange(dmg:int)->void:
+	var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
+	hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
+	hurttween.set_ease(Tween.EASE_IN_OUT)
+	hurttween.tween_property(platform,"hurtposition",-2*dmg,0.15)
+	hurttween.tween_property(platform,"hurtposition",dmg,0.075)
+	hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
+	hurttween.set_ease(Tween.EASE_IN)
+	hurttween.tween_property(platform,"hurtposition",0,0.075)
 	if health <= 0:
 		platformLength(0)
 

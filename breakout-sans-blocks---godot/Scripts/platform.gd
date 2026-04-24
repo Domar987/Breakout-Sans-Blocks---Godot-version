@@ -19,6 +19,7 @@ var rectShape = RectangleShape2D.new()
 @onready var RuleManager = $/root/Ingame/RuleManager
 
 var mousepos:float
+var hurtposition:float
 
 const wallwidth = 12
 
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		mousepos = 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth
 	elif mousepos < -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth:
 		mousepos = -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth
-	position = Vector2(mousepos,y)
+	position = Vector2(mousepos,y) + Vector2(hurtposition,0)
 	if redraw:
 		queue_redraw()
 	if length == 0:

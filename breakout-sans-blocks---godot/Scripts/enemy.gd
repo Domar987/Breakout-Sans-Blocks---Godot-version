@@ -36,6 +36,7 @@ func _ready() -> void:
 	attackTimerBase = attacktimer
 	mainSprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
 	area_entered.connect(_on_area_entered)
+	area_exited.connect(areaExited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,12 +54,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == Ball and mainSprite.animation != "death":
-		hp -= Ball.dmg
+		hp -= RuleManager.damage
 		xSpeedOld = xSpeed
 		xSpeed = 0
 		ySpeedOld = ySpeed
 		ySpeed = 0
 
+func areaExited(area:Area2D)->void:
+	pass
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if mainSprite.animation == "death":
