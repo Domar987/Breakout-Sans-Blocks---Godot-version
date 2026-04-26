@@ -67,7 +67,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area == platform:
 		if position.y > area.position.y:
-			pass
+			pass #ek puan/para
 		hitcounter += 1
 		if hitcounter % 10 == 0:
 			RuleManager.difficulty += 1

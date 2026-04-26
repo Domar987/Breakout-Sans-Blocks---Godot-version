@@ -7,7 +7,7 @@ var dealtDamage:bool = false
 @onready var platform:Area2D = $/root/Ingame/Platform
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hp = 6
+	hp = 10
 	dmg = 6
 	shoots = false
 	sprites = [$Head,$Body,$Tail]
@@ -37,9 +37,13 @@ func _on_area_entered(area: Area2D) -> void:
 					mainSprite.play("hurt")
 					sprites[2].pause()
 					sineTimer = 0
-		elif area == platform and not dealtDamage:
+		elif area == platform and position.y < area.position.y and not dealtDamage:
 			RuleManager.health -= dmg
 			dealtDamage = true
+
+func ballFromBottom()->void:
+	hp -= RuleManager.damage
+	super()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -56,3 +60,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		pass
 	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
+	for i in range(-1, len(sprites)-1):
+		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed)))

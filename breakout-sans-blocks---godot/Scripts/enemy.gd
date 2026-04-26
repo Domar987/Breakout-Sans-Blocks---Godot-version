@@ -54,11 +54,23 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == Ball and mainSprite.animation != "death":
-		hp -= RuleManager.damage
-		xSpeedOld = xSpeed
-		xSpeed = 0
-		ySpeedOld = ySpeed
-		ySpeed = 0
+		if area.position.y < position.y:
+			ballFromTop()
+		else:
+			ballFromBottom()
+func ballFromTop()->void:
+	print("Hit from above")
+	Ball.velocity.y += -(2.0 + RuleManager.difficulty)
+	getHurt()
+func ballFromBottom()->void:
+	print("Hit from below")
+	getHurt()
+func getHurt()->void:
+	hp -= RuleManager.damage
+	xSpeedOld = xSpeed
+	xSpeed = 0
+	ySpeedOld = ySpeed
+	ySpeed = 0
 
 func areaExited(area:Area2D)->void:
 	pass

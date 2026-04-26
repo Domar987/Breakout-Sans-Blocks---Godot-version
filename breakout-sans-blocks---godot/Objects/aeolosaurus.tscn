@@ -147,7 +147,7 @@ script = ExtResource("1_boh81")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_8116m")
-animation = &"hurt"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(8, 3)
 

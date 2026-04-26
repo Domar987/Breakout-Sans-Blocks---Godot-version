@@ -9,24 +9,14 @@ size = Vector2(24, 20)
 script = ExtResource("1_hg8i3")
 
 [node name="Light" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "idle"
 
 [node name="Main" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "idle"
 
 [node name="Dark" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "idle"
 
 [node name="OutlineLight" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "idle"
 
 [node name="OutlineDark" type="AnimatedSprite2D" parent="."]
-animation = &""
-autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hg8i3")
