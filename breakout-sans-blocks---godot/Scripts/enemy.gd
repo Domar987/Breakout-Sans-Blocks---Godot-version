@@ -59,11 +59,11 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			ballFromBottom()
 func ballFromTop()->void:
-	print("Hit from above")
+	print(name+" hit from above")
 	Ball.velocity.y += -(2.0 + RuleManager.difficulty)
 	getHurt()
 func ballFromBottom()->void:
-	print("Hit from below")
+	print(name+" hit from below")
 	getHurt()
 func getHurt()->void:
 	hp -= RuleManager.damage
