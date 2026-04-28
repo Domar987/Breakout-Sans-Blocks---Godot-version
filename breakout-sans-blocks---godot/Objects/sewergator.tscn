@@ -70,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4hyj4")
 }],
-"loop": true,
+"loop": false,
 "name": &"bite",
 "speed": 10.0
 }, {
@@ -79,7 +79,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_fl4ir")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"death",
 "speed": 1.0
 }, {
 "frames": [{
@@ -223,7 +223,7 @@ script = ExtResource("1_e6vhn")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7fyn6")
-animation = &"idle"
+animation = &"bite"
 autoplay = "idle"
 offset = Vector2(20.5, -3)
 

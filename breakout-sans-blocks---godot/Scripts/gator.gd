@@ -2,7 +2,7 @@ class_name Gator extends Enemy
 
 
 func _ready() -> void:
-	hp = 2
+	hp = 4
 	dmg = 5
 	shoots = false
 	sprites = [$Head,$Arm,$Body]
@@ -30,6 +30,11 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	ySpeed += delta
 	position += Vector2(xSpeed, ySpeed)
+	if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
+		entered = false
+		xSpeed *= -1
+		ySpeed = -0.5
+		scale.x *= -1
 
 
 
@@ -43,6 +48,14 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			mainSprite.play("hurt")
 
+func getHurt()->void:
+	hp -= RuleManager.damage
+	xSpeedOld = xSpeed
+	ySpeedOld = ySpeed
+	if hp <= 0:
+		xSpeed = 0
+		ySpeed = 0
+
 func bite(area:Area2D)->void:
 	if area is Enemy and not(area is Gator or area is Aeolo):
 		mainSprite.play("bite")
@@ -51,3 +64,8 @@ func bite(area:Area2D)->void:
 func ballFromBottom()->void:
 	hp -= RuleManager.damage
 	super()
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	super()
+	#if mainSprite.animation == "bite":
+		#mainSprite.play("idle")
