@@ -1,4 +1,4 @@
-extends Area2D
+class_name Projectile extends Area2D
 
 @onready var sprite:AnimatedSprite2D = $AnimatedSprite2D
 var texturepath:String
