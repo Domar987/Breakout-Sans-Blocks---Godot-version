@@ -9,13 +9,14 @@ func _ready() -> void:
 	mainSprite = sprites[0]
 	enterValue = 10
 	xSpeed = 5
-	ySpeed = -0.5
+	ySpeed = -1.5
+	projectilesource = preload("res://Objects/Projectile.tscn")
 	
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
 	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(35, 110)
-	var x = fromLorCorR * (960/(2*RuleManager.zoom))
+	var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
 	xSpeed *= -fromLorCorR
@@ -28,13 +29,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	super(delta)
-	ySpeed += delta
+	if hp > 0:
+		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
+			entered = false
+			xSpeed *= -1
+			ySpeed = -1.8
+			scale.x *= -1
+			position.y = -540/(2*RuleManager.zoom) + randi_range(35, 110)
+		ySpeed += 2 * delta
+	else:
+		ySpeed += 4 * delta
 	position += Vector2(xSpeed, ySpeed)
-	if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
-		entered = false
-		xSpeed *= -1
-		ySpeed = -0.5
-		scale.x *= -1
 
 
 
@@ -50,8 +55,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 func getHurt()->void:
 	hp -= RuleManager.damage
-	xSpeedOld = xSpeed
-	ySpeedOld = ySpeed
 	if hp <= 0:
 		xSpeed = 0
 		ySpeed = 0
@@ -59,6 +62,8 @@ func getHurt()->void:
 func bite(area:Area2D)->void:
 	if area is Enemy and not(area is Gator or area is Aeolo):
 		mainSprite.play("bite")
+		projectilePosition = area.position
+		shootProjectile()
 		area.queue_free()
 
 func ballFromBottom()->void:
@@ -66,6 +71,18 @@ func ballFromBottom()->void:
 	super()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	var xSpeedOldOld = xSpeed
+	var ySpeedOldOld = ySpeed
 	super()
+	xSpeed = xSpeedOldOld
+	ySpeed = ySpeedOldOld
 	#if mainSprite.animation == "bite":
 		#mainSprite.play("idle")
+
+func shootProjectile()->void:
+	projectileTexturePath = "res://Sprites/SewerGator/gatortooth.png"
+	projectileBlastTexturePath = "res://Sprites/SewerGator/gatortooth.png"
+	projectileFrames = 1
+	projectileblastFrames = 1
+	projectileSpeed = 80
+	super()

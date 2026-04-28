@@ -223,7 +223,7 @@ script = ExtResource("1_e6vhn")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7fyn6")
-animation = &"bite"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(20.5, -3)
 

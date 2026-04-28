@@ -47,3 +47,4 @@ script = ExtResource("7_yl4g2")
 [node name="Aeolosaurus" parent="." instance=ExtResource("11_csxpc")]
 
 [node name="sewergator" parent="." instance=ExtResource("12_6cchy")]
+position = Vector2(-215, 5)
