@@ -15,7 +15,7 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(35, 110)
+	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(60, 160)
 	var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
@@ -61,7 +61,10 @@ func getHurt()->void:
 
 func bite(area:Area2D)->void:
 	if area is Enemy and not(area is Gator or area is Aeolo):
+		mainSprite.stop()
+		sprites[1].stop()
 		mainSprite.play("bite")
+		sprites[1].play("bite")
 		projectilePosition = area.position
 		shootProjectile()
 		area.queue_free()

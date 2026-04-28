@@ -148,8 +148,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sd4ob")
 }],
-"loop": true,
-"name": &"attack",
+"loop": false,
+"name": &"bite",
 "speed": 10.0
 }, {
 "frames": [{
@@ -230,7 +230,7 @@ offset = Vector2(20.5, -3)
 [node name="Arm" type="AnimatedSprite2D" parent="."]
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_4lsvc")
-animation = &"idle"
+animation = &"bite"
 autoplay = "idle"
 offset = Vector2(25.5, 12)
 

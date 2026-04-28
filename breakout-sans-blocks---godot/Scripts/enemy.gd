@@ -23,7 +23,7 @@ var projectileTexturePath:String
 var projectileBlastTexturePath:String
 var projectileFrames:int
 var projectileblastFrames:int
-var projectilePosition:Vector2
+var projectilePosition = null
 
 var attackTimerBase:int
 var xSpeedOld:float
@@ -98,4 +98,5 @@ func shootProjectile()->void:
 	if projectilePosition != null:
 		projectile.position = projectilePosition
 	projectile.modulate = mainSprite.modulate
+	projectile.scale = scale
 	add_sibling(projectile)
