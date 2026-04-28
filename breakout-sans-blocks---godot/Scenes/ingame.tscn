@@ -34,17 +34,22 @@ zoom = Vector2(3, 3)
 [node name="PortalVisual" parent="." instance=ExtResource("5_mpua3")]
 script = ExtResource("6_35pev")
 
-[node name="Spawner" parent="." instance=ExtResource("5_165j7")]
-spawn = ExtResource("6_6toak")
-spawnWeight = 1.0
-
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
 rotation = -1.5707964
 texture = SubResource("GradientTexture1D_35pev")
 script = ExtResource("7_yl4g2")
 
-[node name="Aeolosaurus" parent="." instance=ExtResource("11_csxpc")]
+[node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
+spawn = ExtResource("6_6toak")
+spawnWeight = 0.5
 
-[node name="sewergator" parent="." instance=ExtResource("12_6cchy")]
-position = Vector2(-218, -29)
+[node name="AeoloSpawner" parent="." instance=ExtResource("5_165j7")]
+spawn = ExtResource("11_csxpc")
+spawnWeight = 0.15
+spawnAtDifficulty = 1
+
+[node name="GatorSpawner" parent="." instance=ExtResource("5_165j7")]
+spawn = ExtResource("12_6cchy")
+spawnWeight = 0.3
+spawnAtDifficulty = 2
