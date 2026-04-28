@@ -1,4 +1,4 @@
-extends Enemy
+class_name Alien extends Enemy
 
 
 var alienfile = FileAccess.get_file_as_string("res://Data/alien_colors.json")

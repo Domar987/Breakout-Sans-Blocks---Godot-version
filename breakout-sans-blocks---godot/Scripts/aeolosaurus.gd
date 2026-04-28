@@ -1,4 +1,4 @@
-extends Enemy
+class_name Aeolo extends Enemy
 
 
 var speedTween:Tween
@@ -23,6 +23,26 @@ func _ready() -> void:
 	
 	super()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	if hp > 0:
+		if mainSprite.animation == "idle":
+			sineTimer += 25 * delta
+			xSpeed = sin(deg_to_rad(sineTimer)) / 10
+			if randi_range(0, 10) == 2:
+				if ySpeed > 0.2:
+					ySpeed += randf_range(-0.015, 0.01)
+				else:
+					ySpeed += randf_range(0, 0.01)
+		super(delta)
+	else:
+		pass
+	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
+	for i in range(-1, len(sprites)-1):
+		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed)))
+
+
+
 func _on_area_entered(area: Area2D) -> void:
 	super(area)
 	if mainSprite.animation != "death":
@@ -44,21 +64,3 @@ func _on_area_entered(area: Area2D) -> void:
 func ballFromBottom()->void:
 	hp -= RuleManager.damage
 	super()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	if hp > 0:
-		if mainSprite.animation == "idle":
-			sineTimer += 25 * delta
-			xSpeed = sin(deg_to_rad(sineTimer)) / 10
-			if randi_range(0, 10) == 2:
-				if ySpeed > 0.2:
-					ySpeed += randf_range(-0.015, 0.01)
-				else:
-					ySpeed += randf_range(0, 0.01)
-		super(delta)
-	else:
-		pass
-	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
-	for i in range(-1, len(sprites)-1):
-		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed)))
