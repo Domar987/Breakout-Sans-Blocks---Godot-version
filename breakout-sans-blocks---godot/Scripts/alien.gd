@@ -24,7 +24,7 @@ func _ready() -> void:
 	xSpeed = 1.0
 	ySpeed = 0.0
 	attacktimer = randi_range(250,500)
-	projectilesource = preload("res://Objects/Projectile.tscn")
+	projectilesource = preload("res://Objects/AlienLaser.tscn")
 	currentKill = RuleManager.kill
 	match variant:
 		1:
@@ -105,10 +105,5 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func shootProjectile()->void:
-	var projectilevariant = randi_range(1,2)
-	projectileTexturePath = "res://Sprites/Alien/alienprojectile"+str(projectilevariant)+".png"
-	projectileBlastTexturePath = "res://Sprites/Alien/alienprojectileexplosion.png"
-	projectileFrames = projectilevariant*2 + 2
-	projectileblastFrames = 4
 	projectileSpeed = 20
 	super()

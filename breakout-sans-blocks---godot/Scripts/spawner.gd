@@ -5,6 +5,7 @@ extends Node
 @export var spawnAtDifficulty:int
 @export var maxSpawned:int
 @onready var RuleManager = $/root/Ingame/RuleManager
+var numberOfEnemies:int = 0
 var timer:int
 
 # Called when the node enters the scene tree for the first time.
@@ -23,4 +24,6 @@ func _physics_process(_delta: float) -> void:
 
 func spawnEnemy()->void:
 	var newSpawn = spawn.instantiate()
+	newSpawn.name = newSpawn.name + str(numberOfEnemies)
 	add_sibling(newSpawn)
+	numberOfEnemies += 1

@@ -10,7 +10,7 @@ func _ready() -> void:
 	enterValue = 10
 	xSpeed = 5
 	ySpeed = -1.5
-	projectilesource = preload("res://Objects/Projectile.tscn")
+	projectilesource = preload("res://Objects/GatorTooth.tscn")
 	
 	fromLorCorR = 1
 	if randi_range(0,1):
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 			xSpeed *= -1
 			ySpeed = -1.8
 			scale.x *= -1
-			position.y = -540/(2*RuleManager.zoom) + randi_range(35, 110)
+			position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
 		ySpeed += 2 * delta
 	else:
 		ySpeed += 4 * delta
@@ -83,9 +83,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		#mainSprite.play("idle")
 
 func shootProjectile()->void:
-	projectileTexturePath = "res://Sprites/SewerGator/gatortooth.png"
-	projectileBlastTexturePath = "res://Sprites/SewerGator/gatortooth.png"
-	projectileFrames = 1
-	projectileblastFrames = 1
-	projectileSpeed = 80
+	projectileSpeed = -20
 	super()

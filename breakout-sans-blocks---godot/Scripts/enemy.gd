@@ -88,15 +88,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func shootProjectile()->void:
 	var projectile = projectilesource.instantiate()
-	projectile.texturepath = projectileTexturePath
-	projectile.blasttexturepath = projectileBlastTexturePath
-	projectile.frames = projectileFrames
-	projectile.blastframes = projectileblastFrames
+	#projectile.texturepath = projectileTexturePath
+	#projectile.blasttexturepath = projectileBlastTexturePath
+	#projectile.frames = projectileFrames
+	#projectile.blastframes = projectileblastFrames
 	projectile.damage = dmg
 	projectile.speed = projectileSpeed
 	projectile.position = position
 	if projectilePosition != null:
 		projectile.position = projectilePosition
-	projectile.modulate = mainSprite.modulate
 	projectile.scale = scale
 	add_sibling(projectile)

@@ -142,6 +142,7 @@ animations = [{
 size = Vector2(50, 28)
 
 [node name="Aeolosaurus" type="Area2D"]
+scale = Vector2(1.75, 1.75)
 script = ExtResource("1_boh81")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]

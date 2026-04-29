@@ -218,6 +218,7 @@ size = Vector2(100, 20)
 size = Vector2(20, 35)
 
 [node name="sewergator" type="Area2D"]
+z_index = 2
 script = ExtResource("1_e6vhn")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
