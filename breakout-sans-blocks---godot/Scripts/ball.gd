@@ -17,6 +17,8 @@ var velocity:Vector2 = Vector2.ZERO
 var ballgravity:float = 9.81
 var hitcounter:int = 0
 
+var frozen:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lightcolor = Color(RuleManager.activecolor["lightcolor"])
@@ -35,34 +37,43 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	timer -= 1
-	velocity.y += delta * ballgravity
-	if position.x > 960/(2*RuleManager.zoom):
-		if RuleManager.walls:
-			position = Vector2.ZERO
-			velocity = Vector2.ZERO
-		else:
-			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
-			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = -960/(2*RuleManager.zoom)
-	elif position.x < -960/(2*RuleManager.zoom):
-		if RuleManager.walls:
-			position = Vector2.ZERO
-			velocity = Vector2.ZERO
-		else:
-			$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
-			$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-			position.x = 960/(2*RuleManager.zoom)
-	#if linear_velocity.y < 10:
-	#	sprite.frame = 0
-	#elif linear_velocity.y < 20:
-	#	sprite.frame = 1
-	#elif linear_velocity.y < 40:
-	#	sprite.frame = 2
-	#else:
-	#	sprite.frame = 3
-	position += velocity
+	if not frozen:
+		timer -= 1
+		velocity.y += delta * ballgravity
+		if position.x > 960/(2*RuleManager.zoom):
+			if RuleManager.walls:
+				position = Vector2.ZERO
+				velocity = Vector2.ZERO
+			else:
+				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
+				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
+				position.x = -960/(2*RuleManager.zoom)
+		elif position.x < -960/(2*RuleManager.zoom):
+			if RuleManager.walls:
+				position = Vector2.ZERO
+				velocity = Vector2.ZERO
+			else:
+				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
+				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
+				position.x = 960/(2*RuleManager.zoom)
+		if position.y > 540/(2*RuleManager.zoom) + 50:
+			fall()
+		#if linear_velocity.y < 10:
+		#	sprite.frame = 0
+		#elif linear_velocity.y < 20:
+		#	sprite.frame = 1
+		#elif linear_velocity.y < 40:
+		#	sprite.frame = 2
+		#else:
+		#	sprite.frame = 3
+		position += velocity
 
+func fall()->void:
+	frozen = true
+	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)
+	tween.tween_property(self,"position",Vector2.ZERO,2.0)
+	tween.tween_property(self,"velocity",Vector2.ZERO,0.0)
+	tween.tween_property(self,"frozen",false,0.0)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == platform:

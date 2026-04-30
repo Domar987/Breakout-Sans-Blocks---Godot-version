@@ -26,6 +26,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if hp > 0:
+		if position.y > 540/(2*RuleManager.zoom) + 160:
+			queue_free()
 		if mainSprite.animation == "idle":
 			sineTimer += 25 * delta
 			xSpeed = sin(deg_to_rad(sineTimer)) / 10
@@ -36,7 +38,8 @@ func _physics_process(delta: float) -> void:
 					ySpeed += randf_range(0, 0.01)
 		super(delta)
 	else:
-		pass
+		if abs(position.x) > 960/(2*RuleManager.zoom) + 120:
+			Death()
 	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
 	for i in range(-1, len(sprites)-1):
 		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed)))

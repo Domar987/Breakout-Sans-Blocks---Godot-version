@@ -39,6 +39,9 @@ func _physics_process(delta: float) -> void:
 		ySpeed += 2 * delta
 	else:
 		ySpeed += 4 * delta
+		if position.y > 540/(2*RuleManager.zoom) + 100:
+			RuleManager.kill += 1
+			Death()
 	position += Vector2(xSpeed, ySpeed)
 
 

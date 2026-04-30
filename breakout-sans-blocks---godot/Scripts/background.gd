@@ -2,6 +2,7 @@ extends Sprite2D
 
 var grad:GradientTexture1D = GradientTexture1D.new()
 var yvalue:float = 0.0
+@onready var RuleManager = $/root/Ingame/RuleManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	yvalue += delta / 1000.0
 	texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
-	scale.y = get_viewport().size.x
+	scale.y = 960 /(RuleManager.zoom)
+	scale.x = (540 /(RuleManager.zoom))/256
 
 func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	var gr = Gradient.new()

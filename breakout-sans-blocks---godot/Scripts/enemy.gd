@@ -78,8 +78,7 @@ func areaExited(area:Area2D)->void:
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if mainSprite.animation == "death":
-		RuleManager.kill += 1
-		queue_free()
+		Death()
 	else:
 		xSpeed = xSpeedOld
 		ySpeed = ySpeedOld
@@ -99,3 +98,7 @@ func shootProjectile()->void:
 		projectile.position = projectilePosition
 	projectile.scale = scale
 	add_sibling(projectile)
+
+func Death()->void:
+	RuleManager.kill += 1
+	queue_free()

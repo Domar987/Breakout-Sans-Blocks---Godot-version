@@ -41,6 +41,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if sprite.animation != "blast":
 		position += speed * delta * direction * (1 + RuleManager.difficulty/10)
+	if position.y > 540/(2*RuleManager.zoom) + 160 or abs(position.x) > (960/(2*RuleManager.zoom)) + 100:
+		queue_free()
 
 
 func _on_area_entered(area: Area2D) -> void:

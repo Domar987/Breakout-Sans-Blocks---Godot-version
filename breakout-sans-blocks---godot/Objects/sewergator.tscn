@@ -49,10 +49,10 @@ region = Rect2(0, 0, 91, 65)
 [sub_resource type="SpriteFrames" id="SpriteFrames_7fyn6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_uulh4")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_2ccd3")
 }, {
 "duration": 1.0,
@@ -224,8 +224,10 @@ script = ExtResource("1_e6vhn")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7fyn6")
-animation = &"idle"
+animation = &"bite"
 autoplay = "idle"
+frame = 6
+frame_progress = 1.0
 offset = Vector2(20.5, -3)
 
 [node name="Arm" type="AnimatedSprite2D" parent="."]
