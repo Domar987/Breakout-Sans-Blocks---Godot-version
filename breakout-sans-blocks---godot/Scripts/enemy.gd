@@ -105,7 +105,7 @@ func shootProjectile()->void:
 	if projectilePosition != null:
 		projectile.position = projectilePosition
 	projectile.scale = scale
-	add_sibling(projectile)
+	add_sibling.call_deferred(projectile)
 
 func Death()->void:
 	RuleManager.kill += 1

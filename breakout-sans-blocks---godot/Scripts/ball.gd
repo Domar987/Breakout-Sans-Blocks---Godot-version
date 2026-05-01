@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
 				position.x = 960/(2*RuleManager.zoom)
-		if position.y > 540/(2*RuleManager.zoom) + 50:
+		if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
 			fall()
 		#if linear_velocity.y < 10:
 		#	sprite.frame = 0

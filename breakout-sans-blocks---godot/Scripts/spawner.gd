@@ -10,7 +10,7 @@ var timer:int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer = randi_range(50, 200) / spawnWeight
+	timer = randi_range(min(50,50 / spawnWeight), 200 / spawnWeight)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
