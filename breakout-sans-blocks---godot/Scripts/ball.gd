@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 		position += velocity
 
 func fall()->void:
+	RuleManager.health -= 1
 	frozen = true
 	$RetrieveBall.play()
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)

@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs0nvel57r0l8"]
+
+[ext_resource type="Texture2D" uid="uid://dmk562yvtysse" path="res://Sprites/heart.png" id="1_y60wf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7pjp"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foc2d"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6axy"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rejm"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y875r"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvclm"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0llnb"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr264"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngkmb"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sftrf"]
+atlas = ExtResource("1_y60wf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64x7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7pjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foc2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6axy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rejm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y875r")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvclm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0llnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr264")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngkmb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sftrf")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 10.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_64x7a")
+animation = &"Empty"

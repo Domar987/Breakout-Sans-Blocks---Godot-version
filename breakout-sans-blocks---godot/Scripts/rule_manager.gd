@@ -10,6 +10,7 @@ var activecolor:Dictionary
 var difficulty = 0
 var oldDifficulty = 0
 
+var maxHealth:int = 10
 var health:int = 10
 var damage:int = 1
 var oldhealth:int = 10
@@ -19,6 +20,8 @@ var kill:int = 0
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
 @onready var wall:Area2D = $/root/Ingame/Wall
+@onready var ui:Control = $/root/Ingame/UI
+@onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
 @onready var zoom:float = camera.zoom.x
 
 var rotate:float = 0.0
@@ -39,6 +42,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	ui.scale = Vector2.ONE * (3/zoom)
+	ui.size = Vector2(960,540)/(zoom * ui.scale)
+	ui.position = -Vector2(960,540)/(2*zoom)
+	
 	if Input.is_action_just_pressed("Cheat1"):
 		difficulty += 1
 	if Input.is_action_just_pressed("Cheat2"):
@@ -75,6 +82,7 @@ func difficultyChange()->void:
 		ySpeedIncrease()
 
 func healthChange(dmg:int)->void:
+	heartGenerator.generateHearts(health)
 	var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
 	hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
 	hurttween.set_ease(Tween.EASE_IN_OUT)
