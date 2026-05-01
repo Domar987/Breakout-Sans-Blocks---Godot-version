@@ -70,8 +70,9 @@ func _physics_process(delta: float) -> void:
 
 func fall()->void:
 	frozen = true
+	$RetrieveBall.play()
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)
-	tween.tween_property(self,"position",Vector2.ZERO,2.0)
+	tween.tween_property(self,"position",Vector2.ZERO,1.5)
 	tween.tween_property(self,"velocity",Vector2.ZERO,0.0)
 	tween.tween_property(self,"frozen",false,0.0)
 

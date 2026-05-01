@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 		if timer <= 0:
 			spawnEnemy()
 			if spawnWeight > 0:
-				timer = randi_range(50, 200) / spawnWeight
+				timer = randi_range(min(50,50 / spawnWeight), 200 / spawnWeight)
 
 func spawnEnemy()->void:
 	var newSpawn = spawn.instantiate()

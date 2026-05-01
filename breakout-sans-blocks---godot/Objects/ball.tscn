@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cg0el6mhfpp5a"]
+[gd_scene load_steps=13 format=3 uid="uid://cg0el6mhfpp5a"]
 
 [ext_resource type="Script" uid="uid://btosa5p038mm1" path="res://Scripts/ball.gd" id="1_ogllh"]
 [ext_resource type="Texture2D" uid="uid://dmpc3svpwv3mm" path="res://Sprites/ballwhite.png" id="3_ojni7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bs2yc102jotkt" path="res://Sprites/balldark.png" id="6_qs2t0"]
 [ext_resource type="Texture2D" uid="uid://ctdim03bqyr52" path="res://Sprites/balloutlinelight.png" id="7_x7lji"]
 [ext_resource type="Texture2D" uid="uid://rvhrhupc0ewm" path="res://Sprites/balloutlinedark.png" id="8_qs2t0"]
+[ext_resource type="AudioStream" uid="uid://y0qdxn5q5ojm" path="res://Audio/SFX/RetrieveBall.wav" id="9_qs2t0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af24q"]
 size = Vector2(16, 16)
@@ -65,5 +66,8 @@ texture = ExtResource("7_x7lji")
 [node name="BallOutlineDark" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("8_qs2t0")
+
+[node name="RetrieveBall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qs2t0")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

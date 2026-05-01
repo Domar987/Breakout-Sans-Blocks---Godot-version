@@ -70,6 +70,9 @@ func bite(area:Area2D)->void:
 		projectilePosition = area.position
 		shootProjectile()
 		area.remove()
+		var audio = area.hurtAudios.pick_random()
+		audio.pitch_scale = randf_range(0.9,1.0)
+		audio.play()
 		$GatorChomp.pitch_scale = randf_range(0.25,0.75)
 		$GatorChomp.play()
 

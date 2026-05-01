@@ -15,8 +15,12 @@ var variant:int = randi_range(1,3)
 var moveTimer:float = 1.0
 var movedDown:bool = true
 
+@onready var walkAudios = [$Fastinvader1,$Fastinvader2,$Fastinvader3,$Fastinvader4]
+var walkiter:int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hurtAudios = [$Invaderkilled]
 	shoots = true
 	sprites = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
 	mainSprite = sprites[0]
@@ -69,6 +73,8 @@ func _physics_process(delta: float) -> void:
 		
 		moveTimer -= delta * (xSpeedModifier/2.0 + 1)
 		if moveTimer <= 0:
+			walkAudios[walkiter%4].play()
+			walkiter += 1
 			moveTimer = 1.0 + int(variant == 2)
 			if not movedDown and entered and abs(position.x) >= 960/(2*RuleManager.zoom) - 32:
 				movedDown = true

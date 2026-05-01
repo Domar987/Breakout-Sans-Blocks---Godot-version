@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://p552imo4ypvk"]
+[gd_scene load_steps=8 format=3 uid="uid://p552imo4ypvk"]
 
 [ext_resource type="Script" uid="uid://lexsn4bsrjrq" path="res://Scripts/alien.gd" id="1_hg8i3"]
+[ext_resource type="AudioStream" uid="uid://cv0p7rji2x7no" path="res://Audio/SFX/AlienSound/invaderkilled.wav" id="2_hg8i3"]
+[ext_resource type="AudioStream" uid="uid://c554rp6mh53dw" path="res://Audio/SFX/AlienSound/fastinvader1.wav" id="3_t7the"]
+[ext_resource type="AudioStream" uid="uid://b5x34lh05wvnw" path="res://Audio/SFX/AlienSound/fastinvader2.wav" id="4_ycsfr"]
+[ext_resource type="AudioStream" uid="uid://bw4knlsllgere" path="res://Audio/SFX/AlienSound/fastinvader3.wav" id="5_osicy"]
+[ext_resource type="AudioStream" uid="uid://chj56cjar8q1r" path="res://Audio/SFX/AlienSound/fastinvader4.wav" id="6_f5akg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg8i3"]
 size = Vector2(24, 20)
@@ -20,3 +25,18 @@ script = ExtResource("1_hg8i3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hg8i3")
+
+[node name="Invaderkilled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hg8i3")
+
+[node name="Fastinvader1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_t7the")
+
+[node name="Fastinvader2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ycsfr")
+
+[node name="Fastinvader3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_osicy")
+
+[node name="Fastinvader4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_f5akg")
