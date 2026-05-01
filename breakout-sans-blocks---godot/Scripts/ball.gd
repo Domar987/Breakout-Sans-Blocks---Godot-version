@@ -37,7 +37,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if not frozen:
+	if RuleManager.ballPosCheat:
+		position = get_global_mouse_position()
+		velocity = Vector2.ZERO
+	elif not frozen:
 		timer -= 1
 		velocity.y += delta * ballgravity
 		if position.x > 960/(2*RuleManager.zoom):

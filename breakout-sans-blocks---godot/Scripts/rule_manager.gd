@@ -26,6 +26,8 @@ var rotateDir:int = 0
 var timer:float = 0.0
 var oldRotate:float = 0.0
 
+var ballPosCheat:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	Engine.time_scale = 1
@@ -37,10 +39,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("Cheat1"):
 		difficulty += 1
-	if Input.is_key_pressed(KEY_C):
+	if Input.is_action_just_pressed("Cheat2"):
 		damage = 10
+	if Input.is_action_just_pressed("Cheat3"):
+		ballPosCheat = not ballPosCheat
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health:
