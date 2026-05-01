@@ -45,6 +45,8 @@ func _process(delta: float) -> void:
 		damage = 10
 	if Input.is_action_just_pressed("Cheat3"):
 		ballPosCheat = not ballPosCheat
+	if Input.is_action_just_pressed("Cheat4"):
+		health = 100
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health:
