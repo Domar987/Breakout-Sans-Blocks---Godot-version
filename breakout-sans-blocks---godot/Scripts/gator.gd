@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		if launches > 4 and mainSprite.animation == "idle":
 			mainSprite.play("content")
 			for i in range(1,len(sprites)):
-				sprites[i].queue_free()
+				sprites[i].visible = false
 		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
 			if launches > 4:
 				remove()
@@ -63,6 +63,9 @@ func _on_area_entered(area: Area2D) -> void:
 			for i in range(1,len(sprites)):
 				sprites[i].queue_free()
 		else:
+			if launches > 4:
+				for i in range(1,len(sprites)):
+					sprites[i].visible = true
 			mainSprite.play("hurt")
 
 func getHurt()->void:
@@ -100,6 +103,10 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	super()
 	xSpeed = xSpeedOldOld
 	ySpeed = ySpeedOldOld
+	if launches > 4 and hp > 0:
+		for i in range(1,len(sprites)):
+			sprites[i].visible = false
+		mainSprite.play("content")
 	#if mainSprite.animation == "bite":
 		#mainSprite.play("idle")
 
