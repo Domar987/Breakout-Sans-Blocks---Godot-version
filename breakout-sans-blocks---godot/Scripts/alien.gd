@@ -54,7 +54,7 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*RuleManager.zoom) + 32 * randi_range(0, 4) + 4
+	fromYvalue = -540/(2*RuleManager.zoom) + 32 * randi_range(1, 4) + 4
 	var x = fromLorCorR * (960/(2*RuleManager.zoom))
 	var y = fromYvalue
 	position = Vector2(x, y)
