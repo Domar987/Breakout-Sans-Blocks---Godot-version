@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cydjvqceyxefe"]
+[gd_scene load_steps=38 format=3 uid="uid://cydjvqceyxefe"]
 
 [ext_resource type="Script" uid="uid://dsw4m00vpx7l1" path="res://Scripts/gator.gd" id="1_e6vhn"]
 [ext_resource type="Texture2D" uid="uid://bw3f10byn7wr4" path="res://Sprites/SewerGator/gatorhead.png" id="1_n20lc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2ye28wojc0ud" path="res://Sprites/SewerGator/gatorwhole.png" id="5_uulh4"]
 [ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/AggressiveAnimal.wav" id="6_iurl3"]
 [ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/GatorChomp.wav" id="7_thduv"]
+[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/GatorHurt.wav" id="8_thduv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uulh4"]
 atlas = ExtResource("1_n20lc")
@@ -35,6 +36,10 @@ region = Rect2(546, 0, 91, 65)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hyj4"]
 atlas = ExtResource("1_n20lc")
 region = Rect2(637, 0, 91, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwkfu"]
+atlas = ExtResource("1_n20lc")
+region = Rect2(910, 0, 91, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fl4ir"]
 atlas = ExtResource("1_n20lc")
@@ -75,6 +80,14 @@ animations = [{
 "loop": false,
 "name": &"bite",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwkfu")
+}],
+"loop": true,
+"name": &"content",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -226,10 +239,8 @@ script = ExtResource("1_e6vhn")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7fyn6")
-animation = &"bite"
+animation = &"content"
 autoplay = "idle"
-frame = 6
-frame_progress = 1.0
 offset = Vector2(20.5, -3)
 
 [node name="Arm" type="AnimatedSprite2D" parent="."]
@@ -268,3 +279,6 @@ autoplay = true
 
 [node name="GatorChomp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_thduv")
+
+[node name="GatorHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_thduv")

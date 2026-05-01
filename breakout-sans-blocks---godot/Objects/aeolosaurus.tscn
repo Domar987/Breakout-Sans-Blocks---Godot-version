@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dwtfry42d8dsi" path="res://Sprites/Aeolosaurus/aeolobody.png" id="2_0dy2u"]
 [ext_resource type="Texture2D" uid="uid://c2nkfwo81ubol" path="res://Sprites/Aeolosaurus/aeolotail.png" id="3_boh81"]
 [ext_resource type="Texture2D" uid="uid://cowlx3vl72l6y" path="res://Sprites/Aeolosaurus/aeolofulltest.png" id="4_0dy2u"]
-[ext_resource type="AudioStream" uid="uid://cg0lq3l8taejd" path="res://Audio/SFX/Aeolo.wav" id="6_8wj4n"]
+[ext_resource type="AudioStream" uid="uid://3sel1txlgone" path="res://Audio/SFX/AeoloNew.wav" id="6_8wj4n"]
 [ext_resource type="AudioStream" uid="uid://c1ysly2ba482p" path="res://Audio/SFX/AeoloHurt01.wav" id="7_8116m"]
 [ext_resource type="AudioStream" uid="uid://bt0q3qm18ueng" path="res://Audio/SFX/AeoloHurt02.wav" id="8_cfloh"]
 
