@@ -7,6 +7,7 @@ var dealtDamage:bool = false
 @onready var platform:Area2D = $/root/Ingame/Platform
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hurtAudios = [$AeoloHurt01,$AeoloHurt02]
 	hp = 10
 	dmg = 6
 	shoots = false
@@ -27,7 +28,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if hp > 0:
 		if position.y > 540/(2*RuleManager.zoom) + 160:
-			queue_free()
+			remove()
 		if mainSprite.animation == "idle":
 			sineTimer += 25 * delta
 			xSpeed = sin(deg_to_rad(sineTimer)) / 10

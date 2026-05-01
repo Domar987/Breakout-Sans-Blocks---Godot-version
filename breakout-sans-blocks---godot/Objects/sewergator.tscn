@@ -1,10 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://cydjvqceyxefe"]
+[gd_scene load_steps=36 format=3 uid="uid://cydjvqceyxefe"]
 
 [ext_resource type="Script" uid="uid://dsw4m00vpx7l1" path="res://Scripts/gator.gd" id="1_e6vhn"]
 [ext_resource type="Texture2D" uid="uid://bw3f10byn7wr4" path="res://Sprites/SewerGator/gatorhead.png" id="1_n20lc"]
 [ext_resource type="Texture2D" uid="uid://buxe6fcsbh4qx" path="res://Sprites/SewerGator/gatorarm.png" id="2_e6vhn"]
 [ext_resource type="Texture2D" uid="uid://05og782g3w5x" path="res://Sprites/SewerGator/gatorbody.png" id="3_uulh4"]
 [ext_resource type="Texture2D" uid="uid://b2ye28wojc0ud" path="res://Sprites/SewerGator/gatorwhole.png" id="5_uulh4"]
+[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/AggressiveAnimal.wav" id="6_iurl3"]
+[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/GatorChomp.wav" id="7_thduv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uulh4"]
 atlas = ExtResource("1_n20lc")
@@ -257,3 +259,12 @@ visible = false
 z_index = -1
 position = Vector2(0, -3)
 texture = ExtResource("5_uulh4")
+
+[node name="AggressiveAnimal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iurl3")
+volume_db = -5.0
+pitch_scale = 0.75
+autoplay = true
+
+[node name="GatorChomp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_thduv")

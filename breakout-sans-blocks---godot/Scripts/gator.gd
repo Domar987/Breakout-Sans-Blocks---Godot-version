@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		ySpeed += 4 * delta
 		if position.y > 540/(2*RuleManager.zoom) + 100:
-			RuleManager.kill += 1
 			Death()
 	position += Vector2(xSpeed, ySpeed)
 
@@ -70,7 +69,9 @@ func bite(area:Area2D)->void:
 		sprites[1].play("bite")
 		projectilePosition = area.position
 		shootProjectile()
-		area.queue_free()
+		area.remove()
+		$GatorChomp.pitch_scale = randf_range(0.25,0.75)
+		$GatorChomp.play()
 
 func ballFromBottom()->void:
 	hp -= RuleManager.damage

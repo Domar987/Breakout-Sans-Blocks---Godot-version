@@ -1,11 +1,15 @@
 class_name Enemy extends Area2D
 
+var spawner:Spawner
+
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var Ball = $/root/Ingame/Ball
 @onready var Wall = $/root/Ingame/Wall
 @onready var sprites:Array[AnimatedSprite2D]
 var mainSprite:AnimatedSprite2D
+
+var hurtAudios:Array[AudioStreamPlayer]
 
 var fromLorCorR:int
 var fromYvalue:int
@@ -67,6 +71,10 @@ func ballFromBottom()->void:
 	print(name+" hit from below")
 	getHurt()
 func getHurt()->void:
+	if len(hurtAudios) > 0:
+		var audio = hurtAudios.pick_random()
+		audio.pitch_scale = randf_range(0.9,1.0)
+		audio.play()
 	hp -= RuleManager.damage
 	xSpeedOld = xSpeed
 	xSpeed = 0
@@ -101,4 +109,8 @@ func shootProjectile()->void:
 
 func Death()->void:
 	RuleManager.kill += 1
+	remove()
+
+func remove()->void:
+	spawner.numberOfEnemies -= 1
 	queue_free()

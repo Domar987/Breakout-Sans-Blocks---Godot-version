@@ -43,13 +43,16 @@ script = ExtResource("7_yl4g2")
 [node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
 spawnWeight = 0.5
+maxSpawned = 50
 
 [node name="AeoloSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("11_csxpc")
-spawnWeight = 0.15
+spawnWeight = 0.025
 spawnAtDifficulty = 1
+maxSpawned = 2
 
 [node name="GatorSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("12_6cchy")
-spawnWeight = 0.3
+spawnWeight = 0.1
 spawnAtDifficulty = 2
+maxSpawned = 3

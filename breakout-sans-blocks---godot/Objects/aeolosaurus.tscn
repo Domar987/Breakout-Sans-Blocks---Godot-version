@@ -1,10 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://5c5h7kgmry21"]
+[gd_scene load_steps=27 format=3 uid="uid://5c5h7kgmry21"]
 
 [ext_resource type="Script" uid="uid://cjxmifiifi2mw" path="res://Scripts/aeolosaurus.gd" id="1_boh81"]
 [ext_resource type="Texture2D" uid="uid://cgcr5hh3q85wh" path="res://Sprites/Aeolosaurus/aeolohead.png" id="1_m6i42"]
 [ext_resource type="Texture2D" uid="uid://dwtfry42d8dsi" path="res://Sprites/Aeolosaurus/aeolobody.png" id="2_0dy2u"]
 [ext_resource type="Texture2D" uid="uid://c2nkfwo81ubol" path="res://Sprites/Aeolosaurus/aeolotail.png" id="3_boh81"]
 [ext_resource type="Texture2D" uid="uid://cowlx3vl72l6y" path="res://Sprites/Aeolosaurus/aeolofulltest.png" id="4_0dy2u"]
+[ext_resource type="AudioStream" uid="uid://cg0lq3l8taejd" path="res://Audio/SFX/Aeolo.wav" id="6_8wj4n"]
+[ext_resource type="AudioStream" uid="uid://c1ysly2ba482p" path="res://Audio/SFX/AeoloHurt01.wav" id="7_8116m"]
+[ext_resource type="AudioStream" uid="uid://bt0q3qm18ueng" path="res://Audio/SFX/AeoloHurt02.wav" id="8_cfloh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7k6tu"]
 atlas = ExtResource("1_m6i42")
@@ -171,3 +174,14 @@ shape = SubResource("RectangleShape2D_boh81")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_0dy2u")
+
+[node name="Aeolo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8wj4n")
+autoplay = true
+
+[node name="AeoloHurt01" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8116m")
+
+[node name="AeoloHurt02" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cfloh")
+volume_db = 1.0
