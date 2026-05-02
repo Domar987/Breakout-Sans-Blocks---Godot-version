@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://ct3duf60c3y06"]
+
+[ext_resource type="Script" uid="uid://d0u4ynjo3n7ui" path="res://Scripts/alien_ufo.gd" id="1_ln8dn"]
+[ext_resource type="Texture2D" uid="uid://s2ca2vs5v2ke" path="res://Sprites/Alien/alienexplosion.png" id="1_upctg"]
+[ext_resource type="Texture2D" uid="uid://ckxcn1aqfv1tx" path="res://Sprites/Alien/alienufo.png" id="1_v11oe"]
+[ext_resource type="AudioStream" uid="uid://c8pkffx23gg7t" path="res://Audio/SFX/AlienSound/ufo_highpitch.wav" id="4_ln8dn"]
+[ext_resource type="AudioStream" uid="uid://djjqr7ud48s5o" path="res://Audio/SFX/AlienSound/ufo_lowpitch.wav" id="5_0veux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln8dn"]
+atlas = ExtResource("1_upctg")
+region = Rect2(0, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0veux"]
+atlas = ExtResource("1_upctg")
+region = Rect2(26, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df67k"]
+atlas = ExtResource("1_upctg")
+region = Rect2(52, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2cpa"]
+atlas = ExtResource("1_upctg")
+region = Rect2(78, 0, 26, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upctg"]
+atlas = ExtResource("1_v11oe")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoswg"]
+atlas = ExtResource("1_v11oe")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y2v3"]
+atlas = ExtResource("1_v11oe")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hjrk"]
+atlas = ExtResource("1_v11oe")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ln8dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln8dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0veux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df67k")
+}, {
+"duration": 23.1,
+"texture": SubResource("AtlasTexture_f2cpa")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upctg")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoswg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y2v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hjrk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v11oe"]
+size = Vector2(32, 16)
+
+[node name="AlienUfo" type="Area2D"]
+script = ExtResource("1_ln8dn")
+
+[node name="Main" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ln8dn")
+animation = &"death"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+offset = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v11oe")
+
+[node name="UfoHighpitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ln8dn")
+autoplay = true
+
+[node name="UfoLowpitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0veux")

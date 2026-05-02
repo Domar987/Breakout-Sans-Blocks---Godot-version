@@ -7,6 +7,7 @@ class_name Spawner extends Node
 @onready var RuleManager = $/root/Ingame/RuleManager
 var numberOfEnemies:int = 0
 var timer:int
+@export var spawnRare:PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

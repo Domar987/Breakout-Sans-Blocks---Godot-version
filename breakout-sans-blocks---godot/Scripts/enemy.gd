@@ -63,6 +63,7 @@ func _on_area_entered(area: Area2D) -> void:
 			ballFromTop()
 		else:
 			ballFromBottom()
+
 func ballFromTop()->void:
 	print(name+" hit from above")
 	Ball.velocity.y += -(2.0 + RuleManager.difficulty)
@@ -112,5 +113,6 @@ func Death()->void:
 	remove()
 
 func remove()->void:
-	spawner.numberOfEnemies -= 1
+	if spawner != null:
+		spawner.numberOfEnemies -= 1
 	queue_free()

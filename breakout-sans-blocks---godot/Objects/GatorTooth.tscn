@@ -33,7 +33,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jls"]
 size = Vector2(4, 8)
 
-[node name="AlienLaser" type="Area2D"]
+[node name="GatorTooth" type="Area2D"]
 script = ExtResource("1_hxd8p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
