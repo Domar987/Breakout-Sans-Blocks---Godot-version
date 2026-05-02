@@ -10,8 +10,8 @@ func _ready() -> void:
 	sprites = [$Head,$Arm,$Body]
 	mainSprite = sprites[0]
 	enterValue = 10
-	xSpeed = 5
-	ySpeed = -1.5
+	xSpeed = 400
+	ySpeed = -150
 	projectilesource = preload("res://Objects/GatorTooth.tscn")
 	
 	fromLorCorR = 1
@@ -41,17 +41,17 @@ func _physics_process(delta: float) -> void:
 				remove()
 			entered = false
 			xSpeed *= -1
-			ySpeed = -1.8
+			ySpeed = -180
 			scale.x *= -1
 			$AggressiveAnimal.play()
 			position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
 			launches += 1
-		ySpeed += 2 * delta
+		ySpeed += 200 * delta
 	else:
-		ySpeed += 4 * delta
+		ySpeed += 400 * delta
 		if position.y > 540/(2*RuleManager.zoom) + 100:
 			Death()
-	position += Vector2(xSpeed, ySpeed)
+	position += Vector2(xSpeed, ySpeed) * delta
 
 
 
@@ -111,5 +111,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		#mainSprite.play("idle")
 
 func shootProjectile()->void:
-	projectileSpeed = -20
+	projectileSpeed = -200
 	super()

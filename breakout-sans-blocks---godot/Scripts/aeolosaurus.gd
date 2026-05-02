@@ -15,7 +15,7 @@ func _ready() -> void:
 	mainSprite = sprites[0]
 	enterValue = 0
 	xSpeed = 0
-	ySpeed = 0.1
+	ySpeed = 6
 	fromLorCorR = 0
 	fromYvalue = -540/(2*RuleManager.zoom) - 32
 	var x = randi_range(-960/(2*RuleManager.zoom) + 60,960/(2*RuleManager.zoom) - 60)
@@ -31,19 +31,19 @@ func _physics_process(delta: float) -> void:
 			remove()
 		if mainSprite.animation == "idle":
 			sineTimer += 25 * delta
-			xSpeed = sin(deg_to_rad(sineTimer)) / 10
+			xSpeed = sin(deg_to_rad(sineTimer)) * 10
 			if randi_range(0, 10) == 2:
-				if ySpeed > 0.2:
-					ySpeed += randf_range(-0.015, 0.01)
+				if ySpeed > 12:
+					ySpeed += randf_range(-1.5, 1.0)
 				else:
-					ySpeed += randf_range(0, 0.01)
+					ySpeed += randf_range(0, 1.0)
 		super(delta)
 	else:
 		if abs(position.x) > 960/(2*RuleManager.zoom) + 120:
 			Death()
-	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5))
+	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5)) * delta
 	for i in range(-1, len(sprites)-1):
-		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed)))
+		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed))) * delta
 
 
 
@@ -54,8 +54,8 @@ func _on_area_entered(area: Area2D) -> void:
 			if hp <= 0:
 				mainSprite.play("death")
 				speedTween = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN).set_parallel(true)
-				speedTween.tween_property(self,"xSpeed",3.5,2.5)
-				speedTween.tween_property(self,"ySpeed",2,4)
+				speedTween.tween_property(self,"xSpeed",240,2.5)
+				speedTween.tween_property(self,"ySpeed",140,4)
 			else:
 				for i in range(len(sprites)):
 					mainSprite.play("hurt")

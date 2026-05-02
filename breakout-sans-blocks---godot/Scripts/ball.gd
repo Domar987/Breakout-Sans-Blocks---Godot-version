@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	elif not frozen:
 		timer -= 1
-		velocity.y += delta * ballgravity
+		velocity.y += delta * gravity
 		if position.x > 960/(2*RuleManager.zoom):
 			if RuleManager.walls:
 				position = Vector2.ZERO
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		#	sprite.frame = 2
 		#else:
 		#	sprite.frame = 3
-		position += velocity
+		position += velocity * delta
 
 func fall()->void:
 	RuleManager.health -= 1
@@ -87,8 +87,9 @@ func _on_area_entered(area: Area2D) -> void:
 		hitcounter += 1
 		if hitcounter % 10 == 0:
 			RuleManager.difficulty += 1
-		velocity.y = -(5.0 + RuleManager.difficulty)
-		velocity.x = (position.x - area.position.x) * (10.0/area.length) * (1+RuleManager.difficulty/4.0)
+		#velocity.y = -(5.0 + RuleManager.difficulty)
+		velocity.y = -sqrt(2*gravity*(70 + 540/(2*RuleManager.zoom)))
+		velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
