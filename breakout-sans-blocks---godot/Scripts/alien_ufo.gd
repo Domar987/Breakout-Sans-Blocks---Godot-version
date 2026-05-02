@@ -57,6 +57,5 @@ func getHurt()->void:
 	super()
 	var tween = create_tween().set_parallel(false)
 	tween.tween_property($UfoHighpitch,"playing",false,0.0)
-	if hp > 0:
-		tween.tween_interval(2.30)
-		tween.tween_property($UfoHighpitch,"playing",true,0.0)
+	tween.tween_interval(2.30)
+	tween.tween_property($UfoHighpitch,"playing",hp>0,0.0)
