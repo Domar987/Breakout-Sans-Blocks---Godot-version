@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 	if RuleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned:
 		timer -= 1
 		if timer <= 0:
-			if spawnRare != null and canSpawnRare and randi_range(0,100-rareChance) == 1:
+			if spawnRare != null and canSpawnRare and randi_range(0,100) <= rareChance:
 				spawnEnemy(spawnRare)
 				canSpawnRare = false
 			else:

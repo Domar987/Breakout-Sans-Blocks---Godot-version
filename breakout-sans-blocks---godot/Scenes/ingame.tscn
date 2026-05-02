@@ -48,6 +48,7 @@ spawn = ExtResource("6_6toak")
 spawnWeight = 0.5
 maxSpawned = 50
 spawnRare = ExtResource("14_5mqjs")
+rareChance = 5
 
 [node name="AeoloSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("11_csxpc")
