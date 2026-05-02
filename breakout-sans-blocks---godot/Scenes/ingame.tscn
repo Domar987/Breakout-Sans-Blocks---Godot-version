@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=16 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://5c5h7kgmry21" path="res://Objects/aeolosaurus.tscn" id="11_csxpc"]
 [ext_resource type="PackedScene" uid="uid://cydjvqceyxefe" path="res://Objects/sewergator.tscn" id="12_6cchy"]
 [ext_resource type="Script" uid="uid://bt3vedwigwro7" path="res://Scripts/heartGenerator.gd" id="13_7ltoa"]
+[ext_resource type="PackedScene" uid="uid://ct3duf60c3y06" path="res://Objects/AlienUfo.tscn" id="14_5mqjs"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_35pev"]
 gradient = ExtResource("9_jy764")
@@ -46,6 +47,7 @@ script = ExtResource("7_yl4g2")
 spawn = ExtResource("6_6toak")
 spawnWeight = 0.5
 maxSpawned = 50
+spawnRare = ExtResource("14_5mqjs")
 
 [node name="AeoloSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("11_csxpc")

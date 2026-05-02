@@ -2,6 +2,7 @@ class_name Enemy extends Area2D
 
 var spawner:Spawner
 
+var isRare:bool = false
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var Ball = $/root/Ingame/Ball
@@ -115,4 +116,6 @@ func Death()->void:
 func remove()->void:
 	if spawner != null:
 		spawner.numberOfEnemies -= 1
+		if isRare:
+			spawner.canSpawnRare = true
 	queue_free()
