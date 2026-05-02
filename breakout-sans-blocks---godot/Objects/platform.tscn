@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq8bir56n74nc"]
+[gd_scene load_steps=3 format=3 uid="uid://dq8bir56n74nc"]
 
 [ext_resource type="Script" uid="uid://dpv0vlbcypjo1" path="res://Scripts/platform.gd" id="1_ygx5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygx5w"]
+size = Vector2(20, 4)
 
 [node name="Platform" type="Area2D"]
 texture_filter = 1
@@ -8,3 +11,9 @@ script = ExtResource("1_ygx5w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
+
+[node name="HurtArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
+shape = SubResource("RectangleShape2D_ygx5w")
+debug_color = Color(0.95273525, 0.22011194, 0, 0.41960785)

@@ -79,7 +79,7 @@ func getHurt()->void:
 		ySpeed = ySpeedOld
 
 func bite(area:Area2D)->void:
-	if hp > 0 and launches <= 4 and area is Enemy and not(area is Gator or area is Aeolo):
+	if hp > 0 and launches <= 4 and area is Enemy and not(area is Gator or area is Aeolo or area.isRare):
 		mainSprite.stop()
 		sprites[1].stop()
 		mainSprite.play("bite")

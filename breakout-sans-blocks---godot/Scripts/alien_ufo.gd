@@ -8,6 +8,7 @@ var walkiter:int = 0
 @onready var platform:Area2D = $/root/Ingame/Platform
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	isRare = true
 	hurtAudios = [$UfoLowpitch]
 	hp = 3
 	dmg = 0

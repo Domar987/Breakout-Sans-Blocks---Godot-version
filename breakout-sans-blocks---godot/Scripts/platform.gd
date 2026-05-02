@@ -16,6 +16,7 @@ var rect = Rect2()
 var rectShape = RectangleShape2D.new()
 @onready var collisionShape = $CollisionShape2D
 
+@onready var HurtArea = $HurtArea
 @onready var RuleManager = $/root/Ingame/RuleManager
 
 var mousepos:float
@@ -28,6 +29,9 @@ func _physics_process(delta: float) -> void:
 	rectShape.size = Vector2(length, 10)
 	collisionShape.set_shape(rectShape)
 	rect = Rect2(Vector2(-length/2,-2),Vector2(length,4))
+	
+	HurtArea.get_child(0).shape.size = Vector2(length, 4)
+	
 	mousepos = get_global_mouse_position().x
 	if mousepos > 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth:
 		mousepos = 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth
