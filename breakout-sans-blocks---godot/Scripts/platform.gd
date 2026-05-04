@@ -24,6 +24,11 @@ var hurtposition:float
 
 const wallwidth = 12
 
+var bottomMargin:int
+
+func _ready() -> void:
+	bottomMargin = 90 - y
+
 
 func _physics_process(delta: float) -> void:
 	rectShape.size = Vector2(length, 10)
@@ -37,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		mousepos = 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth
 	elif mousepos < -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth:
 		mousepos = -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth
+	y = 540/(2*RuleManager.zoom) - bottomMargin
 	position = Vector2(mousepos,y) + Vector2(hurtposition,0)
 	if redraw:
 		queue_redraw()

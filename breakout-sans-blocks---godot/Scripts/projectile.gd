@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if sprite.animation != "blast":
 		if area == ball:
-			ball.velocity.y += -(400.0 + ball.velocity.y/10 + RuleManager.difficulty)
+			ball.velocity.y = min(-88.5,ball.velocity.y)
 			sprite.play("blast")
 		elif area == platform.HurtArea:
 			RuleManager.health -= damage

@@ -67,7 +67,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func ballFromTop()->void:
 	print(name+" hit from above")
-	Ball.velocity.y += -(400.0 + Ball.velocity.y/10 + RuleManager.difficulty)
+	Ball.velocity.y = min(-88.5,Ball.velocity.y)
 	getHurt()
 func ballFromBottom()->void:
 	print(name+" hit from below")

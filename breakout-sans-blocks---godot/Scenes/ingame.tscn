@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=17 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cydjvqceyxefe" path="res://Objects/sewergator.tscn" id="12_6cchy"]
 [ext_resource type="Script" uid="uid://bt3vedwigwro7" path="res://Scripts/heartGenerator.gd" id="13_7ltoa"]
 [ext_resource type="PackedScene" uid="uid://ct3duf60c3y06" path="res://Objects/AlienUfo.tscn" id="14_5mqjs"]
+[ext_resource type="AudioStream" uid="uid://b3ui2qkw1wco6" path="res://Audio/Music/arkanoid.wav" id="15_3jpny"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_35pev"]
 gradient = ExtResource("9_jy764")
@@ -168,3 +169,7 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Arkanoid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_3jpny")
+autoplay = true
