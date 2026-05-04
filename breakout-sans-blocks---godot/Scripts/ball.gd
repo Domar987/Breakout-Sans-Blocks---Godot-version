@@ -88,8 +88,20 @@ func _on_area_entered(area: Area2D) -> void:
 		if hitcounter % 10 == 0:
 			RuleManager.difficulty += 1
 		#velocity.y = -(5.0 + RuleManager.difficulty)
-		velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
-		velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
+		#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
+		#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
+		velocity = get_launch(position,area.position,area.length,45)
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
+
+func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Vector2:
+	var lerpvalue = (ballpos.x-platpos.x)/(length/2)
+	lerpvalue += 1
+	lerpvalue /= 2
+	var dir = lerpf(-dirLimit,dirLimit, lerpvalue) + 270
+	var magn = sqrt(2*gravity*(platpos.y + 540/(2*RuleManager.zoom)))
+	var finalVec:Vector2
+	finalVec.x = magn * cos(deg_to_rad(dir))
+	finalVec.y = magn * sin(deg_to_rad(dir))
+	return finalVec
