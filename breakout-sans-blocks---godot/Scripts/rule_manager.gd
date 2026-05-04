@@ -53,6 +53,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Cheat3"):
 		ballPosCheat = not ballPosCheat
 	if Input.is_action_just_pressed("Cheat4"):
+		maxHealth = 100
 		health = 100
 	if oldDifficulty != difficulty:
 		difficultyChange()

@@ -11,7 +11,7 @@ func initialGenerate() -> void:
 	for i in range(RuleManager.maxHealth-1,-1,-1):
 		var heart = load("res://Objects/UIHeart.tscn").instantiate()
 		generatedHearts.append(heart)
-		heart.position = startPos + Vector2(i*12,0)
+		heart.position = startPos + Vector2((i*12)%int(960/(2*RuleManager.zoom)),int((i*12)/(960/(2*RuleManager.zoom))))
 		heart.play("Full")
 		get_parent().add_child.call_deferred(heart)
 
@@ -24,7 +24,7 @@ func generateHearts(health:int) -> void:
 	for i in range(RuleManager.maxHealth-1,-1,-1):
 		var heart = load("res://Objects/UIHeart.tscn").instantiate()
 		generatedHearts.append(heart)
-		heart.position = startPos + Vector2(i*12,0)
+		heart.position = startPos + Vector2((i*12)%int(960/(2*RuleManager.zoom)),int((i*12)/(960/(2*RuleManager.zoom))))
 		if i > health-1:
 			heart.play("Empty")
 		else:
