@@ -45,8 +45,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y += delta * gravity
 		if position.x > 960/(2*RuleManager.zoom):
 			if RuleManager.walls:
-				position = Vector2.ZERO
-				velocity = Vector2.ZERO
+				#position = Vector2.ZERO
+				#velocity = Vector2.ZERO
+				fall(0.25)
 			else:
 				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
 				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
@@ -60,7 +61,7 @@ func _physics_process(delta: float) -> void:
 				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
 				position.x = 960/(2*RuleManager.zoom)
 		if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
-			fall()
+			fall(1.5)
 		#if linear_velocity.y < 10:
 		#	sprite.frame = 0
 		#elif linear_velocity.y < 20:
@@ -71,12 +72,12 @@ func _physics_process(delta: float) -> void:
 		#	sprite.frame = 3
 		position += velocity * delta
 
-func fall()->void:
+func fall(duration:float)->void:
 	RuleManager.health -= 1
 	frozen = true
 	$RetrieveBall.play()
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)
-	tween.tween_property(self,"position",Vector2.ZERO,1.5)
+	tween.tween_property(self,"position",Vector2.ZERO,duration)
 	tween.tween_property(self,"velocity",Vector2.ZERO,0.0)
 	tween.tween_property(self,"frozen",false,0.0)
 
