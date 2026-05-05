@@ -10,6 +10,8 @@ func _ready() -> void:
 	hurtAudios = [$AeoloHurt01,$AeoloHurt02]
 	hp = 10
 	dmg = 6
+	tier = 1
+	dropChance = 33
 	shoots = false
 	sprites = [$Head,$Body,$Tail]
 	mainSprite = sprites[0]

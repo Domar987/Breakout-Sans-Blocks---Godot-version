@@ -15,6 +15,8 @@ func _ready() -> void:
 	hurtAudios = [$UfoLowpitch]
 	hp = 3
 	dmg = 0
+	tier = 1
+	dropChance = 50
 	shoots = false
 	sprites = [$Main]
 	mainSprite = sprites[0]

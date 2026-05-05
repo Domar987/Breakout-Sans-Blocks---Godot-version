@@ -22,6 +22,8 @@ var entered:bool = false
 var attacktimer:int = 1
 var hp:int
 var dmg:int
+var tier:int = 1
+var dropChance:int = 0
 var projectileSpeed:int
 var projectilesource:PackedScene
 var projectileTexturePath:String
@@ -111,6 +113,12 @@ func shootProjectile()->void:
 
 func Death()->void:
 	RuleManager.kill += 1
+	if randi_range(0,100) < dropChance:
+		var projectile = load("res://Objects/Drop.tscn").instantiate()
+		projectile.position = position
+		projectile.speed = 10
+		projectile.tier = tier
+		add_sibling.call_deferred(projectile)
 	remove()
 
 func remove()->void:

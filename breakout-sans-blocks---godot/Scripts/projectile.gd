@@ -17,6 +17,8 @@ var texture:Texture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+	area_entered.connect(_on_area_entered)
 	if direction == null or direction == Vector2.ZERO:
 		direction = Vector2.DOWN
 	#sprite.sprite_frames = SpriteFrames.new()
@@ -48,12 +50,17 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if sprite.animation != "blast":
 		if area == ball:
-			ball.velocity.y = min(-88.5,ball.velocity.y)
-			sprite.play("blast")
+			balltouched()
 		elif area == platform.HurtArea:
-			RuleManager.health -= damage
-			sprite.play("blast")
+			plattouched()
 
+func balltouched()->void:
+	ball.velocity.y = min(-88.5,ball.velocity.y)
+	sprite.play("blast")
+
+func plattouched()->void:
+	RuleManager.health -= damage
+	sprite.play("blast")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "blast":

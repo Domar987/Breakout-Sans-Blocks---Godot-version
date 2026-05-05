@@ -6,6 +6,8 @@ func _ready() -> void:
 	hurtAudios = [$GatorHurt]
 	hp = 4
 	dmg = 5
+	tier = 1
+	dropChance = 10
 	shoots = false
 	sprites = [$Head,$Arm,$Body]
 	mainSprite = sprites[0]

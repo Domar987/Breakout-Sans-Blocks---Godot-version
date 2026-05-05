@@ -26,3 +26,12 @@ func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,fra
 		atlas.atlas = tex
 		atlas.region = Rect2(texwidth * frames[i], 0, texwidth, texheight)
 		sprite.add_frame(animname,atlas,durations[i])
+
+func chooseTexture(path:String,frames:int,targetframe:int)->Texture2D:
+	var tex = load(path)
+	var texwidth = tex.get_width() / frames
+	var texheight = tex.get_height()
+	var atlas = AtlasTexture.new()
+	atlas.atlas = tex
+	atlas.region = Rect2(texwidth * targetframe, 0, texwidth, texheight)
+	return atlas
