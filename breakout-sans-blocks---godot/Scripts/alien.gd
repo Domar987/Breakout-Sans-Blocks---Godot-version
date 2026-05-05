@@ -42,7 +42,7 @@ func _ready() -> void:
 			hp = 1
 			dmg = 2
 	tier = 1
-	dropChance = 2
+	dropChance = 5
 	for i in range(len(sprites)):
 		sprites[i].sprite_frames = SpriteFrames.new()
 		Animator.new().createAnimation(sprites[i].sprite_frames,"idle",true,10.0)

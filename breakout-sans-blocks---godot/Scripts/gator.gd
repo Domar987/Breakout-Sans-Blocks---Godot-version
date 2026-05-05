@@ -7,7 +7,7 @@ func _ready() -> void:
 	hp = 4
 	dmg = 5
 	tier = 2
-	dropChance = 10
+	dropChance = 20
 	shoots = false
 	sprites = [$Head,$Arm,$Body]
 	mainSprite = sprites[0]

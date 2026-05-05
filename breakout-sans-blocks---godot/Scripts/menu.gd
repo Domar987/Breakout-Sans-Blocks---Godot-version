@@ -21,9 +21,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
 	#$Label.text = str(get_viewport().get_mouse_position())+"\n"+ str(get_viewport().size / 2.0)+"\n"+ str(get_viewport().get_mouse_position() - get_viewport().size / 2.0)
-	get_child(1).position = mousePos / 150.0
-	get_child(2).position = -mousePos / 450.0
-	get_child(3).position = -mousePos / 150.0
+	$RightSide.position = mousePos / 150.0
+	$Centerish.position = -mousePos / 450.0
+	$LeftSide.position = -mousePos / 150.0
 
 func _button_pressed(button):
 	if button.name == "PlayButtonBig":
