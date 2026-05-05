@@ -80,6 +80,12 @@ func getHurt()->void:
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()
 	hp -= RuleManager.damage
+	if hp <= 0 and randi_range(0,100) < dropChance:
+		var projectile = load("res://Objects/Drop.tscn").instantiate()
+		projectile.position = position
+		projectile.speed = 10
+		projectile.tier = tier
+		add_sibling.call_deferred(projectile)
 	xSpeedOld = xSpeed
 	xSpeed = 0
 	ySpeedOld = ySpeed
@@ -113,12 +119,6 @@ func shootProjectile()->void:
 
 func Death()->void:
 	RuleManager.kill += 1
-	if randi_range(0,100) < dropChance:
-		var projectile = load("res://Objects/Drop.tscn").instantiate()
-		projectile.position = position
-		projectile.speed = 10
-		projectile.tier = tier
-		add_sibling.call_deferred(projectile)
 	remove()
 
 func remove()->void:

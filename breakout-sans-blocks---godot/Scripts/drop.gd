@@ -41,16 +41,28 @@ func plattouched()->void:
 	pop()
 
 func pop()->void:
+	match variant:
+		0:
+			if RuleManager.health < RuleManager.maxHealth:
+				RuleManager.health += 1
+		1:
+			pass
+		2:
+			pass
+	
+	
 	var poptween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT_IN)
-	poptween.tween_property(self,"prizeposY",-global_position.y + 540/(2*RuleManager.zoom),0.55)
+	poptween.tween_property(self,"prizeposY",-global_position.y + 64 + 540/(2*RuleManager.zoom),0.55)
 	poptween.set_ease(Tween.EASE_OUT)
-	poptween.tween_property(self,"prizeposX",-global_position.x/2,0.55)
-	poptween.tween_property(prizeSprite,"scale",Vector2(10,10),0.55)
-	poptween.tween_property(prizeSprite,"modulate",Color(20,20,20,0.9),0.1)
-	poptween.chain().tween_property(prizeSprite,"modulate",Color(0.2,0.2,0.2,0.35),0.25)
-	poptween.chain().tween_property(prizeSprite,"modulate",Color(0,0,0,0),0.25)
+	poptween.tween_property(self,"prizeposX",-global_position.x/3,0.55)
+	poptween.tween_property(prizeSprite,"scale",Vector2(24,24),0.55)
+	var popcolortween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	popcolortween.tween_property(prizeSprite,"modulate",Color(20,20,20,0.9),0.2)
+	popcolortween.chain().tween_property(prizeSprite,"modulate",Color(0.2,0.2,0.2,0.35),0.25)
+	popcolortween.chain().tween_property(prizeSprite,"modulate",Color(0,0,0,0),0.25)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	super()
 	if sprite.animation == "form":
+		$CollisionShape2D.disabled = false
 		sprite.play("1")
