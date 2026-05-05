@@ -1,6 +1,8 @@
 class_name Drop extends Projectile
 
 @onready var prizeSprite = $Prize
+var prizeposX:float = 0
+var prizeposY:float = 0
 var tier:int = 1
 var tiervariants = [[],[0,2],[0,1,3,5],[0,1,4,5,6],[7]]
 var variant:int = 1
@@ -14,7 +16,7 @@ func _ready() -> void:
 	variant = tiervariants[tier][randi_range(0,len(tiervariants[tier])-1)]
 	prizeSprite.texture = Animator.new().chooseTexture("res://Sprites/drops.png",8,variant)
 	prizeSprite.scale = Vector2.ZERO
-	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(prizeSprite,"scale",Vector2.ONE,0.5)
+	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(prizeSprite,"scale",Vector2.ONE,0.75)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,13 +29,26 @@ func _physics_process(delta: float) -> void:
 				direction.y += randf_range(-1.5, 1.0)
 			else:
 				direction.y += randf_range(0, 1.0)
+	prizeSprite.position = Vector2(prizeposX,prizeposY)
 	super(delta)
 
 func balltouched()->void:
 	super()
+	pop()
 
 func plattouched()->void:
 	sprite.play("blast")
+	pop()
+
+func pop()->void:
+	var poptween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT_IN)
+	poptween.tween_property(self,"prizeposY",-global_position.y + 540/(2*RuleManager.zoom),0.55)
+	poptween.set_ease(Tween.EASE_OUT)
+	poptween.tween_property(self,"prizeposX",-global_position.x/2,0.55)
+	poptween.tween_property(prizeSprite,"scale",Vector2(10,10),0.55)
+	poptween.tween_property(prizeSprite,"modulate",Color(20,20,20,0.9),0.1)
+	poptween.chain().tween_property(prizeSprite,"modulate",Color(0.2,0.2,0.2,0.35),0.25)
+	poptween.chain().tween_property(prizeSprite,"modulate",Color(0,0,0,0),0.25)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	super()
