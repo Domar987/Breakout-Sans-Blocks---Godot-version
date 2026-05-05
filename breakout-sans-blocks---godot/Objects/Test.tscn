@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4nghfpx4r3mh"]
+
+[ext_resource type="Script" uid="uid://by3qqdv7rpi5q" path="res://Scripts/test.gd" id="1_pjcbr"]
+
+[node name="Test" type="Node"]
+script = ExtResource("1_pjcbr")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -270.0
+offset_right = -480.0
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.205, 0.205)
