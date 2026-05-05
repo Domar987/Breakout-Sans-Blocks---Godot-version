@@ -42,8 +42,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if sprite.animation != "blast":
-		position += speed * delta * direction * (1 + RuleManager.difficulty/10)
-	if position.y > 540/(2*RuleManager.zoom) + 160 or abs(position.x) > (960/(2*RuleManager.zoom)) + 100:
+		position += speed * delta * direction * (1 + 1/10)
+	if position.y > 540/(2*3) + 160 or abs(position.x) > (960/(2*3)) + 100:
 		queue_free()
 
 

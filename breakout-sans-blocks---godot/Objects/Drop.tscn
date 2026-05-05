@@ -101,3 +101,6 @@ autoplay = "1"
 shape = SubResource("RectangleShape2D_ncmk2")
 
 [node name="Prize" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(16, 16)
