@@ -2,7 +2,7 @@ extends Node2D
 
 var buttons:Array
 var mousePos:Vector2
-@onready var miniMenu = $/root/Menu/Centerish/MiniMenu
+@onready var miniMenu = $/root/Menu/MiniMenu
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var startTween = create_tween().set_trans(Tween.TRANS_SPRING).set_parallel(true)
@@ -40,14 +40,14 @@ func _button_pressed(button):
 			tween.tween_property(self,"modulate",Color.BLACK,0.2)
 			tween.tween_callback(changescene)
 		"OptionsButton":
-			pass
+			miniMenu.appear(1)
 		"HowToPlayButton":
 			var cont = button.get_child(1)
 			if !cont.visible:
 				cont.get_child(0).fellaanimation()
 				cont.visible = true
 		"Enemy":
-			miniMenu.appear()
+			miniMenu.appear(0)
 
 func changescene()->void:
 	get_tree().change_scene_to_file("res://Scenes/ingame.tscn")

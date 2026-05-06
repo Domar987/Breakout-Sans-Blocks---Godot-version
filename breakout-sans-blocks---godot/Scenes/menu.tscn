@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=39 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c6k4y08hxlgkq" path="res://Objects/MiniMenu.tscn" id="15_owyel"]
 [ext_resource type="AudioStream" uid="uid://bsrh1cehevhvb" path="res://Audio/Music/title.wav" id="16_1by5w"]
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
+[ext_resource type="Texture2D" uid="uid://bw2j7xsd6chhp" path="res://Sprites/placeholder.png" id="16_h63v2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -278,16 +279,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_3p34a")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_h63v2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3p34a")
 
-[node name="MiniMenu" parent="Centerish" instance=ExtResource("15_owyel")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 120.0
-offset_bottom = 60.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="LeftSide" type="Control" parent="."]
 z_index = -1
 layout_mode = 3
@@ -333,3 +324,55 @@ stream = ExtResource("15_1by5w")
 [node name="TitleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_1by5w")
 autoplay = true
+
+[node name="MiniMenu" parent="." instance=ExtResource("15_owyel")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 120.0
+offset_bottom = 60.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MiniMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MiniMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_h63v2")
+
+[node name="Label" type="Label" parent="MiniMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Lorem ipsum
+or something
+i dont know"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MiniMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HScrollBar" type="HScrollBar" parent="MiniMenu/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MiniMenu/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Option stuff
+volume
+resolution"
