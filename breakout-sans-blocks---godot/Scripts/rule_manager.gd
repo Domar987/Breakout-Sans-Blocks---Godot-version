@@ -93,6 +93,9 @@ func healthChange(dmg:int)->void:
 	hurttween.set_ease(Tween.EASE_IN)
 	hurttween.tween_property(platform,"hurtposition",0,0.075)
 	if health <= 0:
+		var tween = create_tween().set_parallel(false)
+		tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
+		tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
 		platformLength(0)
 
 func cameraZoom()->void:

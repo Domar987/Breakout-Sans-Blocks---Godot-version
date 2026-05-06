@@ -8,9 +8,16 @@ var tiervariants = [[],[0,2],[0,1,3,5],[0,1,4,5,6],[7]]
 var variant:int = 1
 var sineTimer:float = 0
 
+var spawnedBelow:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	if position.y > 540/(2*RuleManager.zoom) - 16:
+		spawnedBelow = true
+		var spawntween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).set_parallel(false)
+		spawntween.tween_property(self,"position",Vector2(position.x,0),0.2)
+		spawntween.tween_property(self,"spawnedBelow",false,0.0)
 	sprite.play("form")
 	speed = 1
 	variant = tiervariants[tier][randi_range(0,len(tiervariants[tier])-1)]
@@ -21,7 +28,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if sprite.animation != "blast":
+	if sprite.animation != "blast" and not spawnedBelow:
 		sineTimer += 25 * delta
 		direction.x = sin(deg_to_rad(sineTimer)) * 10
 		if randi_range(0, 10) == 2:
