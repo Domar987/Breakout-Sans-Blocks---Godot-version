@@ -36,8 +36,8 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	for i in range(len(colors)):
 		#gray = (colors[i].r + colors[i].g + colors[i].b) / 3.0
 		#colors[i] = lerp(Color(gray,gray,gray),colors[i],0.5)
-		colors[i].s *= 0.7
-		colors[i].v *= 0.75
+		colors[i].s *= 0.5
+		colors[i].v *= 0.8
 	gr.offsets = offsets
 	gr.colors = colors
 	#gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
