@@ -125,6 +125,6 @@ func cameraRotate() -> void:
 	tween.tween_property(self, "rotate", tmp, 1.0)
 
 func ySpeedIncrease()->void:
-	wall.ySpeed += 12 + wall.ySpeed
+	wall.ySpeed += 12# + wall.ySpeed
 	portal.ySpeed = wall.ySpeed
 	background.ySpeed = wall.ySpeed
