@@ -9,8 +9,8 @@ var ySpeedAddition:float = 0.0
 var ySpeed:float = 0.0
 var oldzoom:float
 
-func _process(_delta: float) -> void:
-	ySpeedAddition -= ySpeed
+func _process(delta: float) -> void:
+	ySpeedAddition -= ySpeed * delta
 	if ySpeedAddition <= -10:
 		ySpeedAddition = 0
 	if RuleManager.zoom != oldzoom or ySpeed != 0:

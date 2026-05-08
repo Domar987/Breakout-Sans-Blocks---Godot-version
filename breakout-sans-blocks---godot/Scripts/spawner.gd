@@ -18,7 +18,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if RuleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned:
+	if RuleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned and RuleManager.health > 0:
 		timer -= 1
 		if timer <= 0:
 			if spawnRare != null and canSpawnRare and randi_range(0,100) <= rareChance:

@@ -20,6 +20,8 @@ var kill:int = 0
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
 @onready var wall:Area2D = $/root/Ingame/Wall
+@onready var portal:Area2D = $/root/Ingame/PortalVisual
+@onready var background:Sprite2D = $/root/Ingame/Background
 @onready var ui:Control = $/root/Ingame/UI
 @onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
 @onready var zoom:float = camera.zoom.x
@@ -123,4 +125,6 @@ func cameraRotate() -> void:
 	tween.tween_property(self, "rotate", tmp, 1.0)
 
 func ySpeedIncrease()->void:
-	wall.ySpeed += 0.2 + wall.ySpeed
+	wall.ySpeed += 12 + wall.ySpeed
+	portal.ySpeed = wall.ySpeed
+	background.ySpeed = wall.ySpeed

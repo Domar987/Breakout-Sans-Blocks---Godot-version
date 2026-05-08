@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtajnafuo25y"]
+
+[ext_resource type="Script" uid="uid://c7sa3oqcqb204" path="res://Scripts/backgrounditem.gd" id="1_efuqs"]
+
+[node name="BackgroundItem" type="Area2D"]
+z_index = -4
+script = ExtResource("1_efuqs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
