@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		timer = 36.0
 		shootProjectile(true)
 	yvalue += delta * ySpeed / 1000
-	currentcolors = bgcolors[int(yvalue) % 1000]
+	currentcolors = bgcolors[min(int(yvalue) % 1000,len(bgcolors)-1)]
 	texture.gradient.colors[0] = Color(currentcolors[2])
 	#texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
 	scale.y = 960 /(RuleManager.zoom)
@@ -69,5 +69,5 @@ func shootProjectile(fromTop:bool)->void:
 	projectile.parent = self
 	add_sibling.call_deferred(projectile)
 
-func _draw() -> void:
-	pass
+#func _draw() -> void:
+	#pass
