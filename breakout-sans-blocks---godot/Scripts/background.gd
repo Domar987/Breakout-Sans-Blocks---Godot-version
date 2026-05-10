@@ -1,19 +1,25 @@
 extends Sprite2D
 
-var grad:GradientTexture1D = GradientTexture1D.new()
+#var grad:GradientTexture1D = GradientTexture1D.new()
 var ySpeed:float = 0.0
 var timer:float = 36.0
 var yvalue:float = 0.0
 @onready var RuleManager = $/root/Ingame/RuleManager
 var projectilesource:PackedScene
 
+
+var bgfile = FileAccess.get_file_as_string("res://Data/bg_colors.json")
+var bgcolors = JSON.parse_string(bgfile)
+
+var currentcolors:Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	grad.gradient = Gradient.new()
-	grad.gradient.offsets = texture.gradient.offsets
-	grad.gradient.colors = texture.gradient.colors
-	texture.gradient = Gradient.new()
-	texture.gradient.interpolation_mode = 2
+	#grad.gradient = Gradient.new()
+	#grad.gradient.offsets = texture.gradient.offsets
+	#grad.gradient.colors = texture.gradient.colors
+	#texture.gradient = Gradient.new()
+	#texture.gradient.interpolation_mode = 2
 	projectilesource = preload("res://Objects/BackgroundItem.tscn")
 	for i in range(0,randi_range(3,8)):
 		shootProjectile(false)
@@ -25,9 +31,11 @@ func _physics_process(delta: float) -> void:
 		timer = 36.0
 		shootProjectile(true)
 	yvalue += delta * ySpeed / 1000
-	texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
+	currentcolors = bgcolors[int(yvalue) % 1000]
+	texture.gradient.colors[0] = Color(currentcolors[2])
+	#texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
 	scale.y = 960 /(RuleManager.zoom)
-	scale.x = (540 /(RuleManager.zoom))/256
+	scale.x = (540 /(RuleManager.zoom))*256/256
 
 func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	var gr = Gradient.new()
