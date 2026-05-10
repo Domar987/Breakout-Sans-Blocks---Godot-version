@@ -1,6 +1,6 @@
 extends Sprite2D
 
-#var grad:GradientTexture1D = GradientTexture1D.new()
+var grad:GradientTexture1D = GradientTexture1D.new()
 var ySpeed:float = 0.0
 var timer:float = 36.0
 var yvalue:float = 0.0
@@ -15,11 +15,11 @@ var currentcolors:Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#grad.gradient = Gradient.new()
-	#grad.gradient.offsets = texture.gradient.offsets
-	#grad.gradient.colors = texture.gradient.colors
-	#texture.gradient = Gradient.new()
-	#texture.gradient.interpolation_mode = 2
+	grad.gradient = Gradient.new()
+	grad.gradient.offsets = texture.gradient.offsets
+	grad.gradient.colors = texture.gradient.colors
+	texture.gradient = Gradient.new()
+	texture.gradient.interpolation_mode = 2
 	projectilesource = preload("res://Objects/BackgroundItem.tscn")
 	for i in range(0,randi_range(3,8)):
 		shootProjectile(false)
@@ -30,12 +30,14 @@ func _physics_process(delta: float) -> void:
 	if timer <= 0:
 		timer = 36.0
 		shootProjectile(true)
-	yvalue += delta * ySpeed / 1000
-	currentcolors = bgcolors[min(int(yvalue) % 1000,len(bgcolors)-1)]
-	texture.gradient.colors[0] = Color(currentcolors[2])
-	#texture.gradient = getGradient(grad.gradient,yvalue,yvalue+0.1)
+	yvalue += delta * ySpeed
+	currentcolors = bgcolors[min(int(yvalue),len(bgcolors)-1)]
+	texture.gradient = getGradient(grad.gradient,yvalue/(3*256)-0.1,yvalue/(3*256))
 	scale.y = 960 /(RuleManager.zoom)
-	scale.x = (540 /(RuleManager.zoom))*256/256
+	scale.x = (540 /(RuleManager.zoom))/256
+	$Label.text = str(yvalue)
+	$Label.scale.y = (RuleManager.zoom) /960
+	$Label.scale.x = 1/((540 /(RuleManager.zoom))/256)
 
 func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 	var gr = Gradient.new()
@@ -50,12 +52,12 @@ func getGradient(gradient:Gradient,point1:float,point2:float)->Gradient:
 			colors.append(gradient.sample(point))
 	offsets.append(1.0)
 	colors.append(gradient.sample(point2))
-	#var gray:float
-	for i in range(len(colors)):
-		#gray = (colors[i].r + colors[i].g + colors[i].b) / 3.0
-		#colors[i] = lerp(Color(gray,gray,gray),colors[i],0.5)
-		colors[i].s *= 0.5
-		colors[i].v *= 0.8
+	##var gray:float
+	#for i in range(len(colors)):
+		##gray = (colors[i].r + colors[i].g + colors[i].b) / 3.0
+		##colors[i] = lerp(Color(gray,gray,gray),colors[i],0.5)
+		#colors[i].s *= 0.5
+		#colors[i].v *= 0.8
 	gr.offsets = offsets
 	gr.colors = colors
 	#gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC

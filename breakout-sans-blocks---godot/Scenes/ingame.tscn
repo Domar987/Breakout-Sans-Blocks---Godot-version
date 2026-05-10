@@ -16,12 +16,11 @@
 [ext_resource type="AudioStream" uid="uid://b3ui2qkw1wco6" path="res://Audio/Music/arkanoid.wav" id="15_3jpny"]
 
 [sub_resource type="Gradient" id="Gradient_5mqjs"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.32, 0.33, 0.65, 0.66, 0.99, 1)
+colors = PackedColorArray(0.36862746, 0.44313726, 0.5568628, 1, 0.36862746, 0.44313726, 0.5568628, 1, 0.3647059, 0.60784316, 0.4745098, 1, 0.3647059, 0.60784316, 0.4745098, 1, 0.7764706, 0.52156866, 0.3372549, 1, 0.7764706, 0.52156866, 0.3372549, 1, 0.69803923, 0.32156864, 0.4, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3jpny"]
 gradient = SubResource("Gradient_5mqjs")
-width = 1
 
 [node name="Ingame" type="Node"]
 
@@ -47,6 +46,21 @@ z_index = -5
 rotation = -1.5707964
 texture = SubResource("GradientTexture1D_3jpny")
 script = ExtResource("7_yl4g2")
+
+[node name="Label" type="Label" parent="Background"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -0.5
+offset_right = -64.0
+offset_bottom = 63.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
