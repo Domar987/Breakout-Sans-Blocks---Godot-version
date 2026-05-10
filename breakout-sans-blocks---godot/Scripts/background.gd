@@ -30,12 +30,16 @@ func _physics_process(delta: float) -> void:
 	if timer <= 0:
 		timer = 36.0
 		shootProjectile(true)
-	yvalue += delta * ySpeed
-	currentcolors = bgcolors[min(int(yvalue),len(bgcolors)-1)]
-	texture.gradient = getGradient(grad.gradient,yvalue/(3*256)-0.1,yvalue/(3*256))
+		
 	scale.y = 960 /(RuleManager.zoom)
 	scale.x = (540 /(RuleManager.zoom))/256
-	$Label.text = str(yvalue)
+	
+	yvalue += delta * ySpeed
+	
+	currentcolors = bgcolors[min(int(yvalue/(1000)),len(bgcolors)-1)]
+	texture.gradient = getGradient(grad.gradient,yvalue/(3*1000)-0.1,yvalue/(3*1000))
+	
+	$Label.text = str(yvalue)+"\n"+str(ySpeed)+"\n"+str(delta)
 	$Label.scale.y = (RuleManager.zoom) /960
 	$Label.scale.x = 1/((540 /(RuleManager.zoom))/256)
 
