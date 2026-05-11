@@ -16,6 +16,8 @@ var damage:int = 1
 var oldhealth:int = 10
 var kill:int = 0
 
+var ySpeed:float=0.0
+
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
@@ -120,11 +122,10 @@ func platformLengthEnd()->void:
 	platform.redraw = false
 
 func cameraRotate() -> void:
-	var tween = create_tween()
-	var tmp = rotate + 1.0
-	tween.tween_property(self, "rotate", tmp, 1.0)
+	#var tween = create_tween()
+	#var tmp = rotate + 1.0
+	#tween.tween_property(self, "rotate", tmp, 1.0)
+	pass
 
 func ySpeedIncrease()->void:
-	wall.ySpeed += 12# + wall.ySpeed
-	portal.ySpeed = wall.ySpeed
-	background.ySpeed = wall.ySpeed
+	ySpeed += 12

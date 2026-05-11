@@ -35,6 +35,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	speed = parent.ySpeed
+	speed = RuleManager.ySpeed
 	#$Label.text = str(speed)+"\n"+str(delta)
 	super(delta)

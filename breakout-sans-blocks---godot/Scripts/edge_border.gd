@@ -6,14 +6,13 @@ var righttexture:Array[Texture2D]
 var wallwidth:int
 var wallheight:int
 var ySpeedAddition:float = 0.0
-var ySpeed:float = 0.0
 var oldzoom:float
 
 func _process(delta: float) -> void:
-	ySpeedAddition += ySpeed * delta
+	ySpeedAddition += RuleManager.ySpeed * delta
 	if ySpeedAddition >= 10:
 		ySpeedAddition = 0
-	if RuleManager.zoom != oldzoom or ySpeed != 0:
+	if RuleManager.zoom != oldzoom or RuleManager.ySpeed != 0:
 		queue_redraw()
 	oldzoom = RuleManager.zoom
 

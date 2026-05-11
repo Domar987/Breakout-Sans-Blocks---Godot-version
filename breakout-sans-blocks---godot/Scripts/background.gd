@@ -1,7 +1,6 @@
 extends Sprite2D
 
 var grad:GradientTexture1D = GradientTexture1D.new()
-var ySpeed:float = 0.0
 var timer:float = 36.0
 var yvalue:float = 0.0
 @onready var RuleManager = $/root/Ingame/RuleManager
@@ -26,7 +25,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	timer -= ySpeed * delta
+	timer -= RuleManager.ySpeed * delta
 	if timer <= 0:
 		timer = 36.0
 		shootProjectile(true)
@@ -34,12 +33,12 @@ func _physics_process(delta: float) -> void:
 	scale.y = 960 /(RuleManager.zoom)
 	scale.x = (540 /(RuleManager.zoom))/256
 	
-	yvalue += delta * ySpeed
+	yvalue += delta * RuleManager.ySpeed
 	
 	currentcolors = bgcolors[min(int(yvalue/(1000)),len(bgcolors)-1)]
-	texture.gradient = getGradient(grad.gradient,yvalue/(3*1000)-0.1,yvalue/(3*1000))
+	texture.gradient = getGradient(grad.gradient,yvalue/(4000)-RuleManager.ySpeed*delta,yvalue/(4000))
 	
-	$Label.text = str(yvalue)+"\n"+str(ySpeed)+"\n"+str(delta)
+	$Label.text = str(yvalue)+"\n"+str(RuleManager.ySpeed)+"\n"+str(delta)
 	$Label.scale.y = (RuleManager.zoom) /960
 	$Label.scale.x = 1/((540 /(RuleManager.zoom))/256)
 
@@ -71,7 +70,7 @@ func shootProjectile(fromTop:bool)->void:
 	var projectile = projectilesource.instantiate()
 	projectile.fromTop = fromTop
 	projectile.scale = Vector2.ONE
-	projectile.speed = ySpeed
+	projectile.speed = RuleManager.ySpeed
 	projectile.parent = self
 	add_sibling.call_deferred(projectile)
 
