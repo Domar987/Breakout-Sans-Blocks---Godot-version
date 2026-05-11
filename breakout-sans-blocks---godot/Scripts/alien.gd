@@ -5,7 +5,7 @@ var alienfile = FileAccess.get_file_as_string("res://Data/alien_colors.json")
 var aliencolors = JSON.parse_string(alienfile)
 var selectedcolors:Array
 
-var aliensprites = ["res://Sprites/Alien/alienlight","res://Sprites/Alien/alienmain","res://Sprites/Alien/aliendark","res://Sprites/Alien/alienoutlinelight","res://Sprites/Alien/alienoutlinedark"]
+var aliensprite = "res://Sprites/Alien/alien"
 
 var xSpeedModifier:int
 var currentKill:int
@@ -22,7 +22,7 @@ var walkiter:int = 0
 func _ready() -> void:
 	hurtAudios = [$Invaderkilled]
 	shoots = true
-	sprites = [$Light,$Main,$Dark,$OutlineLight,$OutlineDark]
+	sprites = [$Main]
 	mainSprite = sprites[0]
 	enterValue = 32
 	xSpeed = 1.0
@@ -43,16 +43,6 @@ func _ready() -> void:
 			dmg = 2
 	tier = 1
 	dropChance = 5
-	for i in range(len(sprites)):
-		sprites[i].sprite_frames = SpriteFrames.new()
-		Animator.new().createAnimation(sprites[i].sprite_frames,"idle",true,10.0)
-		Animator.new().createFramesManual(aliensprites[i]+str(variant)+".png",sprites[i].sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
-		Animator.new().createAnimation(sprites[i].sprite_frames,"hurt",false,2.0)
-		Animator.new().createFramesManual(aliensprites[i]+str(variant)+".png",sprites[i].sprite_frames,4,[3],[1],"hurt")
-		sprites[i].play("idle")
-	Animator.new().createAnimation(sprites[0].sprite_frames,"death",false,10.0)
-	Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
-	
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
@@ -62,8 +52,17 @@ func _ready() -> void:
 	position = Vector2(x, y)
 	xSpeed *= -fromLorCorR
 	selectedcolors = selectColor(y)
-	for i in range(len(sprites)):
-		sprites[i].modulate = Color(selectedcolors[i])
+	
+	var tex = Animator.new().applyColor(aliensprite+str(variant)+".png",selectedcolors)
+	mainSprite.sprite_frames = SpriteFrames.new()
+	Animator.new().createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
+	Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
+	Animator.new().createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
+	Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
+	mainSprite.play("idle")
+	Animator.new().createAnimation(mainSprite.sprite_frames,"death",false,10.0)
+	Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
+
 	super()
 
 
@@ -83,8 +82,17 @@ func _physics_process(delta: float) -> void:
 				xSpeed *= -1
 				position.y += 32
 				selectedcolors = selectColor(position.y)
-				for i in range(len(sprites)):
-					sprites[i].modulate = Color(selectedcolors[i])
+				mainSprite.sprite_frames.clear_all()
+				var tex = Animator.new().applyColor(aliensprite+str(variant)+".png",selectedcolors)
+				mainSprite.sprite_frames = SpriteFrames.new()
+				Animator.new().createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
+				Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
+				Animator.new().createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
+				Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
+				mainSprite.play("idle")
+				Animator.new().createAnimation(mainSprite.sprite_frames,"death",false,10.0)
+				Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
+
 			else:
 				movedDown = false
 				position.x += xSpeed * 16
@@ -103,6 +111,7 @@ func _on_area_entered(area: Area2D) -> void:
 	super(area)
 	if area == Ball and mainSprite.animation != "death":
 		if hp <= 0:
+			mainSprite.modulate = selectedcolors[4]
 			mainSprite.play("death")
 			if len(sprites) > 1:
 				for i in range(1,len(sprites)):

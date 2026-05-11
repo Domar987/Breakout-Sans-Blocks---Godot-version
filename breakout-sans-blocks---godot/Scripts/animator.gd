@@ -2,7 +2,7 @@ class_name Animator
 
 extends Node
 
-var globalOldColors:Array[Color] = [Color("242424"),Color("555555"),Color("787878"),Color("c0c0c0")]
+var globalOldColors:Array[Color] = [Color("242424"),Color("555555"),Color("787878"),Color("c0c0c0"),Color("ffffff")]
 
 func createAnimation(sprite:SpriteFrames,animname:String,loop:bool,speed:float)->void:
 	sprite.add_animation(animname)
@@ -60,7 +60,7 @@ func applyColor(path:String,newColors:Array)->Texture2D:
 	var img:Image = load(path).get_image()
 	for y in img.get_height():
 		for x in img.get_width():
-			for i in range(len(globalOldColors)):
+			for i in range(len(newColors)):
 				if img.get_pixel(x,y) == globalOldColors[i]:
 					img.set_pixel(x,y,Color(newColors[i]))
 	return ImageTexture.create_from_image(img)
@@ -69,7 +69,7 @@ func applyColortoOld(path:String,oldColors:Array[Color],newColors:Array)->Textur
 	var img:Image = load(path)
 	for y in img.get_height():
 		for x in img.get_width():
-			for i in range(len(oldColors)):
+			for i in range(len(newColors)):
 				if img.get_pixel(x,y) == oldColors[i]:
 					img.set_pixel(x,y,Color(newColors[i]))
 	return ImageTexture.create_from_image(img)

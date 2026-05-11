@@ -15,10 +15,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if position.y >= 36:
-		modulate = aliencolors[3][0]
+		modulate = aliencolors[3][4]
 	elif position.y >= 4:
-		modulate =  aliencolors[2][0]
+		modulate =  aliencolors[2][4]
 	elif position.y >= -12:
-		modulate =  aliencolors[1][0]
+		modulate =  aliencolors[1][4]
 	else:
-		modulate =  aliencolors[0][0]
+		modulate =  aliencolors[0][4]

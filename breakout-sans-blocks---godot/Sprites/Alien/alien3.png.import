@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqy3n0j7yb6b"
-path="res://.godot/imported/aliendark3.png-d85fb292f33586a81fa049bd001df971.ctex"
+uid="uid://bqmf6dlt14txr"
+path="res://.godot/imported/alien3.png-0c77cbfe494405cc89bcb17ea0e0bb81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Alien/aliendark3.png"
-dest_files=["res://.godot/imported/aliendark3.png-d85fb292f33586a81fa049bd001df971.ctex"]
+source_file="res://Sprites/Alien/alien3.png"
+dest_files=["res://.godot/imported/alien3.png-0c77cbfe494405cc89bcb17ea0e0bb81.ctex"]
 
 [params]
 
