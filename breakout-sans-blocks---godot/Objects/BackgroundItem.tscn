@@ -7,7 +7,6 @@ z_index = -4
 script = ExtResource("1_efuqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-animation = &""
 
 [node name="Label" type="Label" parent="."]
 visible = false

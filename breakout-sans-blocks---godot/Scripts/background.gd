@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
 	
 	currentcolors = bgcolors[min(int((max(0,yvalue-1000))/(1000)),len(bgcolors)-1)]
-	texture.gradient = getGradient(grad.gradient,(yvalue-1000)/3000-0.11,(yvalue-1000)/3000)
+	var gradientval = ((yvalue-1000)/3000)/scale.x
+	texture.gradient = getGradient(grad.gradient,gradientval-0.11,gradientval)
 	
 	$Label.text = str(yvalue)+"\n"+str(RuleManager.ySpeed)+"\n"+str(delta)
 	$Label.scale.y = (RuleManager.zoom) /960

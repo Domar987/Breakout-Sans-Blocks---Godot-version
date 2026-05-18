@@ -9,23 +9,23 @@
 [ext_resource type="AudioStream" uid="uid://c1ysly2ba482p" path="res://Audio/SFX/AeoloHurt01.wav" id="7_8116m"]
 [ext_resource type="AudioStream" uid="uid://bt0q3qm18ueng" path="res://Audio/SFX/AeoloHurt02.wav" id="8_cfloh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7k6tu"]
-atlas = ExtResource("1_m6i42")
-region = Rect2(60, 0, 30, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mgun5"]
-atlas = ExtResource("1_m6i42")
-region = Rect2(30, 0, 30, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8wj4n"]
 atlas = ExtResource("1_m6i42")
-region = Rect2(0, 0, 30, 24)
+region = Rect2(124, 0, 62, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8116m"]
+atlas = ExtResource("1_m6i42")
+region = Rect2(62, 0, 62, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rg7k"]
+atlas = ExtResource("1_m6i42")
+region = Rect2(0, 0, 62, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8116m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7k6tu")
+"texture": SubResource("AtlasTexture_8wj4n")
 }],
 "loop": true,
 "name": &"death",
@@ -33,7 +33,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mgun5")
+"texture": SubResource("AtlasTexture_8116m")
 }],
 "loop": false,
 "name": &"hurt",
@@ -41,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8wj4n")
+"texture": SubResource("AtlasTexture_8rg7k")
 }],
 "loop": true,
 "name": &"idle",
@@ -50,19 +50,19 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfloh"]
 atlas = ExtResource("2_0dy2u")
-region = Rect2(0, 0, 60, 29)
+region = Rect2(0, 0, 115, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0brdc"]
 atlas = ExtResource("2_0dy2u")
-region = Rect2(60, 0, 60, 29)
+region = Rect2(115, 0, 115, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mjceq"]
 atlas = ExtResource("2_0dy2u")
-region = Rect2(120, 0, 60, 29)
+region = Rect2(230, 0, 115, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3q87"]
 atlas = ExtResource("2_0dy2u")
-region = Rect2(180, 0, 60, 29)
+region = Rect2(345, 0, 115, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8rg7k"]
 animations = [{
@@ -86,31 +86,31 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3hrgo"]
 atlas = ExtResource("3_boh81")
-region = Rect2(0, 0, 19, 18)
+region = Rect2(0, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btu4u"]
 atlas = ExtResource("3_boh81")
-region = Rect2(19, 0, 19, 18)
+region = Rect2(25, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjnel"]
 atlas = ExtResource("3_boh81")
-region = Rect2(38, 0, 19, 18)
+region = Rect2(50, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vbbs"]
 atlas = ExtResource("3_boh81")
-region = Rect2(57, 0, 19, 18)
+region = Rect2(75, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nst5k"]
 atlas = ExtResource("3_boh81")
-region = Rect2(76, 0, 19, 18)
+region = Rect2(100, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgtuc"]
 atlas = ExtResource("3_boh81")
-region = Rect2(95, 0, 19, 18)
+region = Rect2(125, 0, 25, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6l6s"]
 atlas = ExtResource("3_boh81")
-region = Rect2(114, 0, 19, 18)
+region = Rect2(150, 0, 25, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgmfi"]
 animations = [{
@@ -145,7 +145,6 @@ animations = [{
 size = Vector2(50, 28)
 
 [node name="Aeolosaurus" type="Area2D"]
-scale = Vector2(1.75, 1.75)
 script = ExtResource("1_boh81")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
@@ -153,20 +152,20 @@ z_index = 2
 sprite_frames = SubResource("SpriteFrames_8116m")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(8, 3)
+offset = Vector2(15.5, 8)
 
 [node name="Body" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_8rg7k")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(0, 1.5)
+offset = Vector2(0, 2.5)
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lgmfi")
 animation = &"idle"
 autoplay = "idle"
-offset = Vector2(-19.5, -7)
+offset = Vector2(-35, -15.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_boh81")
