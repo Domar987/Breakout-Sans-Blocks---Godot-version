@@ -90,6 +90,8 @@ var levelvals:Array = [0,200,500,1000]
 
 var rect1:Rect2
 var rect2:Rect2
+var recttrans:Rect2
+var transtexture:Texture2D = load("res://Sprites/Background/bgtransitionnew.png")
 
 var drawtrans:bool = false
 var startY:float
@@ -104,7 +106,7 @@ func _physics_process(delta: float) -> void:
 			levelChange(yvalue)
 	
 	if drawtrans:
-		if yvalue < startY + 540/(RuleManager.zoom):
+		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
 			queue_redraw()
 		else:
 			drawtrans = false
@@ -116,7 +118,7 @@ func _physics_process(delta: float) -> void:
 	$Label.text = str(startY) + "\n" + str(yvalue)
 
 func levelChange(startY:float)->void:
-	self.startY = startY
+	self.startY = startY + transtexture.get_height()
 	drawtrans = true
 
 func _draw() -> void:
@@ -128,7 +130,9 @@ func _draw() -> void:
 	else:
 		rect1 = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,-2*y))
 		rect2 = Rect2(Vector2(x,3 * y - (startY-yvalue)), Vector2(-2*x,-2*y))
+		recttrans = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,transtexture.get_height()))
 
 		draw_rect(rect1,Color(bgcolors[level-1][2]))
 		draw_rect(rect2,Color(bgcolors[level][2]))
+		draw_texture_rect(transtexture,recttrans,true,Color(bgcolors[level][2]))
 	
