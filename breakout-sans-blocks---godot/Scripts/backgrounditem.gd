@@ -8,6 +8,7 @@ var fromTop:bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	area_entered.connect(_on_area_entered)
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	if fromTop:
@@ -41,3 +42,8 @@ func _physics_process(delta: float) -> void:
 	speed = RuleManager.ySpeed
 	#$Label.text = str(speed)+"\n"+str(delta)
 	super(delta)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is BackgroundItem:
+		parent.shootProjectile(true)
+		queue_free()
