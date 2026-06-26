@@ -12,3 +12,5 @@ script = ExtResource("1_efuqs")
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

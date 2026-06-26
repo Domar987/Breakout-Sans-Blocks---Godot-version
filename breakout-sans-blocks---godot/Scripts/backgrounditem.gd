@@ -16,6 +16,9 @@ func _ready() -> void:
 		position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
 	
 	var bgsprite = bgsprites[randi_range(0,len(bgsprites)-1)]
+	var texforshape:Texture2D = load("res://Sprites/Background/bg"+bgsprite+".png")
+	$CollisionShape2D.shape = RectangleShape2D.new()
+	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
 	if randi_range(0,1000) == 1000:
 		bgsprite = "howdidthisgethere"
 	else:
