@@ -94,6 +94,8 @@ var rect2:Rect2
 var drawtrans:bool = false
 var startY:float
 
+var oldzoom:float = 0.0
+
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
 	for i in range(1,4):
@@ -106,6 +108,10 @@ func _physics_process(delta: float) -> void:
 			queue_redraw()
 		else:
 			drawtrans = false
+	elif RuleManager.zoom != oldzoom:
+		firstdraw = true
+		queue_redraw()
+	oldzoom = RuleManager.zoom
 	
 	$Label.text = str(startY) + "\n" + str(yvalue)
 
@@ -117,7 +123,7 @@ func _draw() -> void:
 	var x = -960/(2*RuleManager.zoom)
 	var y = -540/(2*RuleManager.zoom)
 	if firstdraw:
-		draw_rect(Rect2(Vector2(x,y),Vector2(-2*x,-2*y)),Color(bgcolors[0][2]))
+		draw_rect(Rect2(Vector2(x,y),Vector2(-2*x,-2*y)),Color(bgcolors[level][2]))
 		firstdraw = false
 	else:
 		rect1 = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,-2*y))

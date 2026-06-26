@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxyjnpodh4xkw"
-path="res://.godot/imported/platformsegment.png-f910df38d791a3a46ed95e5d5fae6eb4.ctex"
+uid="uid://bd5jcicgjx4o3"
+path="res://.godot/imported/bgbricks4.png-f957c13545d83e2d1679f3051b49f7d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/platformsegment.png"
-dest_files=["res://.godot/imported/platformsegment.png-f910df38d791a3a46ed95e5d5fae6eb4.ctex"]
+source_file="res://Sprites/Background/bgbricks4.png"
+dest_files=["res://.godot/imported/bgbricks4.png-f957c13545d83e2d1679f3051b49f7d4.ctex"]
 
 [params]
 

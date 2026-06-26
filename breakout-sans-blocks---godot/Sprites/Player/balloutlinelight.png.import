@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7rkihjqwk3v5"
-path="res://.godot/imported/bggrafitti.png-b8290f0ca20b9c8cd53e0b4c09d5ac6d.ctex"
+uid="uid://ctdim03bqyr52"
+path="res://.godot/imported/balloutlinelight.png-a5107145f2f3d860b392c591ad0a4e97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bggrafitti.png"
-dest_files=["res://.godot/imported/bggrafitti.png-b8290f0ca20b9c8cd53e0b4c09d5ac6d.ctex"]
+source_file="res://Sprites/Player/balloutlinelight.png"
+dest_files=["res://.godot/imported/balloutlinelight.png-a5107145f2f3d860b392c591ad0a4e97.ctex"]
 
 [params]
 

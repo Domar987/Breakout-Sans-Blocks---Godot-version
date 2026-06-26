@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8gw0duoetc1q"
-path="res://.godot/imported/platformend.png-c192b897415ed6e245f29b09707b9303.ctex"
+uid="uid://ne8s0ci4yu2p"
+path="res://.godot/imported/balllight.png-7b561a6a6f50ed348afbf2659b8dd21a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/platformend.png"
-dest_files=["res://.godot/imported/platformend.png-c192b897415ed6e245f29b09707b9303.ctex"]
+source_file="res://Sprites/Player/balllight.png"
+dest_files=["res://.godot/imported/balllight.png-7b561a6a6f50ed348afbf2659b8dd21a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ek7di1kxv7w4"
-path="res://.godot/imported/bgbricks2.png-35a6ae54a5bacc3eb611a8fb66795030.ctex"
+uid="uid://cvjo7j112bvie"
+path="res://.godot/imported/bgtransition.png-c16d3e96581dfbaa016b6218733a5556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bgbricks2.png"
-dest_files=["res://.godot/imported/bgbricks2.png-35a6ae54a5bacc3eb611a8fb66795030.ctex"]
+source_file="res://Sprites/Background/bgtransition.png"
+dest_files=["res://.godot/imported/bgtransition.png-c16d3e96581dfbaa016b6218733a5556.ctex"]
 
 [params]
 

@@ -26,7 +26,9 @@ var ySpeed:float=0.0
 @onready var background:Sprite2D = $/root/Ingame/Background
 @onready var ui:Control = $/root/Ingame/UI
 @onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
+
 @onready var zoom:float = camera.zoom.x
+var zoommult:float = 0.9
 
 var rotate:float = 0.0
 var rotateDir:int = 0
@@ -104,13 +106,15 @@ func healthChange(dmg:int)->void:
 
 func cameraZoom()->void:
 	var tween = create_tween()
-	var tmp = zoom * 1.0
+	var tmp = zoom * zoommult
 	tween.tween_property(self, "zoom", tmp, 1.0)
 	#tween.tween_property(camera,"zoom",Vector2(zoom,zoom),1.0)
 	#var timer = 0
 	#while timer <= 1:
 	#	timer += get_physics_process_delta_time()
 	#	camera.zoom = lerp(oldzoom,oldzoom*0.9,timer)
+	if (zoommult * 1.01 < 1):
+		zoommult *= 1.01
 
 func platformLength(newLength:int)->void:
 	platform.redraw = true

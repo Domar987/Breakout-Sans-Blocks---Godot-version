@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ne8s0ci4yu2p"
-path="res://.godot/imported/balllight.png-31bc38d13a07b661f31a2c8fc8ea6739.ctex"
+uid="uid://bs2yc102jotkt"
+path="res://.godot/imported/balldark.png-d85f384927d919fc9392699e327065d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/balllight.png"
-dest_files=["res://.godot/imported/balllight.png-31bc38d13a07b661f31a2c8fc8ea6739.ctex"]
+source_file="res://Sprites/Player/balldark.png"
+dest_files=["res://.godot/imported/balldark.png-d85f384927d919fc9392699e327065d0.ctex"]
 
 [params]
 

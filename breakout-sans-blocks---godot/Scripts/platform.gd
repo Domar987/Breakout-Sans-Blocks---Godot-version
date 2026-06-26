@@ -5,9 +5,9 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 #@export var color1 = Color()
 #@export var color2 = Color()
-var starttex:Texture2D = load("res://Sprites/platformstart.png")
-var segtex:Texture2D = load("res://Sprites/platformsegment.png")
-var endtex:Texture2D = load("res://Sprites/platformend.png")
+var starttex:Texture2D = load("res://Sprites/Player/platformstart.png")
+var segtex:Texture2D = load("res://Sprites/Player/platformsegment.png")
+var endtex:Texture2D = load("res://Sprites/Player/platformend.png")
 
 var redraw:bool = false
 var length = 100

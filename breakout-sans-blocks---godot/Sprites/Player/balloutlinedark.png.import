@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5mk1c84wphlm"
-path="res://.godot/imported/bgtunnelbig.png-80666bcacb814075de9f41d2121e9aea.ctex"
+uid="uid://rvhrhupc0ewm"
+path="res://.godot/imported/balloutlinedark.png-a810e2e66ab816523bff16eb8310b61d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bgtunnelbig.png"
-dest_files=["res://.godot/imported/bgtunnelbig.png-80666bcacb814075de9f41d2121e9aea.ctex"]
+source_file="res://Sprites/Player/balloutlinedark.png"
+dest_files=["res://.godot/imported/balloutlinedark.png-a810e2e66ab816523bff16eb8310b61d.ctex"]
 
 [params]
 

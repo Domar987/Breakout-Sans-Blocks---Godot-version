@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do7qqdrrqd635"
-path="res://.godot/imported/bgpipesmall.png-2c22c0b38c644d16fd0f0c5ddb45556e.ctex"
+uid="uid://cq480qba3lg1k"
+path="res://.godot/imported/bgbricks1.png-825eefa5a216ff07067ea5fa86962fba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bgpipesmall.png"
-dest_files=["res://.godot/imported/bgpipesmall.png-2c22c0b38c644d16fd0f0c5ddb45556e.ctex"]
+source_file="res://Sprites/Background/bgbricks1.png"
+dest_files=["res://.godot/imported/bgbricks1.png-825eefa5a216ff07067ea5fa86962fba.ctex"]
 
 [params]
 

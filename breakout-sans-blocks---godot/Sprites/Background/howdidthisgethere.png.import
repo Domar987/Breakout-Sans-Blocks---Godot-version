@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs2yc102jotkt"
-path="res://.godot/imported/balldark.png-0bc92033d2947151c222fa425ccaca98.ctex"
+uid="uid://d18ec455cxhj"
+path="res://.godot/imported/howdidthisgethere.png-c9d8591e645e6679f02384f774e9a690.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/balldark.png"
-dest_files=["res://.godot/imported/balldark.png-0bc92033d2947151c222fa425ccaca98.ctex"]
+source_file="res://Sprites/Background/howdidthisgethere.png"
+dest_files=["res://.godot/imported/howdidthisgethere.png-c9d8591e645e6679f02384f774e9a690.ctex"]
 
 [params]
 

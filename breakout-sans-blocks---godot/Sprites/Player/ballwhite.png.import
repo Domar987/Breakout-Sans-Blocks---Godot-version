@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvcufrv0j7v6k"
-path="res://.godot/imported/bgbricks5.png-c3aa37ab469f1ceecfe126864f58da8b.ctex"
+uid="uid://dmpc3svpwv3mm"
+path="res://.godot/imported/ballwhite.png-2e63a21c3db4746ddc1453e56414eb53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bgbricks5.png"
-dest_files=["res://.godot/imported/bgbricks5.png-c3aa37ab469f1ceecfe126864f58da8b.ctex"]
+source_file="res://Sprites/Player/ballwhite.png"
+dest_files=["res://.godot/imported/ballwhite.png-2e63a21c3db4746ddc1453e56414eb53.ctex"]
 
 [params]
 

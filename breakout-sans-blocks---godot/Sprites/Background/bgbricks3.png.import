@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rvhrhupc0ewm"
-path="res://.godot/imported/balloutlinedark.png-3c04f5ac634771be7adb11c855b790ee.ctex"
+uid="uid://d256oipmdoj1f"
+path="res://.godot/imported/bgbricks3.png-600f000386be1977566caacbe3f3ff60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/balloutlinedark.png"
-dest_files=["res://.godot/imported/balloutlinedark.png-3c04f5ac634771be7adb11c855b790ee.ctex"]
+source_file="res://Sprites/Background/bgbricks3.png"
+dest_files=["res://.godot/imported/bgbricks3.png-600f000386be1977566caacbe3f3ff60.ctex"]
 
 [params]
 

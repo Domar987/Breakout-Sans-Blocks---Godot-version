@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4gtj72sovvl"
-path="res://.godot/imported/bgtunnelsmall.png-c014a958cc2e8b7b189e8bde36acd4dc.ctex"
+uid="uid://bxyjnpodh4xkw"
+path="res://.godot/imported/platformsegment.png-67e188ac1402158df577ff9b0b1bf518.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bgtunnelsmall.png"
-dest_files=["res://.godot/imported/bgtunnelsmall.png-c014a958cc2e8b7b189e8bde36acd4dc.ctex"]
+source_file="res://Sprites/Player/platformsegment.png"
+dest_files=["res://.godot/imported/platformsegment.png-67e188ac1402158df577ff9b0b1bf518.ctex"]
 
 [params]
 
