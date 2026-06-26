@@ -1,3 +1,4 @@
+<pre>
 A stupid, stupid game where you will be able to kill stuff with a bouncing ball. Work in progress, and will stay that way for a long time
 
 
@@ -63,3 +64,4 @@ A self insert, wow! You can kill me in this game.
 
 Spamton NEO - ???:
 Might cause copyright problems. Really big, really powerful superboss.
+</pre>
