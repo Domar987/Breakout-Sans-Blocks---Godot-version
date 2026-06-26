@@ -106,6 +106,8 @@ func _physics_process(delta: float) -> void:
 			queue_redraw()
 		else:
 			drawtrans = false
+	
+	$Label.text = str(startY) + "\n" + str(yvalue)
 
 func levelChange(startY:float)->void:
 	self.startY = startY
@@ -119,7 +121,7 @@ func _draw() -> void:
 		firstdraw = false
 	else:
 		rect1 = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,-2*y))
-		rect2 = Rect2(Vector2(x,y), Vector2(-2*x, -2*y - (startY-yvalue)))
+		rect2 = Rect2(Vector2(x,3 * y - (startY-yvalue)), Vector2(-2*x,-2*y))
 
 		draw_rect(rect1,Color(bgcolors[level-1][2]))
 		draw_rect(rect2,Color(bgcolors[level][2]))

@@ -104,7 +104,7 @@ func healthChange(dmg:int)->void:
 
 func cameraZoom()->void:
 	var tween = create_tween()
-	var tmp = zoom * 0.9
+	var tmp = zoom * 1.0
 	tween.tween_property(self, "zoom", tmp, 1.0)
 	#tween.tween_property(camera,"zoom",Vector2(zoom,zoom),1.0)
 	#var timer = 0
