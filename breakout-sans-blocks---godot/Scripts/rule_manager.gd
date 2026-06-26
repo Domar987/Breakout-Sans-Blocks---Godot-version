@@ -83,10 +83,10 @@ func _process(delta: float) -> void:
 func difficultyChange()->void:
 	cameraZoom()
 	if difficulty % 3 == 0:
-		platformLength(platform.length * 0.8)
-	if difficulty % 5 == 0:
 		cameraRotate()
 		ySpeedIncrease()
+	if difficulty % 5 == 0:
+		platformLength(platform.length * 0.8)
 
 func healthChange(dmg:int)->void:
 	heartGenerator.generateHearts(health)

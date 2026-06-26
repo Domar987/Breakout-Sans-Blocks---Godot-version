@@ -6,9 +6,14 @@ var bgsprites = ["bricks1","bricks2","bricks3","bricks4","bricks5",
 var parent
 var fromTop:bool
 
+var first = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	area_entered.connect(_on_area_entered)
+	#print("Summoned")
+	if first:
+		area_entered.connect(_on_area_entered)
+		first = false
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	if fromTop:
@@ -45,5 +50,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is BackgroundItem:
-		parent.shootProjectile(true)
-		queue_free()
+		call_deferred("_ready")
