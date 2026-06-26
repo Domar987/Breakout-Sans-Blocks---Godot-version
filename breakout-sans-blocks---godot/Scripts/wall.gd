@@ -26,7 +26,7 @@ func _process(_delta: float) -> void:
 	$CollisionShape2D1.shape = colShape1
 	$CollisionShape2D2.shape = colShape2
 	if oldy != background.yvalue:
-		currentcolors = bgcolors[min(int((max(0,background.yvalue-1000))/(1000)),len(bgcolors)-1)]
+		currentcolors = bgcolors[background.level]
 		lefttexture[0] = Animator.new().applyColor("res://Sprites/wallleft.png",currentcolors)
 		righttexture[0] = Animator.new().applyColor("res://Sprites/wallright.png",currentcolors)
 	super(_delta)

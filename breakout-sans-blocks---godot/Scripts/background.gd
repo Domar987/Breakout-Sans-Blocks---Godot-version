@@ -4,7 +4,7 @@ extends Sprite2D
 #var timer:float = 36.0
 #var yvalue:float = 0.0
 #@onready var RuleManager = $/root/Ingame/RuleManager
-#var projectilesource:PackedScene
+var projectilesource:PackedScene
 #
 #
 #var bgfile = FileAccess.get_file_as_string("res://Data/bg_colors.json")
@@ -13,15 +13,16 @@ extends Sprite2D
 #var currentcolors:Array
 #
 ## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
+func _ready() -> void:
+	currentcolors = bgcolors[level]
 	#grad.gradient = Gradient.new()
 	#grad.gradient.offsets = texture.gradient.offsets
 	#grad.gradient.colors = texture.gradient.colors
 	#texture.gradient = Gradient.new()
 	#texture.gradient.interpolation_mode = 2
-	#projectilesource = preload("res://Objects/BackgroundItem.tscn")
-	#for i in range(0,randi_range(3,8)):
-		#shootProjectile(false)
+	projectilesource = preload("res://Objects/BackgroundItem.tscn")
+	for i in range(0,randi_range(3,8)):
+		shootProjectile(false)
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _physics_process(delta: float) -> void:
@@ -66,16 +67,18 @@ extends Sprite2D
 	#gr.colors = colors
 	##gr.interpolation_mode = Gradient.GRADIENT_INTERPOLATE_CUBIC
 	#return gr
-#
-#func shootProjectile(fromTop:bool)->void:
-	#var projectile = projectilesource.instantiate()
-	#projectile.fromTop = fromTop
-	#projectile.scale = Vector2.ONE
-	#projectile.speed = RuleManager.ySpeed
-	#projectile.parent = self
-	#add_sibling.call_deferred(projectile)
+
+func shootProjectile(fromTop:bool)->void:
+	var projectile = projectilesource.instantiate()
+	projectile.fromTop = fromTop
+	projectile.scale = Vector2.ONE
+	projectile.speed = RuleManager.ySpeed
+	projectile.parent = self
+	add_sibling.call_deferred(projectile)
 
 @onready var RuleManager = $/root/Ingame/RuleManager
+
+var timer:float = 36.0
 
 var firstdraw:bool = true
 
@@ -106,6 +109,12 @@ func _physics_process(delta: float) -> void:
 			level = i
 			levelChange(yvalue)
 	
+	timer -= RuleManager.ySpeed * delta
+	if timer <= 0:
+		timer = 36.0
+		shootProjectile(true)
+		
+	
 	if drawtrans:
 		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
 			queue_redraw()
@@ -119,6 +128,7 @@ func _physics_process(delta: float) -> void:
 	$Label.text = str(startY) + "\n" + str(yvalue)
 
 func levelChange(startY:float)->void:
+	currentcolors = bgcolors[level]
 	self.startY = startY + transtexture.get_height()
 	drawtrans = true
 
