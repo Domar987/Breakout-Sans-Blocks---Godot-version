@@ -125,7 +125,7 @@ func _physics_process(delta: float) -> void:
 		queue_redraw()
 	oldzoom = RuleManager.zoom
 	
-	$Label.text = str(startY) + "\n" + str(yvalue)
+	#$Label.text = str(startY) + "\n" + str(yvalue)
 
 func levelChange(startY:float)->void:
 	currentcolors = bgcolors[level]

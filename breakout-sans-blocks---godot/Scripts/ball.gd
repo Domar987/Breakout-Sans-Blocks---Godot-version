@@ -19,6 +19,8 @@ var hitcounter:int = 0
 
 var frozen:bool = false
 
+var canslam:bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	lightcolor = Color(RuleManager.activecolor["lightcolor"])
@@ -43,6 +45,10 @@ func _physics_process(delta: float) -> void:
 	elif not frozen:
 		timer -= 1
 		velocity.y += delta * gravity
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
+			if velocity.y < 0:
+				velocity.y = 0
+			velocity.y += delta * gravity
 		if position.x > 960/(2*RuleManager.zoom):
 			if RuleManager.walls:
 				#position = Vector2.ZERO
@@ -85,6 +91,7 @@ func fall(duration:float,damaged:bool)->void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area == platform:
+		canslam = false
 		if position.y > area.position.y:
 			pass #ek puan/para
 		hitcounter += 1
@@ -108,3 +115,8 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 	finalVec.x = magn * cos(deg_to_rad(dir))
 	finalVec.y = magn * sin(deg_to_rad(dir))
 	return finalVec
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area == platform:
+		create_tween().tween_property(self,"canslam",true,0.1)
