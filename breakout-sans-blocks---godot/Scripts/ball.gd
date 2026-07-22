@@ -54,8 +54,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y += delta * gravity
 		if not canslam:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				print((platform.position.x - platcontactpos) * ((1.01 ** abs(platcontactposlerp))))
-				position.x = (platform.position.x - platcontactpos) * ((1.01 ** abs(platcontactposlerp)))
+				print((platform.position.x - platcontactpos) * ((1.001 ** abs(platform.position.x - platcontactposlerp))))
+				position.x = (platform.position.x - platcontactpos) * ((1.001 ** abs(platform.position.x - platcontactposlerp)))
 				position.y = platform.position.y - 20
 			else:
 				velocity = get_launch(position,platform.position,platform.length,45)
