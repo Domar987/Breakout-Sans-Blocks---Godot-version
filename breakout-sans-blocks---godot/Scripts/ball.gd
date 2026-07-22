@@ -56,10 +56,11 @@ func _physics_process(delta: float) -> void:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				mouseforce += delta * Input.get_last_mouse_velocity().x
 				print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
-				position.x = (platform.position.x - platcontactpos) + delta * mouseforce
+				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
 				position.y = platform.position.y - 20
-				mouseforce -= sign(mouseforce) * 9.81
+				mouseforce -= delta * sign(mouseforce) * 9.81
 			else:
+				canslam = true
 				velocity = get_launch(position,platform.position,platform.length,45)
 		if position.x > 960/(2*RuleManager.zoom):
 			if RuleManager.walls:
@@ -102,7 +103,7 @@ func fall(duration:float,damaged:bool)->void:
 	tween.tween_property(self,"frozen",false,0.0)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == platform:
+	if area == platform and canslam:
 		canslam = false
 		if position.y > area.position.y:
 			pass #ek puan/para
@@ -133,6 +134,6 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area == platform:
+	if area == platform and platform.position.x - platform.oldpos.x < platform.length:
 		canslam = true
 		#create_tween().tween_property(self,"canslam",true,0.1)

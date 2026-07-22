@@ -21,6 +21,7 @@ var rectShape = RectangleShape2D.new()
 
 var mousepos:float
 var hurtposition:float
+var oldpos:Vector2
 
 const wallwidth = 12
 
@@ -50,6 +51,8 @@ func _physics_process(delta: float) -> void:
 		visible = false
 		set_collision_layer_value(1,false)
 		set_collision_mask_value(1,false)
+	
+	oldpos = position
 	
 func _draw():
 	#draw_rect(Rect2(Vector2(-length/2,-2),Vector2(length,4)),color)
