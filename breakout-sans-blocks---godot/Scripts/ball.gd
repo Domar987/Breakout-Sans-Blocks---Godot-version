@@ -14,12 +14,13 @@ var timer:int = 0
 @onready var wall = $/root/Ingame/Wall
 
 var velocity:Vector2 = Vector2.ZERO
-var ballgravity:float = 9.81
+#var ballgravity:float = 9.81
 var hitcounter:int = 0
 
 var frozen:bool = false
 
 var canslam:bool = true
+var platcontactpos:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,11 +45,18 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	elif not frozen:
 		timer -= 1
-		velocity.y += delta * gravity
+		if canslam:
+			velocity.y += delta * gravity
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
 			if velocity.y < 50:
 				velocity.y = 50
 			velocity.y += delta * gravity
+		if not canslam:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				position.x = platform.position.x - platcontactpos
+				position.y = platform.position.y - 20
+			else:
+				velocity = get_launch(position,platform.position,platform.length,45)
 		if position.x > 960/(2*RuleManager.zoom):
 			if RuleManager.walls:
 				#position = Vector2.ZERO
@@ -100,7 +108,10 @@ func _on_area_entered(area: Area2D) -> void:
 		#velocity.y = -(5.0 + RuleManager.difficulty)
 		#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
 		#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
-		velocity = get_launch(position,area.position,area.length,45)
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			velocity = get_launch(position,platform.position,platform.length,45)
+		else:
+			platcontactpos = platform.position.x
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
