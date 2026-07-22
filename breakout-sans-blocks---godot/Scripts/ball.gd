@@ -111,7 +111,7 @@ func _on_area_entered(area: Area2D) -> void:
 		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			velocity = get_launch(position,platform.position,platform.length,45)
 		else:
-			platcontactpos = platform.position.x
+			platcontactpos = platform.position.x - position.x
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
