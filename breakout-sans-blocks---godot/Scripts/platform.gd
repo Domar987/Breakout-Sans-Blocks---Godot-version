@@ -22,6 +22,7 @@ var rectShape = RectangleShape2D.new()
 var mousepos:float
 var hurtposition:float
 var oldpos:Vector2
+var positiondelta:Vector2
 
 const wallwidth = 12
 
@@ -45,6 +46,8 @@ func _physics_process(delta: float) -> void:
 		mousepos = -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth
 	y = 540/(2*RuleManager.zoom) - bottomMargin
 	position = Vector2(mousepos,y) + Vector2(hurtposition,0)
+	positiondelta = position - oldpos
+	#print(positiondelta)
 	if redraw:
 		queue_redraw()
 	if length == 0:
