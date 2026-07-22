@@ -21,7 +21,6 @@ var frozen:bool = false
 
 var canslam:bool = true
 var platcontactpos:float
-var platcontactposlerp:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,8 +53,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y += delta * gravity
 		if not canslam:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				print((platform.position.x - platcontactpos) * ((1.001 ** abs(platform.position.x - platcontactposlerp))))
-				position.x = (platform.position.x - platcontactpos) * ((1.001 ** abs(platform.position.x - platcontactposlerp)))
+				position.x = (platform.position.x - platcontactpos) + delta * Input.get_last_mouse_velocity().x
 				position.y = platform.position.y - 20
 			else:
 				velocity = get_launch(position,platform.position,platform.length,45)
@@ -114,7 +112,6 @@ func _on_area_entered(area: Area2D) -> void:
 			velocity = get_launch(position,platform.position,platform.length,45)
 		else:
 			platcontactpos = platform.position.x - position.x
-			platcontactposlerp = platform.position.x
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
