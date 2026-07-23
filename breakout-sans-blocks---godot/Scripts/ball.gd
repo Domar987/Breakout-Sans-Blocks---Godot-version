@@ -55,12 +55,13 @@ func _physics_process(delta: float) -> void:
 			velocity.y += delta * gravity
 		if not canslam:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				mouseforce += delta * Input.get_last_mouse_velocity().x
+				#mouseforce += delta * Input.get_last_mouse_velocity().x
 				mouseforce += platform.positiondelta.x
 				#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
 				if abs(position.x) < 960/(2*RuleManager.zoom):
 					position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
-				position.y = platform.position.y - 20
+				velocity.y = 0
+				position.y = platform.position.y - 9.9
 				mouseforce -= delta * sign(mouseforce) * 9.81
 			else:
 				velocity = get_launch(position,platform.position,platform.length,45)
@@ -137,6 +138,6 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area == platform and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
+	if area == platform:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
 		canslam = true
 		#create_tween().tween_property(self,"canslam",true,0.1)
