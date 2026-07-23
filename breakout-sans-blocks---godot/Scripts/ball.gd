@@ -58,7 +58,8 @@ func _physics_process(delta: float) -> void:
 				mouseforce += delta * Input.get_last_mouse_velocity().x
 				mouseforce += platform.positiondelta.x
 				#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
-				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
+				if abs(position.x) < 960/(2*RuleManager.zoom):
+					position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
 				position.y = platform.position.y - 20
 				mouseforce -= delta * sign(mouseforce) * 9.81
 			else:
