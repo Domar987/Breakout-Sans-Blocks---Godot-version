@@ -41,6 +41,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	$Label.text = str(canslam)
 	if RuleManager.ballPosCheat:
 		position = get_global_mouse_position()
 		velocity = Vector2.ZERO
@@ -55,6 +56,7 @@ func _physics_process(delta: float) -> void:
 		if not canslam:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				mouseforce += delta * Input.get_last_mouse_velocity().x
+				mouseforce += platform.positiondelta.x
 				#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
 				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
 				position.y = platform.position.y - 20
@@ -102,20 +104,21 @@ func fall(duration:float,damaged:bool)->void:
 	tween.tween_property(self,"frozen",false,0.0)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == platform and canslam:
-		canslam = false
-		if position.y > area.position.y:
-			pass #ek puan/para
-		hitcounter += 1
-		if hitcounter % 10 == 0:
-			RuleManager.difficulty += 1
-		#velocity.y = -(5.0 + RuleManager.difficulty)
-		#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
-		#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
-		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			velocity = get_launch(position,platform.position,platform.length,45)
-		else:
-			platcontactpos = platform.position.x - position.x
+	if area == platform:
+		if canslam:
+			canslam = false
+			if position.y > area.position.y:
+				pass #ek puan/para
+			hitcounter += 1
+			if hitcounter % 10 == 0:
+				RuleManager.difficulty += 1
+			#velocity.y = -(5.0 + RuleManager.difficulty)
+			#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
+			#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
+			if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				velocity = get_launch(position,platform.position,platform.length,45)
+			else:
+				platcontactpos = platform.position.x - position.x
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
@@ -133,6 +136,6 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area == platform and canslam == false and abs(platform.positiondelta.x) < platform.length:
+	if area == platform and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
 		canslam = true
 		#create_tween().tween_property(self,"canslam",true,0.1)
