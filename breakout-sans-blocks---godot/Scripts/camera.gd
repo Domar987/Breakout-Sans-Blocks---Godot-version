@@ -15,12 +15,3 @@ func _process(delta: float) -> void:
 	else:
 		shakeAmount = 0
 		position = Vector2.ZERO
-
-func addShake(amount:float, falloffdelay:float, fallofftime:float) -> void:
-	shakeAmount += amount
-	await get_tree().create_timer(falloffdelay).timeout
-	var decreaseAmount = amount / (fallofftime * 10)
-	while fallofftime > 0:
-		await get_tree().create_timer(0.1).timeout
-		shakeAmount -= decreaseAmount
-		fallofftime -= 0.1

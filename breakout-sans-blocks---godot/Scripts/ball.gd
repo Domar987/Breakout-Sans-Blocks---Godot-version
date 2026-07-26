@@ -123,6 +123,7 @@ func _on_area_entered(area: Area2D) -> void:
 				velocity = get_launch(position,platform.position,platform.length,45)
 			else:
 				$Slam.stop()
+				RuleManager.cameraAddShake(0.75,0.0,1.0)
 				platcontactpos = platform.position.x - position.x
 	elif area == wall and timer <= 0:
 		timer = 1

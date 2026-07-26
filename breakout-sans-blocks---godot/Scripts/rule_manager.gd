@@ -116,6 +116,22 @@ func cameraZoom()->void:
 	if (zoommult * 1.01 < 1):
 		zoommult *= 1.01
 
+func cameraAddShake(amount:float, falloffdelay:float, fallofftime:float) -> void:
+	camera.shakeAmount += amount
+	await get_tree().create_timer(falloffdelay).timeout
+	var decreaseAmount = amount / (fallofftime * 10)
+	while fallofftime > 0:
+		await get_tree().create_timer(0.1).timeout
+		camera.shakeAmount -= decreaseAmount
+		fallofftime -= 0.1
+
+func cameraRotate() -> void:
+	#var tween = create_tween()
+	#var tmp = rotate + 1.0
+	#tween.tween_property(self, "rotate", tmp, 1.0)
+	pass
+
+
 func platformLength(newLength:int)->void:
 	platform.redraw = true
 	var tween = create_tween()
@@ -125,11 +141,6 @@ func platformLength(newLength:int)->void:
 func platformLengthEnd()->void:
 	platform.redraw = false
 
-func cameraRotate() -> void:
-	#var tween = create_tween()
-	#var tmp = rotate + 1.0
-	#tween.tween_property(self, "rotate", tmp, 1.0)
-	pass
 
 func ySpeedIncrease()->void:
 	ySpeed += 12
