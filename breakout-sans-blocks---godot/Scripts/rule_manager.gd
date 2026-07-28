@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 		maxHealth = 100
 		health = 100
 	if Input.is_action_just_pressed("Cheat5"):
-		var img = get_viewport().get_texture().get_image()
+		shatterScreen()
 	
 	
 	if oldDifficulty != difficulty:
@@ -151,3 +151,17 @@ func platformLengthEnd()->void:
 
 func ySpeedIncrease()->void:
 	ySpeed += 12
+
+func shatterScreen()->void:
+	var screenshot = get_viewport().get_texture().get_image()
+	var cracktemplates = []
+	for i in range(1,27):
+		cracktemplates.append(get_node("/root/Ingame/Crack"+str(i)))
+	for crack:Sprite2D in cracktemplates:
+		#push_warning(crack.name)
+		var cracktex = crack.texture.get_image()
+		var corner:Vector2 = crack.position - (Vector2(cracktex.get_height(),cracktex.get_width())/2)
+		for y in cracktex.get_height():
+			for x in cracktex.get_width():
+				if abs(corner.x + x) < 960/(2*zoom) and abs(corner.y + y) < 540/(2*zoom):
+					cracktex.set_pixel(x,y,screenshot.get_pixelv(corner + Vector2(x,y)  + (Vector2(screenshot.get_width(),screenshot.get_height())/2) ))
