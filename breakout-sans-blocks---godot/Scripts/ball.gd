@@ -48,13 +48,13 @@ func _physics_process(delta: float) -> void:
 	elif not frozen:
 		timer -= 1
 		if canslam:
-			velocity.y += delta * gravity
+			velocity.y += delta * get_gravity()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
 			if not $Slam.playing:
 				$Slam.play()
 			if velocity.y < 50:
 				velocity.y = 50
-			velocity.y += delta * gravity
+			velocity.y += delta * get_gravity()
 		if not canslam:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				#mouseforce += delta * Input.get_last_mouse_velocity().x
@@ -135,7 +135,7 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 	lerpvalue += 1
 	lerpvalue /= 2
 	var dir = lerpf(-dirLimit,dirLimit, lerpvalue) + 270
-	var magn = sqrt(2*gravity*(platpos.y + 540/(2*RuleManager.zoom)))
+	var magn = sqrt(2*get_gravity()*(platpos.y + 540/(2*RuleManager.zoom)))
 	var finalVec:Vector2
 	finalVec.x = magn * cos(deg_to_rad(dir))
 	finalVec.y = magn * sin(deg_to_rad(dir))

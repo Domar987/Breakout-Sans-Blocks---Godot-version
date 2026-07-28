@@ -153,8 +153,10 @@ func ySpeedIncrease()->void:
 	ySpeed += 12
 
 func shatterScreen()->void:
+	get_tree().paused = true
 	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
+	var crackmovementscript = load("res://Scripts/crackmovement.gd")
 	#
 	#print(screenshot.get_width(),screenshot.get_height())
 	#screenshot.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
@@ -170,9 +172,9 @@ func shatterScreen()->void:
 	for crack:Sprite2D in cracktemplates:
 		#push_warning(crack.name)
 		var cracktex:Image = crack.texture.get_image()
-		print(crack.name,cracktex.get_size())
+		#print(crack.name,cracktex.get_size())
 		cracktex.resize(cracktex.get_width()*zoom,cracktex.get_height()*zoom,Image.INTERPOLATE_NEAREST)
-		print(crack.name,cracktex.get_size())
+		#print(crack.name,cracktex.get_size())
 		
 		#cracktex.resize(screenshot.get_width()/zoom,screenshot.get_height()/zoom,Image.INTERPOLATE_NEAREST)
 		var corner:Vector2 = crack.global_position - (Vector2(cracktex.get_width(),cracktex.get_height())/2)
@@ -195,5 +197,9 @@ func shatterScreen()->void:
 		crackclone.name = crack.name + "Clone"
 		crackclone.texture = ImageTexture.create_from_image(cracktex)
 		crackclone.z_index = 10
-		crackclone.modulate = Color(1.5,1.5,1.5, 1.0)
+		crackclone.set_script(crackmovementscript)
+		crackclone.zoom = zoom
+		#crackclone.modulate = Color(1.5,1.5,1.5, 1.0)
 		add_sibling(crackclone)
+	
+	get_tree().paused = false
