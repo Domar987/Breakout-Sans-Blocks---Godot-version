@@ -154,7 +154,16 @@ func ySpeedIncrease()->void:
 
 func shatterScreen()->void:
 	var screenshot = get_viewport().get_texture().get_image()
+	screenshot.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
 	var cracktemplates = []
+	#
+	#var screenshottest = Sprite2D.new()
+	#screenshottest.texture = ImageTexture.create_from_image(screenshot)
+	#screenshottest.position = Vector2.ZERO
+	#screenshottest.modulate = Color(1.5,1.5,1.5, 1.0)
+	#screenshottest.z_index = 10
+	#add_sibling(screenshottest)
+	
 	for i in range(1,27):
 		cracktemplates.append(get_node("/root/Ingame/Crack"+str(i)))
 	for crack:Sprite2D in cracktemplates:
@@ -163,8 +172,9 @@ func shatterScreen()->void:
 		var corner:Vector2 = crack.position - (Vector2(cracktex.get_height(),cracktex.get_width())/2)
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
-				if abs(corner.x + x) < 960/(2*zoom) and abs(corner.y + y) < 540/(2*zoom):
-					cracktex.set_pixel(x,y,screenshot.get_pixelv(corner + Vector2(x,y)  + (Vector2(screenshot.get_width(),screenshot.get_height())/2) ))
+				if abs(corner.x + x) < 960/(2*zoom) and abs(corner.y + y) < 540/(2*zoom) and cracktex.get_pixel(x,y) == Color.BLACK:
+					var screenshotpixel:Vector2 = corner + Vector2(x,y) + (Vector2(screenshot.get_width(),screenshot.get_height())/2)
+					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
 				if cracktex.get_pixel(x,y) == Color.BLACK:
