@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 	ui.size = Vector2(960,540)/(zoom * ui.scale)
 	ui.position = -Vector2(960,540)/(2*zoom)
 	
+	
 	if Input.is_action_just_pressed("Cheat1"):
 		difficulty += 1
 	if Input.is_action_just_pressed("Cheat2"):
@@ -61,6 +62,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Cheat4"):
 		maxHealth = 100
 		health = 100
+	if Input.is_action_just_pressed("Cheat5"):
+		var img = get_viewport().get_texture().get_image()
+	
+	
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health:
@@ -115,6 +120,8 @@ func cameraZoom()->void:
 	#	camera.zoom = lerp(oldzoom,oldzoom*0.9,timer)
 	if (zoommult * 1.01 < 1):
 		zoommult *= 1.01
+	else:
+		zoommult = (zoommult + 1)/2
 
 func cameraAddShake(amount:float, falloffdelay:float, fallofftime:float) -> void:
 	camera.shakeAmount += amount

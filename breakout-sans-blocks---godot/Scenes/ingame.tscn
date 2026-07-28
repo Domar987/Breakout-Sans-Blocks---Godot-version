@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=43 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -15,6 +15,33 @@
 [ext_resource type="Script" uid="uid://bt3vedwigwro7" path="res://Scripts/heartGenerator.gd" id="13_7ltoa"]
 [ext_resource type="PackedScene" uid="uid://ct3duf60c3y06" path="res://Objects/AlienUfo.tscn" id="14_5mqjs"]
 [ext_resource type="AudioStream" uid="uid://b3ui2qkw1wco6" path="res://Audio/Music/arkanoid.wav" id="15_3jpny"]
+[ext_resource type="Texture2D" uid="uid://d1uuta2egal1e" path="res://Sprites/Cracks/cracksfulltest.png" id="16_0rcut"]
+[ext_resource type="Texture2D" uid="uid://bv0j2vesgwfbh" path="res://Sprites/Cracks/crack1.png" id="17_v7gd0"]
+[ext_resource type="Texture2D" uid="uid://d2dw554407sre" path="res://Sprites/Cracks/crack2.png" id="18_gyvwt"]
+[ext_resource type="Texture2D" uid="uid://v06by6vgicv0" path="res://Sprites/Cracks/crack3.png" id="19_hv85q"]
+[ext_resource type="Texture2D" uid="uid://8pag0jcwmpax" path="res://Sprites/Cracks/crack4.png" id="20_1l64l"]
+[ext_resource type="Texture2D" uid="uid://tdbjrclhjyou" path="res://Sprites/Cracks/crack5.png" id="21_2gt6l"]
+[ext_resource type="Texture2D" uid="uid://f1iiv2sv14on" path="res://Sprites/Cracks/crack6.png" id="22_8lsqb"]
+[ext_resource type="Texture2D" uid="uid://tmllqiwbqc4r" path="res://Sprites/Cracks/crack7.png" id="23_yno25"]
+[ext_resource type="Texture2D" uid="uid://5l5rm2nhvo2s" path="res://Sprites/Cracks/crack8.png" id="24_pxlip"]
+[ext_resource type="Texture2D" uid="uid://cxp746jvnu6sl" path="res://Sprites/Cracks/crack9.png" id="25_y6c2q"]
+[ext_resource type="Texture2D" uid="uid://djpkpyjhlu83j" path="res://Sprites/Cracks/crack10.png" id="26_jnkk0"]
+[ext_resource type="Texture2D" uid="uid://brt83sdotgbs4" path="res://Sprites/Cracks/crack11.png" id="27_xl477"]
+[ext_resource type="Texture2D" uid="uid://brpfp2823snl0" path="res://Sprites/Cracks/crack12.png" id="28_xrpxl"]
+[ext_resource type="Texture2D" uid="uid://8cjoenrjhi6m" path="res://Sprites/Cracks/crack13.png" id="29_ke6py"]
+[ext_resource type="Texture2D" uid="uid://cjxxl87yfbfh0" path="res://Sprites/Cracks/crack14.png" id="30_rsdv5"]
+[ext_resource type="Texture2D" uid="uid://ci6jk0b0q0enj" path="res://Sprites/Cracks/crack15.png" id="31_awb60"]
+[ext_resource type="Texture2D" uid="uid://bw3eq62ywhkdn" path="res://Sprites/Cracks/crack16.png" id="32_cy62p"]
+[ext_resource type="Texture2D" uid="uid://d16dvgya7k7xq" path="res://Sprites/Cracks/crack17.png" id="33_da58m"]
+[ext_resource type="Texture2D" uid="uid://ygjojoio6j86" path="res://Sprites/Cracks/crack18.png" id="34_lxyx1"]
+[ext_resource type="Texture2D" uid="uid://c50llaj4xahyi" path="res://Sprites/Cracks/crack19.png" id="35_pijtn"]
+[ext_resource type="Texture2D" uid="uid://bygyndsdcnq37" path="res://Sprites/Cracks/crack20.png" id="36_iibis"]
+[ext_resource type="Texture2D" uid="uid://ddtuovcd5unhl" path="res://Sprites/Cracks/crack21.png" id="37_spvx0"]
+[ext_resource type="Texture2D" uid="uid://c55tnwthx2l8o" path="res://Sprites/Cracks/crack22.png" id="38_ckr2t"]
+[ext_resource type="Texture2D" uid="uid://bly0xvuodpqiq" path="res://Sprites/Cracks/crack23.png" id="39_mbnig"]
+[ext_resource type="Texture2D" uid="uid://c2iuebcbjvc8j" path="res://Sprites/Cracks/crack24.png" id="40_23uwq"]
+[ext_resource type="Texture2D" uid="uid://cj6doi43hn8av" path="res://Sprites/Cracks/crack25.png" id="41_5uago"]
+[ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 
 [node name="Ingame" type="Node"]
 
@@ -192,3 +219,112 @@ grow_vertical = 0
 stream = ExtResource("15_3jpny")
 pitch_scale = 0.85
 autoplay = true
+
+[node name="Cracksfulltest" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.25)
+texture = ExtResource("16_0rcut")
+
+[node name="Crack1" type="Sprite2D" parent="."]
+position = Vector2(-226.5, -103)
+texture = ExtResource("17_v7gd0")
+
+[node name="Crack2" type="Sprite2D" parent="."]
+position = Vector2(-214.5, -95)
+texture = ExtResource("18_gyvwt")
+
+[node name="Crack3" type="Sprite2D" parent="."]
+position = Vector2(-154, -138.5)
+texture = ExtResource("19_hv85q")
+
+[node name="Crack4" type="Sprite2D" parent="."]
+position = Vector2(-85.5, -121)
+texture = ExtResource("20_1l64l")
+
+[node name="Crack5" type="Sprite2D" parent="."]
+position = Vector2(-19, -151)
+texture = ExtResource("21_2gt6l")
+
+[node name="Crack6" type="Sprite2D" parent="."]
+position = Vector2(-19, -102.5)
+texture = ExtResource("22_8lsqb")
+
+[node name="Crack7" type="Sprite2D" parent="."]
+position = Vector2(50.5, -98)
+texture = ExtResource("23_yno25")
+
+[node name="Crack8" type="Sprite2D" parent="."]
+position = Vector2(141, -126.5)
+texture = ExtResource("24_pxlip")
+
+[node name="Crack9" type="Sprite2D" parent="."]
+position = Vector2(254, -137.5)
+texture = ExtResource("25_y6c2q")
+
+[node name="Crack10" type="Sprite2D" parent="."]
+position = Vector2(269, -114)
+texture = ExtResource("26_jnkk0")
+
+[node name="Crack11" type="Sprite2D" parent="."]
+position = Vector2(206, -95.5)
+texture = ExtResource("27_xl477")
+
+[node name="Crack12" type="Sprite2D" parent="."]
+position = Vector2(245.5, -53.5)
+texture = ExtResource("28_xrpxl")
+
+[node name="Crack13" type="Sprite2D" parent="."]
+position = Vector2(138, -41)
+texture = ExtResource("29_ke6py")
+
+[node name="Crack14" type="Sprite2D" parent="."]
+position = Vector2(210, -19.5)
+texture = ExtResource("30_rsdv5")
+
+[node name="Crack15" type="Sprite2D" parent="."]
+position = Vector2(196.5, 59)
+texture = ExtResource("31_awb60")
+
+[node name="Crack16" type="Sprite2D" parent="."]
+position = Vector2(240, 139.5)
+texture = ExtResource("32_cy62p")
+
+[node name="Crack17" type="Sprite2D" parent="."]
+position = Vector2(130, 95.5)
+texture = ExtResource("33_da58m")
+
+[node name="Crack18" type="Sprite2D" parent="."]
+position = Vector2(24.5, 97.5)
+texture = ExtResource("34_lxyx1")
+
+[node name="Crack19" type="Sprite2D" parent="."]
+position = Vector2(-110, 116)
+texture = ExtResource("35_pijtn")
+
+[node name="Crack20" type="Sprite2D" parent="."]
+position = Vector2(-104, 73.5)
+texture = ExtResource("36_iibis")
+
+[node name="Crack21" type="Sprite2D" parent="."]
+position = Vector2(-204.5, 86.5)
+texture = ExtResource("37_spvx0")
+
+[node name="Crack22" type="Sprite2D" parent="."]
+position = Vector2(-191, 5)
+texture = ExtResource("38_ckr2t")
+
+[node name="Crack23" type="Sprite2D" parent="."]
+position = Vector2(-73, -47)
+texture = ExtResource("39_mbnig")
+
+[node name="Crack24" type="Sprite2D" parent="."]
+position = Vector2(7.5, -23)
+texture = ExtResource("40_23uwq")
+
+[node name="Crack25" type="Sprite2D" parent="."]
+position = Vector2(72, 17)
+texture = ExtResource("41_5uago")
+
+[node name="Crack26" type="Sprite2D" parent="."]
+position = Vector2(-59, 23.5)
+texture = ExtResource("42_ur0dt")
