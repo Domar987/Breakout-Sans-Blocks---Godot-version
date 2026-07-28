@@ -159,9 +159,20 @@ func shatterScreen()->void:
 		cracktemplates.append(get_node("/root/Ingame/Crack"+str(i)))
 	for crack:Sprite2D in cracktemplates:
 		#push_warning(crack.name)
-		var cracktex = crack.texture.get_image()
+		var cracktex:Image = crack.texture.get_image()
 		var corner:Vector2 = crack.position - (Vector2(cracktex.get_height(),cracktex.get_width())/2)
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
 				if abs(corner.x + x) < 960/(2*zoom) and abs(corner.y + y) < 540/(2*zoom):
 					cracktex.set_pixel(x,y,screenshot.get_pixelv(corner + Vector2(x,y)  + (Vector2(screenshot.get_width(),screenshot.get_height())/2) ))
+		for y in cracktex.get_height():
+			for x in cracktex.get_width():
+				if cracktex.get_pixel(x,y) == Color.BLACK:
+					cracktex.set_pixel(x,y,Color.TRANSPARENT)
+		
+		var crackclone = crack.duplicate()
+		crackclone.name = crack.name + "Clone"
+		crackclone.texture = ImageTexture.create_from_image(cracktex)
+		crackclone.z_index = 10
+		crackclone.modulate = Color(1.5,1.5,1.5, 1.0)
+		add_sibling(crackclone)
