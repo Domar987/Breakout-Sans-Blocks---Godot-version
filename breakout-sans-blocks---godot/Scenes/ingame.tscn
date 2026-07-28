@@ -355,4 +355,5 @@ autoplay = true
 [node name="Cracksfulltest" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.25)
+z_index = 100
 texture = ExtResource("16_0rcut")

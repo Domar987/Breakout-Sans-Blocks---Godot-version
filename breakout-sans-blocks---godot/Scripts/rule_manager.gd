@@ -156,6 +156,8 @@ func shatterScreen()->void:
 	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
 	#
+	#print(screenshot.get_width(),screenshot.get_height())
+	#screenshot.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
 	#var screenshottest = Sprite2D.new()
 	#screenshottest.texture = ImageTexture.create_from_image(screenshot)
 	#screenshottest.position = Vector2.ZERO
@@ -168,14 +170,17 @@ func shatterScreen()->void:
 	for crack:Sprite2D in cracktemplates:
 		#push_warning(crack.name)
 		var cracktex:Image = crack.texture.get_image()
-		cracktex.resize(cracktex.get_height()*crack.get_parent().scale.x,cracktex.get_width()*crack.get_parent().scale.x,Image.INTERPOLATE_NEAREST)
-		#cracktex.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
-		var corner:Vector2 = crack.position - (Vector2(cracktex.get_height(),cracktex.get_width())/2)
+		print(crack.name,cracktex.get_size())
+		cracktex.resize(cracktex.get_width()*zoom,cracktex.get_height()*zoom,Image.INTERPOLATE_NEAREST)
+		print(crack.name,cracktex.get_size())
+		
+		#cracktex.resize(screenshot.get_width()/zoom,screenshot.get_height()/zoom,Image.INTERPOLATE_NEAREST)
+		var corner:Vector2 = crack.global_position - (Vector2(cracktex.get_width(),cracktex.get_height())/2)
 		
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
 				if abs(corner.x + x) < 960/(2) and abs(corner.y + y) < 540/(2) and cracktex.get_pixel(x,y) == Color.BLACK:
-					var screenshotpixel:Vector2 = corner + Vector2(x,y) + (Vector2(screenshot.get_width(),screenshot.get_height())/2)
+					var screenshotpixel:Vector2 = corner + Vector2(x,y) + (Vector2(960,540)/2)
 					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
 					
 		for y in cracktex.get_height():
@@ -184,7 +189,7 @@ func shatterScreen()->void:
 					cracktex.set_pixel(x,y,Color.TRANSPARENT)
 					#pass
 					
-		cracktex.resize(cracktex.get_height()/crack.get_parent().scale.x,cracktex.get_width()/crack.get_parent().scale.x,Image.INTERPOLATE_NEAREST)
+		cracktex.resize(cracktex.get_width()/zoom,cracktex.get_height()/zoom,Image.INTERPOLATE_NEAREST)
 		
 		var crackclone = crack.duplicate()
 		crackclone.name = crack.name + "Clone"
