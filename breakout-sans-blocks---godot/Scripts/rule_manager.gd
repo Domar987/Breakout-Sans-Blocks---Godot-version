@@ -171,15 +171,19 @@ func shatterScreen()->void:
 		cracktex.resize(cracktex.get_height()*crack.get_parent().scale.x,cracktex.get_width()*crack.get_parent().scale.x,Image.INTERPOLATE_NEAREST)
 		#cracktex.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
 		var corner:Vector2 = crack.position - (Vector2(cracktex.get_height(),cracktex.get_width())/2)
+		
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
-				if abs(corner.x + x) < 960/(2*zoom) and abs(corner.y + y) < 540/(2*zoom) and cracktex.get_pixel(x,y) == Color.BLACK:
+				if abs(corner.x + x) < 960/(2) and abs(corner.y + y) < 540/(2) and cracktex.get_pixel(x,y) == Color.BLACK:
 					var screenshotpixel:Vector2 = corner + Vector2(x,y) + (Vector2(screenshot.get_width(),screenshot.get_height())/2)
 					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
+					
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
 				if cracktex.get_pixel(x,y) == Color.BLACK:
 					cracktex.set_pixel(x,y,Color.TRANSPARENT)
+					#pass
+					
 		cracktex.resize(cracktex.get_height()/crack.get_parent().scale.x,cracktex.get_width()/crack.get_parent().scale.x,Image.INTERPOLATE_NEAREST)
 		
 		var crackclone = crack.duplicate()
