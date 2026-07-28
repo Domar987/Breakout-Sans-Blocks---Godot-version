@@ -173,6 +173,8 @@ func shatterScreen()->void:
 		#push_warning(crack.name)
 		var cracktex:Image = crack.texture.get_image()
 		#print(crack.name,cracktex.get_size())
+		#var screenratio = zoom * screenshot.get_size()/Vector2(960,540)
+		#cracktex.resize(cracktex.get_width()*screenratio.x,cracktex.get_height()*screenratio.y,Image.INTERPOLATE_NEAREST)
 		cracktex.resize(cracktex.get_width()*zoom,cracktex.get_height()*zoom,Image.INTERPOLATE_NEAREST)
 		#print(crack.name,cracktex.get_size())
 		
