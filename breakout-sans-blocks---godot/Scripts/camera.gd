@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 	else:
 		shakeAmount = 0
 		position = Vector2.ZERO
+	get_child(0).scale = zoom
