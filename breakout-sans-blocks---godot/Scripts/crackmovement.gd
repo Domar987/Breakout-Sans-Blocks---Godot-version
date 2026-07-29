@@ -14,10 +14,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if fall:
-		rotation += force.x * delta * delta * delta
-		velocity += force * delta
-		velocity.y += 980 * delta
-		position += velocity * delta
+		velocity += 1.25* force * delta
+		velocity.y += 1.25* 980 * delta
+		rotation += 1.25* velocity.x * delta * delta
+		position += 1.25* velocity * delta
+		scale += 1.25* Vector2(0.5*delta,-0.5*delta)
 		if position.y > 540/(2*1.6):
 			queue_free()
 	else:

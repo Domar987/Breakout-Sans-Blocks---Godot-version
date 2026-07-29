@@ -201,7 +201,7 @@ func shatterScreen()->void:
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
-		#crackclone.modulate = Color(1.5,1.5,1.5, 1.0)
+		crackclone.modulate = Color(1.25,1.25,1.25, 1.0)
 		add_sibling(crackclone)
 	
 	get_tree().paused = false

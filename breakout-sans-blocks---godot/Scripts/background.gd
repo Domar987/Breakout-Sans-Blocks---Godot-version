@@ -80,7 +80,7 @@ func shootProjectile(fromTop:bool)->void:
 
 var timer:float = 36.0
 
-var firstdraw:bool = true
+#var firstdraw:bool = true
 
 var bgfile = FileAccess.get_file_as_string("res://Data/bg_colors.json")
 var bgcolors = JSON.parse_string(bgfile)
@@ -121,11 +121,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			drawtrans = false
 	elif RuleManager.zoom != oldzoom:
-		firstdraw = true
+		#firstdraw = true
 		queue_redraw()
 	oldzoom = RuleManager.zoom
 	
-	#$Label.text = str(startY) + "\n" + str(yvalue)
+	#$Label.text = str(startY) + "\n" + str(yvalue)1
 
 func levelChange(startY:float)->void:
 	currentcolors = bgcolors[level]
@@ -135,9 +135,9 @@ func levelChange(startY:float)->void:
 func _draw() -> void:
 	var x = -960/(2*RuleManager.zoom)
 	var y = -540/(2*RuleManager.zoom)
-	if firstdraw:
+	if not drawtrans:#firstdraw:
 		draw_rect(Rect2(Vector2(x,y),Vector2(-2*x,-2*y)),Color(bgcolors[level][2]))
-		firstdraw = false
+		#1firstdraw = false
 	else:
 		rect1 = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,-2*y + transheight))
 		rect2 = Rect2(Vector2(x,3 * y - (startY-yvalue + transheight)), Vector2(-2*x,-2*y + transheight))
