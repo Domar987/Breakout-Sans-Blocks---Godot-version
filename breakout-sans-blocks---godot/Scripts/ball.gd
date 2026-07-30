@@ -123,10 +123,10 @@ func _on_area_entered(area: Area2D) -> void:
 			#velocity.y = -(5.0 + RuleManager.difficulty)
 			#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
 			#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
-			if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				velocity = get_launch(position,platform.position,platform.length,45)
-			else:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				platcontactpos = platform.position.x - position.x
+			else:
+				velocity = get_launch(position,platform.position,platform.length,45)
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
