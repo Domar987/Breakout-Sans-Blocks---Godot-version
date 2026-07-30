@@ -8,7 +8,7 @@ var walkiter:int = 0
 @onready var platform:Area2D = $/root/Ingame/Platform
 
 
-var tween = create_tween().set_parallel(false)
+var tween:Tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	isRare = true
@@ -60,7 +60,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func getHurt()->void:
 	super()
-	tween.kill()
+	#tween.kill()
 	tween = create_tween().set_parallel(false)
 	tween.tween_property($UfoHighpitch,"playing",false,0.0)
 	tween.tween_interval(2.30)
