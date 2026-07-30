@@ -21,7 +21,7 @@ func _ready() -> void:
 	#texture.gradient = Gradient.new()
 	#texture.gradient.interpolation_mode = 2
 	projectilesource = preload("res://Objects/BackgroundItem.tscn")
-	for i in range(0,randi_range(3,8)):
+	for i in range(0,randi_range(38,38)):
 		shootProjectile(false)
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,7 +74,7 @@ func shootProjectile(fromTop:bool)->void:
 	projectile.scale = Vector2.ONE
 	projectile.speed = RuleManager.ySpeed
 	projectile.parent = self
-	add_sibling.call_deferred(projectile)
+	add_sibling.call_deferred(projectile,true)
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 

@@ -2,26 +2,20 @@ class_name BackgroundItem extends Projectile
 
 var bgsprites = ["bricks1","bricks2","bricks3","bricks4","bricks5",
 				"grafitti","tunnelsmall","tunnelbig","pipesmall","pipebig"]
-
+var bgsprite
 var parent
 var fromTop:bool
 
-var first = true
+var relocateCounter:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print("Summoned")
-	if first:
-		area_entered.connect(_on_area_entered)
-		first = false
+	area_entered.connect(_on_area_entered)
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
-	if fromTop:
-		position.y = -540/(2*RuleManager.zoom) - 32
-	else:
-		position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
 	
-	var bgsprite = bgsprites[randi_range(0,len(bgsprites)-1)]
+	bgsprite = bgsprites[randi_range(0,len(bgsprites)-1)]
 	var texforshape:Texture2D = load("res://Sprites/Background/bg"+bgsprite+".png")
 	$CollisionShape2D.shape = RectangleShape2D.new()
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
@@ -29,18 +23,32 @@ func _ready() -> void:
 		bgsprite = "howdidthisgethere"
 	else:
 		tex = Animator.new().applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
-		if bgsprite == bgsprites[len(bgsprites)-1]:
-			position.x = -960/(2*RuleManager.zoom) + randi_range(-32,8)
-		else:
-			position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
 	Animator.new().createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
 	if bgsprite == "howdidthisgethere":
 		Animator.new().createFramesAuto("res://Sprites/Background/"+bgsprite+".png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
 		Animator.new().createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
 	direction = Vector2.DOWN
+	
+	choosePosition()
 	$AnimatedSprite2D.play("1")
 
+func choosePosition()->void:
+	#var regularsize = $CollisionShape2D.shape.size
+	#$CollisionShape2D.shape.size = Vector2.ZERO
+	print("Choosing position for "+name)
+	if relocateCounter > 10:
+		queue_free()
+	if fromTop:
+		position.y = -540/(2*RuleManager.zoom) - 32
+	else:
+		position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
+	if bgsprite == bgsprites[len(bgsprites)-1]:
+		position.x = -960/(2*RuleManager.zoom) + randi_range(-32,8)
+	else:
+		position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
+	relocateCounter += 1
+	#$CollisionShape2D.shape.size = regularsize
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -49,5 +57,6 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is BackgroundItem:
-		call_deferred("_ready")
+	#print(str(name).substr(14))
+	if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
+		call_deferred("choosePosition")
