@@ -113,6 +113,7 @@ func _on_area_entered(area: Area2D) -> void:
 			if $Slam.playing:
 				$Slam.stop()
 				RuleManager.cameraAddShake(0.75,0.0,0.5)
+			mouseforce = 0
 			canslam = false
 			if position.y > area.position.y:
 				pass #ek puan/para

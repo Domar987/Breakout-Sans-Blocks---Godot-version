@@ -137,11 +137,11 @@ func _draw() -> void:
 	var y = -540/(2*RuleManager.zoom)
 	if not drawtrans:#firstdraw:
 		draw_rect(Rect2(Vector2(x,y),Vector2(-2*x,-2*y)),Color(bgcolors[level][2]))
-		#1firstdraw = false
+		#firstdraw = false
 	else:
 		rect1 = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,-2*y + transheight))
 		rect2 = Rect2(Vector2(x,3 * y - (startY-yvalue + transheight)), Vector2(-2*x,-2*y + transheight))
-		recttrans = Rect2(Vector2(x,y - (startY-yvalue)), Vector2(-2*x,transheight))
+		recttrans = Rect2(Vector2(-480,y - (startY-yvalue)), Vector2(-960,transheight))
 
 		draw_rect(rect1,Color(bgcolors[level-1][2]))
 		draw_rect(rect2,Color(bgcolors[level][2]))
