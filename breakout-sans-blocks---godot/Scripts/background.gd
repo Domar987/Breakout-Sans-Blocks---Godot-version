@@ -21,7 +21,7 @@ func _ready() -> void:
 	#texture.gradient = Gradient.new()
 	#texture.gradient.interpolation_mode = 2
 	projectilesource = preload("res://Objects/BackgroundItem.tscn")
-	for i in range(0,randi_range(38,38)):
+	for i in range(0,randi_range(6,16)):
 		shootProjectile(false)
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.

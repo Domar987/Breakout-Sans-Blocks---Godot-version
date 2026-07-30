@@ -11,7 +11,7 @@ var relocateCounter:int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print("Summoned")
-	area_entered.connect(_on_area_entered)
+	#area_entered.connect(_on_area_entered)
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	
@@ -38,7 +38,9 @@ func choosePosition()->void:
 	#$CollisionShape2D.shape.size = Vector2.ZERO
 	print("Choosing position for "+name)
 	if relocateCounter > 10:
+		$CollisionShape2D.shape = null
 		queue_free()
+		return
 	if fromTop:
 		position.y = -540/(2*RuleManager.zoom) - 32
 	else:
@@ -48,15 +50,21 @@ func choosePosition()->void:
 	else:
 		position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
 	relocateCounter += 1
+	#print(name," ",relocateCounter)
 	#$CollisionShape2D.shape.size = regularsize
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	for area in get_overlapping_areas():
+		if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
+			choosePosition()
 	speed = RuleManager.ySpeed
 	#$Label.text = str(speed)+"\n"+str(delta)
 	super(delta)
 
-func _on_area_entered(area: Area2D) -> void:
-	#print(str(name).substr(14))
-	if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
-		call_deferred("choosePosition")
+#func _on_area_entered(area: Area2D) -> void:
+	##print(int(str(name).substr(14)))
+	##print(int(str(area.name).substr(14)))
+	##print(int(str(name).substr(14)) > int(str(area.name).substr(14)))
+	#if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
+		#choosePosition()
