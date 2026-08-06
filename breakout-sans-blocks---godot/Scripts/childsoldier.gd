@@ -2,7 +2,7 @@ class_name ChildSoldier extends Enemy
 
 
 func _ready() -> void:
-	hurtAudios = [$GatorHurt]
+	hurtAudios = [$Childsoldierhurt]
 	hp = 1
 	dmg = 3
 	tier = 1
@@ -18,12 +18,11 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(60, 160)
+	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(10, 120)
 	var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
 	xSpeed *= -fromLorCorR
-	scale.x *= signf(xSpeed)
 	
 	super()
 
@@ -33,12 +32,17 @@ func _physics_process(delta: float) -> void:
 	if hp > 0:
 		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
 			entered = false
-			xSpeed *= -1
-			ySpeed = -180
-			scale.x *= -1
-			$AggressiveAnimal.play()
-			position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
-		ySpeed += 200 * delta
+			if randi_range(0,1):
+				fromLorCorR *= -1
+			fromYvalue = -540/(2*RuleManager.zoom) + randi_range(10, 120)
+			var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
+			var y = fromYvalue
+			position = Vector2(x,y)
+			
+			xSpeed = -fromLorCorR * 400
+			#$AggressiveAnimal.play()
+		xSpeed += fromLorCorR * 800 * delta
+		#ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
 		if position.y > 540/(2*RuleManager.zoom) + 100:

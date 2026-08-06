@@ -1,10 +1,11 @@
-[gd_scene load_steps=59 format=3 uid="uid://dcedah1wtv08h"]
+[gd_scene load_steps=60 format=3 uid="uid://dcedah1wtv08h"]
 
 [ext_resource type="Texture2D" uid="uid://7ecao0rkgyaj" path="res://Sprites/ChildSoldier/childsoldierarmempty.png" id="1_4mbro"]
 [ext_resource type="Script" uid="uid://c2gxc7mwgu1np" path="res://Scripts/childsoldier.gd" id="1_yd56x"]
 [ext_resource type="Texture2D" uid="uid://bj4fxiot7ym0a" path="res://Sprites/ChildSoldier/childsoldierarmfull.png" id="2_yd56x"]
 [ext_resource type="Texture2D" uid="uid://ulycy1sdf2dv" path="res://Sprites/ChildSoldier/childsoldierbody.png" id="3_4d4ju"]
 [ext_resource type="Texture2D" uid="uid://7qft7c64ufv2" path="res://Sprites/ChildSoldier/childsoldierfull.png" id="4_ix6p2"]
+[ext_resource type="AudioStream" uid="uid://du2jptt8cjepj" path="res://Audio/SFX/childsoldierhurt.wav" id="6_4d4ju"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mbro"]
 atlas = ExtResource("1_4mbro")
@@ -427,3 +428,6 @@ offset = Vector2(0.5, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4mbro")
+
+[node name="Childsoldierhurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4d4ju")
