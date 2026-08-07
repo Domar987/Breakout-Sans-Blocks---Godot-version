@@ -9,23 +9,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if timer > 0:
-		timer -= delta
+	print(timer)
+	timer -= delta
 	speed += gravity * delta
 	super(delta)
 
 func _on_area_entered(area: Area2D) -> void:
 	if timer <= 0:
 		super(area)
-		timer = 1.0
 
 
 func balltouched()->void:
-	speed = -10.0
+	speed = -250.0
 	ball.velocity.y = min(-88.5,ball.velocity.y)
+	timer = 0.5
 	#sprite.play("blast")
 
 func plattouched()->void:
-	speed = -10.0
+	speed = -250.0
 	RuleManager.health -= damage
+	timer = 0.5
 	#sprite.play("blast")

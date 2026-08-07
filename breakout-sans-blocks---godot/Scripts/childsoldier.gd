@@ -2,6 +2,7 @@ class_name ChildSoldier extends Enemy
 
 
 func _ready() -> void:
+	attacktimer = 1837837
 	hurtAudios = [$Childsoldierhurt]
 	hp = 1
 	dmg = 3
@@ -11,7 +12,7 @@ func _ready() -> void:
 	sprites = [$RightArm,$LeftArm,$Body]
 	mainSprite = sprites[2]
 	enterValue = 10
-	xSpeed = 400
+	xSpeed = randi_range(400,750)
 	ySpeed = 0
 	projectilesource = preload("res://Objects/Lolly.tscn")
 	
@@ -39,9 +40,12 @@ func _physics_process(delta: float) -> void:
 			var y = fromYvalue
 			position = Vector2(x,y)
 			
-			xSpeed = -fromLorCorR * 400
+			xSpeed = -fromLorCorR * randi_range(400,750)
 			#$AggressiveAnimal.play()
 		xSpeed += fromLorCorR * 800 * delta
+		print(xSpeed)
+		if fromLorCorR * xSpeed > 0:
+			attacktimer = 0
 		#ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
@@ -81,5 +85,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		#mainSprite.play("idle")
 
 func shootProjectile()->void:
-	projectileSpeed = 50
+	projectileSpeed = 0
 	super()
