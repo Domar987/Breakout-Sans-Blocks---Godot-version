@@ -12,6 +12,8 @@ var timer:int = 0
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var platform = $/root/Ingame/Platform
 @onready var wall = $/root/Ingame/Wall
+@onready var ballTrail1 = $BallMain/BallTrail
+@onready var ballTrail2 = $BallMain/BallTrail2
 
 var velocity:Vector2 = Vector2.ZERO
 #var ballgravity:float = 9.81
@@ -70,12 +72,12 @@ func chooseColors(chosencolor:Dictionary) -> void:
 func applyColors() -> void:
 	$BallLight.modulate = lightcolor
 	$BallMain.modulate = maincolor
-	$BallMain/BallTrail.modulate = maincolor
-	$BallMain/BallTrail2.modulate = maincolor
 	$BallDark.modulate = darkcolor
 	$BallOutlineLight.modulate = outlinelightcolor
 	$BallOutlineDark.modulate = outlinedarkcolor
-
+	
+	ballTrail1.modulate = maincolor
+	ballTrail2.modulate = maincolor
 
 #process funcs
 func ballPosCheat()->void:
@@ -110,8 +112,8 @@ func wallOrPortalInteraction()->void:
 		#velocity = Vector2.ZERO
 		moveToCenter(0.25,false)
 	else:
-		$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
-		$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
+		ballTrail1.drawline = not ballTrail1.drawline
+		ballTrail2.drawline = not ballTrail2.drawline
 		position.x = -sign(position.x) * 960/(2*RuleManager.zoom)
 
 func fall()->void:
@@ -133,16 +135,12 @@ func moveToCenter(duration:float,damaged:bool)->void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Platform:
 		if canslam:
+			statIncrease(area)
 			if $Slam.playing:
 				$Slam.stop()
 				RuleManager.cameraAddShake(0.75,0.0,0.5)
 			mouseforce = 0
 			canslam = false
-			if position.y > area.position.y:
-				pass #ek puan/para
-			hitcounter += 1
-			if hitcounter % 10 == 0:
-				RuleManager.difficulty += 1
 			#velocity.y = -(5.0 + RuleManager.difficulty)
 			#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
 			#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
@@ -154,6 +152,12 @@ func _on_area_entered(area: Area2D) -> void:
 		timer = 1
 		velocity.x *= -1
 
+func statIncrease(area:Area2D)->void:
+	if position.y > area.position.y:
+		pass #ek puan/para
+	hitcounter += 1
+	if hitcounter % 10 == 0:
+		RuleManager.difficulty += 1
 
 func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Vector2:
 	var lerpvalue = (ballpos.x-platpos.x)/(length/2)

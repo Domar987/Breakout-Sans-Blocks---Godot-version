@@ -48,11 +48,29 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	uiTransform()
+	
+	cheats()
+	
+	if oldDifficulty != difficulty:
+		difficultyChange()
+	if oldhealth != health:
+		healthChange(oldhealth-health)
+	
+	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
+	camera.zoom = Vector2(zoom,zoom)
+	
+	cameraRotationLerp(delta)
+	
+	oldDifficulty = difficulty
+	oldhealth = health
+
+func uiTransform()->void:
 	ui.scale = Vector2.ONE * (3/zoom)
 	ui.size = Vector2(960,540)/(zoom * ui.scale)
 	ui.position = -Vector2(960,540)/(2*zoom)
-	
-	
+
+func cheats()->void:
 	if Input.is_action_just_pressed("Cheat1"):
 		difficulty += 1
 	if Input.is_action_just_pressed("Cheat2"):
@@ -64,26 +82,6 @@ func _process(delta: float) -> void:
 		health = 100
 	if Input.is_action_just_pressed("Cheat5"):
 		shatterScreen()
-	
-	
-	if oldDifficulty != difficulty:
-		difficultyChange()
-	if oldhealth != health:
-		healthChange(oldhealth-health)
-	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
-	camera.zoom = Vector2(zoom,zoom)
-	if rotate > 0:
-		if rotateDir == 0:
-			rotateDir = 1
-			timer = 0
-		camera.rotation = lerp(oldRotate, deg_to_rad(rotate * rotateDir), timer)
-		if timer >= 1:
-			timer = 0
-			rotateDir *= -1
-			oldRotate = camera.rotation
-		timer += delta
-	oldDifficulty = difficulty
-	oldhealth = health
 
 func difficultyChange()->void:
 	cameraZoom()
@@ -95,6 +93,7 @@ func difficultyChange()->void:
 
 func healthChange(dmg:int)->void:
 	heartGenerator.generateHearts(health)
+	
 	var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
 	hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
 	hurttween.set_ease(Tween.EASE_IN_OUT)
@@ -103,11 +102,15 @@ func healthChange(dmg:int)->void:
 	hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
 	hurttween.set_ease(Tween.EASE_IN)
 	hurttween.tween_property(platform,"hurtposition",0,0.075)
+	
 	if health <= 0:
-		var tween = create_tween().set_parallel(false)
-		tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
-		tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
-		platformLength(0)
+		death()
+
+func death()->void:
+	var tween = create_tween().set_parallel(false)
+	tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
+	tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
+	platformLength(0)
 
 func cameraZoom()->void:
 	var tween = create_tween()
@@ -138,6 +141,17 @@ func cameraRotate() -> void:
 	#tween.tween_property(self, "rotate", tmp, 1.0)
 	pass
 
+func cameraRotationLerp(delta)->void:
+	if rotate > 0:
+		if rotateDir == 0:
+			rotateDir = 1
+			timer = 0
+		camera.rotation = lerp(oldRotate, deg_to_rad(rotate * rotateDir), timer)
+		if timer >= 1:
+			timer = 0
+			rotateDir *= -1
+			oldRotate = camera.rotation
+		timer += delta
 
 func platformLength(newLength:int)->void:
 	platform.redraw = true
@@ -153,11 +167,14 @@ func ySpeedIncrease()->void:
 	ySpeed += 12
 
 func shatterScreen()->void:
-	get_tree().paused = true
+	#get_tree().paused = true
+	var firsttick = Time.get_ticks_msec()
+	print(Time.get_ticks_msec() - firsttick)
 	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
+	#1 ms
 	var crackmovementscript = load("res://Scripts/crackmovement.gd")
-	#
+	#3-4 ms
 	#print(screenshot.get_width(),screenshot.get_height())
 	#screenshot.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
 	#var screenshottest = Sprite2D.new()
@@ -169,6 +186,7 @@ func shatterScreen()->void:
 	
 	for i in range(1,27):
 		cracktemplates.append(get_node("/root/Ingame/Camera2D/Cracks/Crack"+str(i)))
+	#3-4 ms
 	for crack:Sprite2D in cracktemplates:
 		#push_warning(crack.name)
 		var cracktex:Image = crack.texture.get_image()

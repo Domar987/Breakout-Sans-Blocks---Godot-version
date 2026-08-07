@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			xSpeed = -fromLorCorR * randi_range(400,750)
 			#$AggressiveAnimal.play()
 		xSpeed += fromLorCorR * 800 * delta
-		print(xSpeed)
+		#print(xSpeed)
 		if fromLorCorR * xSpeed > 0:
 			attacktimer = 0
 		#ySpeed += 200 * delta
