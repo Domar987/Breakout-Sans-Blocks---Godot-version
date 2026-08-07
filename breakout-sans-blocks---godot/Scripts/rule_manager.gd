@@ -1,4 +1,4 @@
-extends Node
+class_name RuleManager extends Node
 
 @export var wallspreselected = false
 var walls:bool

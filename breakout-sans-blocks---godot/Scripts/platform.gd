@@ -1,4 +1,4 @@
-extends Area2D
+class_name Platform extends Area2D
 
 @export var y = 75.0
 const SPEED = 300.0

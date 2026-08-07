@@ -1,4 +1,4 @@
-extends Area2D
+class_name Ball extends Area2D
 
 #@onready var sprite = $AnimatedSprite2D
 var timer:int = 0
@@ -25,11 +25,49 @@ var mouseforce:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	lightcolor = Color(RuleManager.activecolor["lightcolor"])
-	maincolor = Color(RuleManager.activecolor["maincolor"])
-	darkcolor = Color(RuleManager.activecolor["darkcolor"])
-	outlinelightcolor = Color(RuleManager.activecolor["outlinelightcolor"])
-	outlinedarkcolor = Color(RuleManager.activecolor["outlinedarkcolor"])
+	chooseColors(RuleManager.activecolor)
+	applyColors()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	#$Label.text = str(canslam)
+	ballPosCheat()
+	
+	if not frozen and not RuleManager.ballPosCheat:
+		timer -= 1
+		if canslam:
+			velocity.y += delta * get_gravity()
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
+			slamStuff(delta)
+		
+		holdingOnPlatform(delta)
+		
+		if abs(position.x) > 960/(2*RuleManager.zoom):
+			wallOrPortalInteraction()
+		
+		fall()
+		
+		#if linear_velocity.y < 10:
+		#	sprite.frame = 0
+		#elif linear_velocity.y < 20:
+		#	sprite.frame = 1
+		#elif linear_velocity.y < 40:
+		#	sprite.frame = 2
+		#else:
+		#	sprite.frame = 3
+		
+		position += velocity * delta
+
+
+#ready funcs
+func chooseColors(chosencolor:Dictionary) -> void:
+	lightcolor = Color(chosencolor["lightcolor"])
+	maincolor = Color(chosencolor["maincolor"])
+	darkcolor = Color(chosencolor["darkcolor"])
+	outlinelightcolor = Color(chosencolor["outlinelightcolor"])
+	outlinedarkcolor = Color(chosencolor["outlinedarkcolor"])
+
+func applyColors() -> void:
 	$BallLight.modulate = lightcolor
 	$BallMain.modulate = maincolor
 	$BallMain/BallTrail.modulate = maincolor
@@ -39,65 +77,48 @@ func _ready() -> void:
 	$BallOutlineDark.modulate = outlinedarkcolor
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	$Label.text = str(canslam)
+#process funcs
+func ballPosCheat()->void:
 	if RuleManager.ballPosCheat:
 		position = get_global_mouse_position()
 		velocity = Vector2.ZERO
-	elif not frozen:
-		timer -= 1
-		if canslam:
-			velocity.y += delta * get_gravity()
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
-			if not $Slam.playing:
-				$Slam.play()
-			if velocity.y < 50:
-				velocity.y = 50
-			velocity.y += delta * get_gravity()
-		if not canslam:
-			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				#mouseforce += delta * Input.get_last_mouse_velocity().x
-				mouseforce += platform.positiondelta.x
-				#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
-				if abs(position.x) < 960/(2*RuleManager.zoom):
-					position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
-				velocity.y = 0
-				position.y = platform.position.y - 9.9
-				mouseforce -= delta * sign(mouseforce) * 9.81
-			else:
-				velocity = get_launch(position,platform.position,platform.length,45)
-		if position.x > 960/(2*RuleManager.zoom):
-			if RuleManager.walls:
-				#position = Vector2.ZERO
-				#velocity = Vector2.ZERO
-				fall(0.25,false)
-			else:
-				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
-				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-				position.x = -960/(2*RuleManager.zoom)
-		elif position.x < -960/(2*RuleManager.zoom):
-			if RuleManager.walls:
-				#position = Vector2.ZERO
-				#velocity = Vector2.ZERO
-				fall(0.25,false)
-			else:
-				$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
-				$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
-				position.x = 960/(2*RuleManager.zoom)
-		if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
-			fall(1.5,true)
-		#if linear_velocity.y < 10:
-		#	sprite.frame = 0
-		#elif linear_velocity.y < 20:
-		#	sprite.frame = 1
-		#elif linear_velocity.y < 40:
-		#	sprite.frame = 2
-		#else:
-		#	sprite.frame = 3
-		position += velocity * delta
 
-func fall(duration:float,damaged:bool)->void:
+func slamStuff(delta:float)->void:
+	if not $Slam.playing:
+		$Slam.play()
+	if velocity.y < 50:
+		velocity.y = 50
+	velocity.y += delta * get_gravity()
+
+func holdingOnPlatform(delta:float)->void:
+	if not canslam:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			#mouseforce += delta * Input.get_last_mouse_velocity().x
+			mouseforce += platform.positiondelta.x
+			#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
+			if abs(position.x) < 960/(2*RuleManager.zoom):
+				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
+			velocity.y = 0
+			position.y = platform.position.y - 9.9
+			mouseforce -= delta * sign(mouseforce) * 9.81
+		else:
+			velocity = get_launch(position,platform.position,platform.length,45)
+
+func wallOrPortalInteraction()->void:
+	if RuleManager.walls:
+		#position = Vector2.ZERO
+		#velocity = Vector2.ZERO
+		moveToCenter(0.25,false)
+	else:
+		$BallMain/BallTrail.drawline = not $BallMain/BallTrail.drawline
+		$BallMain/BallTrail2.drawline = not $BallMain/BallTrail2.drawline
+		position.x = -sign(position.x) * 960/(2*RuleManager.zoom)
+
+func fall()->void:
+	if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
+		moveToCenter(1.5,true)
+
+func moveToCenter(duration:float,damaged:bool)->void:
 	if damaged:
 		RuleManager.health -= 1
 	frozen = true
@@ -107,8 +128,10 @@ func fall(duration:float,damaged:bool)->void:
 	tween.tween_property(self,"velocity",Vector2.ZERO,0.0)
 	tween.tween_property(self,"frozen",false,0.0)
 
+
+#general
 func _on_area_entered(area: Area2D) -> void:
-	if area == platform:
+	if area is Platform:
 		if canslam:
 			if $Slam.playing:
 				$Slam.stop()
@@ -130,6 +153,7 @@ func _on_area_entered(area: Area2D) -> void:
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
+
 
 func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Vector2:
 	var lerpvalue = (ballpos.x-platpos.x)/(length/2)
