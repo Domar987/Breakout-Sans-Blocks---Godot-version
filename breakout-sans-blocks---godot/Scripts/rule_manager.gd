@@ -168,9 +168,6 @@ func ySpeedIncrease()->void:
 
 func shatterScreen()->void:
 	#get_tree().paused = true
-	var firsttick = Time.get_ticks_msec()
-	print(Time.get_ticks_msec() - firsttick)
-	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
 	#1 ms
 	var crackmovementscript = load("res://Scripts/crackmovement.gd")
@@ -188,34 +185,11 @@ func shatterScreen()->void:
 		cracktemplates.append(get_node("/root/Ingame/Camera2D/Cracks/Crack"+str(i)))
 	#3-4 ms
 	for crack:Sprite2D in cracktemplates:
-		#push_warning(crack.name)
-		var cracktex:Image = crack.texture.get_image()
-		#print(crack.name,cracktex.get_size())
-		#var screenratio = zoom * screenshot.get_size()/Vector2(960,540)
-		#cracktex.resize(cracktex.get_width()*screenratio.x,cracktex.get_height()*screenratio.y,Image.INTERPOLATE_NEAREST)
-		cracktex.resize(cracktex.get_width()*zoom,cracktex.get_height()*zoom,Image.INTERPOLATE_NEAREST)
-		#print(crack.name,cracktex.get_size())
-		
-		#cracktex.resize(screenshot.get_width()/zoom,screenshot.get_height()/zoom,Image.INTERPOLATE_NEAREST)
-		var corner:Vector2 = crack.global_position - (Vector2(cracktex.get_width(),cracktex.get_height())/2)
-		
-		for y in cracktex.get_height():
-			for x in cracktex.get_width():
-				if abs(corner.x + x) < 960/(2) and abs(corner.y + y) < 540/(2) and cracktex.get_pixel(x,y) == Color.BLACK:
-					var screenshotpixel:Vector2 = corner + Vector2(x,y) + (Vector2(960,540)/2)
-					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
-					
-		for y in cracktex.get_height():
-			for x in cracktex.get_width():
-				if cracktex.get_pixel(x,y) == Color.BLACK:
-					cracktex.set_pixel(x,y,Color.TRANSPARENT)
-					#pass
-					
-		cracktex.resize(cracktex.get_width()/zoom,cracktex.get_height()/zoom,Image.INTERPOLATE_NEAREST)
-		
 		var crackclone = crack.duplicate()
 		crackclone.name = crack.name + "Clone"
-		crackclone.texture = ImageTexture.create_from_image(cracktex)
+		crackclone.material = ShaderMaterial.new()
+		crackclone.material.shader = load("res://Scripts/shatterscreen.gdshader")
+		crackclone.material.set_shader_parameter("parenttexture",crack.texture)
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
