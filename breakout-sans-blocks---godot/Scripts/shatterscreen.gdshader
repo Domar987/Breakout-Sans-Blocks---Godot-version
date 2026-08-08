@@ -2,10 +2,11 @@ shader_type canvas_item;
 
 uniform sampler2D screenshot : hint_screen_texture, repeat_disable, filter_nearest;
 uniform vec2 initialposition;
+uniform float zoom;
 
 void fragment() {
-	vec2 topleftcorner = initialposition - 1.0/TEXTURE_PIXEL_SIZE;
-	vec2 toprightcorner = initialposition + 1.0/TEXTURE_PIXEL_SIZE;
+	vec2 topleftcorner = initialposition - 0.5 * zoom/TEXTURE_PIXEL_SIZE;
+	vec2 toprightcorner = initialposition + 0.5 * zoom/TEXTURE_PIXEL_SIZE;
 	vec4 points = vec4( (0.5/SCREEN_PIXEL_SIZE + topleftcorner)/(1.0/SCREEN_PIXEL_SIZE),
 						(0.5/SCREEN_PIXEL_SIZE + toprightcorner)/(1.0/SCREEN_PIXEL_SIZE));
 	vec2 lerped = vec2(mix(points.r,points.b,UV.x),mix(points.g,points.a,UV.y));
