@@ -189,7 +189,7 @@ func shatterScreen()->void:
 		crackclone.name = crack.name + "Clone"
 		crackclone.material = ShaderMaterial.new()
 		crackclone.material.shader = load("res://Scripts/shatterscreen.gdshader")
-		crackclone.material.set_shader_parameter("parenttexture",crack.texture)
+		crackclone.material.set_shader_parameter("initialposition",crack.position)
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
