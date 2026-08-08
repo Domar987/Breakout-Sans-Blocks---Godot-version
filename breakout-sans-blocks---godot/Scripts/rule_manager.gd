@@ -167,30 +167,32 @@ func ySpeedIncrease()->void:
 	ySpeed += 12
 
 func shatterScreen()->void:
-	#get_tree().paused = true
+	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
-	#1 ms
 	var crackmovementscript = load("res://Scripts/crackmovement.gd")
-	#3-4 ms
-	#print(screenshot.get_width(),screenshot.get_height())
-	#screenshot.resize(960/zoom,540/zoom,Image.INTERPOLATE_NEAREST)
-	#var screenshottest = Sprite2D.new()
-	#screenshottest.texture = ImageTexture.create_from_image(screenshot)
-	#screenshottest.position = Vector2.ZERO
-	#screenshottest.modulate = Color(1.5,1.5,1.5, 1.0)
-	#screenshottest.z_index = 10
-	#add_sibling(screenshottest)
 	
 	for i in range(1,27):
 		cracktemplates.append(get_node("/root/Ingame/Camera2D/Cracks/Crack"+str(i)))
-	#3-4 ms
+	
 	for crack:Sprite2D in cracktemplates:
+		var cracktex:Image = crack.texture.get_image()
+		var corner:Vector2 = zoom*(crack.global_position - (Vector2(cracktex.get_width(),cracktex.get_height())/2))
+		
+		for y in cracktex.get_height():
+			for x in cracktex.get_width():
+				var pixelpos:Vector2 = corner + Vector2(x,y) * zoom + Vector2.ONE*zoom/2
+				if abs(pixelpos.x) < 960/(2) and abs(pixelpos.y) < 540/(2) and cracktex.get_pixel(x,y) == Color.BLACK:
+					var screenshotpixel:Vector2 = pixelpos + (Vector2(960,540)/2)
+					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
+		
+		for y in cracktex.get_height():
+			for x in cracktex.get_width():
+				if cracktex.get_pixel(x,y) == Color.BLACK:
+					cracktex.set_pixel(x,y,Color.TRANSPARENT)
+		
 		var crackclone = crack.duplicate()
 		crackclone.name = crack.name + "Clone"
-		crackclone.material = ShaderMaterial.new()
-		crackclone.material.shader = load("res://Scripts/shatterscreen.gdshader")
-		crackclone.material.set_shader_parameter("initialposition",crack.global_position)
-		crackclone.material.set_shader_parameter("zoom",zoom)
+		crackclone.texture = ImageTexture.create_from_image(cracktex)
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
