@@ -9,8 +9,8 @@ func _ready() -> void:
 	tier = 1
 	dropChance = 25
 	shoots = true
-	sprites = [$RightArm,$LeftArm,$Body]
-	mainSprite = sprites[2]
+	sprites = [$Body,$RightArm,$LeftArm]
+	mainSprite = sprites[0]
 	enterValue = 10
 	xSpeed = randi_range(400,750)
 	ySpeed = 0

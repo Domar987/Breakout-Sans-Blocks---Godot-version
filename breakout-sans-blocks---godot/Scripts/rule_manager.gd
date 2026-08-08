@@ -167,12 +167,15 @@ func ySpeedIncrease()->void:
 	ySpeed += 12
 
 func shatterScreen()->void:
+	#var firsttick = Time.get_ticks_msec()
+	#print(Time.get_ticks_msec() - firsttick)
 	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
 	var crackmovementscript = load("res://Scripts/crackmovement.gd")
 	
+	var crackpath:String = "/root/Ingame/Camera2D/Cracks/Crack"
 	for i in range(1,27):
-		cracktemplates.append(get_node("/root/Ingame/Camera2D/Cracks/Crack"+str(i)))
+		cracktemplates.append(get_node(crackpath+str(i)))
 	
 	for crack:Sprite2D in cracktemplates:
 		var cracktex:Image = crack.texture.get_image()
@@ -191,12 +194,11 @@ func shatterScreen()->void:
 					cracktex.set_pixel(x,y,Color.TRANSPARENT)
 		
 		var crackclone = crack.duplicate()
-		crackclone.name = crack.name + "Clone"
+		#crackclone.name = crack.name + "Clone"
 		crackclone.texture = ImageTexture.create_from_image(cracktex)
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
 		crackclone.modulate = Color(1.25,1.25,1.25, 1.0)
 		add_sibling(crackclone)
-	
-	get_tree().paused = false
+	#print(Time.get_ticks_msec() - firsttick)
