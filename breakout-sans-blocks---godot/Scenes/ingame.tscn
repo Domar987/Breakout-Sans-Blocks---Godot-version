@@ -361,3 +361,7 @@ z_index = 100
 texture = ExtResource("16_0rcut")
 
 [node name="ChildSoldier" parent="." instance=ExtResource("43_v7gd0")]
+
+[node name="Label" type="Label" parent="ChildSoldier"]
+offset_right = 40.0
+offset_bottom = 23.0
