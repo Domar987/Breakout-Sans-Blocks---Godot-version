@@ -29,6 +29,8 @@ func _ready() -> void:
 	
 	
 	projectilesource = preload("res://Objects/Lolly.tscn")
+	
+	position = nonjitterPosition
 	super()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
