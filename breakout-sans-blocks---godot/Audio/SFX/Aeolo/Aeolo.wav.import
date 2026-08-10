@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bt0q3qm18ueng"
-path="res://.godot/imported/AeoloHurt02.wav-5c3e561419c2335895502678a98d9de4.sample"
+uid="uid://cg0lq3l8taejd"
+path="res://.godot/imported/Aeolo.wav-28192ab72e0eb6af47e5a5143a6711c1.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/AeoloHurt02.wav"
-dest_files=["res://.godot/imported/AeoloHurt02.wav-5c3e561419c2335895502678a98d9de4.sample"]
+source_file="res://Audio/SFX/Aeolo/Aeolo.wav"
+dest_files=["res://.godot/imported/Aeolo.wav-28192ab72e0eb6af47e5a5143a6711c1.sample"]
 
 [params]
 

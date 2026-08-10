@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://chnxagm1edauj"
-path="res://.godot/imported/GatorChomp.wav-e999d96615e0fef31701271e983751f7.sample"
+path="res://.godot/imported/GatorChomp.wav-81db60ec160469bd08c6b046c4dd5438.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/GatorChomp.wav"
-dest_files=["res://.godot/imported/GatorChomp.wav-e999d96615e0fef31701271e983751f7.sample"]
+source_file="res://Audio/SFX/SewerGator/GatorChomp.wav"
+dest_files=["res://.godot/imported/GatorChomp.wav-81db60ec160469bd08c6b046c4dd5438.sample"]
 
 [params]
 

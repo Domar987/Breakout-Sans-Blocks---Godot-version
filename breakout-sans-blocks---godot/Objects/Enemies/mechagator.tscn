@@ -1,25 +1,25 @@
 [gd_scene load_steps=32 format=3 uid="uid://h7taaf32n627"]
 
-[ext_resource type="Script" uid="uid://di3rk37sh0734" path="res://Scripts/mechagator.gd" id="1_5k2o2"]
-[ext_resource type="Texture2D" uid="uid://6luijhvlttny" path="res://Sprites/MechaGator/mechahead.png" id="2_5k2o2"]
-[ext_resource type="Texture2D" uid="uid://dfc7ran6ulfkj" path="res://Sprites/MechaGator/mechalimbs.png" id="3_tjw8y"]
-[ext_resource type="Texture2D" uid="uid://c4isq5k5s30ni" path="res://Sprites/MechaGator/mechabody.png" id="4_nmwtp"]
-[ext_resource type="Texture2D" uid="uid://dcqcawsryjt3c" path="res://Sprites/MechaGator/mechafire.png" id="5_85ujc"]
-[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/AggressiveAnimal.wav" id="6_1tqm7"]
-[ext_resource type="Texture2D" uid="uid://caw8ug61ymnq0" path="res://Sprites/MechaGator/mechafull1.png" id="6_vrkel"]
-[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/GatorChomp.wav" id="7_vrkel"]
-[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/GatorHurt.wav" id="8_5oclp"]
+[ext_resource type="Script" uid="uid://di3rk37sh0734" path="res://Scripts/Enemies/mechagator.gd" id="1_n4ajm"]
+[ext_resource type="Texture2D" uid="uid://6luijhvlttny" path="res://Sprites/MechaGator/mechahead.png" id="2_kpci7"]
+[ext_resource type="Texture2D" uid="uid://dfc7ran6ulfkj" path="res://Sprites/MechaGator/mechalimbs.png" id="3_yu0t0"]
+[ext_resource type="Texture2D" uid="uid://c4isq5k5s30ni" path="res://Sprites/MechaGator/mechabody.png" id="4_1e4e2"]
+[ext_resource type="Texture2D" uid="uid://dcqcawsryjt3c" path="res://Sprites/MechaGator/mechafire.png" id="5_rddk0"]
+[ext_resource type="Texture2D" uid="uid://caw8ug61ymnq0" path="res://Sprites/MechaGator/mechafull1.png" id="6_8u2v0"]
+[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/SewerGator/AggressiveAnimal.wav" id="7_xhfny"]
+[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/SewerGator/GatorChomp.wav" id="8_pmfgj"]
+[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/SewerGator/GatorHurt.wav" id="9_uv0iw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oclp"]
-atlas = ExtResource("2_5k2o2")
+atlas = ExtResource("2_kpci7")
 region = Rect2(70, 0, 35, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfynx"]
-atlas = ExtResource("2_5k2o2")
+atlas = ExtResource("2_kpci7")
 region = Rect2(35, 0, 35, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6swpo"]
-atlas = ExtResource("2_5k2o2")
+atlas = ExtResource("2_kpci7")
 region = Rect2(0, 0, 35, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7fyn6"]
@@ -50,15 +50,15 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_absqo"]
-atlas = ExtResource("3_tjw8y")
+atlas = ExtResource("3_yu0t0")
 region = Rect2(0, 0, 58, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4htsh"]
-atlas = ExtResource("3_tjw8y")
+atlas = ExtResource("3_yu0t0")
 region = Rect2(58, 0, 58, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wv7fo"]
-atlas = ExtResource("3_tjw8y")
+atlas = ExtResource("3_yu0t0")
 region = Rect2(116, 0, 58, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4lsvc"]
@@ -82,27 +82,27 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oeq1p"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(0, 0, 62, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43twv"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(62, 0, 62, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8y5j"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(124, 0, 62, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yi1l0"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(186, 0, 62, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1dyw"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(248, 0, 62, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h13f7"]
-atlas = ExtResource("4_nmwtp")
+atlas = ExtResource("4_1e4e2")
 region = Rect2(310, 0, 62, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5acvx"]
@@ -132,23 +132,23 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7y8tm"]
-atlas = ExtResource("5_85ujc")
+atlas = ExtResource("5_rddk0")
 region = Rect2(0, 0, 20, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqrss"]
-atlas = ExtResource("5_85ujc")
+atlas = ExtResource("5_rddk0")
 region = Rect2(20, 0, 20, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mte5a"]
-atlas = ExtResource("5_85ujc")
+atlas = ExtResource("5_rddk0")
 region = Rect2(40, 0, 20, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixs1i"]
-atlas = ExtResource("5_85ujc")
+atlas = ExtResource("5_rddk0")
 region = Rect2(60, 0, 20, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwblw"]
-atlas = ExtResource("5_85ujc")
+atlas = ExtResource("5_rddk0")
 region = Rect2(80, 0, 20, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w31g8"]
@@ -179,7 +179,7 @@ size = Vector2(100, 20)
 
 [node name="MechaGator" type="Area2D"]
 z_index = 2
-script = ExtResource("1_5k2o2")
+script = ExtResource("1_n4ajm")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -215,17 +215,17 @@ shape = SubResource("RectangleShape2D_2ccd3")
 visible = false
 z_index = -1
 position = Vector2(0, -3)
-texture = ExtResource("6_vrkel")
+texture = ExtResource("6_8u2v0")
 offset = Vector2(0, 6)
 
 [node name="AggressiveAnimal" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_1tqm7")
+stream = ExtResource("7_xhfny")
 volume_db = -5.0
 pitch_scale = 0.75
 autoplay = true
 
 [node name="GatorChomp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_vrkel")
+stream = ExtResource("8_pmfgj")
 
 [node name="GatorHurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_5oclp")
+stream = ExtResource("9_uv0iw")

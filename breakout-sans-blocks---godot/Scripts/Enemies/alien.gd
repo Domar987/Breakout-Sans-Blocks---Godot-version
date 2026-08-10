@@ -28,7 +28,7 @@ func _ready() -> void:
 	xSpeed = 1.0
 	ySpeed = 0.0
 	attacktimer = randi_range(250,500)
-	projectilesource = preload("res://Objects/AlienLaser.tscn")
+	projectilesource = preload("res://Objects/Projectiles/AlienLaser.tscn")
 	currentKill = RuleManager.kill
 	match variant:
 		1:

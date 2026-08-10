@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://4342h6iq4y1"
-path="res://.godot/imported/AggressiveAnimal.wav-bc5458afcd8c4597558e38f99b962389.sample"
+path="res://.godot/imported/AggressiveAnimal.wav-67416a2940b4de05aa32631fda6ea609.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/AggressiveAnimal.wav"
-dest_files=["res://.godot/imported/AggressiveAnimal.wav-bc5458afcd8c4597558e38f99b962389.sample"]
+source_file="res://Audio/SFX/SewerGator/AggressiveAnimal.wav"
+dest_files=["res://.godot/imported/AggressiveAnimal.wav-67416a2940b4de05aa32631fda6ea609.sample"]
 
 [params]
 

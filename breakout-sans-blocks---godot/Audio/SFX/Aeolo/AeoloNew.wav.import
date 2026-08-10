@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://3sel1txlgone"
-path="res://.godot/imported/AeoloNew.wav-62a95230e841099a1a9b0302d7c50168.sample"
+path="res://.godot/imported/AeoloNew.wav-cf89f25cc96b8cef048d6fd3105d1145.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/AeoloNew.wav"
-dest_files=["res://.godot/imported/AeoloNew.wav-62a95230e841099a1a9b0302d7c50168.sample"]
+source_file="res://Audio/SFX/Aeolo/AeoloNew.wav"
+dest_files=["res://.godot/imported/AeoloNew.wav-cf89f25cc96b8cef048d6fd3105d1145.sample"]
 
 [params]
 

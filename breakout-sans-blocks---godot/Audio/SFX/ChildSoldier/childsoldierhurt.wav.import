@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://du2jptt8cjepj"
-path="res://.godot/imported/childsoldierhurt.wav-fc037ed3f16630e4dba9ad23e1cc519c.sample"
+path="res://.godot/imported/childsoldierhurt.wav-20d98a0a519fb4609f9307982727df90.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/childsoldierhurt.wav"
-dest_files=["res://.godot/imported/childsoldierhurt.wav-fc037ed3f16630e4dba9ad23e1cc519c.sample"]
+source_file="res://Audio/SFX/ChildSoldier/childsoldierhurt.wav"
+dest_files=["res://.godot/imported/childsoldierhurt.wav-20d98a0a519fb4609f9307982727df90.sample"]
 
 [params]
 

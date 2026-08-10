@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://wmi1a7p76cts"
-path="res://.godot/imported/babytothebone.wav-01d774131e4ba9b11d5dc008fe93ac3a.sample"
+path="res://.godot/imported/babytothebone.wav-639c346bb6d11f451517dd5352fce7fe.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/babytothebone.wav"
-dest_files=["res://.godot/imported/babytothebone.wav-01d774131e4ba9b11d5dc008fe93ac3a.sample"]
+source_file="res://Audio/SFX/ChildSoldier/babytothebone.wav"
+dest_files=["res://.godot/imported/babytothebone.wav-639c346bb6d11f451517dd5352fce7fe.sample"]
 
 [params]
 

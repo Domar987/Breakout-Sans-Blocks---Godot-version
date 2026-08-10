@@ -1,13 +1,13 @@
 [gd_scene load_steps=38 format=3 uid="uid://cydjvqceyxefe"]
 
-[ext_resource type="Script" uid="uid://dsw4m00vpx7l1" path="res://Scripts/gator.gd" id="1_e6vhn"]
+[ext_resource type="Script" uid="uid://dsw4m00vpx7l1" path="res://Scripts/Enemies/gator.gd" id="1_e6vhn"]
 [ext_resource type="Texture2D" uid="uid://bw3f10byn7wr4" path="res://Sprites/SewerGator/gatorhead.png" id="1_n20lc"]
 [ext_resource type="Texture2D" uid="uid://buxe6fcsbh4qx" path="res://Sprites/SewerGator/gatorarm.png" id="2_e6vhn"]
 [ext_resource type="Texture2D" uid="uid://05og782g3w5x" path="res://Sprites/SewerGator/gatorbody.png" id="3_uulh4"]
 [ext_resource type="Texture2D" uid="uid://b2ye28wojc0ud" path="res://Sprites/SewerGator/gatorwhole.png" id="5_uulh4"]
-[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/AggressiveAnimal.wav" id="6_iurl3"]
-[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/GatorChomp.wav" id="7_thduv"]
-[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/GatorHurt.wav" id="8_thduv"]
+[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/SewerGator/AggressiveAnimal.wav" id="6_iurl3"]
+[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/SewerGator/GatorChomp.wav" id="7_thduv"]
+[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/SewerGator/GatorHurt.wav" id="8_thduv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uulh4"]
 atlas = ExtResource("1_n20lc")

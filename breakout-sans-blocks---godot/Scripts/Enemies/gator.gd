@@ -14,7 +14,7 @@ func _ready() -> void:
 	enterValue = 10
 	xSpeed = 400
 	ySpeed = -150
-	projectilesource = preload("res://Objects/GatorTooth.tscn")
+	projectilesource = preload("res://Objects/Projectiles/GatorTooth.tscn")
 	
 	fromLorCorR = 1
 	if randi_range(0,1):

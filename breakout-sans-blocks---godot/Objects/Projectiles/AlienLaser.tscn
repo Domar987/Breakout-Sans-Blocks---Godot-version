@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://b4bpx65p4myx8"]
 
-[ext_resource type="Script" uid="uid://dk8ro33jph5by" path="res://Scripts/alien_laser.gd" id="1_8epib"]
+[ext_resource type="Script" uid="uid://dk8ro33jph5by" path="res://Scripts/Projectiles/alien_laser.gd" id="1_8epib"]
 [ext_resource type="Texture2D" uid="uid://bn4rp6s6pwpe8" path="res://Sprites/Alien/alienprojectile1.png" id="2_x65x1"]
 [ext_resource type="Texture2D" uid="uid://cacndq20gcsc4" path="res://Sprites/Alien/alienprojectile2.png" id="3_f6jls"]
 [ext_resource type="Texture2D" uid="uid://diqorrll5l6kj" path="res://Sprites/Alien/alienprojectileexplosion.png" id="4_f6jls"]

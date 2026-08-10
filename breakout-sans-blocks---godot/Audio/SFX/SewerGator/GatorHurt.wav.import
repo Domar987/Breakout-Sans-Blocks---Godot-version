@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ch4fy65jqsf1o"
-path="res://.godot/imported/GatorHurt.wav-c97592c26a00a311953c612664f6e1f4.sample"
+path="res://.godot/imported/GatorHurt.wav-f9cbee06fcd046fba616f986c3ea94c6.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/GatorHurt.wav"
-dest_files=["res://.godot/imported/GatorHurt.wav-c97592c26a00a311953c612664f6e1f4.sample"]
+source_file="res://Audio/SFX/SewerGator/GatorHurt.wav"
+dest_files=["res://.godot/imported/GatorHurt.wav-f9cbee06fcd046fba616f986c3ea94c6.sample"]
 
 [params]
 

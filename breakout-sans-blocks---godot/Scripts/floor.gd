@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	additionalY += RuleManager.ySpeed * delta
+	additionalY += RuleManager.ySpeed * delta / 2
 	position.y = 540/(2*RuleManager.zoom) - 5 + additionalY
 	if position.y > 540/(2*RuleManager.zoom) + 200:
 		queue_free()

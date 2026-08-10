@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5oiw2qd1d3ul"
-path="res://.godot/imported/MechaHurt.wav-503c7f8f76e1947d0970dcbddda4875d.sample"
+path="res://.godot/imported/MechaHurt.wav-65d182c46fe78504ea2fede011d5a7fa.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/MechaHurt.wav"
-dest_files=["res://.godot/imported/MechaHurt.wav-503c7f8f76e1947d0970dcbddda4875d.sample"]
+source_file="res://Audio/SFX/MechaGator/MechaHurt.wav"
+dest_files=["res://.godot/imported/MechaHurt.wav-65d182c46fe78504ea2fede011d5a7fa.sample"]
 
 [params]
 

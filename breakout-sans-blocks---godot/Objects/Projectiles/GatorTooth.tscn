@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://dac3gjogx6wgt"]
 
-[ext_resource type="Script" uid="uid://b8xoo4n11p21l" path="res://Scripts/gator_tooth.gd" id="1_hxd8p"]
-[ext_resource type="Texture2D" uid="uid://bopa1fbh74lsm" path="res://Sprites/SewerGator/gatortooth.png" id="2_hxd8p"]
+[ext_resource type="Script" uid="uid://b8xoo4n11p21l" path="res://Scripts/Projectiles/gator_tooth.gd" id="1_6yxx6"]
+[ext_resource type="Texture2D" uid="uid://bopa1fbh74lsm" path="res://Sprites/SewerGator/gatortooth.png" id="2_ra5d8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8e4gl"]
-atlas = ExtResource("2_hxd8p")
+atlas = ExtResource("2_ra5d8")
 region = Rect2(0, 0, 9, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snspr"]
-atlas = ExtResource("2_hxd8p")
+atlas = ExtResource("2_ra5d8")
 region = Rect2(0, 0, 9, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqa7p"]
@@ -34,7 +34,7 @@ animations = [{
 size = Vector2(4, 8)
 
 [node name="GatorTooth" type="Area2D"]
-script = ExtResource("1_hxd8p")
+script = ExtResource("1_6yxx6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lqa7p")

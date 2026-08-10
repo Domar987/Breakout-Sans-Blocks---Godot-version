@@ -20,7 +20,7 @@ func _ready() -> void:
 	#grad.gradient.colors = texture.gradient.colors
 	#texture.gradient = Gradient.new()
 	#texture.gradient.interpolation_mode = 2
-	projectilesource = preload("res://Objects/BackgroundItem.tscn")
+	projectilesource = preload("res://Objects/Projectiles/BackgroundItem.tscn")
 	for i in range(0,randi_range(6,16)):
 		shootProjectile(false)
 #

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://p552imo4ypvk"]
 
-[ext_resource type="Script" uid="uid://lexsn4bsrjrq" path="res://Scripts/alien.gd" id="1_hg8i3"]
+[ext_resource type="Script" uid="uid://lexsn4bsrjrq" path="res://Scripts/Enemies/alien.gd" id="1_hg8i3"]
 [ext_resource type="AudioStream" uid="uid://cv0p7rji2x7no" path="res://Audio/SFX/AlienSound/invaderkilled.wav" id="2_hg8i3"]
 [ext_resource type="AudioStream" uid="uid://c554rp6mh53dw" path="res://Audio/SFX/AlienSound/fastinvader1.wav" id="3_t7the"]
 [ext_resource type="AudioStream" uid="uid://b5x34lh05wvnw" path="res://Audio/SFX/AlienSound/fastinvader2.wav" id="4_ycsfr"]

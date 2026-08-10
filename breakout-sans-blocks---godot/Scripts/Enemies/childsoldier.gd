@@ -28,7 +28,7 @@ func _ready() -> void:
 	enter()
 	
 	
-	projectilesource = preload("res://Objects/Lolly.tscn")
+	projectilesource = preload("res://Objects/Projectiles/Lolly.tscn")
 	
 	position = nonjitterPosition
 	super()

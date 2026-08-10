@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dg0nex0ajycth"
-path="res://.godot/imported/MechaGator.wav-346a39ffa21a1962525f5c323df07068.sample"
+path="res://.godot/imported/MechaGator.wav-9c00361a96a79c404a7fc39c45bf4683.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/MechaGator.wav"
-dest_files=["res://.godot/imported/MechaGator.wav-346a39ffa21a1962525f5c323df07068.sample"]
+source_file="res://Audio/SFX/MechaGator/MechaGator.wav"
+dest_files=["res://.godot/imported/MechaGator.wav-9c00361a96a79c404a7fc39c45bf4683.sample"]
 
 [params]
 
