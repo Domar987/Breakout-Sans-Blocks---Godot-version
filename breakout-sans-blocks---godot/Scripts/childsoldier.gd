@@ -9,7 +9,7 @@ var thrown:bool = false
 
 var nonjitterPosition:Vector2
 
-func _ready() -> void:
+func _ready() -> void:	
 	hurtAudios = [$Childsoldierhurt]
 	sprites = [$Body,$LeftArm,$RightArm]
 	
