@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://byi4f4tqud3uc"]
+
+[ext_resource type="Texture2D" uid="uid://gi7tnewnm4w1" path="res://Sprites/floor.png" id="1_aj0f1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1qpm6"]
+distance = 4.0
+
+[node name="Floor" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_aj0f1")
+region_enabled = true
+region_rect = Rect2(0, 0, 460, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("WorldBoundaryShape2D_1qpm6")

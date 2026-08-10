@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=46 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -43,6 +43,8 @@
 [ext_resource type="Texture2D" uid="uid://cj6doi43hn8av" path="res://Sprites/Cracks/crack25.png" id="41_5uago"]
 [ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/childsoldier.tscn" id="43_v7gd0"]
+[ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
+[ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
 
 [node name="Ingame" type="Node"]
 
@@ -206,6 +208,7 @@ z_index = -5
 script = ExtResource("7_yl4g2")
 
 [node name="Label" type="Label" parent="Background"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -365,3 +368,8 @@ visible = false
 modulate = Color(1, 1, 1, 0.25)
 z_index = 100
 texture = ExtResource("16_0rcut")
+
+[node name="Floor" parent="." instance=ExtResource("44_gyvwt")]
+z_index = -3
+position = Vector2(0, 85)
+script = ExtResource("45_hv85q")

@@ -12,6 +12,8 @@ var timer:int = 0
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var platform = $/root/Ingame/Platform
 @onready var wall = $/root/Ingame/Wall
+@onready var floor = $/root/Ingame/Floor
+
 @onready var ballTrail1 = $BallMain/BallTrail
 @onready var ballTrail2 = $BallMain/BallTrail2
 
@@ -151,6 +153,8 @@ func _on_area_entered(area: Area2D) -> void:
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
+	if area == floor:
+		velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
 
 func statIncrease(area:Area2D)->void:
 	if position.y > area.position.y:
