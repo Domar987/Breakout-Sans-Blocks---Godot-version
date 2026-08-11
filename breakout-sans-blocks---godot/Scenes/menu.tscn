@@ -360,6 +360,11 @@ texture = ExtResource("24_ocger")
 position = Vector2(-80, 40)
 texture = ExtResource("24_ocger")
 
+[node name="Label" type="Label" parent="MiniMenu/HBoxContainer/Profile"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Label" type="Label" parent="MiniMenu/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
