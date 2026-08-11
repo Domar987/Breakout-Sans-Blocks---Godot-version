@@ -13,7 +13,7 @@ func _ready() -> void:
 		i.visible = false
 
 func _input(event: InputEvent) -> void:
-	if position == Vector2(-120,-60):
+	if position == Vector2(-120,-60) and event is InputEventMouseButton:
 		var zoomedeventpos = (event.position / 3) - Vector2(160,90)
 		#$Label.text = str(event.position)
 		if event is InputEventMouseButton and (zoomedeventpos.x < position.x or zoomedeventpos.x > position.x + 240 or zoomedeventpos.y < position.y or zoomedeventpos.y > position.y + 120):
