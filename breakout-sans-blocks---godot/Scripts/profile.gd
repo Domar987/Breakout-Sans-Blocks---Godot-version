@@ -17,22 +17,24 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#$Label.text = str(canspin)
-	x1 = 60 * cos(angle) - 20
+	x1 = 60 * cos(angle) - 30
 	y1 = 60 * sin(angle) + 40
-	x2 = 60 * cos(angle + PI) - 20
+	x2 = 60 * cos(angle + PI) - 30
 	y2 = 60 * sin(angle + PI) + 40
 	get_child(0).position = Vector2(x1,y1)
 	get_child(1).position = Vector2(x2,y2)
 	if get_parent().visible and canspin:
 		if Input.is_action_pressed("ui_left"):
 			canspin = false
-			spin(angle - PI)
+			spin(-1)
 		if Input.is_action_pressed("ui_right"):
 			canspin = false
-			spin(angle + PI)
+			spin(1)
 
-func spin(tmp:float)->void:
+func spin(sign:float)->void:
 	#print("spun")
+	currentEnemy += sign
+	var tmp = angle + sign * PI
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_parallel(false)
 	tween.tween_property(self,"angle",tmp,0.5)

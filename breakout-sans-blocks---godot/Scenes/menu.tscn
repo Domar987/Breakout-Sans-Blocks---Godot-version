@@ -354,7 +354,7 @@ script = ExtResource("23_l6llh")
 
 [node name="Sprite2D" type="Sprite2D" parent="MiniMenu/HBoxContainer/Profile"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(40, 40)
+position = Vector2(30, 40)
 texture = ExtResource("24_ocger")
 
 [node name="Sprite2D2" type="Sprite2D" parent="MiniMenu/HBoxContainer/Profile"]

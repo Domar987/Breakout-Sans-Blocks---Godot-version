@@ -46,7 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
 
-[node name="Ingame" type="Node"]
+[node name="Ingame" type="Node2D"]
 
 [node name="RuleManager" type="Node" parent="."]
 process_priority = 1

@@ -44,6 +44,8 @@ func _init() -> void:
 	if !wallspreselected:
 		walls = randi()%2
 func _ready() -> void:
+	get_parent().modulate = Color.BLACK
+	create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false).tween_property(get_parent(),"modulate",Color.WHITE,0.5)
 	Input.warp_mouse(get_viewport().size/2)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
