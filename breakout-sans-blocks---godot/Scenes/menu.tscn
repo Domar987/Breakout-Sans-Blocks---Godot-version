@@ -364,12 +364,12 @@ script = ExtResource("23_l6llh")
 [node name="Sprite2D" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(35, 40)
 texture = ExtResource("24_l6llh")
-hframes = 3
+hframes = 5
 
 [node name="Sprite2D2" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(-80, 40)
 texture = ExtResource("24_l6llh")
-hframes = 3
+hframes = 5
 frame = 1
 
 [node name="TextPart" type="VBoxContainer" parent="MiniMenu/Encyclopedia"]
