@@ -12,6 +12,8 @@ var angle:float = 0.0
 var onSprite2:bool = false
 
 @onready var enemies:int = get_child(0).hframes
+@onready var title:Label = get_parent().get_child(1).get_child(0)
+@onready var description:Label = get_parent().get_child(1).get_child(1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,10 +22,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text = str(currentEnemy)
-	x1 = 60 * cos(angle) - 30
+	#$Label.text = str(currentEnemy)
+	x1 = 60 * cos(angle) - 25
 	y1 = 60 * sin(angle) + 40
-	x2 = 60 * cos(angle + PI) - 30
+	x2 = 60 * cos(angle + PI) - 25
 	y2 = 60 * sin(angle + PI) + 40
 	get_child(0).position = Vector2(x1,y1)
 	get_child(1).position = Vector2(x2,y2)

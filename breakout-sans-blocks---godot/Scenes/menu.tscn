@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=42 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bsrh1cehevhvb" path="res://Audio/Music/title.wav" id="16_1by5w"]
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
 [ext_resource type="Script" uid="uid://bmyw0vuktk3ax" path="res://Scripts/profile.gd" id="23_l6llh"]
-[ext_resource type="Texture2D" uid="uid://dbbentdcy4p81" path="res://Sprites/Menu/EnemyIcons/enemyicons.png" id="24_l6llh"]
+[ext_resource type="Texture2D" uid="uid://durchfo7lic1k" path="res://Sprites/Menu/enemyicons.png" id="24_l6llh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -96,6 +96,12 @@ texture = ExtResource("13_d77ms")
 modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ocger"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_l6llh"]
+font_size = 8
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_g8i7c")
@@ -336,7 +342,7 @@ offset_bottom = 60.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MiniMenu"]
+[node name="Encyclopedia" type="HBoxContainer" parent="MiniMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -345,37 +351,46 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Profile" type="Control" parent="MiniMenu/HBoxContainer"]
+[node name="Profile" type="Control" parent="MiniMenu/Encyclopedia"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("23_l6llh")
 
-[node name="Sprite2D" type="Sprite2D" parent="MiniMenu/HBoxContainer/Profile"]
-position = Vector2(30, 40)
+[node name="Sprite2D" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
+position = Vector2(35, 40)
 texture = ExtResource("24_l6llh")
 hframes = 3
 
-[node name="Sprite2D2" type="Sprite2D" parent="MiniMenu/HBoxContainer/Profile"]
+[node name="Sprite2D2" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(-80, 40)
 texture = ExtResource("24_l6llh")
 hframes = 3
 frame = 1
 
-[node name="Label" type="Label" parent="MiniMenu/HBoxContainer/Profile"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="TextPart" type="VBoxContainer" parent="MiniMenu/Encyclopedia"]
+layout_mode = 2
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MiniMenu/HBoxContainer"]
+[node name="Title" type="Label" parent="MiniMenu/Encyclopedia/TextPart"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Lorem ipsum
-or something
-i dont know"
+text = "Title Title Title Title"
+label_settings = SubResource("LabelSettings_ocger")
+clip_text = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MiniMenu"]
+[node name="Description" type="Label" parent="MiniMenu/Encyclopedia/TextPart"]
+custom_minimum_size = Vector2(120, 88)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus tincidunt justo, sed ultrices metus convallis a. Fusce faucibus risus sed mauris feugiat fermentum."
+label_settings = SubResource("LabelSettings_l6llh")
+autowrap_mode = 1
+clip_text = true
+
+[node name="Options" type="HBoxContainer" parent="MiniMenu"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -385,12 +400,12 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="HScrollBar" type="HScrollBar" parent="MiniMenu/HBoxContainer2"]
+[node name="HScrollBar" type="HScrollBar" parent="MiniMenu/Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MiniMenu/HBoxContainer2"]
+[node name="Label" type="Label" parent="MiniMenu/Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Option stuff
