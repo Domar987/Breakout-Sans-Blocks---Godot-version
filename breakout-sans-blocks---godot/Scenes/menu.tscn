@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=43 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
 [ext_resource type="Script" uid="uid://bmyw0vuktk3ax" path="res://Scripts/profile.gd" id="23_l6llh"]
 [ext_resource type="Texture2D" uid="uid://durchfo7lic1k" path="res://Sprites/Menu/enemyicons.png" id="24_l6llh"]
+[ext_resource type="FontFile" uid="uid://c0ml4nr8bu85v" path="res://Sprites/font.png" id="25_ocger"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -102,6 +103,7 @@ font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6llh"]
 line_spacing = 1.0
+font = ExtResource("25_ocger")
 font_size = 8
 
 [node name="Menu" type="Node2D"]
