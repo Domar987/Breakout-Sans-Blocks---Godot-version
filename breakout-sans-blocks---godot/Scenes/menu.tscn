@@ -101,6 +101,7 @@ modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6llh"]
+line_spacing = 1.0
 font_size = 8
 
 [node name="Menu" type="Node2D"]
@@ -337,8 +338,10 @@ clip_contents = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 120.0
-offset_bottom = 60.0
+offset_left = -140.0
+offset_top = -75.0
+offset_right = 140.0
+offset_bottom = 75.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -374,20 +377,20 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Title" type="Label" parent="MiniMenu/Encyclopedia/TextPart"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Title Title Title Title"
+text = "Title Title Title Title Title Title Title Title"
 label_settings = SubResource("LabelSettings_ocger")
 clip_text = true
 
 [node name="Description" type="Label" parent="MiniMenu/Encyclopedia/TextPart"]
-custom_minimum_size = Vector2(120, 88)
+custom_minimum_size = Vector2(160, 116.5)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus tincidunt justo, sed ultrices metus convallis a. Fusce faucibus risus sed mauris feugiat fermentum."
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat ut leo eget pharetra. Sed mattis dapibus vehicula. Nullam ultrices cursus tortor. Quisque eget purus nec dui commodo aliquet. Morbi lacinia varius orci scelerisque pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer et efficitur tellus. Cras lectus quam, varius in nunc quis, gravida congue odio. Suspendisse lobortis non sapien non fermentum. Proin leo tortor, eleifend varius accumsan a, porttitor placerat dui. Sed iaculis, mauris vel convallis rutrum, justo tortor egestas enim, at porttitor lorem justo ac justo. Morbi velit sem, varius consectetur placerat id, aliquet ac leo. Sed congue mattis volutpat. Proin vestibulum efficitur nulla vitae porttitor. Morbi at massa et ex pulvinar consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 label_settings = SubResource("LabelSettings_l6llh")
-autowrap_mode = 1
+autowrap_mode = 2
 clip_text = true
 
 [node name="Options" type="HBoxContainer" parent="MiniMenu"]

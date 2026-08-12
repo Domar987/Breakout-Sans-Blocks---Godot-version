@@ -1,5 +1,9 @@
 extends Control
 
+var textfile = FileAccess.get_file_as_string("res://Data/enemy_descriptions.json")
+var enemydescs = JSON.parse_string(textfile)
+
+
 var canspin:bool = true
 var currentEnemy:int = 0
 
@@ -23,6 +27,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#$Label.text = str(currentEnemy)
+	title.text = enemydescs[currentEnemy][0]
+	description.text = enemydescs[currentEnemy][1]
+	
 	x1 = 60 * cos(angle) - 25
 	y1 = 60 * sin(angle) + 40
 	x2 = 60 * cos(angle + PI) - 25

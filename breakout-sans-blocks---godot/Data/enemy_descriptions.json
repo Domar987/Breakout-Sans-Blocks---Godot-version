@@ -1,15 +1,43 @@
 [
 	[
 		"Space Invaders",
-		"c4f129"
+		"What are these little aliens doing here? These guys are easy to deal with, but watch out for the Squid's slightly tougher attack, and don't be surprised when the Octopus tanks your first hit."
+	],
+	[
+		"UFO",
+		"A rare Space Invader that might appear every now and then. Really annoying, and much harder to hit than their, brothers? Sisters? Do aliens even have genders or do they just go through mitosis? Whatever, these guys won't harm you, so just kill them without worrying about repercussions."
 	],
 	[
 		"Aeolosaurus",
-		"73efe8"
+		"According to all known laws of aviation, there is no way that an Aeolosaurus should be able to fly. Its wings are too small to get its big fat body off the ground. The Aeolosaurus, of course, doesn't fly then. What did you expect, for a 4 ton animal to soar like a bird? They GLIDE, which is (somehow) possible."
+	],
+	[
+		"Ankylosaurus",
+		"Good luck taking this thing down."
 	],
 	[
 		"Child Soldier",
-		"fad6ff"
+		"The stone cold killing machines of '16, these kids have been through hell. Few returned to their cradles and mama's breasts, but the ones that did were the baddest. Toughest. They enjoyed the soft life for a few years, but were sent to an operation to liberate the Sewers. Now they're fighting gators, mages, rats, mold... and YOU."
+	],
+	[
+		"Sewer Gator",
+		"The badass forces of Sewer nature, Sewer Gators launch from the murky waters and eat whatever they can in one bite. When they're not hungry, they all work out at the Sewer Gym. So they're really strong. But they're also vulnerable to attacks from below, because of them only working their arms and jaw."
+	],
+	[
+		"Mecha Gator",
+		"A crude imitation of Sewer nature, these robots were introduced to eliminate dangerous wildlife. However, they didn't have much success. So, the Government pulled its budget to more pressing matters, like turning the crocs gay. Now, these guys are rotting in the Sewers, all the while having to fight against a horde of Gators with a vendetta against them."
+	],
+	[
+		"Majester",
+		"These fire mages are weird. It's like they are filled to the brim with explosives, but they're actually very reclusive when they're not firing walls of balls of flames at you. They are all sons of the Megajester, and are also his loyal warriors. There are only 13 of them however. It's because of their unholy pact that they keep reappearing. And keep casting fire magic."
+	],
+	[
+		"Sewer Gator",
+		"fff089"
+	],
+	[
+		"Sewer Gator",
+		"fff089"
 	],
 	[
 		"Sewer Gator",
