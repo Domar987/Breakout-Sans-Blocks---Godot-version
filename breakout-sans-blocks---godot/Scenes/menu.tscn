@@ -99,7 +99,7 @@ modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ocger"]
-font = null
+font = ExtResource("25_ocger")
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6llh"]
@@ -380,7 +380,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Title" type="Label" parent="MiniMenu/Encyclopedia/TextPart"]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(160, 15)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Title Title Title Title Title Title Title Title"

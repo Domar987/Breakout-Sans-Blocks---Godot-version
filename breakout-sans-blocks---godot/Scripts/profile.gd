@@ -27,8 +27,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#$Label.text = str(currentEnemy)
-	title.text = enemydescs[currentEnemy][0]
-	description.text = enemydescs[currentEnemy][1]
+	#title.text = enemydescs[currentEnemy][0]
+	#description.text = enemydescs[currentEnemy][1]
 	
 	x1 = 60 * cos(angle) - 25
 	y1 = 60 * sin(angle) + 40
@@ -50,9 +50,11 @@ func spin(sign:float)->void:
 	swapImage()
 	var tmp = angle + sign * PI
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.set_parallel(false)
+	tween.set_parallel(true)
 	tween.tween_property(self,"angle",tmp,0.5)
-	tween.tween_callback(stupidbool)
+	tween.tween_property(title,"text",enemydescs[currentEnemy][0],0.5)
+	tween.tween_property(description,"text",enemydescs[currentEnemy][1],0.5)
+	tween.tween_callback(stupidbool).set_delay(0.5)
 func stupidbool()->void:
 	canspin = true
 
