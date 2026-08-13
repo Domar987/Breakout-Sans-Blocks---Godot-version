@@ -21,6 +21,8 @@ var onSprite2:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	title.text = enemydescs[0][0]
+	description.text = enemydescs[0][1]
 	pass # Replace with function body.
 
 
