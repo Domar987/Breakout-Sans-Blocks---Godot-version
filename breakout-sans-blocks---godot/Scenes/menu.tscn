@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
 [ext_resource type="Script" uid="uid://bmyw0vuktk3ax" path="res://Scripts/profile.gd" id="23_l6llh"]
 [ext_resource type="Texture2D" uid="uid://durchfo7lic1k" path="res://Sprites/Menu/enemyicons.png" id="24_l6llh"]
-[ext_resource type="FontFile" uid="uid://c0ml4nr8bu85v" path="res://Sprites/font.png" id="25_ocger"]
+[ext_resource type="FontFile" uid="uid://dj51o5hd3lu4v" path="res://Sprites/font.png" id="25_ocger"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -99,6 +99,7 @@ modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ocger"]
+font = null
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_l6llh"]
@@ -390,7 +391,7 @@ clip_text = true
 custom_minimum_size = Vector2(160, 116.5)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat ut leo eget pharetra. Sed mattis dapibus vehicula. Nullam ultrices cursus tortor. Quisque eget purus nec dui commodo aliquet. Morbi lacinia varius orci scelerisque pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer et efficitur tellus. Cras lectus quam, varius in nunc quis, gravida congue odio. Suspendisse lobortis non sapien non fermentum. Proin leo tortor, eleifend varius accumsan a, porttitor placerat dui. Sed iaculis, mauris vel convallis rutrum, justo tortor egestas enim, at porttitor lorem justo ac justo. Morbi velit sem, varius consectetur placerat id, aliquet ac leo. Sed congue mattis volutpat. Proin vestibulum efficitur nulla vitae porttitor. Morbi at massa et ex pulvinar consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+text = "Lorem: ipsum; dolor sit amet, consectetur adipiscing elit. Phasellus volutpat ut leo eget pharetra! Sed mattis dapibus vehicula. Nullam ultrices cursus tortor. Quisque eget purus nec dui commodo aliquet. Morbi lacinia varius orci scelerisque pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer et efficitur tellus. Cras lectus quam, varius in nunc quis, gravida congue odio. Suspendisse lobortis non sapien non fermentum. Proin leo tortor, eleifend varius accumsan a, porttitor placerat dui. Sed iaculis, mauris vel convallis rutrum, justo tortor egestas enim, at porttitor lorem justo ac justo. Morbi velit sem, varius consectetur placerat id, aliquet ac leo. Sed congue mattis volutpat. Proin vestibulum efficitur nulla vitae porttitor. Morbi at massa et ex pulvinar consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 label_settings = SubResource("LabelSettings_l6llh")
 autowrap_mode = 2
 clip_text = true
