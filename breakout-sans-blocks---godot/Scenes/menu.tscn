@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=47 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -24,7 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
 [ext_resource type="Script" uid="uid://bmyw0vuktk3ax" path="res://Scripts/profile.gd" id="23_l6llh"]
 [ext_resource type="Texture2D" uid="uid://durchfo7lic1k" path="res://Sprites/Menu/enemyicons.png" id="24_l6llh"]
+[ext_resource type="Texture2D" uid="uid://0br3uxyyryjl" path="res://Sprites/Menu/menupediaiconbg2.png" id="25_jbv25"]
 [ext_resource type="FontFile" uid="uid://dj51o5hd3lu4v" path="res://Sprites/font.png" id="25_ocger"]
+[ext_resource type="Texture2D" uid="uid://daox5wvpokqwb" path="res://Sprites/Menu/menupediatextbg.png" id="26_nakb8"]
+[ext_resource type="Texture2D" uid="uid://ctyakewjm2d2y" path="res://Sprites/Menu/menupediabg.png" id="27_nakb8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -97,6 +100,8 @@ texture = ExtResource("13_d77ms")
 modulate_color = Color(0.6090292, 0.6090292, 0.6090292, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p34a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pde1v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ocger"]
 font = ExtResource("25_ocger")
@@ -337,16 +342,18 @@ stream = ExtResource("16_1by5w")
 autoplay = true
 
 [node name="MiniMenu" parent="." instance=ExtResource("15_owyel")]
+z_index = 5
 clip_contents = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -140.0
-offset_top = -75.0
-offset_right = 140.0
-offset_bottom = 75.0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
 grow_horizontal = 1
 grow_vertical = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pde1v")
 
 [node name="Encyclopedia" type="HBoxContainer" parent="MiniMenu"]
 layout_mode = 1
@@ -374,6 +381,34 @@ position = Vector2(-80, 40)
 texture = ExtResource("24_l6llh")
 hframes = 5
 frame = 1
+
+[node name="TextureRect" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+z_index = -1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -14.0
+offset_right = 78.0
+offset_bottom = 96.0
+texture = ExtResource("25_jbv25")
+
+[node name="TextureRect2" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+z_index = -1
+layout_mode = 0
+offset_left = 70.0
+offset_top = -35.0
+offset_right = 260.0
+offset_bottom = 115.0
+texture = ExtResource("26_nakb8")
+
+[node name="TextureRect3" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+modulate = Color(1, 1, 1, 0.75000006)
+z_index = -2
+layout_mode = 0
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 274.0
+offset_bottom = 120.0
+texture = ExtResource("27_nakb8")
 
 [node name="TextPart" type="VBoxContainer" parent="MiniMenu/Encyclopedia"]
 layout_mode = 2

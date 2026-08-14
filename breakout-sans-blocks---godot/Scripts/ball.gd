@@ -24,6 +24,7 @@ var hitcounter:int = 0
 var frozen:bool = false
 
 var canslam:bool = true
+var slamming:bool = false
 var platcontactpos:float
 var mouseforce:float
 
