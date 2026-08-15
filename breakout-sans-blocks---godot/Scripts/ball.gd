@@ -23,7 +23,8 @@ var hitcounter:int = 0
 
 var frozen:bool = false
 
-var canslam:bool = true
+var touchingplatf:bool = false
+var touchinground:bool = false
 var slamming:bool = false
 var platcontactpos:float
 var mouseforce:float
@@ -35,17 +36,25 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	#$Label.text = str(canslam)
+	$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
 	ballPosCheat()
 	
 	if not frozen and not RuleManager.ballPosCheat:
 		timer -= 1
-		if canslam:
+		if not (touchinground or touchingplatf):
 			velocity.y += delta * get_gravity()
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and canslam:
-			slamStuff(delta)
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			if not slamming:
+				print("Started slam")
+				slamStart()
+			else:
+				slamStuff(delta)
+			slamming = true
+		elif slamming == true:
+			slamming = false
+			slamEnd()
 		
-		holdingOnPlatform(delta)
+		onPlatform(delta)
 		
 		if abs(position.x) > 960/(2*RuleManager.zoom):
 			wallOrPortalInteraction()
@@ -88,27 +97,6 @@ func ballPosCheat()->void:
 		position = get_global_mouse_position()
 		velocity = Vector2.ZERO
 
-func slamStuff(delta:float)->void:
-	if not $Slam.playing:
-		$Slam.play()
-	if velocity.y < 50:
-		velocity.y = 50
-	velocity.y += delta * get_gravity()
-
-func holdingOnPlatform(delta:float)->void:
-	if not canslam:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			#mouseforce += delta * Input.get_last_mouse_velocity().x
-			mouseforce += platform.positiondelta.x
-			#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
-			if abs(position.x) < 960/(2*RuleManager.zoom):
-				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
-			velocity.y = 0
-			position.y = platform.position.y - 9.9
-			mouseforce -= delta * sign(mouseforce) * 9.81
-		else:
-			velocity = get_launch(position,platform.position,platform.length,45)
-
 func wallOrPortalInteraction()->void:
 	if RuleManager.walls:
 		#position = Vector2.ZERO
@@ -134,28 +122,66 @@ func moveToCenter(duration:float,damaged:bool)->void:
 	tween.tween_property(self,"frozen",false,0.0)
 
 
+func slamStart()->void:
+	if not $Slam.playing:
+		$Slam.play()
+
+func slamEnd()->void:
+	if $Slam.playing:
+		$Slam.stop()
+
+
+func slamStuff(delta:float)->void:
+	if velocity.y < 50:
+		velocity.y = 50
+	velocity.y += delta * get_gravity()
+
+func onPlatform(delta:float)->void:
+	if touchingplatf:
+		if slamming:
+			#mouseforce += delta * Input.get_last_mouse_velocity().x
+			mouseforce += platform.positiondelta.x
+			#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
+			if abs(position.x) < 960/(2*RuleManager.zoom):
+				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
+			velocity.y = 0
+			position.y = platform.position.y - 9
+			mouseforce -= delta * sign(mouseforce) * 9.81
+		else:
+			velocity = get_launch(position,platform.position,platform.length,45)
+	elif touchinground:
+		if slamming:
+			position.y = floor.position.y - 12
+			velocity.x -= 0.5 * velocity.x * delta
+			velocity.y = 0
+		else:
+			velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
+
+
 #general
 func _on_area_entered(area: Area2D) -> void:
 	if area is Platform:
-		if canslam:
-			statIncrease(area)
-			if $Slam.playing:
-				$Slam.stop()
-				RuleManager.cameraAddShake(0.75,0.0,0.5)
-			mouseforce = 0
-			canslam = false
-			#velocity.y = -(5.0 + RuleManager.difficulty)
-			#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
-			#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
-			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-				platcontactpos = platform.position.x - position.x
-			else:
-				velocity = get_launch(position,platform.position,platform.length,45)
+		print("On Platform")
+		touchingplatf = true
+		statIncrease(area)
+		if $Slam.playing:
+			$Slam.stop()
+			RuleManager.cameraAddShake(0.75,0.0,0.5)
+		mouseforce = 0
+		
+		#velocity.y = -(5.0 + RuleManager.difficulty)
+		#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
+		#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
+		if slamming:
+			platcontactpos = platform.position.x - position.x
+	elif area == floor:
+		print("On Ground")
+		touchinground = true
+		if not slamming:
+			velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
-	if area == floor:
-		velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
 
 func statIncrease(area:Area2D)->void:
 	if position.y > area.position.y:
@@ -178,5 +204,9 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 func _on_area_exited(area: Area2D) -> void:
 	if area == platform:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
-		canslam = true
+		print("Left platform")
+		touchingplatf = false
 		#create_tween().tween_property(self,"canslam",true,0.1)
+	if area == floor:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
+		print("Left ground")
+		touchinground = false
