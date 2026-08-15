@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y += delta * get_gravity()
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			if not slamming:
-				print("Started slam")
+				#print("Started slam")
 				slamStart()
 			else:
 				slamStuff(delta)
@@ -125,10 +125,13 @@ func moveToCenter(duration:float,damaged:bool)->void:
 func slamStart()->void:
 	if not $Slam.playing:
 		$Slam.play()
+	velocity.x /= 2
 
 func slamEnd()->void:
 	if $Slam.playing:
 		$Slam.stop()
+	velocity.x *= 2
+	velocity.y = 50
 
 
 func slamStuff(delta:float)->void:
@@ -161,34 +164,21 @@ func onPlatform(delta:float)->void:
 #general
 func _on_area_entered(area: Area2D) -> void:
 	if area is Platform:
-		print("On Platform")
+		#print("On Platform")
 		touchingplatf = true
 		statIncrease(area)
-		if $Slam.playing:
-			$Slam.stop()
-			RuleManager.cameraAddShake(0.75,0.0,0.5)
 		mouseforce = 0
-		
-		#velocity.y = -(5.0 + RuleManager.difficulty)
-		#velocity.y = -sqrt(2*gravity*(platform.y + 540/(2*RuleManager.zoom)))
-		#velocity.x = (position.x - area.position.x) * (100.0/area.length) * (10+RuleManager.difficulty/4.0)
 		if slamming:
+			RuleManager.cameraAddShake(0.75,0.0,0.5)
 			platcontactpos = platform.position.x - position.x
 	elif area == floor:
-		print("On Ground")
+		#print("On Ground")
+		if slamming:
+			RuleManager.cameraAddShake(0.75,0.0,0.5)
 		touchinground = true
-		if not slamming:
-			velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
-
-func statIncrease(area:Area2D)->void:
-	if position.y > area.position.y:
-		pass #ek puan/para
-	hitcounter += 1
-	if hitcounter % 10 == 0:
-		RuleManager.difficulty += 1
 
 func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Vector2:
 	var lerpvalue = (ballpos.x-platpos.x)/(length/2)
@@ -204,9 +194,15 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 func _on_area_exited(area: Area2D) -> void:
 	if area == platform:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
-		print("Left platform")
+		#print("Left platform")
 		touchingplatf = false
-		#create_tween().tween_property(self,"canslam",true,0.1)
-	if area == floor:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
-		print("Left ground")
+	if area == floor:
+		#print("Left ground")
 		touchinground = false
+
+func statIncrease(area:Area2D)->void:
+	if position.y > area.position.y:
+		pass #ek puan/para
+	hitcounter += 1
+	if hitcounter % 10 == 0:
+		RuleManager.difficulty += 1

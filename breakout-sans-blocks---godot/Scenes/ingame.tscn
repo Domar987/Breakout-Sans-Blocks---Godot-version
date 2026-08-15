@@ -55,6 +55,7 @@ script = ExtResource("4_lq36l")
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
 
 [node name="Label" type="Label" parent="Ball"]
+visible = false
 offset_right = 28.0
 offset_bottom = 23.0
 scale = Vector2(0.75, 0.75)
