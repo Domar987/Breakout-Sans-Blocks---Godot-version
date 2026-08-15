@@ -109,6 +109,7 @@ func healthChange(dmg:int)->void:
 		death()
 
 func death()->void:
+	create_tween().tween_property(self,"ySpeed",0,3.0)
 	var tween = create_tween().set_parallel(false)
 	tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
 	tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)

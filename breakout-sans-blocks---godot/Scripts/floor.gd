@@ -12,5 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	additionalY += RuleManager.ySpeed * delta / 2
 	position.y = 540/(2*RuleManager.zoom) - 5 + additionalY
-	if position.y > 540/(2*RuleManager.zoom) + 200:
-		queue_free()
+	if position.y > 540/(2*RuleManager.zoom) + 6:
+		additionalY += RuleManager.ySpeed * delta / 2
+		if position.y > 540/(2*RuleManager.zoom) + 50:
+			queue_free()

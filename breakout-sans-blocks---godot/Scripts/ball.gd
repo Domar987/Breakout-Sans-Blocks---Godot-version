@@ -36,7 +36,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
+	#$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
 	ballPosCheat()
 	
 	if not frozen and not RuleManager.ballPosCheat:
@@ -155,7 +155,7 @@ func onPlatform(delta:float)->void:
 			velocity.x -= 0.5 * velocity.x * delta
 			velocity.y = 0
 		else:
-			velocity.y = -sqrt(2*get_gravity()*(floor.position.y + 540/(2*RuleManager.zoom)))
+			velocity = get_launch(velocity,Vector2(0,platform.position.y),559.08203984095864777017213390868,45)
 
 
 #general
