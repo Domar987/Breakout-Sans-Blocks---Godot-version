@@ -131,6 +131,7 @@ func levelChange(startY:float)->void:
 	currentcolors = bgcolors[level]
 	self.startY = startY + transtexture.get_height()
 	drawtrans = true
+	RuleManager.levelChange()
 
 func _draw() -> void:
 	var x = -960/(2*RuleManager.zoom)

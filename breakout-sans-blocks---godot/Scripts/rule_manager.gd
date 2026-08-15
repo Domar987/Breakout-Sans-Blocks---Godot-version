@@ -205,3 +205,7 @@ func shatterScreen()->void:
 		crackclone.modulate = Color(1.25,1.25,1.25, 1.0)
 		add_sibling(crackclone)
 	#print(Time.get_ticks_msec() - firsttick)
+
+func levelChange()->void:
+	if walls:
+		wall.updateColor()

@@ -5,8 +5,6 @@ var colShape2 = WorldBoundaryShape2D.new()
 
 @onready var background =  $/root/Ingame/Background
 
-var oldy:float
-
 var bgfile = FileAccess.get_file_as_string("res://Data/wall_colors.json")
 var bgcolors = JSON.parse_string(bgfile)
 
@@ -25,12 +23,12 @@ func _process(_delta: float) -> void:
 	colShape2.distance = -960/(2*RuleManager.zoom) + wallwidth
 	$CollisionShape2D1.shape = colShape1
 	$CollisionShape2D2.shape = colShape2
-	if oldy != background.yvalue:
-		currentcolors = bgcolors[background.level]
-		lefttexture[0] = Animator.new().applyColor("res://Sprites/wallleft.png",currentcolors)
-		righttexture[0] = Animator.new().applyColor("res://Sprites/wallright.png",currentcolors)
 	super(_delta)
-	oldy = background.yvalue
+
+func updateColor()->void:
+	currentcolors = bgcolors[background.level]
+	lefttexture[0] = Animator.new().applyColor("res://Sprites/wallleft.png",currentcolors)
+	righttexture[0] = Animator.new().applyColor("res://Sprites/wallright.png",currentcolors)
 
 func _draw() -> void:
 	if RuleManager.walls:
