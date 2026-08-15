@@ -371,18 +371,18 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("23_l6llh")
 
-[node name="Sprite2D" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
+[node name="EnemyIcon" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(35, 40)
 texture = ExtResource("24_l6llh")
 hframes = 5
 
-[node name="Sprite2D2" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
+[node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(-80, 40)
 texture = ExtResource("24_l6llh")
 hframes = 5
 frame = 1
 
-[node name="TextureRect" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+[node name="EnemyBG" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
 z_index = -1
 layout_mode = 0
 offset_left = -6.0
@@ -391,7 +391,7 @@ offset_right = 78.0
 offset_bottom = 96.0
 texture = ExtResource("25_jbv25")
 
-[node name="TextureRect2" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+[node name="TextBG" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
 z_index = -1
 layout_mode = 0
 offset_left = 70.0
@@ -400,7 +400,7 @@ offset_right = 260.0
 offset_bottom = 115.0
 texture = ExtResource("26_nakb8")
 
-[node name="TextureRect3" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
+[node name="BG" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
 modulate = Color(1, 1, 1, 0.75000006)
 z_index = -2
 layout_mode = 0
