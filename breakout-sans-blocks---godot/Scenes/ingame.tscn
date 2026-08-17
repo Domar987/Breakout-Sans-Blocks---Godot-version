@@ -243,9 +243,9 @@ maxSpawned = 2
 
 [node name="ChildSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("43_v7gd0")
-spawnWeight = 0.25
+spawnWeight = 0.2
 spawnAtDifficulty = 1
-maxSpawned = 8
+maxSpawned = 4
 
 [node name="GatorSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("12_6cchy")

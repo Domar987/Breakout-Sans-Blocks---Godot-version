@@ -1,11 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://dac3gjogx6wgt"]
+[gd_scene load_steps=17 format=3 uid="uid://dac3gjogx6wgt"]
 
 [ext_resource type="Script" uid="uid://b8xoo4n11p21l" path="res://Scripts/Projectiles/gator_tooth.gd" id="1_6yxx6"]
 [ext_resource type="Texture2D" uid="uid://bopa1fbh74lsm" path="res://Sprites/SewerGator/gatortooth.png" id="2_ra5d8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e4gl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yxx6"]
 atlas = ExtResource("2_ra5d8")
-region = Rect2(0, 0, 9, 16)
+region = Rect2(0, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra5d8"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(15, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e85hg"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(30, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qvdq"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(45, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2loyc"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(60, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xa07"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(75, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pffro"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(90, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d3p5"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(105, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ayr"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(120, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuuc6"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(135, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmk6a"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(150, 0, 15, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snspr"]
 atlas = ExtResource("2_ra5d8")
@@ -15,9 +55,39 @@ region = Rect2(0, 0, 9, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8e4gl")
+"texture": SubResource("AtlasTexture_6yxx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra5d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e85hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qvdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2loyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xa07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pffro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d3p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ayr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yuuc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmk6a")
 }],
-"loop": true,
+"loop": false,
 "name": &"1",
 "speed": 10.0
 }, {
@@ -31,14 +101,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jls"]
-size = Vector2(4, 8)
+size = Vector2(8, 20)
 
 [node name="GatorTooth" type="Area2D"]
 script = ExtResource("1_6yxx6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lqa7p")
-animation = &"blast"
+animation = &"1"
+frame = 10
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f6jls")

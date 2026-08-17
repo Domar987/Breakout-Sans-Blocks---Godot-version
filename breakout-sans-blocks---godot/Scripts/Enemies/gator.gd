@@ -34,20 +34,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if hp > 0:
-		if launches > 4 and mainSprite.animation == "idle":
-			mainSprite.play("content")
-			for i in range(1,len(sprites)):
-				sprites[i].visible = false
-		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
-			if launches > 4:
-				remove()
-			entered = false
-			xSpeed *= -1
-			ySpeed = -180
-			scale.x *= -1
-			$AggressiveAnimal.play()
-			position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
-			launches += 1
+		gonnaExit()
+		reenter()
 		ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
@@ -55,7 +43,24 @@ func _physics_process(delta: float) -> void:
 			Death()
 	position += Vector2(xSpeed, ySpeed) * delta
 
+func gonnaExit()->void:
+	if launches > 4:
+		if mainSprite.animation == "idle":
+			mainSprite.play("content")
+			for i in range(1,len(sprites)):
+				sprites[i].visible = false
+		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
+			remove()
 
+func reenter()->void:
+	if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
+		entered = false
+		xSpeed *= -1
+		ySpeed = -180
+		scale.x *= -1
+		$AggressiveAnimal.play()
+		position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
+		launches += 1
 
 func _on_area_entered(area: Area2D) -> void:
 	super(area)
