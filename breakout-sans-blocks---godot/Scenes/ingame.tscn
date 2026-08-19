@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=47 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://c55tnwthx2l8o" path="res://Sprites/Cracks/crack22.png" id="38_ckr2t"]
 [ext_resource type="Texture2D" uid="uid://bly0xvuodpqiq" path="res://Sprites/Cracks/crack23.png" id="39_mbnig"]
 [ext_resource type="Texture2D" uid="uid://c2iuebcbjvc8j" path="res://Sprites/Cracks/crack24.png" id="40_23uwq"]
+[ext_resource type="PackedScene" uid="uid://h7taaf32n627" path="res://Objects/Enemies/mechagator.tscn" id="41_1l64l"]
 [ext_resource type="Texture2D" uid="uid://cj6doi43hn8av" path="res://Sprites/Cracks/crack25.png" id="41_5uago"]
 [ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/Enemies/childsoldier.tscn" id="43_v7gd0"]
@@ -252,6 +253,12 @@ spawn = ExtResource("12_6cchy")
 spawnWeight = 0.1
 spawnAtDifficulty = 2
 maxSpawned = 3
+
+[node name="MechaSpawner" parent="." instance=ExtResource("5_165j7")]
+spawn = ExtResource("41_1l64l")
+spawnWeight = 1.0
+spawnAtDifficulty = 2
+maxSpawned = 2
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

@@ -5,6 +5,7 @@ class_name Spawner extends Node
 @export var spawnAtDifficulty:int
 @export var maxSpawned:int
 @onready var RuleManager = $/root/Ingame/RuleManager
+@onready var background = $/root/Ingame/Background
 var numberOfEnemies:int = 0
 var timer:int
 @export var spawnRare:PackedScene

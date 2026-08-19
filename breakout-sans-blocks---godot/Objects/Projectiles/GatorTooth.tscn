@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dac3gjogx6wgt"]
+[gd_scene load_steps=14 format=3 uid="uid://dac3gjogx6wgt"]
 
 [ext_resource type="Script" uid="uid://b8xoo4n11p21l" path="res://Scripts/Projectiles/gator_tooth.gd" id="1_6yxx6"]
 [ext_resource type="Texture2D" uid="uid://bopa1fbh74lsm" path="res://Sprites/SewerGator/gatortooth.png" id="2_ra5d8"]
@@ -7,21 +7,9 @@
 atlas = ExtResource("2_ra5d8")
 region = Rect2(0, 0, 15, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ra5d8"]
-atlas = ExtResource("2_ra5d8")
-region = Rect2(15, 0, 15, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e85hg"]
-atlas = ExtResource("2_ra5d8")
-region = Rect2(30, 0, 15, 25)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qvdq"]
 atlas = ExtResource("2_ra5d8")
 region = Rect2(45, 0, 15, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2loyc"]
-atlas = ExtResource("2_ra5d8")
-region = Rect2(60, 0, 15, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2xa07"]
 atlas = ExtResource("2_ra5d8")
@@ -58,16 +46,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6yxx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ra5d8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e85hg")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_6qvdq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2loyc")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2xa07")
@@ -109,8 +88,7 @@ script = ExtResource("1_6yxx6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lqa7p")
 animation = &"1"
-frame = 10
-frame_progress = 1.0
+frame_progress = 0.8404021
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f6jls")
