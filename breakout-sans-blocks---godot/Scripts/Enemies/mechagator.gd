@@ -1,6 +1,6 @@
 class_name MechaGator extends Gator
 
-var flyDir:float = 50#randi_range(-50, 50)
+var flyDir:float = randi_range(-50, 50)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +21,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	ySpeed = flyDir
+	if hp > 0:
+		ySpeed = flyDir
+	else:
+		xSpeed += 200 * delta * sign(xSpeedOld)
+		ySpeed -= 200 * delta
 	super(delta)
 
 func reenter()->void:
@@ -30,7 +34,25 @@ func reenter()->void:
 		flyDir = randi_range(-50, 50)
 	super()
 
+func _on_area_entered(area: Area2D) -> void:
+	if area == Ball and mainSprite.animation != "death":
+		if area.position.y < position.y:
+			ballFromTop()
+		else:
+			ballFromBottom()
+		if hp <= 0:
+			mainSprite.play("death")
+			create_tween().tween_property(self,"rotation",PI/2,4.0)
+		else:
+			if launches > 4:
+				for i in range(1,len(sprites)):
+					sprites[i].visible = true
+			mainSprite.play("hurt")
+
 func ballFromBottom()->void:
+	pass
+
+func bite(Area2D)->void:
 	pass
 
 func shootProjectile()->void:
