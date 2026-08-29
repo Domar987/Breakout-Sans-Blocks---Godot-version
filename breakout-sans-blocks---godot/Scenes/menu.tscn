@@ -28,7 +28,7 @@
 [ext_resource type="FontFile" uid="uid://dj51o5hd3lu4v" path="res://Sprites/font.png" id="25_ocger"]
 [ext_resource type="Texture2D" uid="uid://daox5wvpokqwb" path="res://Sprites/Menu/menupediatextbg.png" id="26_nakb8"]
 [ext_resource type="Texture2D" uid="uid://ctyakewjm2d2y" path="res://Sprites/Menu/menupediabg.png" id="27_nakb8"]
-[ext_resource type="Texture2D" uid="uid://cvjo7j112bvie" path="res://Sprites/Background/bgtransition.png" id="29_pde1v"]
+[ext_resource type="Texture2D" uid="uid://dr8xdrc3gc61p" path="res://Sprites/Menu/mural3.png" id="29_pde1v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -460,14 +460,12 @@ resolution"
 visible = false
 modulate = Color(1, 1, 1, 0.666)
 z_index = 10
-position = Vector2(0, 50)
-scale = Vector2(2.7, 2.7)
+position = Vector2(0, 54)
 texture = ExtResource("29_pde1v")
 
 [node name="Effect2" type="Sprite2D" parent="EffectParent"]
 visible = false
 modulate = Color(1, 1, 1, 0.666)
 z_index = 10
-position = Vector2(-320, 50)
-scale = Vector2(2.7, 2.7)
+position = Vector2(-320, 54)
 texture = ExtResource("29_pde1v")

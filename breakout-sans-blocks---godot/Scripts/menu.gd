@@ -82,10 +82,10 @@ func boolstuf()->void:
 	effect2.visible = false
 
 func tweenPos()->void:
-	effect.position = Vector2(0,50)
-	effect2.position = Vector2(-320,50)
+	effect.position = Vector2(0,54)
+	effect2.position = Vector2(-320,54)
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(effect,"position",Vector2(320,50),3.3)
-	tween.tween_property(effect2,"position",Vector2(0,50),3.3)
+	tween.tween_property(effect,"position",Vector2(320,54),3.3)
+	tween.tween_property(effect2,"position",Vector2(0,54),3.3)
 	if effect.visible:
 		tween.tween_callback(tweenPos).set_delay(3.3)
