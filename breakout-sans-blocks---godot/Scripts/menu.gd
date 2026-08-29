@@ -8,6 +8,7 @@ var mousePos:Vector2
 @onready var effect = $EffectParent/Effect
 @onready var effect2 = $EffectParent/Effect2
 var startedTitleEffect:bool = false
+var effectSine:float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var startTween = create_tween().set_trans(Tween.TRANS_SPRING).set_parallel(true)
@@ -25,7 +26,7 @@ func _ready() -> void:
 				buttons.append(child)
 	
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
 	#$Label.text = str(get_viewport().get_mouse_position())+"\n"+ str(get_viewport().size / 2.0)+"\n"+ str(get_viewport().get_mouse_position() - get_viewport().size / 2.0)
 	$RightSide.position = mousePos / 150.0
@@ -33,6 +34,11 @@ func _process(_delta: float) -> void:
 	$LeftSide.position = -mousePos / 150.0
 	
 	titleEffect()
+	if startedTitleEffect:
+		effectSine += 1.5 * delta
+		var sine = sin(effectSine)/6.0 + 0.65
+		effect.modulate.a = sine
+		effect2.modulate.a = sine
 
 func _button_pressed(button):
 	match button.name:
@@ -62,6 +68,7 @@ func changescene()->void:
 func titleEffect()->void:
 	if titleMusic.get_playback_position() >= 20.533 and titleMusic.get_playback_position() < 47.870 and not startedTitleEffect:
 		startedTitleEffect = true
+		effectSine = 0.0
 		var tween = create_tween().set_parallel(false)
 		tween.tween_property(self,"modulate",Color(10,10,10,1),0.1)
 		tween.tween_property(self,"modulate",Color.WHITE,0.2)
@@ -82,10 +89,10 @@ func boolstuf()->void:
 	effect2.visible = false
 
 func tweenPos()->void:
-	effect.position = Vector2(0,54)
-	effect2.position = Vector2(-320,54)
+	effect.position = Vector2(0,47)
+	effect2.position = Vector2(-320,47)
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(effect,"position",Vector2(320,54),3.3)
-	tween.tween_property(effect2,"position",Vector2(0,54),3.3)
+	tween.tween_property(effect,"position",Vector2(320,47),4.5)
+	tween.tween_property(effect2,"position",Vector2(0,47),4.5)
 	if effect.visible:
-		tween.tween_callback(tweenPos).set_delay(3.3)
+		tween.tween_callback(tweenPos).set_delay(4.5)

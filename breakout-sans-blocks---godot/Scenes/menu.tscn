@@ -458,14 +458,14 @@ resolution"
 
 [node name="Effect" type="Sprite2D" parent="EffectParent"]
 visible = false
-modulate = Color(1, 1, 1, 0.666)
+modulate = Color(1, 1, 1, 0.45000002)
 z_index = 10
-position = Vector2(0, 54)
+position = Vector2(0, 47)
 texture = ExtResource("29_pde1v")
 
 [node name="Effect2" type="Sprite2D" parent="EffectParent"]
 visible = false
 modulate = Color(1, 1, 1, 0.666)
 z_index = 10
-position = Vector2(-320, 54)
+position = Vector2(-320, 47)
 texture = ExtResource("29_pde1v")
