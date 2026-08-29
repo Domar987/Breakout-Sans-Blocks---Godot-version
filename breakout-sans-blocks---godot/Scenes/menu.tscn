@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=48 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -28,6 +28,7 @@
 [ext_resource type="FontFile" uid="uid://dj51o5hd3lu4v" path="res://Sprites/font.png" id="25_ocger"]
 [ext_resource type="Texture2D" uid="uid://daox5wvpokqwb" path="res://Sprites/Menu/menupediatextbg.png" id="26_nakb8"]
 [ext_resource type="Texture2D" uid="uid://ctyakewjm2d2y" path="res://Sprites/Menu/menupediabg.png" id="27_nakb8"]
+[ext_resource type="Texture2D" uid="uid://cvjo7j112bvie" path="res://Sprites/Background/bgtransition.png" id="29_pde1v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -452,3 +453,21 @@ size_flags_horizontal = 4
 text = "Option stuff
 volume
 resolution"
+
+[node name="EffectParent" type="Node2D" parent="."]
+
+[node name="Effect" type="Sprite2D" parent="EffectParent"]
+visible = false
+modulate = Color(1, 1, 1, 0.666)
+z_index = 10
+position = Vector2(0, 50)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("29_pde1v")
+
+[node name="Effect2" type="Sprite2D" parent="EffectParent"]
+visible = false
+modulate = Color(1, 1, 1, 0.666)
+z_index = 10
+position = Vector2(-320, 50)
+scale = Vector2(2.7, 2.7)
+texture = ExtResource("29_pde1v")

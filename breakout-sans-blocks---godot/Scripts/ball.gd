@@ -43,23 +43,24 @@ func _physics_process(delta: float) -> void:
 		timer -= 1
 		if not (touchinground or touchingplatf):
 			velocity.y += delta * get_gravity()
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if not slamming:
-				#print("Started slam")
-				slamStart()
-			else:
-				slamStuff(delta)
-			slamming = true
-		elif slamming == true:
-			slamming = false
-			slamEnd()
-		
-		onPlatform(delta)
-		
-		if abs(position.x) > 960/(2*RuleManager.zoom):
-			wallOrPortalInteraction()
-		
-		fall()
+		if RuleManager.health > 0:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+				if not slamming:
+					#print("Started slam")
+					slamStart()
+				else:
+					slamStuff(delta)
+				slamming = true
+			elif slamming == true:
+				slamming = false
+				slamEnd()
+			
+			onPlatform(delta)
+			
+			if abs(position.x) > 960/(2*RuleManager.zoom):
+				wallOrPortalInteraction()
+			
+			fall()
 		
 		#if linear_velocity.y < 10:
 		#	sprite.frame = 0
