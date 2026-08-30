@@ -37,8 +37,9 @@ func _process(delta: float) -> void:
 	if startedTitleEffect:
 		effectSine += 1.5 * delta
 		var sine = sin(effectSine)/6.0 + 0.65
-		effect.modulate.a = sine
-		effect2.modulate.a = sine
+		modulate = Color(sine,sine,sine,1)
+		effect.modulate = Color(1/sine,1/sine,1/sine,sine)
+		effect2.modulate = Color(1/sine,1/sine,1/sine,sine)
 
 func _button_pressed(button):
 	match button.name:
