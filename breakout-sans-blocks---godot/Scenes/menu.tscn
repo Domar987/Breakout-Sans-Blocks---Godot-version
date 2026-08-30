@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=52 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -112,6 +112,35 @@ font_size = 14
 line_spacing = 1.0
 font = ExtResource("25_ocger")
 font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pde1v"]
+atlas = ExtResource("29_pde1v")
+region = Rect2(0, 0, 320, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_747ic"]
+atlas = ExtResource("29_pde1v")
+region = Rect2(320, 0, 320, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0760"]
+atlas = ExtResource("29_pde1v")
+region = Rect2(640, 0, 320, 102)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvy56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pde1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_747ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0760")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_g8i7c")
@@ -456,16 +485,18 @@ resolution"
 
 [node name="EffectParent" type="Node2D" parent="."]
 
-[node name="Effect" type="Sprite2D" parent="EffectParent"]
+[node name="Effect" type="AnimatedSprite2D" parent="EffectParent"]
 visible = false
 modulate = Color(1, 1, 1, 0.45000002)
 z_index = 10
 position = Vector2(0, 47)
-texture = ExtResource("29_pde1v")
+sprite_frames = SubResource("SpriteFrames_lvy56")
+autoplay = "default"
 
-[node name="Effect2" type="Sprite2D" parent="EffectParent"]
+[node name="Effect2" type="AnimatedSprite2D" parent="EffectParent"]
 visible = false
 modulate = Color(1, 1, 1, 0.666)
 z_index = 10
 position = Vector2(-320, 47)
-texture = ExtResource("29_pde1v")
+sprite_frames = SubResource("SpriteFrames_lvy56")
+autoplay = "default"
