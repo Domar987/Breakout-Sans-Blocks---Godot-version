@@ -1,6 +1,7 @@
 class_name Gator extends Enemy
 
 var launches:int = 1
+@onready var enterSound = $AggressiveAnimal
 
 func _ready() -> void:
 	hurtAudios = [$GatorHurt]
@@ -58,7 +59,7 @@ func reenter()->void:
 		xSpeed *= -1
 		ySpeed = -180
 		scale.x *= -1
-		$AggressiveAnimal.play()
+		enterSound.play()
 		position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
 		launches += 1
 

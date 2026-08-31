@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://h7taaf32n627"]
+[gd_scene load_steps=31 format=3 uid="uid://h7taaf32n627"]
 
 [ext_resource type="Script" uid="uid://di3rk37sh0734" path="res://Scripts/Enemies/mechagator.gd" id="1_n4ajm"]
 [ext_resource type="Texture2D" uid="uid://6luijhvlttny" path="res://Sprites/MechaGator/mechahead.png" id="2_kpci7"]
@@ -6,9 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c4isq5k5s30ni" path="res://Sprites/MechaGator/mechabody.png" id="4_1e4e2"]
 [ext_resource type="Texture2D" uid="uid://dcqcawsryjt3c" path="res://Sprites/MechaGator/mechafire.png" id="5_rddk0"]
 [ext_resource type="Texture2D" uid="uid://caw8ug61ymnq0" path="res://Sprites/MechaGator/mechafull1.png" id="6_8u2v0"]
-[ext_resource type="AudioStream" uid="uid://4342h6iq4y1" path="res://Audio/SFX/SewerGator/AggressiveAnimal.wav" id="7_xhfny"]
-[ext_resource type="AudioStream" uid="uid://chnxagm1edauj" path="res://Audio/SFX/SewerGator/GatorChomp.wav" id="8_pmfgj"]
-[ext_resource type="AudioStream" uid="uid://ch4fy65jqsf1o" path="res://Audio/SFX/SewerGator/GatorHurt.wav" id="9_uv0iw"]
+[ext_resource type="AudioStream" uid="uid://dg0nex0ajycth" path="res://Audio/SFX/MechaGator/MechaGator.wav" id="7_25iri"]
+[ext_resource type="AudioStream" uid="uid://b5oiw2qd1d3ul" path="res://Audio/SFX/MechaGator/MechaHurt.wav" id="8_n4ajm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oclp"]
 atlas = ExtResource("2_kpci7")
@@ -218,17 +217,14 @@ position = Vector2(0, -3)
 texture = ExtResource("6_8u2v0")
 offset = Vector2(0, 6)
 
-[node name="AggressiveAnimal" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_xhfny")
-volume_db = -5.0
-pitch_scale = 0.75
-autoplay = true
-
-[node name="GatorChomp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_pmfgj")
-
-[node name="GatorHurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_uv0iw")
-
 [node name="BiteArea" type="Area2D" parent="."]
 position = Vector2(42, 0)
+
+[node name="AggressiveAnimal" type="AudioStreamPlayer" parent="."]
+
+[node name="GatorHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_n4ajm")
+
+[node name="MechaGator" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_25iri")
+autoplay = true
