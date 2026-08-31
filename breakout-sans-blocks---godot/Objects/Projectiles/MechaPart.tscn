@@ -177,7 +177,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jls"]
-size = Vector2(8, 20)
+size = Vector2(10, 10)
 
 [node name="GatorTooth" type="Area2D"]
 script = ExtResource("1_t1ey2")

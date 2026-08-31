@@ -16,7 +16,7 @@ func _ready() -> void:
 	sprites = [$Head,$Arm,$Body,$Fire]
 	xSpeed = 100 * sign(xSpeed)
 	ySpeed = 0
-	projectilesource = preload("res://Objects/Projectiles/GatorTooth.tscn")
+	projectilesource = preload("res://Objects/Projectiles/MechaPart.tscn")
 	
 
 
