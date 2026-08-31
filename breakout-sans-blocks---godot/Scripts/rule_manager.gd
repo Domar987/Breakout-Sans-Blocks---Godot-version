@@ -16,6 +16,8 @@ var damage:int = 1
 var oldhealth:int = 10
 var kill:int = 0
 
+var invitimer:float = 0.525
+
 var ySpeed:float=0.0
 
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
@@ -67,6 +69,10 @@ func _process(delta: float) -> void:
 	oldDifficulty = difficulty
 	oldhealth = health
 
+func _physics_process(delta: float) -> void:
+	if invitimer > 0:
+		invitimer -= delta
+
 func uiTransform()->void:
 	ui.scale = Vector2.ONE * (3/zoom)
 	ui.size = Vector2(960,540)/(zoom * ui.scale)
@@ -94,19 +100,23 @@ func difficultyChange()->void:
 		platformLength(platform.length * 0.8)
 
 func healthChange(dmg:int)->void:
-	heartGenerator.generateHearts(health)
-	
-	var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
-	hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
-	hurttween.set_ease(Tween.EASE_IN_OUT)
-	hurttween.tween_property(platform,"hurtposition",-2*dmg,0.15)
-	hurttween.tween_property(platform,"hurtposition",dmg,0.075)
-	hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
-	hurttween.set_ease(Tween.EASE_IN)
-	hurttween.tween_property(platform,"hurtposition",0,0.075)
-	
-	if health <= 0:
-		death()
+	if invitimer > 0:
+		health += dmg
+	else:
+		invitimer = 0.525
+		heartGenerator.generateHearts(health)
+		
+		var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
+		hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
+		hurttween.set_ease(Tween.EASE_IN_OUT)
+		hurttween.tween_property(platform,"hurtposition",-2*dmg,0.15)
+		hurttween.tween_property(platform,"hurtposition",dmg,0.075)
+		hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
+		hurttween.set_ease(Tween.EASE_IN)
+		hurttween.tween_property(platform,"hurtposition",0,0.075)
+		
+		if health <= 0:
+			death()
 
 func death()->void:
 	create_tween().tween_property(self,"ySpeed",0,3.0)
