@@ -1,9 +1,10 @@
 class_name MechaPart extends GatorTooth
 
-var xSpeed = -sign(scale.x)*(randf() * 100 + 25)
+var xSpeed:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	xSpeed = -sign(scale.x)*(randf() * 100)
 	super()
 	canfall = true
 	speed = -(randf() * 200 + 75)
