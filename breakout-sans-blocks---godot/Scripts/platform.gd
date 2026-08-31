@@ -34,12 +34,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if hurtposition != 0:
-		var tmp = 1 + abs(hurtposition/1.5)
-		modulate = Color(tmp,tmp,tmp,1)
-	else:
-		modulate = Color.WHITE
-	
 	rectShape.size = Vector2(length, 10)
 	collisionShape.set_shape(rectShape)
 	rect = Rect2(Vector2(-length/2,-2),Vector2(length,4))

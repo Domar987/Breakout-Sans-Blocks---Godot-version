@@ -106,17 +106,30 @@ func healthChange(dmg:int)->void:
 		invitimer = 2.0
 		heartGenerator.generateHearts(health)
 		
-		var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
-		hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
-		hurttween.set_ease(Tween.EASE_IN_OUT)
-		hurttween.tween_property(platform,"hurtposition",-2*dmg,0.15)
-		hurttween.tween_property(platform,"hurtposition",dmg,0.075)
-		hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
-		hurttween.set_ease(Tween.EASE_IN)
-		hurttween.tween_property(platform,"hurtposition",0,0.075)
+		hurtmodulatetween(dmg)
+		hurtpositiontween(dmg)
 		
 		if health <= 0:
 			death()
+
+func hurtmodulatetween(dmg:int)->void:
+	var tmptimer = 0.0
+	var hurttween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)
+	tmptimer += 0.3
+	while tmptimer < 2.0:
+		hurttween.tween_property(platform,"modulate",Color(1+dmg,1+dmg,1+dmg,1),0.1)
+		hurttween.tween_property(platform,"modulate",Color.WHITE,0.2)
+		tmptimer += 0.3
+
+func hurtpositiontween(dmg:int)->void:
+	var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)
+	hurttween.tween_property(platform,"hurtposition",2*dmg,0.075)
+	hurttween.set_ease(Tween.EASE_IN_OUT)
+	hurttween.tween_property(platform,"hurtposition",-2*dmg,0.15)
+	hurttween.tween_property(platform,"hurtposition",dmg,0.075)
+	hurttween.tween_property(platform,"hurtposition",-dmg,0.15)
+	hurttween.set_ease(Tween.EASE_IN)
+	hurttween.tween_property(platform,"hurtposition",0,0.075)
 
 func death()->void:
 	create_tween().tween_property(self,"ySpeed",0,3.0)
