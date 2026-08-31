@@ -16,7 +16,7 @@ var damage:int = 1
 var oldhealth:int = 10
 var kill:int = 0
 
-var invitimer:float = 0.525
+var invitimer:float = 2.0
 
 var ySpeed:float=0.0
 
@@ -103,7 +103,7 @@ func healthChange(dmg:int)->void:
 	if invitimer > 0:
 		health += dmg
 	else:
-		invitimer = 0.525
+		invitimer = 2.0
 		heartGenerator.generateHearts(health)
 		
 		var hurttween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel(false)

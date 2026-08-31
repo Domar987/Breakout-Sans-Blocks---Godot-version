@@ -14,7 +14,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	super(delta)
-	position.x += xSpeed * delta
+	if sprite.animation != "blast":
+		position.x += xSpeed * delta
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	super()

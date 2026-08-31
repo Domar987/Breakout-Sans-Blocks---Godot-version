@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dac3gjogx6wgt"]
+[gd_scene load_steps=20 format=3 uid="uid://dac3gjogx6wgt"]
 
 [ext_resource type="Script" uid="uid://b8xoo4n11p21l" path="res://Scripts/Projectiles/gator_tooth.gd" id="1_6yxx6"]
 [ext_resource type="Texture2D" uid="uid://bopa1fbh74lsm" path="res://Sprites/SewerGator/gatortooth.png" id="2_ra5d8"]
@@ -35,9 +35,33 @@ region = Rect2(135, 0, 15, 25)
 atlas = ExtResource("2_ra5d8")
 region = Rect2(150, 0, 15, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_snspr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra5d8"]
 atlas = ExtResource("2_ra5d8")
-region = Rect2(0, 0, 9, 16)
+region = Rect2(165, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e85hg"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(180, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2loyc"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(195, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp21x"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(210, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q5vn"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(225, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bvci"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(240, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppxqo"]
+atlas = ExtResource("2_ra5d8")
+region = Rect2(255, 0, 15, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lqa7p"]
 animations = [{
@@ -72,7 +96,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_snspr")
+"texture": SubResource("AtlasTexture_ra5d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e85hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2loyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp21x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q5vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bvci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxqo")
 }],
 "loop": false,
 "name": &"blast",
@@ -83,12 +125,14 @@ animations = [{
 size = Vector2(8, 20)
 
 [node name="GatorTooth" type="Area2D"]
+z_index = 4
 script = ExtResource("1_6yxx6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lqa7p")
-animation = &"1"
-frame_progress = 0.8404021
+animation = &"blast"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f6jls")

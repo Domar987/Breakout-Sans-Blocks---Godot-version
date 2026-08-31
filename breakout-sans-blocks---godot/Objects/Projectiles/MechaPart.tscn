@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckh7cmfr6sytw"]
+[gd_scene load_steps=35 format=3 uid="uid://ckh7cmfr6sytw"]
 
 [ext_resource type="Script" uid="uid://dcmj4oad6ybmj" path="res://Scripts/Projectiles/mecha_part.gd" id="1_t1ey2"]
 [ext_resource type="Texture2D" uid="uid://jexjv2gjph41" path="res://Sprites/MechaGator/mechacog.png" id="2_t1ey2"]
 [ext_resource type="Texture2D" uid="uid://cpthdvqm02fv6" path="res://Sprites/MechaGator/mechanut.png" id="3_x634j"]
 [ext_resource type="Texture2D" uid="uid://dy7icka54yrvd" path="res://Sprites/MechaGator/mechapipe.png" id="4_vrou8"]
 [ext_resource type="Texture2D" uid="uid://xmtkp51aw42g" path="res://Sprites/MechaGator/mechascrew.png" id="5_dlw8a"]
+[ext_resource type="Texture2D" uid="uid://4au36fa7lr64" path="res://Sprites/MechaGator/mechapartblast.png" id="6_x634j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tyra"]
 atlas = ExtResource("2_t1ey2")
@@ -90,6 +91,26 @@ region = Rect2(98, 0, 14, 14)
 atlas = ExtResource("5_dlw8a")
 region = Rect2(112, 0, 14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrou8"]
+atlas = ExtResource("6_x634j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlw8a"]
+atlas = ExtResource("6_x634j")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdqis"]
+atlas = ExtResource("6_x634j")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y38w7"]
+atlas = ExtResource("6_x634j")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlwqm"]
+atlas = ExtResource("6_x634j")
+region = Rect2(64, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_pdqis"]
 animations = [{
 "frames": [{
@@ -174,17 +195,38 @@ animations = [{
 "loop": true,
 "name": &"4",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrou8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlw8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdqis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y38w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlwqm")
+}],
+"loop": false,
+"name": &"blast",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6jls"]
 size = Vector2(10, 10)
 
-[node name="GatorTooth" type="Area2D"]
+[node name="MechaPart" type="Area2D"]
+z_index = 3
 script = ExtResource("1_t1ey2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pdqis")
-animation = &"1"
+animation = &"blast"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f6jls")
