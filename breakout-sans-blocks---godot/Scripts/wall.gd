@@ -11,8 +11,8 @@ var bgcolors = JSON.parse_string(bgfile)
 var currentcolors:Array
 
 func _ready() -> void:
-	lefttexture = [Animator.new().applyColor("res://Sprites/wallleft.png",bgcolors[0])]
-	righttexture = [Animator.new().applyColor("res://Sprites/wallright.png",bgcolors[0])]
+	lefttexture = [Animator.applyColor("res://Sprites/wallleft.png",bgcolors[0])]
+	righttexture = [Animator.applyColor("res://Sprites/wallright.png",bgcolors[0])]
 	wallwidth = 12
 	wallheight = 10
 	colShape1.normal = Vector2(1,0)
@@ -27,8 +27,8 @@ func _process(_delta: float) -> void:
 
 func updateColor()->void:
 	currentcolors = bgcolors[background.level]
-	lefttexture[0] = Animator.new().applyColor("res://Sprites/wallleft.png",currentcolors)
-	righttexture[0] = Animator.new().applyColor("res://Sprites/wallright.png",currentcolors)
+	lefttexture[0] = Animator.applyColor("res://Sprites/wallleft.png",currentcolors)
+	righttexture[0] = Animator.applyColor("res://Sprites/wallright.png",currentcolors)
 
 func _draw() -> void:
 	if RuleManager.walls:

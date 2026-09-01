@@ -2,14 +2,14 @@ class_name Animator
 
 extends Node
 
-var globalOldColors:Array[Color] = [Color("242424"),Color("555555"),Color("787878"),Color("c0c0c0"),Color("ffffff")]
+static var globalOldColors:Array[Color] = [Color("242424"),Color("555555"),Color("787878"),Color("c0c0c0"),Color("ffffff")]
 
-func createAnimation(sprite:SpriteFrames,animname:String,loop:bool,speed:float)->void:
+static func createAnimation(sprite:SpriteFrames,animname:String,loop:bool,speed:float)->void:
 	sprite.add_animation(animname)
 	sprite.set_animation_loop(animname,loop)
 	sprite.set_animation_speed(animname,speed)
 
-func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,animname:String)->void:
+static func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,animname:String)->void:
 	var tex = load(path)
 	var texwidth = tex.get_width() / frames
 	var texheight = tex.get_height()
@@ -19,7 +19,7 @@ func createFramesAuto(path:String,sprite:SpriteFrames,frames:int,animname:String
 		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
 		sprite.add_frame(animname,atlas,1.0)
 
-func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
+static func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
 	var tex = load(path)
 	var texwidth = tex.get_width() / originalframelen
 	var texheight = tex.get_height()
@@ -29,7 +29,7 @@ func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:int,fra
 		atlas.region = Rect2(texwidth * frames[i], 0, texwidth, texheight)
 		sprite.add_frame(animname,atlas,durations[i])
 
-func createFramesAutoTexture(tex:Texture2D,sprite:SpriteFrames,frames:int,animname:String)->void:
+static func createFramesAutoTexture(tex:Texture2D,sprite:SpriteFrames,frames:int,animname:String)->void:
 	var texwidth = tex.get_width() / frames
 	var texheight = tex.get_height()
 	for i in range(0,frames):
@@ -38,7 +38,7 @@ func createFramesAutoTexture(tex:Texture2D,sprite:SpriteFrames,frames:int,animna
 		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
 		sprite.add_frame(animname,atlas,1.0)
 
-func createFramesManualTexture(tex:Texture2D,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
+static func createFramesManualTexture(tex:Texture2D,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
 	var texwidth = tex.get_width() / originalframelen
 	var texheight = tex.get_height()
 	for i in range(0,len(frames)):
@@ -47,7 +47,7 @@ func createFramesManualTexture(tex:Texture2D,sprite:SpriteFrames,originalframele
 		atlas.region = Rect2(texwidth * frames[i], 0, texwidth, texheight)
 		sprite.add_frame(animname,atlas,durations[i])
 
-func chooseTexture(path:String,frames:int,targetframe:int)->Texture2D:
+static func chooseTexture(path:String,frames:int,targetframe:int)->Texture2D:
 	var tex = load(path)
 	var texwidth = tex.get_width() / frames
 	var texheight = tex.get_height()
@@ -56,7 +56,7 @@ func chooseTexture(path:String,frames:int,targetframe:int)->Texture2D:
 	atlas.region = Rect2(texwidth * targetframe, 0, texwidth, texheight)
 	return atlas
 
-func applyColor(path:String,newColors:Array)->Texture2D:
+static func applyColor(path:String,newColors:Array)->Texture2D:
 	var img:Image = load(path).get_image()
 	for y in img.get_height():
 		for x in img.get_width():
@@ -65,7 +65,7 @@ func applyColor(path:String,newColors:Array)->Texture2D:
 					img.set_pixel(x,y,Color(newColors[i]))
 	return ImageTexture.create_from_image(img)
 	
-func applyColortoOld(path:String,oldColors:Array[Color],newColors:Array)->Texture2D:
+static func applyColortoOld(path:String,oldColors:Array[Color],newColors:Array)->Texture2D:
 	var img:Image = load(path)
 	for y in img.get_height():
 		for x in img.get_width():

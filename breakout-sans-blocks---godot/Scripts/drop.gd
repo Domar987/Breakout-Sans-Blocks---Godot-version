@@ -23,7 +23,7 @@ func _ready() -> void:
 	sprite.play("form")
 	speed = 1
 	variant = tiervariants[tier][randi_range(0,len(tiervariants[tier])-1)]
-	prizeSprite.texture = Animator.new().chooseTexture("res://Sprites/drops.png",prizeamount,variant)
+	prizeSprite.texture = Animator.chooseTexture("res://Sprites/drops.png",prizeamount,variant)
 	prizeSprite.scale = Vector2.ZERO
 	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(prizeSprite,"scale",Vector2.ONE,0.75)
 

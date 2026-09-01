@@ -6,6 +6,8 @@ var popAudios:Array[AudioStreamPlayer]
 
 var shakeAmount:float=0.1
 
+var particles:Array[PackedScene] = [load("res://Objects/Particles/SmokeMedium.tscn"),load("res://Objects/Particles/SmokeSmall.tscn")]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attacktimer = 10
@@ -74,10 +76,12 @@ func getHurt()->void:
 	super()
 	var tween = create_tween()
 	if hp > 0:
+		ParticleSystem.new().emit.call(particles,randi_range(3,5),global_position + scale * Vector2(6,-12))
 		tween.tween_property(self,"shakeAmount",1.0,0.15)
 		tween.tween_interval(0.2)
 		tween.tween_property(self,"shakeAmount",0.1,0.25)
 	else:
+		ParticleSystem.new().emit.call(particles,randi_range(4,7),global_position + scale * Vector2(6,-12))
 		tween.tween_property(self,"shakeAmount",2.0,0.25)
 
 func bite(Area2D)->void:

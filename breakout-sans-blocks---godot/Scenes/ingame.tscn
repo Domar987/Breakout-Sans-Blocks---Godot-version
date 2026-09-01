@@ -256,7 +256,7 @@ maxSpawned = 3
 
 [node name="MechaSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("41_1l64l")
-spawnWeight = 0.066
+spawnWeight = 1.0
 spawnAtDifficulty = 2
 maxSpawned = 2
 

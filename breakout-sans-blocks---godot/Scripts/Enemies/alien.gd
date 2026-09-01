@@ -53,15 +53,15 @@ func _ready() -> void:
 	xSpeed *= -fromLorCorR
 	selectedcolors = selectColor(y)
 	
-	var tex = Animator.new().applyColor(aliensprite+str(variant)+".png",selectedcolors)
+	var tex = Animator.applyColor(aliensprite+str(variant)+".png",selectedcolors)
 	mainSprite.sprite_frames = SpriteFrames.new()
-	Animator.new().createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
-	Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
-	Animator.new().createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
-	Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
+	Animator.createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
+	Animator.createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
+	Animator.createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
+	Animator.createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
 	mainSprite.play("idle")
-	Animator.new().createAnimation(mainSprite.sprite_frames,"death",false,10.0)
-	Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
+	Animator.createAnimation(mainSprite.sprite_frames,"death",false,10.0)
+	Animator.createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
 
 	super()
 
@@ -83,15 +83,15 @@ func _physics_process(delta: float) -> void:
 				position.y += 32
 				selectedcolors = selectColor(position.y)
 				mainSprite.sprite_frames.clear_all()
-				var tex = Animator.new().applyColor(aliensprite+str(variant)+".png",selectedcolors)
+				var tex = Animator.applyColor(aliensprite+str(variant)+".png",selectedcolors)
 				mainSprite.sprite_frames = SpriteFrames.new()
-				Animator.new().createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
-				Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
-				Animator.new().createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
-				Animator.new().createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
+				Animator.createAnimation(mainSprite.sprite_frames,"idle",true,10.0)
+				Animator.createFramesManualTexture(tex,mainSprite.sprite_frames,4,[0,1,2,1],[3,1,3,1],"idle")
+				Animator.createAnimation(mainSprite.sprite_frames,"hurt",false,2.0)
+				Animator.createFramesManualTexture(tex,mainSprite.sprite_frames,4,[3],[1],"hurt")
 				mainSprite.play("idle")
-				Animator.new().createAnimation(mainSprite.sprite_frames,"death",false,10.0)
-				Animator.new().createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
+				Animator.createAnimation(mainSprite.sprite_frames,"death",false,10.0)
+				Animator.createFramesAuto("res://Sprites/Alien/alienexplosion.png",sprites[0].sprite_frames,4,"death")
 
 			else:
 				movedDown = false

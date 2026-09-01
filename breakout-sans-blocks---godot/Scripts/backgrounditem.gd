@@ -22,12 +22,12 @@ func _ready() -> void:
 	if randi_range(0,1000) == 1000:
 		bgsprite = "howdidthisgethere"
 	else:
-		tex = Animator.new().applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
-	Animator.new().createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
+		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
+	Animator.createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
 	if bgsprite == "howdidthisgethere":
-		Animator.new().createFramesAuto("res://Sprites/Background/"+bgsprite+".png",$AnimatedSprite2D.sprite_frames,1,"1")
+		Animator.createFramesAuto("res://Sprites/Background/"+bgsprite+".png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
-		Animator.new().createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
+		Animator.createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
 	direction = Vector2.DOWN
 	
 	choosePosition()
