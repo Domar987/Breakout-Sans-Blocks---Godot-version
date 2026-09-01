@@ -4,9 +4,9 @@ var spawner:Spawner
 
 var isRare:bool = false
 
-@onready var ruleManager = $/root/Ingame/RuleManager
-@onready var ball = $/root/Ingame/Ball
-@onready var wall = $/root/Ingame/Wall
+@onready var RuleManager = $/root/Ingame/RuleManager
+@onready var Ball = $/root/Ingame/Ball
+@onready var Wall = $/root/Ingame/Wall
 @onready var sprites:Array[AnimatedSprite2D]
 var mainSprite:AnimatedSprite2D
 
@@ -56,12 +56,12 @@ func _physics_process(delta: float) -> void:
 				shootProjectile()
 				attacktimer = attackTimerBase
 		
-		if abs(position.x) < abs(960/(2*ruleManager.zoom)) - enterValue and !entered:
+		if abs(position.x) < abs(960/(2*RuleManager.zoom)) - enterValue and !entered:
 			entered = true
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area == ball and mainSprite.animation != "death":
+	if area == Ball and mainSprite.animation != "death":
 		if area.position.y < position.y:
 			ballFromTop()
 		else:
@@ -69,7 +69,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func ballFromTop()->void:
 	print(name+" hit from above")
-	ball.velocity.y = min(-125.28,ball.velocity.y)
+	Ball.velocity.y = min(-125.28,Ball.velocity.y)
 	getHurt()
 func ballFromBottom()->void:
 	print(name+" hit from below")
@@ -79,7 +79,7 @@ func getHurt()->void:
 		var audio = hurtAudios.pick_random()
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()
-	hp -= ruleManager.damage
+	hp -= RuleManager.damage
 	if hp <= 0 and randi_range(0,100) < dropChance:
 		var projectile = load("res://Objects/Drop.tscn").instantiate()
 		projectile.position = position
@@ -118,7 +118,7 @@ func shootProjectile()->void:
 	add_sibling.call_deferred(projectile)
 
 func Death()->void:
-	ruleManager.kill += 1
+	RuleManager.kill += 1
 	remove()
 
 func remove()->void:

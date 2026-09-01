@@ -30,7 +30,7 @@ static func createFramesManual(path:String,sprite:SpriteFrames,originalframelen:
 		sprite.add_frame(animname,atlas,durations[i])
 
 static func createFramesAutoTexture(tex:Texture2D,sprite:SpriteFrames,frames:int,animname:String)->void:
-	var texwidth = int(tex.get_width() / frames)
+	var texwidth = tex.get_width() / frames
 	var texheight = tex.get_height()
 	for i in range(0,frames):
 		var atlas = AtlasTexture.new()
@@ -39,7 +39,7 @@ static func createFramesAutoTexture(tex:Texture2D,sprite:SpriteFrames,frames:int
 		sprite.add_frame(animname,atlas,1.0)
 
 static func createFramesManualTexture(tex:Texture2D,sprite:SpriteFrames,originalframelen:int,frames:Array[int],durations:Array[float],animname:String)->void:
-	var texwidth = int(tex.get_width() / originalframelen)
+	var texwidth = tex.get_width() / originalframelen
 	var texheight = tex.get_height()
 	for i in range(0,len(frames)):
 		var atlas = AtlasTexture.new()

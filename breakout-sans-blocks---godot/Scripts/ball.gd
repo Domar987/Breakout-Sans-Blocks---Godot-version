@@ -9,7 +9,7 @@ var timer:int = 0
 @export var outlinelightcolor:Color
 @export var outlinedarkcolor:Color
 
-@onready var ruleManager = $/root/Ingame/RuleManager
+@onready var RuleManager = $/root/Ingame/RuleManager
 @onready var platform = $/root/Ingame/Platform
 @onready var wall = $/root/Ingame/Wall
 @onready var floor = $/root/Ingame/Floor
@@ -31,7 +31,7 @@ var mouseforce:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	chooseColors(ruleManager.activecolor)
+	chooseColors(RuleManager.activecolor)
 	applyColors()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,11 +39,11 @@ func _physics_process(delta: float) -> void:
 	#$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
 	ballPosCheat()
 	
-	if not frozen and not ruleManager.ballPosCheat:
+	if not frozen and not RuleManager.ballPosCheat:
 		timer -= 1
 		if not (touchinground or touchingplatf):
 			velocity.y += delta * get_gravity()
-		if ruleManager.health > 0:
+		if RuleManager.health > 0:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not slamming:
 					#print("Started slam")
@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 			
 			onPlatform(delta)
 			
-			if abs(position.x) > 960/(2*ruleManager.zoom):
+			if abs(position.x) > 960/(2*RuleManager.zoom):
 				wallOrPortalInteraction()
 			
 			fall()
@@ -94,27 +94,27 @@ func applyColors() -> void:
 
 #process funcs
 func ballPosCheat()->void:
-	if ruleManager.ballPosCheat:
+	if RuleManager.ballPosCheat:
 		position = get_global_mouse_position()
 		velocity = Vector2.ZERO
 
 func wallOrPortalInteraction()->void:
-	if ruleManager.walls:
+	if RuleManager.walls:
 		#position = Vector2.ZERO
 		#velocity = Vector2.ZERO
 		moveToCenter(0.25,false)
 	else:
 		ballTrail1.drawline = not ballTrail1.drawline
 		ballTrail2.drawline = not ballTrail2.drawline
-		position.x = -sign(position.x) * 960/(2*ruleManager.zoom)
+		position.x = -sign(position.x) * 960/(2*RuleManager.zoom)
 
 func fall()->void:
-	if position.y > 540/(2*ruleManager.zoom) + 50 and ruleManager.health > 0:
+	if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
 		moveToCenter(1.5,true)
 
 func moveToCenter(duration:float,damaged:bool)->void:
 	if damaged:
-		ruleManager.health -= 1
+		RuleManager.health -= 1
 	frozen = true
 	$RetrieveBall.play()
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel(false)
@@ -146,7 +146,7 @@ func onPlatform(delta:float)->void:
 			#mouseforce += delta * Input.get_last_mouse_velocity().x
 			mouseforce += platform.positiondelta.x
 			#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
-			if abs(position.x) < 960/(2*ruleManager.zoom):
+			if abs(position.x) < 960/(2*RuleManager.zoom):
 				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
 			velocity.y = 0
 			position.y = platform.position.y - 9
@@ -170,12 +170,12 @@ func _on_area_entered(area: Area2D) -> void:
 		statIncrease(area)
 		mouseforce = 0
 		if slamming:
-			ruleManager.cameraAddShake(0.75,0.0,0.5)
+			RuleManager.cameraAddShake(0.75,0.0,0.5)
 			platcontactpos = platform.position.x - position.x
 	elif area == floor:
 		#print("On Ground")
 		if slamming:
-			ruleManager.cameraAddShake(0.75,0.0,0.5)
+			RuleManager.cameraAddShake(0.75,0.0,0.5)
 		touchinground = true
 	elif area == wall and timer <= 0:
 		timer = 1
@@ -186,7 +186,7 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 	lerpvalue += 1
 	lerpvalue /= 2
 	var dir = lerpf(-dirLimit,dirLimit, lerpvalue) + 270
-	var magn = sqrt(2*get_gravity()*(platpos.y + 540/(2*ruleManager.zoom)))
+	var magn = sqrt(2*get_gravity()*(platpos.y + 540/(2*RuleManager.zoom)))
 	var finalVec:Vector2
 	finalVec.x = magn * cos(deg_to_rad(dir))
 	finalVec.y = magn * sin(deg_to_rad(dir))
@@ -206,4 +206,4 @@ func statIncrease(area:Area2D)->void:
 		pass #ek puan/para
 	hitcounter += 1
 	if hitcounter % 10 == 0:
-		ruleManager.difficulty += 1
+		RuleManager.difficulty += 1

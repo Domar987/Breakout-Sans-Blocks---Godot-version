@@ -19,8 +19,8 @@ func _ready() -> void:
 	colShape2.normal = Vector2(-1,0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	colShape1.distance = -960/(2*ruleManager.zoom) + wallwidth
-	colShape2.distance = -960/(2*ruleManager.zoom) + wallwidth
+	colShape1.distance = -960/(2*RuleManager.zoom) + wallwidth
+	colShape2.distance = -960/(2*RuleManager.zoom) + wallwidth
 	$CollisionShape2D1.shape = colShape1
 	$CollisionShape2D2.shape = colShape2
 	super(_delta)
@@ -31,5 +31,5 @@ func updateColor()->void:
 	righttexture[0] = Animator.applyColor("res://Sprites/wallright.png",currentcolors)
 
 func _draw() -> void:
-	if ruleManager.walls:
+	if RuleManager.walls:
 		super()

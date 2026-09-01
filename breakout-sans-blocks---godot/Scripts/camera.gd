@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if shakeAmount > 0:
 		var randangle = randf() * 2 * PI
 		position = Vector2(sin(randangle),cos(randangle)) * shakeAmount * (randf()/2 + 0.75)

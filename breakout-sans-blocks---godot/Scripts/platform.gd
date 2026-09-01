@@ -17,7 +17,7 @@ var rectShape = RectangleShape2D.new()
 @onready var collisionShape = $CollisionShape2D
 
 @onready var HurtArea = $HurtArea
-@onready var ruleManager = $/root/Ingame/RuleManager
+@onready var RuleManager = $/root/Ingame/RuleManager
 
 var mousepos:float
 var hurtposition:float
@@ -29,23 +29,23 @@ const wallwidth = 12
 var bottomMargin:int
 
 func _ready() -> void:
-	bottomMargin = 90 - int(y)
+	bottomMargin = 90 - y
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	rectShape.size = Vector2(length, 10)
 	collisionShape.set_shape(rectShape)
-	rect = Rect2(Vector2(int(-length/2),-2),Vector2(length,4))
+	rect = Rect2(Vector2(-length/2,-2),Vector2(length,4))
 	
 	HurtArea.get_child(0).shape.size = Vector2(length, 4)
 	
 	mousepos = get_global_mouse_position().x
-	if mousepos > 960.0/(2*ruleManager.zoom) - length/2 - int(ruleManager.walls)*wallwidth:
-		mousepos = 960.0/(2*ruleManager.zoom) - length/2 - int(ruleManager.walls)*wallwidth
-	elif mousepos < -960.0/(2*ruleManager.zoom) + length/2 + int(ruleManager.walls)*wallwidth:
-		mousepos = -960.0/(2*ruleManager.zoom) + length/2 + int(ruleManager.walls)*wallwidth
-	y = 540/(2*ruleManager.zoom) - bottomMargin
+	if mousepos > 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth:
+		mousepos = 960/(2*RuleManager.zoom) - length/2 - int(RuleManager.walls)*wallwidth
+	elif mousepos < -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth:
+		mousepos = -960/(2*RuleManager.zoom) + length/2 + int(RuleManager.walls)*wallwidth
+	y = 540/(2*RuleManager.zoom) - bottomMargin
 	position = Vector2(mousepos,y) + Vector2(hurtposition,0)
 	positiondelta = position - oldpos
 	#print(positiondelta)
@@ -64,7 +64,7 @@ func _draw():
 	#draw_rect(Rect2(Vector2(-length/2+0.5,-1.5),Vector2(length-1,3)),color2,false,1)
 	#draw_line(Vector2(length/2-3,-0.5),Vector2(length/2-1,-0.5),Color.WHITE,1.0)
 	#draw_line(Vector2(length/2-1.5,0),Vector2(length/2-1.5,1.0),Color.WHITE,1.0)
-	draw_texture(starttex,Vector2(int(-length/2),-2))
+	draw_texture(starttex,Vector2(-length/2,-2))
 	for i in range(length-6):
-		draw_texture(segtex,Vector2(int(-length/2) + i + 3,-2))
-	draw_texture(endtex,Vector2(int(length/2) - 3,-2))
+		draw_texture(segtex,Vector2(-length/2 + i + 3,-2))
+	draw_texture(endtex,Vector2(length/2 - 3,-2))

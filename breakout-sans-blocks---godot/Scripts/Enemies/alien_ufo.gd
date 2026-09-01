@@ -24,8 +24,8 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*ruleManager.zoom) + 8 + 4
-	var x = fromLorCorR * (960/(2*ruleManager.zoom))
+	fromYvalue = -540/(2*RuleManager.zoom) + 8 + 4
+	var x = fromLorCorR * (960/(2*RuleManager.zoom))
 	var y = fromYvalue
 	position = Vector2(x,y)
 	xSpeed = -fromLorCorR
@@ -36,7 +36,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if hp > 0:
-		if abs(position.x) > 960/(2*ruleManager.zoom) + enterValue and entered:
+		if abs(position.x) > 960/(2*RuleManager.zoom) + enterValue and entered:
 			remove()
 		if mainSprite.animation == "idle":
 			moveTimer -= delta

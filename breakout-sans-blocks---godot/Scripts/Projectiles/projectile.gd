@@ -13,7 +13,7 @@ var texture:Texture2D
 
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
-@onready var ruleManager = $/root/Ingame/RuleManager
+@onready var RuleManager = $/root/Ingame/RuleManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +43,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if sprite.animation != "blast":
 		position += speed * delta * direction # * (1 + RuleManager.difficulty/10)
-	if position.y > 540/(2*ruleManager.zoom) + 160 or abs(position.x) > (960/(2*ruleManager.zoom)) + 100:
+	if position.y > 540/(2*RuleManager.zoom) + 160 or abs(position.x) > (960/(2*RuleManager.zoom)) + 100:
 		queue_free()
 
 
@@ -59,7 +59,7 @@ func balltouched()->void:
 	sprite.play("blast")
 
 func plattouched()->void:
-	ruleManager.health -= damage
+	RuleManager.health -= damage
 	sprite.play("blast")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

@@ -20,8 +20,8 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*ruleManager.zoom) + randi_range(60, 160)
-	var x = fromLorCorR * (960/(2*ruleManager.zoom) + 60)
+	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(60, 160)
+	var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
 	xSpeed *= -fromLorCorR
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
-		if position.y > 540/(2*ruleManager.zoom) + 100:
+		if position.y > 540/(2*RuleManager.zoom) + 100:
 			Death()
 	position += Vector2(xSpeed, ySpeed) * delta
 
@@ -50,17 +50,17 @@ func gonnaExit()->void:
 			mainSprite.play("content")
 			for i in range(1,len(sprites)):
 				sprites[i].visible = false
-		if abs(position.x) > (960/(2*ruleManager.zoom)) + 100 and entered:
+		if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
 			remove()
 
 func reenter()->void:
-	if abs(position.x) > (960/(2*ruleManager.zoom)) + 100 and entered:
+	if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
 		entered = false
 		xSpeed *= -1
 		ySpeed = -180
 		scale.x *= -1
 		enterSound.play()
-		position.y = -540/(2*ruleManager.zoom) + randi_range(60, 160)
+		position.y = -540/(2*RuleManager.zoom) + randi_range(60, 160)
 		launches += 1
 
 func _on_area_entered(area: Area2D) -> void:
@@ -77,7 +77,7 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("hurt")
 
 func getHurt()->void:
-	#hp -= ruleManager.damage
+	#hp -= RuleManager.damage
 	#if hp <= 0:
 		#xSpeed = 0
 		#ySpeed = 0
@@ -102,7 +102,7 @@ func bite(area:Area2D)->void:
 		$GatorChomp.play()
 
 func ballFromBottom()->void:
-	hp -= ruleManager.damage
+	hp -= RuleManager.damage
 	super()
 
 func _on_animated_sprite_2d_animation_finished() -> void:

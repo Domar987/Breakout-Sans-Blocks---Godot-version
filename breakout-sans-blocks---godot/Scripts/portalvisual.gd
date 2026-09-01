@@ -34,5 +34,5 @@ func _process(_delta: float) -> void:
 	super(_delta)
 
 func _draw() -> void:
-	if not ruleManager.walls:
+	if not RuleManager.walls:
 		super()

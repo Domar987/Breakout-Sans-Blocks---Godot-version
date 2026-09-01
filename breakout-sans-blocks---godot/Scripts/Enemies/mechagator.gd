@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 
 func reenter()->void:
-	if abs(position.x) > (960/(2*ruleManager.zoom)) + 100 and entered:
+	if abs(position.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
 		launches -= 1
 		sine = randf()*2*PI
 	super()
@@ -85,7 +85,7 @@ func getHurt()->void:
 		particleSystem.emit(particles,randi_range(10,15),global_position + scale * Vector2(-3,0))
 		tween.tween_property(self,"shakeAmount",2.0,0.25)
 
-func bite(_Area2D)->void:
+func bite(Area2D)->void:
 	pass
 
 func shootProjectile()->void:
