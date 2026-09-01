@@ -29,7 +29,7 @@ func _ready() -> void:
 	ySpeed = 0.0
 	attacktimer = randi_range(250,500)
 	projectilesource = preload("res://Objects/Projectiles/AlienLaser.tscn")
-	currentKill = RuleManager.kill
+	currentKill = ruleManager.kill
 	match variant:
 		1:
 			hp = 1
@@ -46,8 +46,8 @@ func _ready() -> void:
 	fromLorCorR = 1
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*RuleManager.zoom) + 32 * randi_range(1, 4) + 4
-	var x = fromLorCorR * (960/(2*RuleManager.zoom))
+	fromYvalue = -540/(2*ruleManager.zoom) + 32 * randi_range(1, 4) + 4
+	var x = fromLorCorR * (960/(2*ruleManager.zoom))
 	var y = fromYvalue
 	position = Vector2(x, y)
 	xSpeed *= -fromLorCorR
@@ -70,14 +70,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if hp > 0:
 		super(delta)
-		xSpeedModifier = RuleManager.kill - currentKill
+		xSpeedModifier = ruleManager.kill - currentKill
 		
 		moveTimer -= delta * (xSpeedModifier/2.0 + 1)
 		if moveTimer <= 0:
 			walkAudios[walkiter%4].play()
 			walkiter += 1
 			moveTimer = 1.0 + int(variant == 2)
-			if not movedDown and entered and abs(position.x) >= 960/(2*RuleManager.zoom) - 32:
+			if not movedDown and entered and abs(position.x) >= 960/(2*ruleManager.zoom) - 32:
 				movedDown = true
 				xSpeed *= -1
 				position.y += 32

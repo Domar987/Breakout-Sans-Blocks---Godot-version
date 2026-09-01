@@ -210,7 +210,7 @@ func shatterScreen()->void:
 		for y in cracktex.get_height():
 			for x in cracktex.get_width():
 				var pixelpos:Vector2 = corner + Vector2(x,y) * zoom + Vector2.ONE*zoom/2
-				if abs(pixelpos.x) < 960/(2) and abs(pixelpos.y) < 540/(2) and cracktex.get_pixel(x,y) == Color.BLACK:
+				if abs(pixelpos.x) < int(960/(2)) and abs(pixelpos.y) < int(540/(2)) and cracktex.get_pixel(x,y) == Color.BLACK:
 					var screenshotpixel:Vector2 = (Vector2(screenshot.get_size())/Vector2(960,540)) * (pixelpos + (Vector2(960,540)/2))
 					cracktex.set_pixel(x,y,screenshot.get_pixelv(screenshotpixel))
 		

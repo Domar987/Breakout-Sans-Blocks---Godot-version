@@ -42,13 +42,13 @@ func choosePosition()->void:
 		queue_free()
 		return
 	if fromTop:
-		position.y = -540/(2*RuleManager.zoom) - 32
+		position.y = -540/(2*ruleManager.zoom) - 32
 	else:
-		position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
+		position.y = randi_range(-540/(2*ruleManager.zoom),540/(2*ruleManager.zoom))
 	if bgsprite == bgsprites[len(bgsprites)-1]:
-		position.x = -960/(2*RuleManager.zoom) + randi_range(-32,8)
+		position.x = -960/(2*ruleManager.zoom) + randi_range(-32,8)
 	else:
-		position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
+		position.x = randi_range(-960/(2*ruleManager.zoom),960/(2*ruleManager.zoom))
 	relocateCounter += 1
 	#print(name," ",relocateCounter)
 	#$CollisionShape2D.shape.size = regularsize
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	for area in get_overlapping_areas():
 		if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
 			choosePosition()
-	speed = RuleManager.ySpeed
+	speed = ruleManager.ySpeed
 	#$Label.text = str(speed)+"\n"+str(delta)
 	super(delta)
 

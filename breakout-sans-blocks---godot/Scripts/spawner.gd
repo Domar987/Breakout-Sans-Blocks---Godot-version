@@ -4,7 +4,7 @@ class_name Spawner extends Node
 @export var spawnWeight:float
 @export var spawnAtDifficulty:int
 @export var maxSpawned:int
-@onready var RuleManager = $/root/Ingame/RuleManager
+@onready var ruleManager = $/root/Ingame/RuleManager
 @onready var background = $/root/Ingame/Background
 var numberOfEnemies:int = 0
 var timer:int
@@ -14,12 +14,12 @@ var canSpawnRare:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer = randi_range(min(50,50 / spawnWeight), 200 / spawnWeight)
+	timer = randi_range(min(50,int(50 / spawnWeight)), int(200 / spawnWeight))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	if RuleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned and RuleManager.health > 0:
+	if ruleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned and ruleManager.health > 0:
 		timer -= 1
 		if timer <= 0:
 			if spawnRare != null and canSpawnRare and randi_range(0,100) <= rareChance:
@@ -28,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 			else:
 				spawnEnemy(spawn)
 			if spawnWeight > 0:
-				timer = randi_range(min(50,50 / spawnWeight), 200 / spawnWeight)
+				timer = randi_range(min(50,int(50 / spawnWeight)), int(200 / spawnWeight))
 
 func spawnEnemy(_spawn:PackedScene)->void:
 	var newSpawn = _spawn.instantiate()

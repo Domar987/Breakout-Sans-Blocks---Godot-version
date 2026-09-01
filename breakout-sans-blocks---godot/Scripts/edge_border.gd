@@ -1,6 +1,6 @@
 class_name EdgeBorder extends Area2D
 
-@onready var RuleManager = $/root/Ingame/RuleManager
+@onready var ruleManager = $/root/Ingame/RuleManager
 var lefttexture:Array[Texture2D]
 var righttexture:Array[Texture2D]
 var wallwidth:int
@@ -9,16 +9,16 @@ var ySpeedAddition:float = 0.0
 var oldzoom:float
 
 func _process(delta: float) -> void:
-	ySpeedAddition += RuleManager.ySpeed * delta
+	ySpeedAddition += ruleManager.ySpeed * delta
 	if ySpeedAddition >= 10:
 		ySpeedAddition = 0
-	if RuleManager.zoom != oldzoom or RuleManager.ySpeed != 0:
+	if ruleManager.zoom != oldzoom or ruleManager.ySpeed != 0:
 		queue_redraw()
-	oldzoom = RuleManager.zoom
+	oldzoom = ruleManager.zoom
 
 func _draw() -> void:
-	for i in range(0,540/(wallheight*RuleManager.zoom)+3):
-		var x = 960/(2*RuleManager.zoom) + 1
-		var y = (i-2)*wallheight-540/(2*RuleManager.zoom)
+	for i in range(0,540/(wallheight*ruleManager.zoom)+3):
+		var x = 960/(2*ruleManager.zoom) + 1
+		var y = (i-2)*wallheight-540/(2*ruleManager.zoom)
 		draw_texture(lefttexture[i%len(lefttexture)],Vector2(-x, y + ySpeedAddition))
 		draw_texture(righttexture[i%len(righttexture)],Vector2(x - wallwidth, y + ySpeedAddition))

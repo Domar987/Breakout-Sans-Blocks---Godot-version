@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	if hp > 0:
 		throwLolly()
 		
-		if abs(nonjitterPosition.x) > (960/(2*RuleManager.zoom)) + 100 and entered:
+		if abs(nonjitterPosition.x) > (960/(2*ruleManager.zoom)) + 100 and entered:
 			entered = false
 			enter()
 			
@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		#ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
-		if nonjitterPosition.y > 540/(2*RuleManager.zoom) + 500:
+		if nonjitterPosition.y > 540/(2*ruleManager.zoom) + 500:
 			Death()
 	nonjitterPosition += Vector2(xSpeed, ySpeed) * delta
 	position = nonjitterPosition + Vector2(randf()-0.5,randf()-0.5)/2.5
@@ -62,8 +62,8 @@ func _physics_process(delta: float) -> void:
 func enter()->void:
 	if randi_range(0,1):
 		fromLorCorR *= -1
-	fromYvalue = -540/(2*RuleManager.zoom) + randi_range(10, 120)
-	var x = fromLorCorR * (960/(2*RuleManager.zoom) + 60)
+	fromYvalue = -540/(2*ruleManager.zoom) + randi_range(10, 120)
+	var x = fromLorCorR * (960/(2*ruleManager.zoom) + 60)
 	var y = fromYvalue
 	nonjitterPosition = Vector2(x,y)
 	xSpeed = -fromLorCorR * randi_range(300,500)
@@ -119,7 +119,7 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("hurt")
 
 func getHurt()->void:
-	#hp -= RuleManager.damage
+	#hp -= ruleManager.damage
 	#if hp <= 0:
 		#xSpeed = 0
 		#ySpeed = 0

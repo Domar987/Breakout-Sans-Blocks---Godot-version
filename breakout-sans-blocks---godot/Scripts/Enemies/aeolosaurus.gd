@@ -19,8 +19,8 @@ func _ready() -> void:
 	xSpeed = 0
 	ySpeed = 6
 	fromLorCorR = 0
-	fromYvalue = -540/(2*RuleManager.zoom) - 32
-	var x = randi_range(-960/(2*RuleManager.zoom) + 60,960/(2*RuleManager.zoom) - 60)
+	fromYvalue = -540/(2*ruleManager.zoom) - 32
+	var x = randi_range(-960/(2*ruleManager.zoom) + 60,960/(2*ruleManager.zoom) - 60)
 	var y = fromYvalue
 	position = Vector2(x,y)
 	
@@ -29,7 +29,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if hp > 0:
-		if position.y > 540/(2*RuleManager.zoom) + 160:
+		if position.y > 540/(2*ruleManager.zoom) + 160:
 			remove()
 		if mainSprite.animation == "idle":
 			sineTimer += 25 * delta
@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
 					ySpeed += randf_range(0, 1.0)
 		super(delta)
 	else:
-		if abs(position.x) > 960/(2*RuleManager.zoom) + 120:
+		if abs(position.x) > 960/(2*ruleManager.zoom) + 120:
 			Death()
-	position += Vector2(xSpeed, ySpeed * (1 + RuleManager.difficulty/5)) * delta
+	position += Vector2(xSpeed, ySpeed * (1 + ruleManager.difficulty/5)) * delta
 	for i in range(-1, len(sprites)-1):
 		sprites[i].position = Vector2(1.25*i*signf(xSpeed)*sqrt(abs(xSpeed)),1.25*i*signf(ySpeed)*sqrt(abs(ySpeed))) * delta
 
@@ -64,10 +64,10 @@ func _on_area_entered(area: Area2D) -> void:
 					sprites[2].pause()
 					sineTimer = 0
 		elif area == platform.HurtArea and position.y < area.get_parent().position.y and not dealtDamage:
-			RuleManager.health -= dmg
-			RuleManager.cameraAddShake(2.5,0.0,1.0)
+			ruleManager.health -= dmg
+			ruleManager.cameraAddShake(2.5,0.0,1.0)
 			dealtDamage = true
 
 func ballFromBottom()->void:
-	hp -= RuleManager.damage
+	hp -= ruleManager.damage
 	super()

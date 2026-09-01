@@ -72,11 +72,11 @@ func shootProjectile(fromTop:bool)->void:
 	var projectile = projectilesource.instantiate()
 	projectile.fromTop = fromTop
 	projectile.scale = Vector2.ONE
-	projectile.speed = RuleManager.ySpeed
+	projectile.speed = ruleManager.ySpeed
 	projectile.parent = self
 	add_sibling.call_deferred(projectile,true)
 
-@onready var RuleManager = $/root/Ingame/RuleManager
+@onready var ruleManager = $/root/Ingame/RuleManager
 
 var timer:float = 36.0
 
@@ -103,39 +103,39 @@ var startY:float
 var oldzoom:float = 0.0
 
 func _physics_process(delta: float) -> void:
-	yvalue += delta * RuleManager.ySpeed
+	yvalue += delta * ruleManager.ySpeed
 	for i in range(1,4):
 		if yvalue > levelvals[i] and i > level:
 			level = i
 			levelChange(yvalue)
 	
-	timer -= RuleManager.ySpeed * delta
+	timer -= ruleManager.ySpeed * delta
 	if timer <= 0:
 		timer = 36.0
 		shootProjectile(true)
 		
 	
 	if drawtrans:
-		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
+		if yvalue < startY + 540/(ruleManager.zoom) + transtexture.get_height():
 			queue_redraw()
 		else:
 			drawtrans = false
-	elif RuleManager.zoom != oldzoom:
+	elif ruleManager.zoom != oldzoom:
 		#firstdraw = true
 		queue_redraw()
-	oldzoom = RuleManager.zoom
+	oldzoom = ruleManager.zoom
 	
 	#$Label.text = str(startY) + "\n" + str(yvalue)1
 
-func levelChange(startY:float)->void:
+func levelChange(tmpY:float)->void:
 	currentcolors = bgcolors[level]
-	self.startY = startY + transtexture.get_height()
+	startY = tmpY + transtexture.get_height()
 	drawtrans = true
-	RuleManager.levelChange()
+	ruleManager.levelChange()
 
 func _draw() -> void:
-	var x = -960/(2*RuleManager.zoom)
-	var y = -540/(2*RuleManager.zoom)
+	var x = -960/(2*ruleManager.zoom)
+	var y = -540/(2*ruleManager.zoom)
 	if not drawtrans:#firstdraw:
 		draw_rect(Rect2(Vector2(x,y),Vector2(-2*x,-2*y)),Color(bgcolors[level][2]))
 		#firstdraw = false
