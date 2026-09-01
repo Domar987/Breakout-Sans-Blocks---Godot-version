@@ -68,8 +68,8 @@ func enter()->void:
 	nonjitterPosition = Vector2(x,y)
 	xSpeed = -fromLorCorR * randi_range(300,500)
 	
-	handStatus = randi_range(1,2)
-	print(handStatus)
+	handStatus = randi_range(1,2) as HandStatus
+	#print(handStatus)
 	handAnimset()
 
 func handAnimset()->void:
@@ -96,7 +96,7 @@ func throwLolly()->void:
 		thrown = true
 		attacktimer = 0
 		if handStatus == HandStatus.BOTH:
-			handStatus -= 1
+			handStatus -= 1 as HandStatus
 		else:
 			handStatus = HandStatus.EMPTY
 

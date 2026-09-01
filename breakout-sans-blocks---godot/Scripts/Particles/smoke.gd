@@ -12,4 +12,4 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 
 func speedFormula(delta)->void:
-	speed += Vector2(-speed.x*0.75,-300/speed.y) * delta
+	speed += Vector2(-speed.x*0.75,-300/max(1,abs(speed.y))) * delta
