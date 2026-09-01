@@ -178,6 +178,7 @@ animations = [{
 }]
 
 [node name="SmokeSmall" type="Node2D"]
+z_index = 5
 script = ExtResource("1_ac0c8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=47 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=48 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
+[ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
 [ext_resource type="PackedScene" uid="uid://dq8bir56n74nc" path="res://Objects/platform.tscn" id="2_vmfbn"]
 [ext_resource type="Script" uid="uid://dqa4jl8ho2gy0" path="res://Scripts/camera.gd" id="3_3jpny"]
 [ext_resource type="PackedScene" uid="uid://ben8t4nfwcfhn" path="res://Objects/wall.tscn" id="3_kd26p"]
@@ -52,6 +53,10 @@
 [node name="RuleManager" type="Node" parent="."]
 process_priority = 1
 script = ExtResource("4_lq36l")
+
+[node name="ParticleSystem" type="Node" parent="."]
+script = ExtResource("2_2gt6l")
+metadata/_custom_type_script = "uid://cx6afprpkpiqr"
 
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
 

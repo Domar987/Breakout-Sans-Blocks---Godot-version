@@ -179,8 +179,9 @@ animations = [{
 }]
 
 [node name="SmokeMedium" type="Node2D"]
+z_index = 5
 script = ExtResource("1_a81qg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x2ipp")
-animation = &"2"
+animation = &"1"
