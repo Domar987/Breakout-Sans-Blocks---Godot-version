@@ -82,7 +82,7 @@ func getHurt()->void:
 		tween.tween_interval(0.2)
 		tween.tween_property(self,"shakeAmount",0.1,0.25)
 	else:
-		particleSystem.emit(particles,randi_range(4,7),global_position + scale * Vector2(-3,0))
+		particleSystem.emit(particles,randi_range(10,15),global_position + scale * Vector2(-3,0))
 		tween.tween_property(self,"shakeAmount",2.0,0.25)
 
 func bite(Area2D)->void:
