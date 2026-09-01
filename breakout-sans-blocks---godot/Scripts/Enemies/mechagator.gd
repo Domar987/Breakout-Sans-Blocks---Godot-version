@@ -4,6 +4,8 @@ var flyDir:float = 0.0
 var sine:float= randf()*2*PI
 var popAudios:Array[AudioStreamPlayer]
 
+var shakeAmount:float=0.1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attacktimer = 10
@@ -25,6 +27,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if shakeAmount > 0:
+		sprites[0].position = Vector2(randf_range(-1,1) * shakeAmount,randf_range(-1,1) * shakeAmount)
+		sprites[1].position = Vector2(randf_range(-1,1) * shakeAmount,randf_range(-1,1) * shakeAmount)
+		sprites[3].position = Vector2(randf_range(-1,1) * shakeAmount,randf_range(-1,1) * shakeAmount)
+	else:
+		sprites[0].position = Vector2.ZERO
+		sprites[1].position = Vector2.ZERO
+		sprites[3].position = Vector2.ZERO
+		
 	flyDir = (sin(sine)-0.5) * 25
 	sine += delta * 2
 	if hp > 0:
@@ -58,6 +69,16 @@ func _on_area_entered(area: Area2D) -> void:
 func ballFromBottom()->void:
 	print(name+" hit from below")
 	getHurt()
+
+func getHurt()->void:
+	super()
+	var tween = create_tween()
+	if hp > 0:
+		tween.tween_property(self,"shakeAmount",1.0,0.15)
+		tween.tween_interval(0.2)
+		tween.tween_property(self,"shakeAmount",0.1,0.25)
+	else:
+		tween.tween_property(self,"shakeAmount",2.0,0.25)
 
 func bite(Area2D)->void:
 	pass
