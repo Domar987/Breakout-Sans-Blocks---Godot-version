@@ -1,23 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8tqfdsctpfyk"]
+[gd_scene load_steps=16 format=3 uid="uid://c8tqfdsctpfyk"]
 
 [ext_resource type="Texture2D" uid="uid://c8opnn7fkch7l" path="res://Sprites/dropbubble.png" id="1_hm1h6"]
 [ext_resource type="Script" uid="uid://d1p7v8b5hqopr" path="res://Scripts/drop.gd" id="1_ncmk2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ncmk2"]
 atlas = ExtResource("1_hm1h6")
-region = Rect2(160, 0, 32, 32)
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pkcu"]
 atlas = ExtResource("1_hm1h6")
-region = Rect2(192, 0, 32, 32)
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3166"]
 atlas = ExtResource("1_hm1h6")
-region = Rect2(224, 0, 32, 32)
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_an5rp"]
 atlas = ExtResource("1_hm1h6")
-region = Rect2(256, 0, 32, 32)
+region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnmqn"]
 atlas = ExtResource("1_hm1h6")
@@ -38,6 +38,14 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pv4k6"]
 atlas = ExtResource("1_hm1h6")
 region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyxrq"]
+atlas = ExtResource("1_hm1h6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyeow"]
+atlas = ExtResource("1_hm1h6")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_252lv"]
 animations = [{
@@ -81,6 +89,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pv4k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyxrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyeow")
 }],
 "loop": false,
 "name": &"form",
@@ -97,7 +111,7 @@ script = ExtResource("1_ncmk2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_252lv")
-animation = &"blast"
+animation = &"form"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

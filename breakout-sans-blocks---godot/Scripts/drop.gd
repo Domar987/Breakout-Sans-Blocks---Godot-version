@@ -1,10 +1,12 @@
 class_name Drop extends Projectile
 
 @onready var prizeSprite = $Prize
+
+var prizeamount:int = 11
 var prizeposX:float = 0
 var prizeposY:float = 0
 var tier:int = 1
-var tiervariants = [[],[0,2],[0,1,3,5],[0,1,4,5,6],[7]]
+var tiervariants = [[],[0,3],[1,2,4,6],[1,2,5,6,7,8,9],[10]]
 var variant:int = 1
 var sineTimer:float = 0
 
@@ -21,7 +23,7 @@ func _ready() -> void:
 	sprite.play("form")
 	speed = 1
 	variant = tiervariants[tier][randi_range(0,len(tiervariants[tier])-1)]
-	prizeSprite.texture = Animator.new().chooseTexture("res://Sprites/drops.png",8,variant)
+	prizeSprite.texture = Animator.new().chooseTexture("res://Sprites/drops.png",prizeamount,variant)
 	prizeSprite.scale = Vector2.ZERO
 	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(prizeSprite,"scale",Vector2.ONE,0.75)
 
@@ -53,7 +55,10 @@ func pop()->void:
 			if RuleManager.health < RuleManager.maxHealth:
 				RuleManager.health += 1
 		1:
-			pass
+			if RuleManager.health < RuleManager.maxHealth:
+				RuleManager.health += 1
+			if RuleManager.health < RuleManager.maxHealth:
+				RuleManager.health += 1
 		2:
 			pass
 	
