@@ -102,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncmk2"]
-size = Vector2(16, 16)
+size = Vector2(24, 24)
 
 [node name="Drop" type="Area2D"]
 z_index = 1
@@ -111,7 +111,7 @@ script = ExtResource("1_ncmk2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_252lv")
-animation = &"form"
+animation = &"1"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
