@@ -7,6 +7,7 @@ var dealtDamage:bool = false
 @onready var platform:Area2D = $/root/Ingame/Platform
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	RuleManager.cameraAddShake(1.0,0.25,0.5)
 	hurtAudios = [$AeoloHurt01,$AeoloHurt02]
 	hp = 10
 	dmg = 6
