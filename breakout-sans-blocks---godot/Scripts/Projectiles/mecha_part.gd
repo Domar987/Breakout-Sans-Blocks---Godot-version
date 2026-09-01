@@ -4,10 +4,10 @@ var xSpeed:float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	xSpeed = -sign(scale.x)*(randf() * 100)
+	xSpeed = -sign(scale.x)*(randf() * 100) * speed
 	super()
 	canfall = true
-	speed = -(randf() * 200 + 75)
+	speed = -(randf() * 250)
 	sprite.animation = str(randi_range(1,4))
 
 

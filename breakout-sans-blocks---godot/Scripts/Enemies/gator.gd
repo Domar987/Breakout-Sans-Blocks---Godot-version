@@ -119,5 +119,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		#mainSprite.play("idle")
 
 func shootProjectile()->void:
-	projectileSpeed = -200
+	#projectileSpeed = -200
 	super()

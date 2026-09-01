@@ -2,12 +2,15 @@ class_name MechaGator extends Gator
 
 var flyDir:float = 0.0
 var sine:float= randf()*2*PI
+var popAudios:Array[AudioStreamPlayer]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attacktimer = 10
 	super()
 	hurtAudios = [$GatorHurt]
+	popAudios = [$MechaPop1,$MechaPop2,$MechaPop3,$MechaPop4,$MechaPop5]
+	
 	hp = 4
 	dmg = 1
 	tier = 2
@@ -53,11 +56,20 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("hurt")
 
 func ballFromBottom()->void:
-	pass
+	print(name+" hit from below")
+	getHurt()
 
 func bite(Area2D)->void:
 	pass
 
 func shootProjectile()->void:
 	if randi_range(0,4) == 0:
+		projectileSpeed = 1
+		projectilePosition = position + scale * Vector2(-3,0)
+		if randi_range(0,3) == 0:
+			projectilePosition = position + scale * Vector2(6,-12)
+			projectileSpeed = -1.5
+		var audio = popAudios.pick_random()
+		audio.pitch_scale = randf_range(0.9,1.0)
+		audio.play()
 		super()

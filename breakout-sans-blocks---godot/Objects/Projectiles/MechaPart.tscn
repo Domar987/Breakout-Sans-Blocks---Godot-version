@@ -221,7 +221,7 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="MechaPart" type="Area2D"]
-z_index = 3
+z_index = 4
 script = ExtResource("1_t1ey2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

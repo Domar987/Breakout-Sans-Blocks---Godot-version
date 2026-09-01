@@ -125,7 +125,7 @@ animations = [{
 size = Vector2(8, 20)
 
 [node name="GatorTooth" type="Area2D"]
-z_index = 4
+z_index = 5
 script = ExtResource("1_6yxx6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

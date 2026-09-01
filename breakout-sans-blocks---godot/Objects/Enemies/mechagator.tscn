@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://h7taaf32n627"]
+[gd_scene load_steps=36 format=3 uid="uid://h7taaf32n627"]
 
 [ext_resource type="Script" uid="uid://di3rk37sh0734" path="res://Scripts/Enemies/mechagator.gd" id="1_n4ajm"]
 [ext_resource type="Texture2D" uid="uid://6luijhvlttny" path="res://Sprites/MechaGator/mechahead.png" id="2_kpci7"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://caw8ug61ymnq0" path="res://Sprites/MechaGator/mechafull1.png" id="6_8u2v0"]
 [ext_resource type="AudioStream" uid="uid://dg0nex0ajycth" path="res://Audio/SFX/MechaGator/MechaGator.wav" id="7_25iri"]
 [ext_resource type="AudioStream" uid="uid://b5oiw2qd1d3ul" path="res://Audio/SFX/MechaGator/MechaHurt.wav" id="8_n4ajm"]
+[ext_resource type="AudioStream" uid="uid://d01em2oyycx77" path="res://Audio/SFX/MechaGator/MechaPop1.wav" id="9_rddk0"]
+[ext_resource type="AudioStream" uid="uid://qjxoqi3gitrt" path="res://Audio/SFX/MechaGator/MechaPop2.wav" id="10_8u2v0"]
+[ext_resource type="AudioStream" uid="uid://b2y4vujtyf3sj" path="res://Audio/SFX/MechaGator/MechaPop3.wav" id="11_xhfny"]
+[ext_resource type="AudioStream" uid="uid://fur58hwwo6w7" path="res://Audio/SFX/MechaGator/MechaPop4.wav" id="12_pmfgj"]
+[ext_resource type="AudioStream" uid="uid://geaqonac2jom" path="res://Audio/SFX/MechaGator/MechaPop5.wav" id="13_uv0iw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5oclp"]
 atlas = ExtResource("2_kpci7")
@@ -197,6 +202,7 @@ offset = Vector2(-2, 8)
 [node name="Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5acvx")
 animation = &"idle"
+autoplay = "idle"
 offset = Vector2(-14, -4.5)
 
 [node name="Fire" type="AnimatedSprite2D" parent="."]
@@ -228,3 +234,18 @@ stream = ExtResource("8_n4ajm")
 [node name="MechaGator" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_25iri")
 autoplay = true
+
+[node name="MechaPop1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_rddk0")
+
+[node name="MechaPop2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_8u2v0")
+
+[node name="MechaPop3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xhfny")
+
+[node name="MechaPop4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pmfgj")
+
+[node name="MechaPop5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_uv0iw")
