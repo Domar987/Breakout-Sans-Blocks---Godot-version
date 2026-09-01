@@ -85,7 +85,7 @@ func getHurt()->void:
 		particleSystem.emit(particles,randi_range(10,15),global_position + scale * Vector2(-3,0))
 		tween.tween_property(self,"shakeAmount",2.0,0.25)
 
-func bite(Area2D)->void:
+func bite(_Area2D)->void:
 	pass
 
 func shootProjectile()->void:
@@ -94,7 +94,7 @@ func shootProjectile()->void:
 		projectilePosition = position + scale * Vector2(-3,0)
 		if randi_range(0,3) == 0:
 			projectilePosition = position + scale * Vector2(6,-12)
-			projectileSpeed = -1.5
+			projectileSpeed = -2
 		var audio = popAudios.pick_random()
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()

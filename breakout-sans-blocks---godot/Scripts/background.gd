@@ -127,9 +127,9 @@ func _physics_process(delta: float) -> void:
 	
 	#$Label.text = str(startY) + "\n" + str(yvalue)1
 
-func levelChange(startY:float)->void:
+func levelChange(tmpY:float)->void:
 	currentcolors = bgcolors[level]
-	self.startY = startY + transtexture.get_height()
+	self.startY = tmpY + transtexture.get_height()
 	drawtrans = true
 	RuleManager.levelChange()
 

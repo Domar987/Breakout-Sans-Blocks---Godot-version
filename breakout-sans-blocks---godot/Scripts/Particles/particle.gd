@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	position += speed * delta
 	speedFormula(delta)
 
-func speedFormula(delta: float)->void:
+func speedFormula(_delta: float)->void:
 	pass
 
 func _anim_finished()->void:
