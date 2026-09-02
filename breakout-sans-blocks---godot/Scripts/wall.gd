@@ -11,8 +11,10 @@ var bgcolors = JSON.parse_string(bgfile)
 var currentcolors:Array
 
 func _ready() -> void:
-	lefttexture = [Animator.applyColor("res://Sprites/wallleft.png",bgcolors[0])]
-	righttexture = [Animator.applyColor("res://Sprites/wallright.png",bgcolors[0])]
+	var ltmp = Animator.applyColor("res://Sprites/wallleft.png",bgcolors[0])
+	var rtmp = Animator.applyColor("res://Sprites/wallright.png",bgcolors[0])
+	lefttexture = [ltmp,ltmp]
+	righttexture = [rtmp,rtmp]
 	wallwidth = 12
 	wallheight = 10
 	colShape1.normal = Vector2(1,0)
@@ -27,17 +29,25 @@ func _physics_process(_delta: float) -> void:
 
 func updateColor()->void:
 	currentcolors = bgcolors[background.level]
-	lefttexture[1] = lefttexture[0]
-	righttexture[1] = righttexture[0]
-	lefttexture[0] = Animator.applyColor("res://Sprites/wallleft.png",currentcolors)
-	righttexture[0] = Animator.applyColor("res://Sprites/wallright.png",currentcolors)
+	lefttexture.insert(0, Animator.applyColor("res://Sprites/wallleft.png",currentcolors))
+	righttexture.insert(0, Animator.applyColor("res://Sprites/wallright.png",currentcolors))
+	lefttexture.pop_back()
+	righttexture.pop_back()
 
 func _draw() -> void:
 	if RuleManager.walls:
 		super()
 
 func drawfuncfunc(i:int,x:float,y:float)->void:
-	if i > background.yvalue - background.startY:
-		drawfunc(0,x,y)
+	if background.drawtrans:
+		var tmp = (background.yvalue - background.startY + background.transheight)/(wallheight*RuleManager.zoom)
+		#print("asd:")
+		#print(i)
+		#print(tmp)
+		#print("\n")
+		if i > tmp:
+			drawfunc(1,x,y)
+		else:
+			drawfunc(0,x,y)
 	else:
-		drawfunc(1,x,y)
+		drawfunc(0,x,y)

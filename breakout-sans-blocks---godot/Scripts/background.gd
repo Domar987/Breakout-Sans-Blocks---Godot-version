@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 
 func levelChange(tmpY:float)->void:
 	currentcolors = bgcolors[level]
-	self.startY = tmpY + transtexture.get_height()
+	self.startY = tmpY + transheight
 	drawtrans = true
 	RuleManager.levelChange()
 
@@ -144,7 +144,7 @@ func _draw() -> void:
 
 func drawfunc()->void:
 	if drawtrans:
-		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
+		if yvalue < startY + 540/(RuleManager.zoom) + transheight:
 			queue_redraw()
 		else:
 			drawtrans = false
