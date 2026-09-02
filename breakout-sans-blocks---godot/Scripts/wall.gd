@@ -41,10 +41,7 @@ func _draw() -> void:
 func drawfuncfunc(i:int,x:float,y:float)->void:
 	if background.drawtrans:
 		var tmp = (background.yvalue - background.startY + background.transheight)/(4*RuleManager.zoom)
-		#print("asd:")
-		#print(i)
-		#print(tmp)
-		#print("\n")
+		tmp = int(tmp)
 		if i > tmp:
 			drawfunc(1,x,y)
 		else:
