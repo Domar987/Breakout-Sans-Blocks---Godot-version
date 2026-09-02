@@ -18,7 +18,7 @@ func _ready() -> void:
 	colShape1.normal = Vector2(1,0)
 	colShape2.normal = Vector2(-1,0)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	colShape1.distance = -960/(2*RuleManager.zoom) + wallwidth
 	colShape2.distance = -960/(2*RuleManager.zoom) + wallwidth
 	$CollisionShape2D1.shape = colShape1
@@ -33,3 +33,6 @@ func updateColor()->void:
 func _draw() -> void:
 	if RuleManager.walls:
 		super()
+
+func drawfuncfunc(i:int,x:float,y:float)->void:
+	drawfunc(0,x,y)

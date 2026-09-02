@@ -8,7 +8,7 @@ var wallheight:int
 var ySpeedAddition:float = 0.0
 var oldzoom:float
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	ySpeedAddition += RuleManager.ySpeed * delta
 	if ySpeedAddition >= 10:
 		ySpeedAddition = 0
@@ -20,5 +20,11 @@ func _draw() -> void:
 	for i in range(0,540/(wallheight*RuleManager.zoom)+3):
 		var x = 960/(2*RuleManager.zoom) + 1
 		var y = (i-2)*wallheight-540/(2*RuleManager.zoom)
-		draw_texture(lefttexture[i%len(lefttexture)],Vector2(-x, y + ySpeedAddition))
-		draw_texture(righttexture[i%len(righttexture)],Vector2(x - wallwidth, y + ySpeedAddition))
+		drawfuncfunc(i,x,y)
+
+func drawfunc(index:int,x:float,y:float)->void:
+	draw_texture(lefttexture[index],Vector2(-x, y + ySpeedAddition))
+	draw_texture(righttexture[index],Vector2(x - wallwidth, y + ySpeedAddition))
+
+func drawfuncfunc(i:int,x:float,y:float)->void:
+	pass

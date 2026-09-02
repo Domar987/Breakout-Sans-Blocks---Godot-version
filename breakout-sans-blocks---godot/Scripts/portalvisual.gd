@@ -22,7 +22,7 @@ func _ready() -> void:
 		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
 		righttexture.append(atlas)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	animtimer -= 1
 	if animtimer <= 0:
 		animtimer = 30 * (Engine.get_frames_per_second() / 60)
@@ -36,3 +36,6 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	if not RuleManager.walls:
 		super()
+
+func drawfuncfunc(i:int,x:float,y:float)->void:
+	drawfunc(i%len(lefttexture),x,y)
