@@ -1,5 +1,6 @@
 class_name Gator extends Enemy
 
+var ate:int = 0
 var launches:int = 1
 @onready var enterSound = $AggressiveAnimal
 
@@ -88,6 +89,7 @@ func getHurt()->void:
 
 func bite(area:Area2D)->void:
 	if hp > 0 and launches <= 4 and area is Enemy and not(area is Gator or area is Aeolo or area.isRare):
+		ate += 1
 		mainSprite.stop()
 		sprites[1].stop()
 		mainSprite.play("bite")
