@@ -115,14 +115,8 @@ func _physics_process(delta: float) -> void:
 		shootProjectile(true)
 		
 	
-	if drawtrans:
-		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
-			queue_redraw()
-		else:
-			drawtrans = false
-	elif RuleManager.zoom != oldzoom:
-		#firstdraw = true
-		queue_redraw()
+	drawfunc()
+	
 	oldzoom = RuleManager.zoom
 	
 	#$Label.text = str(startY) + "\n" + str(yvalue)1
@@ -147,4 +141,13 @@ func _draw() -> void:
 		draw_rect(rect1,Color(bgcolors[level-1][2]))
 		draw_rect(rect2,Color(bgcolors[level][2]))
 		draw_texture_rect(transtexture,recttrans,true,Color(bgcolors[level][2]))
-	
+
+func drawfunc()->void:
+	if drawtrans:
+		if yvalue < startY + 540/(RuleManager.zoom) + transtexture.get_height():
+			queue_redraw()
+		else:
+			drawtrans = false
+	elif RuleManager.zoom != oldzoom:
+		#firstdraw = true
+		queue_redraw()

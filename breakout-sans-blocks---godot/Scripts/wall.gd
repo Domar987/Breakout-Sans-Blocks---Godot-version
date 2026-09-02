@@ -27,6 +27,8 @@ func _physics_process(_delta: float) -> void:
 
 func updateColor()->void:
 	currentcolors = bgcolors[background.level]
+	lefttexture[1] = lefttexture[0]
+	righttexture[1] = righttexture[0]
 	lefttexture[0] = Animator.applyColor("res://Sprites/wallleft.png",currentcolors)
 	righttexture[0] = Animator.applyColor("res://Sprites/wallright.png",currentcolors)
 
@@ -35,4 +37,7 @@ func _draw() -> void:
 		super()
 
 func drawfuncfunc(i:int,x:float,y:float)->void:
-	drawfunc(0,x,y)
+	if i > background.yvalue - background.startY:
+		drawfunc(0,x,y)
+	else:
+		drawfunc(1,x,y)
