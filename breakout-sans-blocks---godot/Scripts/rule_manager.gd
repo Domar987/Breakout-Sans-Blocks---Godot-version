@@ -44,7 +44,7 @@ func _init() -> void:
 	Engine.time_scale = 1
 	activecolor = ballcolors[randi()%6]
 	if !wallspreselected:
-		walls = randi()%2
+		walls = true#randi()%2
 func _ready() -> void:
 	get_parent().modulate = Color.BLACK
 	create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false).tween_property(get_parent(),"modulate",Color.WHITE,0.5)
