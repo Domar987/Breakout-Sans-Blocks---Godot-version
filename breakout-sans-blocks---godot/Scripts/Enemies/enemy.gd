@@ -80,6 +80,8 @@ func getHurt()->void:
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()
 	hp -= RuleManager.damage
+	if Ball.slamming:
+		hp -= RuleManager.slamdamage
 	if hp <= 0 and randi_range(0,100) < dropChance:
 		var projectile = load("res://Objects/Drop.tscn").instantiate()
 		projectile.position = position
