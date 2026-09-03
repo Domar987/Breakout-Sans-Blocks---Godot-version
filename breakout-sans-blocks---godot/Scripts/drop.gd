@@ -2,7 +2,7 @@ class_name Drop extends Projectile
 
 @onready var prizeSprite = $Prize
 
-var prizeamount:int = 11
+var prizeamount:int = 12
 var prizeposX:float = 0
 var prizeposY:float = 0
 var tier:int = 1
@@ -60,7 +60,16 @@ func pop()->void:
 			if RuleManager.health < RuleManager.maxHealth:
 				RuleManager.health += 1
 		2:
+			RuleManager.damageBoost(1,15)
+		3:
 			pass
+		7:
+			RuleManager.flyEnable(15)
+		8:
+			RuleManager.max_health += 1
+			RuleManager.health += 1
+		9:
+			RuleManager.invitimer += 10
 	
 	
 	var poptween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT_IN)

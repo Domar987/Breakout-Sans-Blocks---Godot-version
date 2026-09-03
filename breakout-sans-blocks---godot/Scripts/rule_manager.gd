@@ -13,6 +13,7 @@ var oldDifficulty = 0
 var maxHealth:int = 10
 var health:int = 10
 var damage:int = 1
+var slamdamage:int = 0
 var oldhealth:int = 10
 var kill:int = 0
 
@@ -38,6 +39,7 @@ var timer:float = 0.0
 var oldRotate:float = 0.0
 
 var ballPosCheat:bool = false
+var flying:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
@@ -232,3 +234,17 @@ func shatterScreen()->void:
 func levelChange()->void:
 	if walls:
 		wall.updateColor()
+
+func damageBoost(amount:int,duration:int)->void:
+	damage += amount
+	ball.modulate *= Color(1.25,1.25,0.8)
+	await get_tree().create_timer(duration).timeout
+	damage -= amount
+	ball.modulate /= Color(1.25,1.25,0.8)
+
+func flyEnable(duration:int)->void:
+	flying = true
+	ball.modulate *= Color(0.9,0.8,1.0)
+	await get_tree().create_timer(duration).timeout
+	flying = false
+	ball.modulate /= Color(0.9,0.8,1.0)
