@@ -60,13 +60,6 @@ metadata/_custom_type_script = "uid://cx6afprpkpiqr"
 
 [node name="Ball" parent="." instance=ExtResource("1_oybcm")]
 
-[node name="Label" type="Label" parent="Ball"]
-visible = false
-offset_right = 28.0
-offset_bottom = 23.0
-scale = Vector2(0.75, 0.75)
-text = "asd"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 zoom = Vector2(3, 3)
@@ -261,7 +254,7 @@ maxSpawned = 3
 
 [node name="MechaSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("41_1l64l")
-spawnWeight = 1.0
+spawnWeight = 0.066
 spawnAtDifficulty = 2
 maxSpawned = 2
 

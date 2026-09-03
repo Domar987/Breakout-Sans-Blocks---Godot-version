@@ -2,6 +2,7 @@ extends Node2D
 
 var duration:int
 var color:Color = Color.WHITE
+@onready var sprite = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,4 +29,5 @@ func remove()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#print(get_index())
+	sprite.frame = get_index() - 9
