@@ -62,7 +62,7 @@ func pop()->void:
 		2:
 			RuleManager.damageBoost(1,15)
 		3:
-			pass
+			RuleManager.slamdamageBoost(1,15)
 		7:
 			RuleManager.flyEnable(15)
 		8:

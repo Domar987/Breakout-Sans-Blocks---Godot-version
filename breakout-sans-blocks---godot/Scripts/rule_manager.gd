@@ -41,6 +41,8 @@ var oldRotate:float = 0.0
 var ballPosCheat:bool = false
 var flying:bool = false
 
+var aura:PackedScene = load("res://Objects/aura.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	Engine.time_scale = 1
@@ -237,14 +239,24 @@ func levelChange()->void:
 
 func damageBoost(amount:int,duration:int)->void:
 	damage += amount
-	ball.modulate *= Color(1.25,1.25,0.8)
+	addAura(Color.ORANGE,duration)
 	await get_tree().create_timer(duration).timeout
 	damage -= amount
-	ball.modulate /= Color(1.25,1.25,0.8)
+
+func slamdamageBoost(amount:int,duration:int)->void:
+	slamdamage += amount
+	addAura(Color.GRAY,duration)
+	await get_tree().create_timer(duration).timeout
+	slamdamage -= amount
 
 func flyEnable(duration:int)->void:
 	flying = true
-	ball.modulate *= Color(0.9,0.8,1.0)
+	addAura(Color.WEB_PURPLE,duration)
 	await get_tree().create_timer(duration).timeout
 	flying = false
-	ball.modulate /= Color(0.9,0.8,1.0)
+
+func addAura(color:Color,duration:int)->void:
+	var inst = aura.instantiate()
+	inst.color = color
+	inst.duration = duration
+	ball.add_child(inst)
