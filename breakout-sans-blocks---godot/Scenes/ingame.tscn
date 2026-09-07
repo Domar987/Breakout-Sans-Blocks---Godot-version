@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=85 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/Enemies/childsoldier.tscn" id="43_v7gd0"]
 [ext_resource type="Texture2D" uid="uid://dlrr28yb7o372" path="res://Sprites/GameOver/gameoverconceptsmall.png" id="44_8lsqb"]
+[ext_resource type="Script" uid="uid://bxg7neig0uppq" path="res://Scripts/game_over.gd" id="44_cy62p"]
 [ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
 [ext_resource type="Texture2D" uid="uid://bvvclgw8x0es6" path="res://Sprites/GameOver/gameoverbox.png" id="44_ke6py"]
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
@@ -105,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_da58m")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -148,7 +149,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mbnig")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 10.0
 }]
@@ -168,34 +169,43 @@ modulate_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxyx1"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(0, 0, 50, 43)
+region = Rect2(0, 0, 50, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23uwq"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(50, 0, 50, 43)
+region = Rect2(50, 0, 50, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5uago"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(100, 0, 50, 43)
+region = Rect2(100, 0, 50, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur0dt"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(150, 0, 50, 43)
+region = Rect2(150, 0, 50, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfasi"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(200, 0, 50, 43)
+region = Rect2(200, 0, 50, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qq7b"]
 atlas = ExtResource("50_xrpxl")
-region = Rect2(250, 0, 50, 43)
+region = Rect2(250, 0, 50, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whsiv"]
+atlas = ExtResource("50_xrpxl")
+region = Rect2(300, 0, 50, 47)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_whsiv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lxyx1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_23uwq")
 }, {
@@ -210,9 +220,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2qq7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whsiv")
 }],
 "loop": false,
-"name": &"default",
+"name": &"default_1",
 "speed": 10.0
 }]
 
@@ -513,24 +526,26 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -118.0
 offset_top = -58.0
+offset_right = 6.1035156e-05
 offset_bottom = 82.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8lsqb")
-
-[node name="TextureRect4" type="TextureRect" parent="UI/CenterRight/GameOver"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("44_ke6py")
+script = ExtResource("44_cy62p")
 
 [node name="test" type="Sprite2D" parent="UI/CenterRight/GameOver"]
 position = Vector2(-42, 58)
 texture = ExtResource("44_8lsqb")
 hframes = 2
-frame = 1
 
-[node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver"]
+[node name="Box" type="TextureRect" parent="UI/CenterRight/GameOver"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("44_ke6py")
+
+[node name="Distance" type="TextureRect" parent="UI/CenterRight/GameOver/Box"]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 14.0
@@ -538,12 +553,12 @@ offset_right = 89.0
 offset_bottom = 27.0
 texture = ExtResource("45_pxlip")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/TextureRect"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/Box/Distance"]
 position = Vector2(27, 25.5)
 sprite_frames = SubResource("SpriteFrames_lxyx1")
 autoplay = "default"
 
-[node name="TextureRect2" type="TextureRect" parent="UI/CenterRight/GameOver"]
+[node name="Score" type="TextureRect" parent="UI/CenterRight/GameOver/Box"]
 layout_mode = 0
 offset_left = 75.0
 offset_top = 41.0
@@ -551,12 +566,12 @@ offset_right = 107.0
 offset_bottom = 53.0
 texture = ExtResource("46_y6c2q")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/TextureRect2"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/Box/Score"]
 position = Vector2(17.5, 25.5)
 sprite_frames = SubResource("SpriteFrames_23uwq")
 autoplay = "default"
 
-[node name="TextureRect3" type="TextureRect" parent="UI/CenterRight/GameOver"]
+[node name="will" type="TextureRect" parent="UI/CenterRight/GameOver/Box"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 68.0
@@ -570,7 +585,7 @@ layout_mode = 0
 offset_left = -54.0
 offset_top = 105.0
 offset_right = -4.0
-offset_bottom = 147.99997
+offset_bottom = 152.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xrpxl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ke6py")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xrpxl")
@@ -578,7 +593,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ke6py")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/ExitButton"]
 z_index = -1
-position = Vector2(25, 21.5)
+position = Vector2(25, 23.5)
 sprite_frames = SubResource("SpriteFrames_whsiv")
 autoplay = "default"
 
@@ -591,7 +606,7 @@ offset_bottom = 98.0
 
 [node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/RetryButton"]
 layout_mode = 0
-offset_right = 17.0
+offset_right = 17.000015
 offset_bottom = 17.0
 texture = ExtResource("52_awb60")
 
@@ -605,7 +620,7 @@ offset_bottom = 122.0
 [node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/MenuButton"]
 layout_mode = 0
 offset_left = 47.0
-offset_right = 94.00004
+offset_right = 94.000046
 offset_bottom = 21.0
 texture = ExtResource("52_rsdv5")
 
