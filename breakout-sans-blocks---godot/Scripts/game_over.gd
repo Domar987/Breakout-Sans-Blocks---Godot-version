@@ -73,13 +73,19 @@ func _physics_process(delta: float) -> void:
 
 
 func exitPressed()->void:
-	pass
+	create_tween().tween_property($/root/Ingame,"modulate",Color.BLACK,0.8)
+	await get_tree().create_timer(1).timeout
+	get_tree().quit()
 
 func retryPressed()->void:
-	pass
+	create_tween().tween_property($/root/Ingame,"modulate",Color.BLACK,0.8)
+	await get_tree().create_timer(1).timeout
+	get_tree().reload_current_scene()
 
 func menuPressed()->void:
-	pass
+	create_tween().tween_property($/root/Ingame,"modulate",Color.BLACK,0.8)
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 func retryHover()->void:
 	retryHovering = true

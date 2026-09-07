@@ -21,6 +21,8 @@ var invitimer:float = 2.0
 
 var ySpeed:float=0.0
 
+var died:bool = false
+
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 	
 	if oldDifficulty != difficulty:
 		difficultyChange()
-	if oldhealth != health:
+	if oldhealth != health and not died:
 		healthChange(oldhealth-health)
 	
 	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
@@ -136,6 +138,7 @@ func hurtpositiontween(dmg:int)->void:
 	hurttween.tween_property(platform,"hurtposition",0,0.075)
 
 func death()->void:
+	died = true
 	create_tween().tween_property(self,"ySpeed",0,3.0)
 	var tween = create_tween().set_parallel(false)
 	tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)

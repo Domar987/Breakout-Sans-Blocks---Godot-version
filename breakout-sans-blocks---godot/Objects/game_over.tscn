@@ -233,6 +233,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_8lsqb")
 script = ExtResource("1_r2ro4")
 
 [node name="test" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-42, 58)
 texture = ExtResource("2_i10sb")
 hframes = 2
