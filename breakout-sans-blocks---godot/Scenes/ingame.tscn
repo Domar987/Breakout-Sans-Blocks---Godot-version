@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=50 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -45,8 +45,11 @@
 [ext_resource type="Texture2D" uid="uid://cj6doi43hn8av" path="res://Sprites/Cracks/crack25.png" id="41_5uago"]
 [ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/Enemies/childsoldier.tscn" id="43_v7gd0"]
+[ext_resource type="Texture2D" uid="uid://dlrr28yb7o372" path="res://Sprites/GameOver/gameoverconceptsmall.png" id="44_8lsqb"]
 [ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lsqb"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -334,6 +337,25 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="GameOver" type="Panel" parent="UI/CenterRight"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -58.0
+offset_bottom = 82.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8lsqb")
+
+[node name="test" type="Sprite2D" parent="UI/CenterRight/GameOver"]
+position = Vector2(-42, 58)
+texture = ExtResource("44_8lsqb")
+hframes = 2
 
 [node name="BottomLeft" type="Control" parent="UI"]
 layout_mode = 1
