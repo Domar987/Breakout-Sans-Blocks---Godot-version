@@ -45,8 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://cnag53jkn1a5r" path="res://Sprites/Cracks/crack26.png" id="42_ur0dt"]
 [ext_resource type="Script" uid="uid://dqbuci5dh0iin" path="res://Scripts/camabar.gd" id="43_spvx0"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/Enemies/childsoldier.tscn" id="43_v7gd0"]
-[ext_resource type="Texture2D" uid="uid://y7vcheetciip" path="res://Sprites/Camabar/camabartest.png" id="44_8lsqb"]
 [ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
+[ext_resource type="Texture2D" uid="uid://ckueygro5glvk" path="res://Sprites/Camabar/camabg.png" id="44_spvx0"]
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
 [ext_resource type="Texture2D" uid="uid://bvjc40oce5fo5" path="res://Sprites/Camabar/camabar1-sheet.png" id="45_spvx0"]
 [ext_resource type="Texture2D" uid="uid://bnh731ef10ucj" path="res://Sprites/Camabar/camabar2-sheet.png" id="46_ckr2t"]
@@ -305,9 +305,10 @@ script = ExtResource("43_spvx0")
 [node name="Test" type="TextureRect" parent="UI/TopLeft/Camabar"]
 visible = false
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 47.0
-texture = ExtResource("44_8lsqb")
+offset_left = 1.0
+offset_right = 62.0
+offset_bottom = 46.0
+texture = ExtResource("44_spvx0")
 
 [node name="TextureRect" type="Sprite2D" parent="UI/TopLeft/Camabar"]
 position = Vector2(57.5, 6)
