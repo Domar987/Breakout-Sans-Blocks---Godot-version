@@ -316,6 +316,11 @@ offset_right = 17.000015
 offset_bottom = 17.0
 texture = ExtResource("10_5ekhi")
 
+[node name="TextureRect2" type="TextureRect" parent="RetryButton/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="TextureRect2" type="TextureRect" parent="RetryButton"]
 layout_mode = 0
 offset_left = 17.5
