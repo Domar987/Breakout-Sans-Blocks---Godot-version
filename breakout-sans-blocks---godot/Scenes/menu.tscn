@@ -340,6 +340,7 @@ offset_left = -160.0
 offset_top = -93.0
 offset_right = 166.0
 offset_bottom = 94.0
+mouse_filter = 2
 texture = ExtResource("16_747ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftSide"]
@@ -396,6 +397,7 @@ grow_vertical = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pde1v")
 
 [node name="Encyclopedia" type="HBoxContainer" parent="MiniMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
