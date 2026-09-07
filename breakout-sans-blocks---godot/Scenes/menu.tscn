@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=53 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c6k4y08hxlgkq" path="res://Objects/MiniMenu.tscn" id="15_owyel"]
 [ext_resource type="AudioStream" uid="uid://bsrh1cehevhvb" path="res://Audio/Music/title.wav" id="16_1by5w"]
 [ext_resource type="Texture2D" uid="uid://cmnj4wquroh17" path="res://Sprites/Menu/menuplatform.png" id="16_3p34a"]
+[ext_resource type="Texture2D" uid="uid://ygp473nvj6u0" path="res://Sprites/Menu/menuwall.png" id="16_747ic"]
 [ext_resource type="Script" uid="uid://bmyw0vuktk3ax" path="res://Scripts/profile.gd" id="23_l6llh"]
 [ext_resource type="Texture2D" uid="uid://durchfo7lic1k" path="res://Sprites/Menu/enemyicons.png" id="24_l6llh"]
 [ext_resource type="Texture2D" uid="uid://0br3uxyyryjl" path="res://Sprites/Menu/menupediaiconbg2.png" id="25_jbv25"]
@@ -331,6 +332,15 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Wall" type="TextureRect" parent="LeftSide"]
+z_index = -5
+layout_mode = 0
+offset_left = -160.0
+offset_top = -93.0
+offset_right = 166.0
+offset_bottom = 94.0
+texture = ExtResource("16_747ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftSide"]
 z_index = -10
