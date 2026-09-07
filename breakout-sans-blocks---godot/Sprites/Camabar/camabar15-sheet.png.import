@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bumscr0ry24dh"
-path="res://.godot/imported/camabar14.png-84976faf1c28b474fafd011525ac83fa.ctex"
+uid="uid://cqctgk0mdk2vh"
+path="res://.godot/imported/camabar15-sheet.png-96a611108b04bef3dc7b579b730ac2b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Camabar/camabar14.png"
-dest_files=["res://.godot/imported/camabar14.png-84976faf1c28b474fafd011525ac83fa.ctex"]
+source_file="res://Sprites/Camabar/camabar15-sheet.png"
+dest_files=["res://.godot/imported/camabar15-sheet.png-96a611108b04bef3dc7b579b730ac2b1.ctex"]
 
 [params]
 

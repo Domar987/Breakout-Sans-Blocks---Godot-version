@@ -31,6 +31,7 @@ var died:bool = false
 @onready var background:Sprite2D = $/root/Ingame/Background
 @onready var ui:Control = $/root/Ingame/UI
 @onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
+@onready var camaBar:Node = $/root/Ingame/UI/TopLeft/Camabar
 
 @onready var zoom:float = camera.zoom.x
 var zoommult:float = 0.9
@@ -112,7 +113,8 @@ func healthChange(dmg:int)->void:
 		health += dmg
 	else:
 		invitimer = 2.0
-		heartGenerator.generateHearts(health)
+		#heartGenerator.generateHearts(health)
+		camaBar.update(health)
 		
 		hurtmodulatetween(dmg)
 		hurtpositiontween(dmg)

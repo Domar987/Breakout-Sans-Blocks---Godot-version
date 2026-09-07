@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccqformmigdun"
-path="res://.godot/imported/camabar6.png-6eba43ca69a138c907e2e5e956c7795f.ctex"
+uid="uid://dws5swh0a3qph"
+path="res://.godot/imported/camabar7-sheet.png-d90bb0a9d8d2dbd6b541d2a46a13de0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Camabar/camabar6.png"
-dest_files=["res://.godot/imported/camabar6.png-6eba43ca69a138c907e2e5e956c7795f.ctex"]
+source_file="res://Sprites/Camabar/camabar7-sheet.png"
+dest_files=["res://.godot/imported/camabar7-sheet.png-d90bb0a9d8d2dbd6b541d2a46a13de0d.ctex"]
 
 [params]
 
