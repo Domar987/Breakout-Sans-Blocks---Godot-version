@@ -141,6 +141,8 @@ func death()->void:
 	tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
 	tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
 	platformLength(0)
+	var gameOver = load("res://Objects/game_over.tscn")
+	$/root/Ingame/UI/CenterRight.add_child(gameOver.instantiate())
 
 func cameraZoom()->void:
 	var tween = create_tween()
