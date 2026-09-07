@@ -528,6 +528,7 @@ texture = ExtResource("44_ke6py")
 position = Vector2(-42, 58)
 texture = ExtResource("44_8lsqb")
 hframes = 2
+frame = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver"]
 layout_mode = 0
@@ -563,7 +564,7 @@ offset_right = 75.0
 offset_bottom = 80.0
 texture = ExtResource("49_xl477")
 
-[node name="Button" type="Button" parent="UI/CenterRight/GameOver"]
+[node name="ExitButton" type="Button" parent="UI/CenterRight/GameOver"]
 z_index = 1
 layout_mode = 0
 offset_left = -54.0
@@ -575,35 +576,36 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ke6py")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xrpxl")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ke6py")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/Button"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/CenterRight/GameOver/ExitButton"]
 z_index = -1
 position = Vector2(25, 21.5)
 sprite_frames = SubResource("SpriteFrames_whsiv")
 autoplay = "default"
 
-[node name="Button2" type="Button" parent="UI/CenterRight/GameOver"]
+[node name="RetryButton" type="Button" parent="UI/CenterRight/GameOver"]
 layout_mode = 0
-offset_left = 57.0
+offset_left = 33.0
 offset_top = 81.0
-offset_right = 74.0
+offset_right = 100.0
 offset_bottom = 98.0
 
-[node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/Button2"]
+[node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/RetryButton"]
 layout_mode = 0
 offset_right = 17.0
 offset_bottom = 17.0
 texture = ExtResource("52_awb60")
 
-[node name="Button3" type="Button" parent="UI/CenterRight/GameOver"]
+[node name="MenuButton" type="Button" parent="UI/CenterRight/GameOver"]
 layout_mode = 0
-offset_left = 43.0
+offset_left = 16.0
 offset_top = 101.0
-offset_right = 90.0
+offset_right = 110.0
 offset_bottom = 122.0
 
-[node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/Button3"]
+[node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/MenuButton"]
 layout_mode = 0
-offset_right = 47.0
+offset_left = 47.0
+offset_right = 94.00004
 offset_bottom = 21.0
 texture = ExtResource("52_rsdv5")
 
