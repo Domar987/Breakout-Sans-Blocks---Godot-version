@@ -5,9 +5,9 @@ var retryHovering:bool = false
 var menuHovering:bool = false
 
 @onready var retrytex = buttons[1].get_child(0)
-#@onready var retry = buttons[1].get_child(1)
+@onready var retrytext = buttons[1].get_child(1)
 @onready var menutex = buttons[2].get_child(0)
-#@onready var menu = buttons[2].get_child(1)
+@onready var menutext = buttons[2].get_child(1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,27 +30,46 @@ func signanim()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	retrytext.position.y = (1-retrytext.scale.x) * 8.5
+	menutext.position.x = (1-menutext.scale.x) * 46
+	menutext.position.y = (1-menutext.scale.x) * 14
 	if retryHovering:
 		if retrytex.position.x > 0:
 			retrytex.position.x -= (4*retrytex.position.x + 12)*delta
 		else:
 			retrytex.position.x = 0
+		if retrytext.scale.x < 1:
+			retrytext.scale += 4 * Vector2.ONE * delta
+		else:
+			retrytext.scale = Vector2.ONE
 	else:
 		if retrytex.position.x < 24:
 			retrytex.position.x += (108 - 4*retrytex.position.x)*delta
 		else:
 			retrytex.position.x = 24
-	
-	if not menuHovering:
-		if menutex.position.x > 27:
-			menutex.position.x -= (4*(24.0/20)*(menutex.position.x - 27) + 12)*delta
+		if retrytext.scale.x > 0.01:
+			retrytext.scale -= 4 * Vector2.ONE * delta
 		else:
-			menutex.position.x = 27
-	else:
+			retrytext.scale = Vector2.ZERO
+	
+	if menuHovering:
 		if menutex.position.x < 47:
 			menutex.position.x += (108 - 4*(24.0/20)*(menutex.position.x - 27))*delta
 		else:
 			menutex.position.x = 47
+		if menutext.scale.x < 1:
+			menutext.scale += 3 * Vector2.ONE * delta
+		else:
+			menutext.scale = Vector2.ONE
+	else:
+		if menutex.position.x > 27:
+			menutex.position.x -= (4*(24.0/20)*(menutex.position.x - 27) + 12)*delta
+		else:
+			menutex.position.x = 27
+		if menutext.scale.x > 0.01:
+			menutext.scale -= 3 * Vector2.ONE * delta
+		else:
+			menutext.scale = Vector2.ZERO
 
 
 func exitPressed()->void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=97 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -58,6 +58,8 @@
 [ext_resource type="Texture2D" uid="uid://vr8lpq8gbnat" path="res://Sprites/GameOver/gameoverexitsign.png" id="50_xrpxl"]
 [ext_resource type="Texture2D" uid="uid://mn8upesg64ky" path="res://Sprites/GameOver/gameoverretryarrow.png" id="52_awb60"]
 [ext_resource type="Texture2D" uid="uid://bhsgl8rdkocrx" path="res://Sprites/GameOver/gameoversadwarrior.png" id="52_rsdv5"]
+[ext_resource type="Texture2D" uid="uid://edq11npga70k" path="res://Sprites/GameOver/gameoverretrytext.png" id="54_da58m"]
+[ext_resource type="Texture2D" uid="uid://b2ch660lolfs2" path="res://Sprites/GameOver/gameovermenutext.png" id="56_lxyx1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lsqb"]
 
@@ -88,6 +90,12 @@ region = Rect2(250, 0, 50, 9)
 [sub_resource type="SpriteFrames" id="SpriteFrames_lxyx1"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 15.0,
+"texture": null
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xrpxl")
 }, {
@@ -134,6 +142,12 @@ region = Rect2(148, 0, 37, 7)
 [sub_resource type="SpriteFrames" id="SpriteFrames_23uwq"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 24.0,
+"texture": null
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pijtn")
 }, {
@@ -228,6 +242,26 @@ animations = [{
 "name": &"default_1",
 "speed": 10.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxyx1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pijtn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iibis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_spvx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ckr2t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbnig"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23uwq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5uago"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ur0dt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfasi"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -537,9 +571,9 @@ script = ExtResource("44_cy62p")
 position = Vector2(-42, 58)
 texture = ExtResource("44_8lsqb")
 hframes = 2
+frame = 1
 
 [node name="Box" type="TextureRect" parent="UI/CenterRight/GameOver"]
-visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -603,12 +637,25 @@ offset_left = 33.0
 offset_top = 81.0
 offset_right = 100.0
 offset_bottom = 98.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lxyx1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pijtn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_iibis")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_spvx0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ckr2t")
 
 [node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/RetryButton"]
+z_index = 1
 layout_mode = 0
 offset_right = 17.000015
 offset_bottom = 17.0
 texture = ExtResource("52_awb60")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/CenterRight/GameOver/RetryButton"]
+layout_mode = 0
+offset_left = 17.5
+offset_right = 66.50007
+offset_bottom = 17.0
+texture = ExtResource("54_da58m")
 
 [node name="MenuButton" type="Button" parent="UI/CenterRight/GameOver"]
 layout_mode = 0
@@ -616,13 +663,26 @@ offset_left = 16.0
 offset_top = 101.0
 offset_right = 110.0
 offset_bottom = 122.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mbnig")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_23uwq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5uago")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ur0dt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lfasi")
 
 [node name="TextureRect" type="TextureRect" parent="UI/CenterRight/GameOver/MenuButton"]
+z_index = 1
 layout_mode = 0
-offset_left = 47.0
-offset_right = 94.000046
+offset_left = 27.0
+offset_right = 74.000046
 offset_bottom = 21.0
 texture = ExtResource("52_rsdv5")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/CenterRight/GameOver/MenuButton"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 46.000046
+offset_bottom = 27.0
+texture = ExtResource("56_lxyx1")
 
 [node name="BottomLeft" type="Control" parent="UI"]
 layout_mode = 1
