@@ -95,6 +95,8 @@ func cheats()->void:
 		maxHealth = 100
 		health = 100
 	if Input.is_action_just_pressed("Cheat5"):
+		health -= 5
+	if Input.is_action_just_pressed("Cheat6"):
 		shatterScreen()
 
 func difficultyChange()->void:

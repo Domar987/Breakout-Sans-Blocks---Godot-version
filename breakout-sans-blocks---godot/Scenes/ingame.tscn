@@ -49,6 +49,7 @@
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
 
 [node name="Ingame" type="Node2D"]
+modulate = Color(0, 0, 0, 1)
 
 [node name="RuleManager" type="Node" parent="."]
 process_priority = 1

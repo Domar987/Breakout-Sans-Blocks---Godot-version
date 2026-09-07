@@ -30,6 +30,11 @@ func signanim()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_R):
+		retryPressed()
+	if Input.is_key_pressed(KEY_M):
+		menuPressed()
+	
 	retrytext.position.y = (1-retrytext.scale.x) * 8.5
 	menutext.position.x = (1-menutext.scale.x) * 46
 	menutext.position.y = (1-menutext.scale.x) * 14
