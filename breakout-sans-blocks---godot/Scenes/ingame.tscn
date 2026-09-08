@@ -246,6 +246,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
 spawnWeight = 0.5
+spawnAtLevels = Array[int]([1, 2])
 maxSpawned = 50
 spawnRare = ExtResource("14_5mqjs")
 rareChance = 5
@@ -253,25 +254,25 @@ rareChance = 5
 [node name="AeoloSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("11_csxpc")
 spawnWeight = 0.025
-spawnAtDifficulty = 1
+spawnAtLevels = Array[int]([1, 2, 3, 4])
 maxSpawned = 2
 
 [node name="ChildSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("43_v7gd0")
 spawnWeight = 0.2
-spawnAtDifficulty = 1
+spawnAtLevels = Array[int]([1, 2])
 maxSpawned = 4
 
 [node name="GatorSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("12_6cchy")
 spawnWeight = 0.1
-spawnAtDifficulty = 2
+spawnAtLevels = Array[int]([2, 3])
 maxSpawned = 3
 
 [node name="MechaSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("41_1l64l")
 spawnWeight = 0.066
-spawnAtDifficulty = 2
+spawnAtLevels = Array[int]([2, 3, 4])
 maxSpawned = 2
 
 [node name="UI" type="Control" parent="."]

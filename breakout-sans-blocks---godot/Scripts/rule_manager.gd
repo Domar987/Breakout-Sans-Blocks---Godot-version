@@ -9,6 +9,7 @@ var activecolor:Dictionary
 
 var difficulty = 0
 var oldDifficulty = 0
+var level = 1
 
 var maxHealth:int = 10
 var health:int = 10

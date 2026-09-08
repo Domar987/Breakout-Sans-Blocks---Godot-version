@@ -107,6 +107,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(1,4):
 		if yvalue > levelvals[i] and i > level:
 			level = i
+			RuleManager.level = level + 1
 			levelChange(yvalue)
 	
 	timer -= RuleManager.ySpeed * delta

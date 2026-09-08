@@ -2,7 +2,8 @@ class_name Spawner extends Node
 
 @export var spawn:PackedScene
 @export var spawnWeight:float
-@export var spawnAtDifficulty:int
+#@export var spawnAtDifficulty:int
+@export var spawnAtLevels:Array[int]
 @export var maxSpawned:int
 @onready var RuleManager = $/root/Ingame/RuleManager
 @onready var background = $/root/Ingame/Background
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if RuleManager.difficulty >= spawnAtDifficulty and numberOfEnemies < maxSpawned and RuleManager.health > 0:
+	if RuleManager.level in spawnAtLevels and numberOfEnemies < maxSpawned and RuleManager.health > 0:
 		timer -= delta
 		if timer <= 0:
 			if spawnRare != null and canSpawnRare and randi_range(0,100) <= rareChance:
