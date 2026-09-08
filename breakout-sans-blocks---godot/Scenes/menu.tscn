@@ -336,7 +336,7 @@ offset_bottom = 40.0
 [node name="Wall" type="TextureRect" parent="LeftSide"]
 z_index = -5
 layout_mode = 0
-offset_left = -160.0
+offset_left = -166.0
 offset_top = -93.0
 offset_right = 166.0
 offset_bottom = 94.0
@@ -344,7 +344,7 @@ mouse_filter = 2
 texture = ExtResource("16_747ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftSide"]
-z_index = -10
+z_index = -4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_cayip")
 
@@ -416,12 +416,12 @@ script = ExtResource("23_l6llh")
 [node name="EnemyIcon" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(35, 40)
 texture = ExtResource("24_l6llh")
-hframes = 5
+hframes = 14
 
 [node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Encyclopedia/Profile"]
 position = Vector2(-80, 40)
 texture = ExtResource("24_l6llh")
-hframes = 5
+hframes = 14
 frame = 1
 
 [node name="EnemyBG" type="TextureRect" parent="MiniMenu/Encyclopedia/Profile"]
