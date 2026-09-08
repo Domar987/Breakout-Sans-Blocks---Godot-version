@@ -13,6 +13,8 @@ var timer:float
 var canSpawnRare:bool = true
 @export var rareChance:int = 0
 
+@export var rareDelay:int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer = randf_range(min(0.8,0.8 / spawnWeight[0]), 3.2 / spawnWeight[0])
@@ -23,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	if RuleManager.level in spawnAtLevels and numberOfEnemies < maxSpawned[spawnAtLevels.find(RuleManager.level)] and RuleManager.health > 0:
 		timer -= delta
 		if timer <= 0:
-			if spawnRare != null and canSpawnRare and randi_range(0,100) <= rareChance:
+			if spawnRare != null and RuleManager.level > rareDelay and canSpawnRare and randi_range(0,100) <= rareChance:
 				spawnEnemy(spawnRare)
 				canSpawnRare = false
 			else:
