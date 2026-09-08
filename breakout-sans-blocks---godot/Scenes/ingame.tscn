@@ -247,7 +247,7 @@ metadata/_edit_use_anchors_ = true
 spawn = ExtResource("6_6toak")
 spawnWeight = Array[float]([0.5, 0.4])
 spawnAtLevels = Array[int]([1, 2])
-maxSpawned = 50
+maxSpawned = Array[int]([20, 20])
 spawnRare = ExtResource("14_5mqjs")
 rareChance = 5
 
@@ -255,25 +255,25 @@ rareChance = 5
 spawn = ExtResource("11_csxpc")
 spawnWeight = Array[float]([0.025, 0.025, 0.03, 0.05])
 spawnAtLevels = Array[int]([1, 2, 3, 4])
-maxSpawned = 2
+maxSpawned = Array[int]([2, 2, 3, 4])
 
 [node name="ChildSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("43_v7gd0")
 spawnWeight = Array[float]([0.2, 0.2])
 spawnAtLevels = Array[int]([1, 2])
-maxSpawned = 4
+maxSpawned = Array[int]([4, 5])
 
 [node name="GatorSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("12_6cchy")
 spawnWeight = Array[float]([0.1, 0.2])
 spawnAtLevels = Array[int]([2, 3])
-maxSpawned = 3
+maxSpawned = Array[int]([3, 4])
 
 [node name="MechaSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("41_1l64l")
 spawnWeight = Array[float]([0.066, 0.15, 0.2])
 spawnAtLevels = Array[int]([2, 3, 4])
-maxSpawned = 2
+maxSpawned = Array[int]([2, 3, 4])
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
