@@ -256,6 +256,7 @@ spawn = ExtResource("11_csxpc")
 spawnWeight = Array[float]([0.025, 0.025, 0.03, 0.05])
 spawnAtLevels = Array[int]([1, 2, 3, 4])
 maxSpawned = Array[int]([2, 2, 3, 4])
+rareChance = 10
 rareDelay = 2
 
 [node name="ChildSpawner" parent="." instance=ExtResource("5_165j7")]
@@ -275,6 +276,7 @@ spawn = ExtResource("41_1l64l")
 spawnWeight = Array[float]([0.066, 0.15, 0.2])
 spawnAtLevels = Array[int]([2, 3, 4])
 maxSpawned = Array[int]([2, 3, 4])
+rareChance = 20
 rareDelay = 2
 
 [node name="UI" type="Control" parent="."]
