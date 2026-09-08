@@ -1,7 +1,7 @@
 class_name Spawner extends Node
 
 @export var spawn:PackedScene
-@export var spawnWeight:float
+@export var spawnWeight:Array[float]
 #@export var spawnAtDifficulty:int
 @export var spawnAtLevels:Array[int]
 @export var maxSpawned:int
@@ -15,8 +15,7 @@ var canSpawnRare:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if spawnWeight > 0:
-		timer = randf_range(min(0.8,0.8 / spawnWeight), 3.2 / spawnWeight)
+	timer = randf_range(min(0.8,0.8 / spawnWeight[0]), 3.2 / spawnWeight[0])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,8 +28,9 @@ func _physics_process(delta: float) -> void:
 				canSpawnRare = false
 			else:
 				spawnEnemy(spawn)
-			if spawnWeight > 0:
-				timer = randf_range(min(0.8,0.8 / spawnWeight), 3.2 / spawnWeight)
+			var currentWeight = spawnWeight[spawnAtLevels.find(RuleManager.level)]
+			if currentWeight > 0:
+				timer = randf_range(min(0.8,0.8 / currentWeight), 3.2 / currentWeight)
 
 func spawnEnemy(_spawn:PackedScene)->void:
 	var newSpawn = _spawn.instantiate()
