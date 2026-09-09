@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=66 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -63,6 +63,8 @@
 [ext_resource type="Texture2D" uid="uid://bjyxtccymriik" path="res://Sprites/Camabar/camabar13-sheet.png" id="57_h7uqc"]
 [ext_resource type="Texture2D" uid="uid://d100va4nbf834" path="res://Sprites/Camabar/camabar14-sheet.png" id="58_bwsax"]
 [ext_resource type="Texture2D" uid="uid://cqctgk0mdk2vh" path="res://Sprites/Camabar/camabar15-sheet.png" id="59_3iejp"]
+[ext_resource type="Texture2D" uid="uid://dber3etgymjoa" path="res://Sprites/Camabar/hpbar2.png" id="61_5uago"]
+[ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 
 [node name="Ingame" type="Node2D"]
 
@@ -389,6 +391,24 @@ hframes = 2
 position = Vector2(9, 32.5)
 texture = ExtResource("59_3iejp")
 hframes = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/TopLeft"]
+visible = false
+layout_mode = 0
+offset_left = 14.0
+offset_top = 2.0
+offset_right = 58.0
+offset_bottom = 50.0
+texture = ExtResource("61_5uago")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/TopLeft"]
+visible = false
+layout_mode = 0
+offset_left = 13.0
+offset_top = -1.0
+offset_right = 92.0
+offset_bottom = 24.0
+texture = ExtResource("62_ur0dt")
 
 [node name="TopCenter" type="Control" parent="UI"]
 layout_mode = 1
