@@ -72,6 +72,10 @@
 process_priority = 1
 script = ExtResource("4_lq36l")
 
+[node name="Label" type="Label" parent="RuleManager"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="ParticleSystem" type="Node" parent="."]
 script = ExtResource("2_2gt6l")
 metadata/_custom_type_script = "uid://cx6afprpkpiqr"

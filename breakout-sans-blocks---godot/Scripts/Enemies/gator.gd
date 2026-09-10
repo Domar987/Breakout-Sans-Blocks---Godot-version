@@ -9,6 +9,7 @@ func _ready() -> void:
 	hp = 4
 	dmg = 5
 	tier = 2
+	point = 750
 	dropChance = 50
 	shoots = false
 	sprites = [$Head,$Arm,$Body]
@@ -90,6 +91,7 @@ func getHurt()->void:
 func bite(area:Area2D)->void:
 	if hp > 0 and launches <= 4 and area is Enemy and not(area is Gator or area is Aeolo or area.isRare):
 		ate += 1
+		RuleManager.points += 25
 		mainSprite.stop()
 		sprites[1].stop()
 		mainSprite.play("bite")
@@ -123,3 +125,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func shootProjectile()->void:
 	#projectileSpeed = -200
 	super()
+
+func pointCalculation()->int:
+	if launches > 4:
+		return pointBase() * 1.25
+	else:
+		return pointBase() * (11 - launches)/10

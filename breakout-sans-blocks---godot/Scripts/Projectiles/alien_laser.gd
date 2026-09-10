@@ -8,6 +8,7 @@ var variant:int = 1
 func _ready() -> void:
 	super()
 	variant = randi_range(1,2)
+	point = 10
 	sprite.play(str(variant))
 
 

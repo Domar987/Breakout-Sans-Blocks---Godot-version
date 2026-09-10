@@ -9,6 +9,8 @@ func _ready() -> void:
 	update(10)
 
 func update(health:int)->void:
+	if health < 0:
+		health = 0
 	if health <= 15:
 		for i in range(0,health):
 			children.get(i).frame = 0

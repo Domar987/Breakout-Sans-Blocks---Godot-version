@@ -78,7 +78,7 @@ func shootProjectile(fromTop:bool)->void:
 
 @onready var RuleManager = $/root/Ingame/RuleManager
 
-var timer:float = 36.0
+var timer:float = 24.0
 
 #var firstdraw:bool = true
 
@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 	
 	timer -= RuleManager.ySpeed * delta
 	if timer <= 0:
-		timer = 36.0
+		timer = 24.0
 		shootProjectile(true)
 		
 	

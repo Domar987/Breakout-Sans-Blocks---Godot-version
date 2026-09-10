@@ -16,6 +16,7 @@ func _ready() -> void:
 	hp = 3
 	dmg = 0
 	tier = 1
+	point = 100
 	dropChance = 100
 	shoots = false
 	sprites = [$Main]

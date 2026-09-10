@@ -63,6 +63,12 @@ func pop()->void:
 			RuleManager.damageBoost(1,15)
 		3:
 			RuleManager.slamdamageBoost(1,15)
+		4:
+			RuleManager.points += 50 * (10 + RuleManager.difficulty)/10
+		5:
+			RuleManager.points += 750 * (10 + RuleManager.difficulty)/10
+		6:
+			RuleManager.points += 4500 * (10 + RuleManager.difficulty)/10
 		7:
 			RuleManager.flyEnable(15)
 		8:

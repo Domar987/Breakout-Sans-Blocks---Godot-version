@@ -19,6 +19,7 @@ func _ready() -> void:
 	hp = 4
 	dmg = 1
 	tier = 2
+	point = 600
 	dropChance = 40
 	shoots = true
 	sprites = [$Head,$Arm,$Body,$Fire]
@@ -95,6 +96,7 @@ func shootProjectile()->void:
 		if randi_range(0,3) == 0:
 			projectilePosition = position + scale * Vector2(6,-12)
 			projectileSpeed = -2
+		particleSystem.emitWithSpeed(particles,randi_range(1,3),projectilePosition,Vector2(randf_range(-20,20),randf_range(-60,-10)))
 		var audio = popAudios.pick_random()
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()

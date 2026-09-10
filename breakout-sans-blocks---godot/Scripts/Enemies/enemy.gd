@@ -23,7 +23,10 @@ var attacktimer:int = 1
 var hp:int
 var dmg:int
 var tier:int = 1
+
+var point:int = 1
 var dropChance:int = 0
+
 var projectileSpeed:int
 var projectilesource:PackedScene
 var projectileTexturePath:String
@@ -82,6 +85,9 @@ func getHurt()->void:
 	hp -= RuleManager.damage
 	if Ball.slamming:
 		hp -= RuleManager.slamdamage
+	
+	if hp <= 0:
+		RuleManager.points += pointCalculation()
 	if hp <= 0 and randi_range(0,100) < dropChance:
 		var projectile = load("res://Objects/Drop.tscn").instantiate()
 		projectile.position = position
@@ -129,3 +135,8 @@ func remove()->void:
 		if isRare:
 			spawner.canSpawnRare = true
 	queue_free()
+
+func pointBase()->int:
+	return point * (10 + RuleManager.difficulty)/10
+func pointCalculation()->int:
+	return pointBase()

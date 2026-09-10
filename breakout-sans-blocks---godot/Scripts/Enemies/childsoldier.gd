@@ -18,6 +18,7 @@ func _ready() -> void:
 	hp = 1
 	dmg = 3
 	tier = 1
+	point = 50
 	dropChance = 25
 	shoots = true
 	mainSprite = sprites[0]
@@ -143,3 +144,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 func shootProjectile()->void:
 	projectileSpeed = 0
 	super()
+
+func pointCalculation()->int:
+	return pointBase() * (int(handStatus != 0) + 1)

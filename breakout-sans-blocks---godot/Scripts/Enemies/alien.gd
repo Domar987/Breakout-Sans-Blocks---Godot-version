@@ -34,13 +34,16 @@ func _ready() -> void:
 		1:
 			hp = 1
 			dmg = 1
+			point = 10
 		2:
 			hp = 2
 			dmg = 1
 			moveTimer *= 2
+			point = 20
 		3:
 			hp = 1
 			dmg = 2
+			point = 30
 	tier = 1
 	dropChance = 5
 	fromLorCorR = 1

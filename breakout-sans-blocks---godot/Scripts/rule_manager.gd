@@ -24,6 +24,8 @@ var ySpeed:float=0.0
 
 var died:bool = false
 
+var points:int = 0
+
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
 @onready var ball:Area2D = $/root/Ingame/Ball
 @onready var platform:Area2D = $/root/Ingame/Platform
@@ -58,8 +60,11 @@ func _ready() -> void:
 	create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false).tween_property(get_parent(),"modulate",Color.WHITE,0.5)
 	Input.warp_mouse(get_viewport().size/2)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)
+	if invitimer > 0:
+		invitimer -= delta
+		
 	uiTransform()
 	
 	cheats()
@@ -77,9 +82,14 @@ func _process(delta: float) -> void:
 	oldDifficulty = difficulty
 	oldhealth = health
 
-func _physics_process(delta: float) -> void:
-	if invitimer > 0:
-		invitimer -= delta
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print("Closing...")
+	if what == NOTIFICATION_CRASH:
+		print("Crash")
+
+func saveStuff() -> void:
+	pass
 
 func uiTransform()->void:
 	ui.scale = Vector2.ONE * (3/zoom)

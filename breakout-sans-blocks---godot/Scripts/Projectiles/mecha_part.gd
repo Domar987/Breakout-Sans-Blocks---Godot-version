@@ -7,6 +7,7 @@ func _ready() -> void:
 	xSpeed = -sign(scale.x)*(randf() * 100) * speed
 	super()
 	canfall = true
+	point = 25
 	speed = -(randf() * 250)
 	sprite.animation = str(randi_range(1,4))
 

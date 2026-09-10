@@ -8,6 +8,7 @@ class_name Projectile extends Area2D
 var damage:int
 var speed:float
 var direction:Vector2
+var point:int
 
 var texture:Texture2D
 
@@ -55,6 +56,7 @@ func _on_area_entered(area: Area2D) -> void:
 			plattouched()
 
 func balltouched()->void:
+	RuleManager.points += pointCalculation()
 	ball.velocity.y = min(-88.5,ball.velocity.y)
 	sprite.play("blast")
 
@@ -65,3 +67,8 @@ func plattouched()->void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "blast":
 		queue_free()
+
+func pointBase()->int:
+	return point * (10 + RuleManager.difficulty)/10
+func pointCalculation()->int:
+	return pointBase()
