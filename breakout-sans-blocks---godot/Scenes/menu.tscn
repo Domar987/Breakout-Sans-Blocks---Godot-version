@@ -374,13 +374,16 @@ texture = ExtResource("16_3p34a")
 
 [node name="Miamiclick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_5ti5v")
+bus = &"Player"
 
 [node name="Miamiorchit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_1by5w")
+bus = &"Player"
 
 [node name="TitleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_1by5w")
 autoplay = true
+bus = &"Music"
 
 [node name="MiniMenu" parent="." instance=ExtResource("15_owyel")]
 z_index = 5

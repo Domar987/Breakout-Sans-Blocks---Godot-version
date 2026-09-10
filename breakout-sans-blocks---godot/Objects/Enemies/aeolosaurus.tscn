@@ -177,10 +177,13 @@ texture = ExtResource("4_0dy2u")
 [node name="Aeolo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8wj4n")
 autoplay = true
+bus = &"Enemy"
 
 [node name="AeoloHurt01" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8116m")
+bus = &"Enemy"
 
 [node name="AeoloHurt02" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_cfloh")
 volume_db = 1.0
+bus = &"Enemy"

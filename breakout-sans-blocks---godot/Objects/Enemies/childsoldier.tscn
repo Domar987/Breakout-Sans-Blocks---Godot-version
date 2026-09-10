@@ -435,7 +435,9 @@ shape = SubResource("RectangleShape2D_4mbro")
 
 [node name="Childsoldierhurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4d4ju")
+bus = &"Enemy"
 
 [node name="Babytothebone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_ix6p2")
 autoplay = true
+bus = &"Enemy"

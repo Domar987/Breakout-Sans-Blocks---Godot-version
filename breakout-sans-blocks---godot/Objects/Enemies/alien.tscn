@@ -20,15 +20,20 @@ shape = SubResource("RectangleShape2D_hg8i3")
 
 [node name="Invaderkilled" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hg8i3")
+bus = &"Enemy"
 
 [node name="Fastinvader1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_t7the")
+bus = &"Enemy"
 
 [node name="Fastinvader2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ycsfr")
+bus = &"Enemy"
 
 [node name="Fastinvader3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_osicy")
+bus = &"Enemy"
 
 [node name="Fastinvader4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_f5akg")
+bus = &"Enemy"

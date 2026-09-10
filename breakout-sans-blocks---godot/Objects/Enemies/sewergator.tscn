@@ -276,9 +276,12 @@ stream = ExtResource("6_iurl3")
 volume_db = -5.0
 pitch_scale = 0.75
 autoplay = true
+bus = &"Enemy"
 
 [node name="GatorChomp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_thduv")
+bus = &"Enemy"
 
 [node name="GatorHurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_thduv")
+bus = &"Enemy"
