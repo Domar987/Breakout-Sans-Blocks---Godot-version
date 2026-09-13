@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=65 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -46,7 +46,6 @@
 [ext_resource type="Script" uid="uid://dqbuci5dh0iin" path="res://Scripts/camabar.gd" id="43_spvx0"]
 [ext_resource type="PackedScene" uid="uid://dcedah1wtv08h" path="res://Objects/Enemies/childsoldier.tscn" id="43_v7gd0"]
 [ext_resource type="PackedScene" uid="uid://byi4f4tqud3uc" path="res://Objects/floor.tscn" id="44_gyvwt"]
-[ext_resource type="Texture2D" uid="uid://ckueygro5glvk" path="res://Sprites/Camabar/camabg.png" id="44_spvx0"]
 [ext_resource type="Script" uid="uid://ctg22ldhe4ssg" path="res://Scripts/floor.gd" id="45_hv85q"]
 [ext_resource type="Texture2D" uid="uid://bvjc40oce5fo5" path="res://Sprites/Camabar/camabar1-sheet.png" id="45_spvx0"]
 [ext_resource type="Texture2D" uid="uid://bnh731ef10ucj" path="res://Sprites/Camabar/camabar2-sheet.png" id="46_ckr2t"]
@@ -317,82 +316,82 @@ script = ExtResource("43_spvx0")
 visible = false
 layout_mode = 0
 offset_left = 1.0
-offset_right = 62.0
-offset_bottom = 46.0
-texture = ExtResource("44_spvx0")
+offset_right = 80.0
+offset_bottom = 25.0
+texture = ExtResource("62_ur0dt")
 
 [node name="TextureRect" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(57.5, 6)
+position = Vector2(74, 10.5)
 texture = ExtResource("45_spvx0")
 hframes = 2
 
 [node name="TextureRect2" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(51, 12)
+position = Vector2(65, 9.5)
 texture = ExtResource("46_ckr2t")
 hframes = 2
 
 [node name="TextureRect3" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(47.5, 20.5)
+position = Vector2(57, 9.5)
 texture = ExtResource("47_mbnig")
 hframes = 2
 
 [node name="TextureRect4" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(43.5, 27)
+position = Vector2(49, 11.5)
 texture = ExtResource("48_23uwq")
 hframes = 2
 
 [node name="TextureRect5" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(35, 29.5)
+position = Vector2(49.5, 21.5)
 texture = ExtResource("49_5uago")
 hframes = 2
 
 [node name="TextureRect6" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(26, 32.5)
+position = Vector2(41, 13)
 texture = ExtResource("50_ur0dt")
 hframes = 2
 
 [node name="TextureRect7" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(16.5, 34.5)
+position = Vector2(33.5, 12)
 texture = ExtResource("51_lfasi")
 hframes = 2
 
 [node name="TextureRect8" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(5.5, 35.5)
+position = Vector2(31.5, 22)
 texture = ExtResource("52_2qq7b")
 hframes = 2
 
 [node name="TextureRect9" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(44, 43)
+position = Vector2(23.5, 11)
 texture = ExtResource("53_whsiv")
 hframes = 2
 
 [node name="TextureRect10" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(27.5, 44)
+position = Vector2(9, 9)
 texture = ExtResource("54_pyoi0")
 hframes = 2
 
 [node name="TextureRect11" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(58.5, 2)
+position = Vector2(74.5, 6)
 texture = ExtResource("55_8n0k6")
 hframes = 2
 
 [node name="TextureRect12" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(59.5, 8)
+position = Vector2(75.5, 12.5)
 texture = ExtResource("56_yrfc0")
 hframes = 2
 
 [node name="TextureRect13" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(61.5, 5.5)
+position = Vector2(77.5, 10)
 texture = ExtResource("57_h7uqc")
 hframes = 2
 
 [node name="TextureRect14" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(48, 5.5)
+position = Vector2(62.5, 2)
 texture = ExtResource("58_bwsax")
 hframes = 2
 
 [node name="TextureRect15" type="Sprite2D" parent="UI/TopLeft/Camabar"]
-position = Vector2(9, 32.5)
+position = Vector2(11, 4.5)
 texture = ExtResource("59_3iejp")
 hframes = 2
 
