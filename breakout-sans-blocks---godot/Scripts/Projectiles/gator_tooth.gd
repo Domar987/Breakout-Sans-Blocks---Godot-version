@@ -18,4 +18,6 @@ func _physics_process(delta: float) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "1":
 		canfall = true
+	if sprite.animation == "blast":
+		RuleManager.teeth += 1
 	super()

@@ -72,6 +72,8 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("death")
 			for i in range(1,len(sprites)):
 				sprites[i].queue_free()
+			
+			cheevo()
 		else:
 			if launches > 4:
 				for i in range(1,len(sprites)):
@@ -131,3 +133,7 @@ func pointCalculation()->int:
 		return pointBase() * 1.25
 	else:
 		return pointBase() * (11 - launches)/10
+
+func cheevo()->void:
+	if launches > 4:
+		pass

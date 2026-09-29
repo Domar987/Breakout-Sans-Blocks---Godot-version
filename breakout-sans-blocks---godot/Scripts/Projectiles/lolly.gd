@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if timer <= 0:
 		super(area)
+	cheevo()
 
 
 func balltouched()->void:
@@ -38,3 +39,7 @@ func plattouched()->void:
 
 func pointCalculation()->int:
 	return pointBase() * (bounces + 1)
+
+func cheevo()->void:
+	if bounces >= 3:
+		pass

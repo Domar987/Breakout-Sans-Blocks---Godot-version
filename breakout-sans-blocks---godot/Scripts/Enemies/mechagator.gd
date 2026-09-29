@@ -9,6 +9,8 @@ var shakeAmount:float=0.1
 @onready var particleSystem = $/root/Ingame/ParticleSystem
 var particles:Array[PackedScene] = [load("res://Objects/Particles/SmokeMedium.tscn"),load("res://Objects/Particles/SmokeSmall.tscn")]
 
+var shotAProjectile:bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attacktimer = 10
@@ -85,12 +87,15 @@ func getHurt()->void:
 	else:
 		particleSystem.emit(particles,randi_range(10,15),global_position + scale * Vector2(-3,0))
 		tween.tween_property(self,"shakeAmount",2.0,0.25)
+		
+		cheevo()
 
 func bite(_Area2D)->void:
 	pass
 
 func shootProjectile()->void:
 	if randi_range(0,4) == 0:
+		shotAProjectile = true
 		projectileSpeed = 1
 		projectilePosition = position + scale * Vector2(-3,0)
 		if randi_range(0,3) == 0:
@@ -101,3 +106,7 @@ func shootProjectile()->void:
 		audio.pitch_scale = randf_range(0.9,1.0)
 		audio.play()
 		super()
+
+func cheevo()->void:
+	if not shotAProjectile:
+		pass

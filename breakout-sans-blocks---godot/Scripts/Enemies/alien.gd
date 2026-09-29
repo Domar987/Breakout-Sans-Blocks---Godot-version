@@ -7,7 +7,7 @@ var selectedcolors:Array
 
 var aliensprite = "res://Sprites/Alien/alien"
 
-var xSpeedModifier:int
+var xSpeedModifier:float
 var currentKill:int
 
 var variant:int = randi_range(1,3)
@@ -73,9 +73,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if hp > 0:
 		super(delta)
-		xSpeedModifier = RuleManager.kill - currentKill
+		xSpeedModifier = (RuleManager.kill - currentKill)/2.0 + 1
+		cheevo()
 		
-		moveTimer -= delta * (xSpeedModifier/2.0 + 1)
+		moveTimer -= delta * xSpeedModifier
 		if moveTimer <= 0:
 			walkAudios[walkiter%4].play()
 			walkiter += 1
@@ -127,3 +128,7 @@ func _on_area_entered(area: Area2D) -> void:
 func shootProjectile()->void:
 	projectileSpeed = 20
 	super()
+
+func cheevo()->void:
+	if xSpeedModifier >= 5.0:
+		pass
