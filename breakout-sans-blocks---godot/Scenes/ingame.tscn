@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=66 format=3 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -63,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://d100va4nbf834" path="res://Sprites/Camabar/camabar14-sheet.png" id="58_bwsax"]
 [ext_resource type="Texture2D" uid="uid://cqctgk0mdk2vh" path="res://Sprites/Camabar/camabar15-sheet.png" id="59_3iejp"]
 [ext_resource type="Texture2D" uid="uid://dber3etgymjoa" path="res://Sprites/Camabar/hpbar2.png" id="61_5uago"]
+[ext_resource type="PackedScene" uid="uid://c4c31ryd64ms4" path="res://Objects/cheevo.tscn" id="61_mbnig"]
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 
 [node name="Ingame" type="Node2D"]
@@ -498,6 +499,13 @@ offset_left = -40.0
 offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="Cheevo" parent="UI/BottomRight" instance=ExtResource("61_mbnig")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 17.0
 
 [node name="Arkanoid" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_3jpny")

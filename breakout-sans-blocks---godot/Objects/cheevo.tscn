@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4c31ryd64ms4"]
+
+[ext_resource type="Texture2D" uid="uid://lplv3ldodfol" path="res://Sprites/achievementtext.png" id="1_hcxws"]
+[ext_resource type="Script" uid="uid://cupvehtvwokem" path="res://Scripts/cheevo.gd" id="2_bd74f"]
+[ext_resource type="Texture2D" uid="uid://ck54o1iymh7vm" path="res://Sprites/achievements.png" id="3_mi1un"]
+
+[node name="Cheevo" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 17.0
+texture = ExtResource("1_hcxws")
+script = ExtResource("2_bd74f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("3_mi1un")
+hframes = 10
