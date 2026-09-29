@@ -74,8 +74,6 @@ func _physics_process(delta: float) -> void:
 	if hp > 0:
 		super(delta)
 		xSpeedModifier = (RuleManager.kill - currentKill)/2.0 + 1
-		cheevo()
-		
 		moveTimer -= delta * xSpeedModifier
 		if moveTimer <= 0:
 			walkAudios[walkiter%4].play()
@@ -120,6 +118,7 @@ func _on_area_entered(area: Area2D) -> void:
 			if len(sprites) > 1:
 				for i in range(1,len(sprites)):
 					sprites[i].queue_free()
+			cheevo()
 		else:
 			for i in range(len(sprites)):
 				sprites[i].play("hurt")
@@ -131,4 +130,4 @@ func shootProjectile()->void:
 
 func cheevo()->void:
 	if xSpeedModifier >= 5.0:
-		pass
+		print("Alien cheevo")

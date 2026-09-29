@@ -109,4 +109,4 @@ func shootProjectile()->void:
 
 func cheevo()->void:
 	if not shotAProjectile:
-		pass
+		print("Mecha cheevo")

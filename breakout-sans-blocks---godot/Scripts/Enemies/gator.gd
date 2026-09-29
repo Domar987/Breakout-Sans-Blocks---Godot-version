@@ -136,4 +136,4 @@ func pointCalculation()->int:
 
 func cheevo()->void:
 	if launches > 4:
-		pass
+		print("Gator cheevo")

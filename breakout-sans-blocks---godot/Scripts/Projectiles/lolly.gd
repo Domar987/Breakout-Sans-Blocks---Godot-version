@@ -42,4 +42,4 @@ func pointCalculation()->int:
 
 func cheevo()->void:
 	if bounces >= 3:
-		pass
+		print("Lolly cheevo")
