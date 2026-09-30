@@ -20,6 +20,9 @@ func unlockCheevo(index:int)->void:
 	if cheevoArray[index][2]:
 		pass
 	else:
+		cheevoArray[index][2] = true
+		var cheevoUpdate = FileAccess.open("res://Data/achievements.json",FileAccess.WRITE)
+		cheevoUpdate.store_string(JSON.stringify(cheevoArray,"\t"))
 		var tmp = cheevo.instantiate()
 		tmp.currentCheevo = index
 		add_sibling.call_deferred(tmp)

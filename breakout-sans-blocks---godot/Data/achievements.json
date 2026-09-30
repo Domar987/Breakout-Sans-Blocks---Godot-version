@@ -2,7 +2,7 @@
 	[
 		"Ooohh Fege-fege-fege-fegelein!",
 		"Bounce a lolly thrice or more.",
-		false
+		true
 	],
 	[
 		"Bouncy Little Pumpkin",
@@ -27,7 +27,7 @@
 	[
 		"The Final Alien",
 		"Kill a Space Invader that was moving 5 times a second.",
-		false
+		true
 	],
 	[
 		"Efficient Chop Shop",
