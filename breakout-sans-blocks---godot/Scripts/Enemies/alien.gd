@@ -18,6 +18,7 @@ var movedDown:bool = true
 @onready var walkAudios = [$Fastinvader1,$Fastinvader2,$Fastinvader3,$Fastinvader4]
 var walkiter:int = 0
 
+@onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hurtAudios = [$Invaderkilled]
@@ -129,5 +130,5 @@ func shootProjectile()->void:
 	super()
 
 func cheevo()->void:
-	if xSpeedModifier >= 5.0:
-		print("Alien cheevo")
+	if xSpeedModifier >= 5.0 * int(variant == 2):
+		CheevoHandler.unlockCheevo(5)

@@ -4,6 +4,7 @@ var ate:int = 0
 var launches:int = 1
 @onready var enterSound = $AggressiveAnimal
 
+@onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 func _ready() -> void:
 	hurtAudios = [$GatorHurt]
 	hp = 4
@@ -136,4 +137,4 @@ func pointCalculation()->int:
 
 func cheevo()->void:
 	if launches > 4:
-		print("Gator cheevo")
+		CheevoHandler.unlockCheevo(4)

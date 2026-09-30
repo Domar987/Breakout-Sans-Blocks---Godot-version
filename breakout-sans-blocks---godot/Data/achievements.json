@@ -1,42 +1,52 @@
 [
 	[
 		"Ooohh Fege-fege-fege-fegelein!",
-		"Bounce a lolly thrice or more."
+		"Bounce a lolly thrice or more.",
+		false
 	],
 	[
 		"Bouncy Little Pumpkin",
-		"Bounce from wall to wall without touching the platform."
+		"Bounce from wall to wall without touching the platform.",
+		false
 	],
 	[
 		"Second-Degree Murder",
-		"Kill the final boss."
+		"Kill the final boss.",
+		false
 	],
 	[
 		"Probably Murdered One Twice Instead",
-		"Kill 13 Majesters."
-	],
-	[
-		"The Final Alien",
-		"Kill a Space Invader that was moving 5 times a second."
-	],
-	[
-		"Efficient Chop Shop",
-		"Kill a Mecha Gator before it drops a metal part."
+		"Kill 13 Majesters.",
+		false
 	],
 	[
 		"Last Meal",
-		"Kill a Sewer Gator that was about to leave."
+		"Kill a Sewer Gator that was about to leave.",
+		false
+	],
+	[
+		"The Final Alien",
+		"Kill a Space Invader that was moving 5 times a second.",
+		false
+	],
+	[
+		"Efficient Chop Shop",
+		"Kill a Mecha Gator before it drops a metal part.",
+		false
 	],
 	[
 		"Muftaln's Disciple",
-		"Destroy 100 teeth."
+		"Destroy 100 teeth.",
+		false
 	],
 	[
 		"Tyrant Lizard King",
-		"Kill an Ankylosaurus without using strength power-ups."
+		"Kill an Ankylosaurus without using strength power-ups.",
+		false
 	],
 	[
 		"The Better Ball Handler",
-		"Get 17099296 or more score in a single run."
+		"Get 17099296 or more score in a single run.",
+		false
 	]
 ]
