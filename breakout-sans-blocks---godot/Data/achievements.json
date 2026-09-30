@@ -2,7 +2,7 @@
 	[
 		"Ooohh Fege-fege-fege-fegelein!",
 		"Bounce a lolly thrice or more.",
-		true
+		false
 	],
 	[
 		"Bouncy Little Pumpkin",
@@ -22,17 +22,17 @@
 	[
 		"Last Meal",
 		"Kill a Sewer Gator that was about to leave.",
-		true
+		false
 	],
 	[
 		"The Final Alien",
 		"Kill a Space Invader that was moving 5 times a second.",
-		true
+		false
 	],
 	[
 		"Efficient Chop Shop",
 		"Kill a Mecha Gator before it drops a metal part.",
-		true
+		false
 	],
 	[
 		"Muftaln's Disciple",

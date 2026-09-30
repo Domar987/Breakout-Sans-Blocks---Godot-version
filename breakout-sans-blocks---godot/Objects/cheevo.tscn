@@ -1,8 +1,89 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4c31ryd64ms4"]
+[gd_scene load_steps=15 format=3 uid="uid://c4c31ryd64ms4"]
 
 [ext_resource type="Texture2D" uid="uid://lplv3ldodfol" path="res://Sprites/achievementtext.png" id="1_hcxws"]
 [ext_resource type="Script" uid="uid://cupvehtvwokem" path="res://Scripts/cheevo.gd" id="2_bd74f"]
 [ext_resource type="Texture2D" uid="uid://ck54o1iymh7vm" path="res://Sprites/achievements.png" id="3_mi1un"]
+[ext_resource type="Texture2D" uid="uid://cb4ml51h7fkl1" path="res://Sprites/achievementtextflash.png" id="4_bd74f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi1un"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(0, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5s7n"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(84, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba7h0"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(168, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgblo"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(252, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ops8u"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(336, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvo2v"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(420, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb0qi"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(504, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pj86"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(588, 0, 84, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ysmk"]
+atlas = ExtResource("4_bd74f")
+region = Rect2(672, 0, 84, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7twbg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 3.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi1un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5s7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba7h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgblo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ops8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvo2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb0qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pj86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ysmk")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Cheevo" type="TextureRect"]
 offset_right = 64.0
@@ -14,3 +95,9 @@ script = ExtResource("2_bd74f")
 position = Vector2(32, 32)
 texture = ExtResource("3_mi1un")
 hframes = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(32, 8.5)
+sprite_frames = SubResource("SpriteFrames_7twbg")
+autoplay = "default"
