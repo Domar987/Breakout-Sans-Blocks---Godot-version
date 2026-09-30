@@ -29,6 +29,8 @@ var slamming:bool = false
 var platcontactpos:float
 var mouseforce:float
 
+var wallcounter:int = 0
+@onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	chooseColors(RuleManager.activecolor)
@@ -36,6 +38,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	#$Label.text = str(wallcounter)
 	#$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
 	ballPosCheat()
 	
@@ -114,6 +117,8 @@ func fall()->void:
 			velocity.y = -sqrt(2*get_gravity()*(position.y + 540/(2*RuleManager.zoom)))
 		else:
 			moveToCenter(1.5,true)
+		
+		wallcounter = 0
 
 func moveToCenter(duration:float,damaged:bool)->void:
 	if damaged:
@@ -175,14 +180,21 @@ func _on_area_entered(area: Area2D) -> void:
 		if slamming:
 			RuleManager.cameraAddShake(0.75,0.0,0.5)
 			platcontactpos = platform.position.x - position.x
+		
+		wallcounter = 0
 	elif area == floor:
 		#print("On Ground")
 		if slamming:
 			RuleManager.cameraAddShake(0.75,0.0,0.5)
 		touchinground = true
+		
+		wallcounter = 0
 	elif area == wall and timer <= 0:
 		timer = 1
 		velocity.x *= -1
+		if not (touchinground or touchingplatf):
+			wallcounter += 1
+			cheevo()
 
 func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Vector2:
 	var lerpvalue = (ballpos.x-platpos.x)/(length/2)
@@ -210,3 +222,7 @@ func statIncrease(area:Area2D)->void:
 	hitcounter += 1
 	if hitcounter % 10 == 0:
 		RuleManager.difficulty += 1
+
+func cheevo()->void:
+	if wallcounter > 1:
+		CheevoHandler.unlockCheevo(1)
