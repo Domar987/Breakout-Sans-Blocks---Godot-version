@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=58 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://diwup15mckvmx" path="res://Sprites/Menu/fella.png" id="9_rfqti"]
 [ext_resource type="Script" uid="uid://dq72xqe5i60ts" path="res://Scripts/fella.gd" id="12_23t3j"]
 [ext_resource type="Texture2D" uid="uid://daqef23it1e78" path="res://Sprites/Menu/menuenemy.png" id="13_d77ms"]
+[ext_resource type="Texture2D" uid="uid://cskqwhl5y51yl" path="res://Sprites/Menu/menuachievements.png" id="13_x0760"]
 [ext_resource type="Texture2D" uid="uid://cvtjm45r7ghjg" path="res://Sprites/Menu/menuenemypressed2.png" id="14_3p34a"]
 [ext_resource type="AudioStream" uid="uid://cm1obukvl8bi6" path="res://Audio/SFX/miamiclick.mp3" id="14_5ti5v"]
 [ext_resource type="Texture2D" uid="uid://sp1os1k6b2t1" path="res://Sprites/Menu/menuball.png" id="14_dldpb"]
@@ -86,6 +87,19 @@ texture_margin_left = 31.0
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvy56"]
+texture = ExtResource("13_x0760")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x0760"]
+texture = ExtResource("13_x0760")
+modulate_color = Color(0.58383155, 0.58383155, 0.58383155, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48g0d"]
+texture = ExtResource("13_x0760")
+modulate_color = Color(1.25516, 1.25516, 1.25516, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0760"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d77ms"]
 texture = ExtResource("13_d77ms")
@@ -307,6 +321,17 @@ offset_right = -1.0
 offset_bottom = 5.0
 grow_vertical = 2
 texture = ExtResource("8_7qvly")
+
+[node name="AchievementButton" type="Button" parent="RightSide"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -86.0
+offset_right = 156.0
+offset_bottom = -66.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_lvy56")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x0760")
+theme_override_styles/hover = SubResource("StyleBoxTexture_48g0d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x0760")
 
 [node name="Centerish" type="Control" parent="."]
 layout_mode = 3

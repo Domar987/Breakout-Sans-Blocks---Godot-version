@@ -2,12 +2,12 @@
 	[
 		"Ooohh Fege-fege-fege-fegelein!",
 		"Bounce a lolly thrice or more.",
-		true
+		false
 	],
 	[
 		"Bouncy Little Pumpkin",
 		"Bounce from wall to wall without touching the platform.",
-		true
+		false
 	],
 	[
 		"Second-Degree Murder",
@@ -27,7 +27,7 @@
 	[
 		"The Final Alien",
 		"Kill a Space Invader that was moving 5 times a second.",
-		true
+		false
 	],
 	[
 		"Efficient Chop Shop",
