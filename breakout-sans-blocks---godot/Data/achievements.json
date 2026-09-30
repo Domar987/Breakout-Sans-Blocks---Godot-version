@@ -22,7 +22,7 @@
 	[
 		"Last Meal",
 		"Kill a Sewer Gator that was about to leave.",
-		false
+		true
 	],
 	[
 		"The Final Alien",
@@ -32,7 +32,7 @@
 	[
 		"Efficient Chop Shop",
 		"Kill a Mecha Gator before it drops a metal part.",
-		false
+		true
 	],
 	[
 		"Muftaln's Disciple",
