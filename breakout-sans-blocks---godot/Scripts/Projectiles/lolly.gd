@@ -2,6 +2,7 @@ class_name Lolly extends Projectile
 
 var timer:float = 0.0
 var bounces:int = 0
+var cheevod:bool = false
 @onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 
 # Called when the node enters the scene tree for the first time.
@@ -42,5 +43,6 @@ func pointCalculation()->int:
 	return pointBase() * (bounces + 1)
 
 func cheevo()->void:
-	if bounces >= 3:
+	if bounces >= 3 and not cheevod:
+		cheevod = true
 		CheevoHandler.unlockCheevo(0)
