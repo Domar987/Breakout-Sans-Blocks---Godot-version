@@ -8,7 +8,7 @@ var currentCheevo:int
 func _ready() -> void:
 	position = Vector2(-26,42)
 	sprite.position = Vector2(32,32)
-	sprite.frame = currentCheevo
+	sprite.frame = currentCheevo + 10
 	var tween = create_tween().set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self,"position",Vector2(-26,-44),0.4)
 	tween.parallel().tween_property(sprite,"position",Vector2(32,50),0.5)
