@@ -62,6 +62,8 @@ func _button_pressed(button):
 				cont.visible = true
 		"Enemy":
 			miniMenu.appear(0)
+		"AchievementButton":
+			miniMenu.appear(2)
 
 func changescene()->void:
 	get_tree().change_scene_to_file("res://Scenes/ingame.tscn")

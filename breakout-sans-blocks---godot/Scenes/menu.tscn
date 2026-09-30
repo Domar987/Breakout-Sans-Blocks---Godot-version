@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=60 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://daox5wvpokqwb" path="res://Sprites/Menu/menupediatextbg.png" id="26_nakb8"]
 [ext_resource type="Texture2D" uid="uid://ctyakewjm2d2y" path="res://Sprites/Menu/menupediabg.png" id="27_nakb8"]
 [ext_resource type="Texture2D" uid="uid://dr8xdrc3gc61p" path="res://Sprites/Menu/mural3.png" id="29_pde1v"]
+[ext_resource type="Texture2D" uid="uid://ckafrr34w76r5" path="res://Sprites/Menu/menuachievementsbg.png" id="31_lvy56"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -127,6 +128,10 @@ font_size = 14
 line_spacing = 1.0
 font = ExtResource("25_ocger")
 font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
+font = ExtResource("25_ocger")
+font_size = 11
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pde1v"]
 atlas = ExtResource("29_pde1v")
@@ -522,6 +527,67 @@ size_flags_horizontal = 4
 text = "Option stuff
 volume
 resolution"
+
+[node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Profile" type="Control" parent="MiniMenu/Achievements"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("23_l6llh")
+
+[node name="EnemyIcon" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
+position = Vector2(35, 40)
+texture = ExtResource("24_l6llh")
+hframes = 14
+
+[node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
+position = Vector2(-80, 40)
+texture = ExtResource("24_l6llh")
+hframes = 14
+frame = 1
+
+[node name="BG" type="TextureRect" parent="MiniMenu/Achievements/Profile"]
+modulate = Color(1, 1, 1, 0.75000006)
+z_index = -2
+layout_mode = 0
+offset_left = -82.0
+offset_top = 2.0
+offset_right = 157.0
+offset_bottom = 178.0
+texture = ExtResource("31_lvy56")
+
+[node name="TextPart" type="VBoxContainer" parent="MiniMenu/Achievements"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="MiniMenu/Achievements/TextPart"]
+custom_minimum_size = Vector2(120, 26)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Title title short title short title"
+label_settings = SubResource("LabelSettings_48g0d")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="Description" type="Label" parent="MiniMenu/Achievements/TextPart"]
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Bounce from wall to wall without touching the platform or ground, or falling off."
+label_settings = SubResource("LabelSettings_l6llh")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
 
 [node name="EffectParent" type="Node2D" parent="."]
 
