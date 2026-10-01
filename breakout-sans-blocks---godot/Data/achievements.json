@@ -6,7 +6,7 @@
 	],
 	[
 		"Bouncy Little Pumpkin",
-		"Bounce from wall to wall without touching the platform.",
+		"Bounce from wall to wall without touching the platform or ground, or falling off.",
 		false
 	],
 	[
@@ -26,7 +26,7 @@
 	],
 	[
 		"The Final Alien",
-		"Kill a Space Invader that was moving 5 times a second.",
+		"Kill a Space Invader that was moving 5 times a second. Hint: Each kill increases the speed by 0.5. Do the math!",
 		false
 	],
 	[

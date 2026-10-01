@@ -582,10 +582,10 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="Description" type="Label" parent="MiniMenu/Achievements/TextPart"]
-custom_minimum_size = Vector2(120, 36)
+custom_minimum_size = Vector2(128, 45)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Bounce from wall to wall without touching the platform or ground, or falling off."
+text = "Kill a Space Invader that was moving 5 times a second. Hint: Each kill increases the speed by 0.5. Do the math!"
 label_settings = SubResource("LabelSettings_l6llh")
 horizontal_alignment = 1
 autowrap_mode = 2

@@ -27,6 +27,7 @@ var onSprite2:bool = false
 func _ready() -> void:
 	title.text = enemydescs[0][0]
 	description.text = enemydescs[0][1]
+	sprite1.frame = 10 * (int(enemydescs[currentEnemy][2]))
 	pass # Replace with function body.
 
 
