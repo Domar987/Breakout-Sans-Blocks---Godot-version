@@ -1,21 +1,23 @@
 extends Control
 
-var textfile = FileAccess.get_file_as_string("res://Data/enemy_descriptions.json")
+var textfile = FileAccess.get_file_as_string("res://Data/achievements.json")
 var enemydescs = JSON.parse_string(textfile)
 
 
 var canspin:bool = true
 var currentEnemy:int = 0
 
-var x1:float
-var y1:float
-var x2:float
-var y2:float
+var x:float = 40
+var y1:float = 48
+var y2:float = 16
 var angle:float = 0.0
 
 var onSprite2:bool = false
 
-@onready var enemies:int = get_child(0).hframes
+@onready var sprite1:Sprite2D = get_child(0)
+@onready var sprite2:Sprite2D = get_child(1)
+
+@onready var enemies:int = get_child(0).hframes / 2
 @onready var title:Label = get_parent().get_child(1).get_child(0)
 @onready var description:Label = get_parent().get_child(1).get_child(1)
 
@@ -32,12 +34,8 @@ func _process(delta: float) -> void:
 	#title.text = enemydescs[currentEnemy][0]
 	#description.text = enemydescs[currentEnemy][1]
 	
-	x1 = 60 * cos(angle) - 25
-	y1 = 60 * sin(angle) + 40
-	x2 = 60 * cos(angle + PI) - 25
-	y2 = 60 * sin(angle + PI) + 40
-	get_child(0).position = Vector2(x1,y1)
-	get_child(1).position = Vector2(x2,y2)
+	sprite1.position = Vector2(x,y1)
+	sprite2.position = Vector2(x,y2)
 	if get_parent().visible and canspin:
 		if Input.is_action_pressed("ui_left"):
 			canspin = false
@@ -50,10 +48,30 @@ func spin(sign:float)->void:
 	#print("spun")
 	enemyCounter(sign)
 	swapImage()
-	var tmp = angle + sign * PI
+	var tmp1 = y1 + sign * 32
+	var tmp2 = y2 + sign * 32
+	if tmp1 > 80:
+		y1 = 16
+		tmp1 = y1 + sign * 32
+	elif tmp1 < 16:
+		y1 = 80
+		tmp1 = y1 + sign * 32
+	if tmp2 > 80:
+		y2 = 16
+		tmp2 = y2 + sign * 32
+	elif tmp2 < 16:
+		y2 = 80
+		tmp2 = y2 + sign * 32
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_parallel(true)
-	tween.tween_property(self,"angle",tmp,0.5)
+	if onSprite2:
+		tween.tween_property(sprite1,"scale",Vector2(0.5,0),0.5)
+		tween.tween_property(sprite2,"scale",Vector2.ONE,0.5)
+	else:
+		tween.tween_property(sprite1,"scale",Vector2.ONE,0.5)
+		tween.tween_property(sprite2,"scale",Vector2(0.5,0),0.5)
+	tween.tween_property(self,"y1",tmp1,0.5)
+	tween.tween_property(self,"y2",tmp2,0.5)
 	tween.tween_property(title,"text",enemydescs[currentEnemy][0],0.5)
 	tween.tween_property(description,"text",enemydescs[currentEnemy][1],0.5)
 	tween.tween_callback(stupidbool).set_delay(0.5)
@@ -70,6 +88,6 @@ func enemyCounter(amount:float)->void:
 func swapImage()->void:
 	onSprite2 = not onSprite2
 	if onSprite2:
-		get_child(1).frame = currentEnemy % enemies
+		sprite2.frame = currentEnemy % enemies
 	else:
-		get_child(0).frame = currentEnemy % enemies
+		sprite1.frame = currentEnemy % enemies
