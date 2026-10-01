@@ -2,17 +2,17 @@
 	[
 		"Ooohh Fege-fege-fege-fegelein!",
 		"Bounce a lolly thrice or more.",
-		false
+		true
 	],
 	[
 		"Bouncy Little Pumpkin",
 		"Bounce from wall to wall without touching the platform or ground, or falling off.",
-		false
+		true
 	],
 	[
 		"The Sin of Being Annoying",
 		"Get to the Yellow level without sparing a single UFO.",
-		false
+		true
 	],
 	[
 		"Second-Degree Murder",
@@ -27,12 +27,12 @@
 	[
 		"Last Meal",
 		"Kill a Sewer Gator that was about to leave.",
-		false
+		true
 	],
 	[
 		"The Final Alien",
 		"Kill a Space Invader that was moving 5 times a second. Hint: Each kill increases the speed by 0.5. Do the math!",
-		false
+		true
 	],
 	[
 		"Efficient Scrapping",

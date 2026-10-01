@@ -94,7 +94,7 @@ script = ExtResource("2_bd74f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(32, 32)
 texture = ExtResource("3_mi1un")
-hframes = 20
+hframes = 22
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
