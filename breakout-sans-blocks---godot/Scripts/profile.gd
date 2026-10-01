@@ -15,6 +15,11 @@ var angle:float = 0.0
 
 var onSprite2:bool = false
 
+@onready var sprite1:Sprite2D = get_child(0)
+@onready var sprite2:Sprite2D = get_child(1)
+
+@onready var menu:Sprite2D = get_parent()
+
 @onready var enemies:int = get_child(0).hframes
 @onready var title:Label = get_parent().get_child(1).get_child(0)
 @onready var description:Label = get_parent().get_child(1).get_child(1)
@@ -36,9 +41,9 @@ func _process(delta: float) -> void:
 	y1 = 60 * sin(angle) + 40
 	x2 = 60 * cos(angle + PI) - 25
 	y2 = 60 * sin(angle + PI) + 40
-	get_child(0).position = Vector2(x1,y1)
-	get_child(1).position = Vector2(x2,y2)
-	if get_parent().visible and canspin:
+	sprite1.position = Vector2(x1,y1)
+	sprite2.position = Vector2(x2,y2)
+	if menu.visible and canspin:
 		if Input.is_action_pressed("ui_left"):
 			canspin = false
 			spin(-1)
@@ -70,6 +75,6 @@ func enemyCounter(amount:float)->void:
 func swapImage()->void:
 	onSprite2 = not onSprite2
 	if onSprite2:
-		get_child(1).frame = currentEnemy % enemies
+		sprite2.frame = currentEnemy % enemies
 	else:
-		get_child(0).frame = currentEnemy % enemies
+		sprite1.frame = currentEnemy % enemies

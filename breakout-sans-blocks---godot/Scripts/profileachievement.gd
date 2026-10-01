@@ -17,6 +17,8 @@ var onSprite2:bool = false
 @onready var sprite1:Sprite2D = get_child(0)
 @onready var sprite2:Sprite2D = get_child(1)
 
+@onready var menu:Sprite2D = get_parent()
+
 @onready var enemies:int = get_child(0).hframes / 2
 @onready var title:Label = get_parent().get_child(1).get_child(0)
 @onready var description:Label = get_parent().get_child(1).get_child(1)
@@ -36,7 +38,7 @@ func _process(delta: float) -> void:
 	
 	sprite1.position = Vector2(x,y1)
 	sprite2.position = Vector2(x,y2)
-	if get_parent().visible and canspin:
+	if menu.visible and canspin:
 		if Input.is_action_pressed("ui_left"):
 			canspin = false
 			spin(-1)
