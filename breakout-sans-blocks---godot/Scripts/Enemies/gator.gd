@@ -137,4 +137,4 @@ func pointCalculation()->int:
 
 func cheevo()->void:
 	if launches > 4:
-		CheevoHandler.unlockCheevo(4)
+		CheevoHandler.unlockCheevo(5)
