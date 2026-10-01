@@ -17,7 +17,7 @@ var onSprite2:bool = false
 @onready var sprite1:Sprite2D = get_child(0)
 @onready var sprite2:Sprite2D = get_child(1)
 
-@onready var menu:Sprite2D = get_parent()
+@onready var menu:Container = get_parent()
 
 @onready var enemies:int = get_child(0).hframes / 2
 @onready var title:Label = get_parent().get_child(1).get_child(0)
@@ -67,16 +67,16 @@ func spin(sign:float)->void:
 	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.set_parallel(true)
 	if onSprite2:
-		tween.tween_property(sprite1,"scale",Vector2(0.5,0),0.5)
-		tween.tween_property(sprite2,"scale",Vector2.ONE,0.5)
+		tween.tween_property(sprite1,"scale",Vector2(0.5,0),0.7)
+		tween.tween_property(sprite2,"scale",Vector2.ONE,0.7)
 	else:
-		tween.tween_property(sprite1,"scale",Vector2.ONE,0.5)
-		tween.tween_property(sprite2,"scale",Vector2(0.5,0),0.5)
-	tween.tween_property(self,"y1",tmp1,0.5)
-	tween.tween_property(self,"y2",tmp2,0.5)
+		tween.tween_property(sprite1,"scale",Vector2.ONE,0.7)
+		tween.tween_property(sprite2,"scale",Vector2(0.5,0),0.7)
+	tween.tween_property(self,"y1",tmp1,0.7)
+	tween.tween_property(self,"y2",tmp2,0.7)
 	tween.tween_property(title,"text",enemydescs[currentEnemy][0],0.5)
 	tween.tween_property(description,"text",enemydescs[currentEnemy][1],0.5)
-	tween.tween_callback(stupidbool).set_delay(0.5)
+	tween.tween_callback(stupidbool).set_delay(0.8)
 func stupidbool()->void:
 	canspin = true
 
@@ -90,6 +90,6 @@ func enemyCounter(amount:float)->void:
 func swapImage()->void:
 	onSprite2 = not onSprite2
 	if onSprite2:
-		sprite2.frame = currentEnemy % enemies
+		sprite2.frame = currentEnemy % enemies + 10 * (int(enemydescs[currentEnemy][2]))
 	else:
-		sprite1.frame = currentEnemy % enemies
+		sprite1.frame = currentEnemy % enemies + 10 * (int(enemydescs[currentEnemy][2]))

@@ -18,7 +18,7 @@ var onSprite2:bool = false
 @onready var sprite1:Sprite2D = get_child(0)
 @onready var sprite2:Sprite2D = get_child(1)
 
-@onready var menu:Sprite2D = get_parent()
+@onready var menu:Container = get_parent()
 
 @onready var enemies:int = get_child(0).hframes
 @onready var title:Label = get_parent().get_child(1).get_child(0)

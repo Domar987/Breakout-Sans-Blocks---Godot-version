@@ -572,7 +572,7 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [node name="Title" type="Label" parent="MiniMenu/Achievements/TextPart"]
-custom_minimum_size = Vector2(120, 26)
+custom_minimum_size = Vector2(128, 26)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Title title short title short title"
