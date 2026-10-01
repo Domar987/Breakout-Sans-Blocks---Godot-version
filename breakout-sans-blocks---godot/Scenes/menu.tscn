@@ -550,7 +550,6 @@ script = ExtResource("31_ygxe1")
 position = Vector2(40, 48)
 texture = ExtResource("31_48g0d")
 hframes = 22
-frame = 17
 
 [node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
 position = Vector2(40, 16)
