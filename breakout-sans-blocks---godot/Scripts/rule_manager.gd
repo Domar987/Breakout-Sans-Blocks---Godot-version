@@ -27,6 +27,7 @@ var died:bool = false
 var points:int = 0
 
 var teeth:int = 0
+var ufocheevoFail:bool = false
 
 @onready var camera:Camera2D = $/root/Ingame/Camera2D
 @onready var ball:Area2D = $/root/Ingame/Ball

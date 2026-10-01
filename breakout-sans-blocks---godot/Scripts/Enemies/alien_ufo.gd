@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	if hp > 0:
 		if abs(position.x) > 960/(2*RuleManager.zoom) + enterValue and entered:
 			remove()
+			RuleManager.ufocheevoFail = true
 		if mainSprite.animation == "idle":
 			moveTimer -= delta
 			if moveTimer <= 0:

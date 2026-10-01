@@ -102,6 +102,8 @@ var startY:float
 
 var oldzoom:float = 0.0
 
+@onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
+
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
 	for i in range(1,4):
@@ -127,6 +129,8 @@ func levelChange(tmpY:float)->void:
 	self.startY = tmpY + transheight
 	drawtrans = true
 	RuleManager.levelChange()
+	
+	cheevo()
 
 func _draw() -> void:
 	var x = -960/(2*RuleManager.zoom)
@@ -152,3 +156,7 @@ func drawfunc()->void:
 	elif RuleManager.zoom != oldzoom:
 		#firstdraw = true
 		queue_redraw()
+
+func cheevo()->void:
+	if level >= 2 and not RuleManager.ufocheevoFail:
+		CheevoHandler.unlockCheevo(2)
