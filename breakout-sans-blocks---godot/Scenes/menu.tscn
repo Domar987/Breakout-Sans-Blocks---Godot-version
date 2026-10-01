@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=63 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://ck54o1iymh7vm" path="res://Sprites/achievements.png" id="31_48g0d"]
 [ext_resource type="Texture2D" uid="uid://ckafrr34w76r5" path="res://Sprites/Menu/menuachievementsbg.png" id="31_lvy56"]
 [ext_resource type="Script" uid="uid://bbxtx5veyqek7" path="res://Scripts/profileachievement.gd" id="31_ygxe1"]
+[ext_resource type="Texture2D" uid="uid://b4f2cmf4acflu" path="res://Sprites/Menu/menucheevotextbg.png" id="34_0idt7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -549,6 +550,7 @@ script = ExtResource("31_ygxe1")
 position = Vector2(40, 48)
 texture = ExtResource("31_48g0d")
 hframes = 22
+frame = 17
 
 [node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
 position = Vector2(40, 16)
@@ -566,6 +568,15 @@ offset_top = 2.0
 offset_right = 152.495
 offset_bottom = 178.0
 texture = ExtResource("31_lvy56")
+
+[node name="TextBG" type="TextureRect" parent="MiniMenu/Achievements/Profile"]
+z_index = -2
+layout_mode = 0
+offset_left = -38.0
+offset_top = 47.0
+offset_right = 125.0
+offset_bottom = 181.0
+texture = ExtResource("34_0idt7")
 
 [node name="TextPart" type="VBoxContainer" parent="MiniMenu/Achievements"]
 layout_mode = 2
