@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://vialjurqv1xq"
+path="res://.godot/imported/scorefont6.png-4a32ae80bbe5687f164e3053338679de.fontdata"
+
+[deps]
+
+source_file="res://Sprites/scorefont6.png"
+dest_files=["res://.godot/imported/scorefont6.png-4a32ae80bbe5687f164e3053338679de.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("48-57")
+kerning_pairs=PackedStringArray()
+columns=10
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2
