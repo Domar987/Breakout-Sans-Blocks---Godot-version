@@ -15,6 +15,7 @@ var spawnedBelow:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	point = 0
 	if position.y > 540/(2*RuleManager.zoom) - 16:
 		spawnedBelow = true
 		var spawntween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT).set_parallel(false)
@@ -64,10 +65,13 @@ func pop()->void:
 		3:
 			RuleManager.slamdamageBoost(1,15)
 		4:
+			spawnPointText(50 * (10 + RuleManager.difficulty)/10)
 			RuleManager.points += 50 * (10 + RuleManager.difficulty)/10
 		5:
+			spawnPointText(750 * (10 + RuleManager.difficulty)/10)
 			RuleManager.points += 750 * (10 + RuleManager.difficulty)/10
 		6:
+			spawnPointText(4500 * (10 + RuleManager.difficulty)/10)
 			RuleManager.points += 4500 * (10 + RuleManager.difficulty)/10
 		7:
 			RuleManager.flyEnable(15)
@@ -93,3 +97,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "form":
 		$CollisionShape2D.disabled = false
 		sprite.play("1")
+
+func spawnPointText(i:int)->void:
+	var projectile = pointext.instantiate()
+	projectile.position = position
+	projectile.point = i
+	add_sibling(projectile)

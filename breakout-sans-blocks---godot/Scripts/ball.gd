@@ -30,6 +30,7 @@ var mouseforce:float
 
 var wallcounter:int = 0
 @onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
+var pointext = load("res://Objects/Score.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	chooseColors(RuleManager.activecolor)
@@ -91,6 +92,8 @@ func ballPosCheat()->void:
 
 func wallOrPortalInteraction()->void:
 	if RuleManager.walls:
+		spawnPointText(250 * (1 + RuleManager.difficulty/10))
+		RuleManager.points += 250 * (1 + RuleManager.difficulty/10)
 		moveToCenter(0.25,false)
 	else:
 		ballTrail1.drawline = not ballTrail1.drawline
@@ -199,7 +202,8 @@ func _on_area_exited(area: Area2D) -> void:
 func statIncrease(area:Area2D)->void:
 	if position.y > area.position.y and not frozen:
 		print("Close call!")
-		RuleManager.points += 500 * RuleManager.difficulty
+		spawnPointText(500 * (1 + RuleManager.difficulty/10))
+		RuleManager.points += 500 * (1 + RuleManager.difficulty/10)
 	hitcounter += 1
 	if hitcounter % 10 == 0:
 		RuleManager.difficulty += 1
@@ -207,3 +211,9 @@ func statIncrease(area:Area2D)->void:
 func cheevo()->void:
 	if wallcounter > 1:
 		CheevoHandler.unlockCheevo(1)
+
+func spawnPointText(i:int)->void:
+	var projectile = pointext.instantiate()
+	projectile.position = position
+	projectile.point = i
+	add_sibling(projectile)
