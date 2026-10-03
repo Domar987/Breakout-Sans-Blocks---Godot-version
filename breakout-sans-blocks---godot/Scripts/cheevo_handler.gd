@@ -7,8 +7,6 @@ var cheevoArray = JSON.parse_string(cheevoFile)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#print(cheevoArray[0])
-	#print(typeof(cheevoArray[0][2]))
 	pass
 
 

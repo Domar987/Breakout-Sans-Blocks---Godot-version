@@ -113,10 +113,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func shootProjectile()->void:
 	var projectile = projectilesource.instantiate()
-	#projectile.texturepath = projectileTexturePath
-	#projectile.blasttexturepath = projectileBlastTexturePath
-	#projectile.frames = projectileFrames
-	#projectile.blastframes = projectileblastFrames
 	projectile.damage = dmg
 	projectile.speed = projectileSpeed
 	projectile.position = position

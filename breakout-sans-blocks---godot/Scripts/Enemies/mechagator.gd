@@ -11,7 +11,6 @@ var particles:Array[PackedScene] = [load("res://Objects/Particles/SmokeMedium.ts
 
 var shotAProjectile:bool = false
 
-#@onready var CheevoHandler = $/root/Ingame/UI/BottomRıght/CheevoHandler
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	attacktimer = 10

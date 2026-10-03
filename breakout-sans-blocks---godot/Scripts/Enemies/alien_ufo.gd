@@ -43,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		if mainSprite.animation == "idle":
 			moveTimer -= delta
 			if moveTimer <= 0:
-				#walkAudios[walkiter%2].play()
 				walkiter += 1
 				moveTimer = 1.0
 				position.x += xSpeed * 16
@@ -62,7 +61,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 func getHurt()->void:
 	super()
-	#tween.kill()
 	tween = create_tween().set_parallel(false)
 	tween.tween_property($UfoHighpitch,"playing",false,0.0)
 	tween.tween_interval(2.30)

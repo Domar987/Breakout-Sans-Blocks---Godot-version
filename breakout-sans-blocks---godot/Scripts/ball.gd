@@ -18,7 +18,6 @@ var timer:int = 0
 @onready var ballTrail2 = $BallMain/BallTrail2
 
 var velocity:Vector2 = Vector2.ZERO
-#var ballgravity:float = 9.81
 var hitcounter:int = 0
 
 var frozen:bool = false
@@ -38,7 +37,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	#$Label.text = str(wallcounter)
 	#$Label.text = "Sl:"+str(slamming)+"Tf:"+str(touchinground)+"Tp:"+str(touchingplatf)
 	ballPosCheat()
 	
@@ -49,7 +47,6 @@ func _physics_process(delta: float) -> void:
 		if RuleManager.health > 0:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				if not slamming:
-					#print("Started slam")
 					slamStart()
 				else:
 					slamStuff(delta)
@@ -64,15 +61,6 @@ func _physics_process(delta: float) -> void:
 				wallOrPortalInteraction()
 			
 			fall()
-		
-		#if linear_velocity.y < 10:
-		#	sprite.frame = 0
-		#elif linear_velocity.y < 20:
-		#	sprite.frame = 1
-		#elif linear_velocity.y < 40:
-		#	sprite.frame = 2
-		#else:
-		#	sprite.frame = 3
 		
 		position += velocity * delta
 
@@ -103,8 +91,6 @@ func ballPosCheat()->void:
 
 func wallOrPortalInteraction()->void:
 	if RuleManager.walls:
-		#position = Vector2.ZERO
-		#velocity = Vector2.ZERO
 		moveToCenter(0.25,false)
 	else:
 		ballTrail1.drawline = not ballTrail1.drawline
@@ -151,9 +137,7 @@ func slamStuff(delta:float)->void:
 func onPlatform(delta:float)->void:
 	if touchingplatf:
 		if slamming:
-			#mouseforce += delta * Input.get_last_mouse_velocity().x
 			mouseforce += platform.positiondelta.x
-			#print(str(Input.get_last_mouse_velocity().x) + "\n" + str(mouseforce))
 			if abs(position.x) < 960/(2*RuleManager.zoom):
 				position.x = (platform.position.x - platcontactpos) + 5 * delta * mouseforce
 			velocity.y = 0
@@ -173,7 +157,6 @@ func onPlatform(delta:float)->void:
 #general
 func _on_area_entered(area: Area2D) -> void:
 	if area is Platform:
-		#print("On Platform")
 		touchingplatf = true
 		statIncrease(area)
 		mouseforce = 0
@@ -183,7 +166,6 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		wallcounter = 0
 	elif area == floor:
-		#print("On Ground")
 		if slamming:
 			RuleManager.cameraAddShake(0.75,0.0,0.5)
 		touchinground = true
@@ -209,16 +191,15 @@ func get_launch(ballpos:Vector2,platpos:Vector2,length:float,dirLimit:float)->Ve
 
 
 func _on_area_exited(area: Area2D) -> void:
-	if area == platform:# and ((abs(platform.positiondelta.x) < platform.length and not frozen) or position.y > platform.position.y):
-		#print("Left platform")
+	if area == platform:
 		touchingplatf = false
 	if area == floor:
-		#print("Left ground")
 		touchinground = false
 
 func statIncrease(area:Area2D)->void:
 	if position.y > area.position.y:
-		pass #ek puan/para
+		print("Close call!")
+		RuleManager.points += 500 * RuleManager.difficulty
 	hitcounter += 1
 	if hitcounter % 10 == 0:
 		RuleManager.difficulty += 1

@@ -82,10 +82,6 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("hurt")
 
 func getHurt()->void:
-	#hp -= RuleManager.damage
-	#if hp <= 0:
-		#xSpeed = 0
-		#ySpeed = 0
 	super()
 	if hp > 0:
 		xSpeed = xSpeedOld
@@ -122,11 +118,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		for i in range(1,len(sprites)):
 			sprites[i].visible = false
 		mainSprite.play("content")
-	#if mainSprite.animation == "bite":
-		#mainSprite.play("idle")
 
 func shootProjectile()->void:
-	#projectileSpeed = -200
 	super()
 
 func pointCalculation()->int:
