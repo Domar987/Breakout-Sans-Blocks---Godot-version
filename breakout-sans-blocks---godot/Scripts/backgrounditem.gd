@@ -10,8 +10,6 @@ var relocateCounter:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#print("Summoned")
-	#area_entered.connect(_on_area_entered)
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	
@@ -34,8 +32,6 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("1")
 
 func choosePosition()->void:
-	#var regularsize = $CollisionShape2D.shape.size
-	#$CollisionShape2D.shape.size = Vector2.ZERO
 	print("Choosing position for "+name)
 	if relocateCounter > 10:
 		$CollisionShape2D.shape = null
@@ -50,8 +46,6 @@ func choosePosition()->void:
 	else:
 		position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
 	relocateCounter += 1
-	#print(name," ",relocateCounter)
-	#$CollisionShape2D.shape.size = regularsize
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -59,12 +53,4 @@ func _physics_process(delta: float) -> void:
 		if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
 			choosePosition()
 	speed = RuleManager.ySpeed
-	#$Label.text = str(speed)+"\n"+str(delta)
 	super(delta)
-
-#func _on_area_entered(area: Area2D) -> void:
-	##print(int(str(name).substr(14)))
-	##print(int(str(area.name).substr(14)))
-	##print(int(str(name).substr(14)) > int(str(area.name).substr(14)))
-	#if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
-		#choosePosition()

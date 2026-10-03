@@ -28,15 +28,10 @@ func _ready() -> void:
 	title.text = enemydescs[0][0]
 	description.text = enemydescs[0][1]
 	sprite1.frame = 11 * (int(enemydescs[currentEnemy][2]))
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#$Label.text = str(currentEnemy)
-	#title.text = enemydescs[currentEnemy][0]
-	#description.text = enemydescs[currentEnemy][1]
-	
 	sprite1.position = Vector2(x,y1)
 	sprite2.position = Vector2(x,y2)
 	if menu.visible and canspin:
@@ -48,7 +43,6 @@ func _process(delta: float) -> void:
 			spin(1)
 
 func spin(sign:float)->void:
-	#print("spun")
 	enemyCounter(sign)
 	swapImage()
 	var tmp1 = y1 + sign * 32

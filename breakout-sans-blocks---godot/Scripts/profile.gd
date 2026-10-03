@@ -28,14 +28,10 @@ var onSprite2:bool = false
 func _ready() -> void:
 	title.text = enemydescs[0][0]
 	description.text = enemydescs[0][1]
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#$Label.text = str(currentEnemy)
-	#title.text = enemydescs[currentEnemy][0]
-	#description.text = enemydescs[currentEnemy][1]
 	
 	x1 = 60 * cos(angle) - 25
 	y1 = 60 * sin(angle) + 40
@@ -52,7 +48,6 @@ func _process(delta: float) -> void:
 			spin(1)
 
 func spin(sign:float)->void:
-	#print("spun")
 	enemyCounter(sign)
 	swapImage()
 	var tmp = angle + sign * PI

@@ -14,10 +14,6 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if position == Vector2(-160,-90) and event is InputEventMouseButton:
-		#var zoomedeventpos = (event.position / 3) - Vector2(160,90)
-		##$Label.text = str(event.position)
-		#if event is InputEventMouseButton and (zoomedeventpos.x < position.x or zoomedeventpos.x > position.x + 240 or zoomedeventpos.y < position.y or zoomedeventpos.y > position.y + 120):
-			#disappear()
 		var mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
 		if abs(mousePos.x) > 320 or abs(mousePos.y) > 160:
 			disappear()

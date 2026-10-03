@@ -29,5 +29,4 @@ func remove()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#print(get_index())
 	sprite.frame = get_index() - 9

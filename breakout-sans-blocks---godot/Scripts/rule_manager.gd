@@ -57,7 +57,7 @@ func _init() -> void:
 	Engine.time_scale = 1
 	activecolor = ballcolors[randi()%6]
 	if !wallspreselected:
-		walls = true#randi()%2
+		walls = true
 func _ready() -> void:
 	get_parent().modulate = Color.BLACK
 	create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false).tween_property(get_parent(),"modulate",Color.WHITE,0.5)
@@ -127,7 +127,6 @@ func healthChange(dmg:int)->void:
 		health += dmg
 	else:
 		invitimer = 2.0
-		#heartGenerator.generateHearts(health)
 		camaBar.update(health)
 		
 		hurtmodulatetween(dmg)
@@ -169,11 +168,6 @@ func cameraZoom()->void:
 	var tween = create_tween()
 	var tmp = zoom * zoommult
 	tween.tween_property(self, "zoom", tmp, 1.0)
-	#tween.tween_property(camera,"zoom",Vector2(zoom,zoom),1.0)
-	#var timer = 0
-	#while timer <= 1:
-	#	timer += get_physics_process_delta_time()
-	#	camera.zoom = lerp(oldzoom,oldzoom*0.9,timer)
 	if (zoommult * 1.01 < 1):
 		zoommult *= 1.01
 	else:
@@ -189,9 +183,6 @@ func cameraAddShake(amount:float, falloffdelay:float, fallofftime:float) -> void
 		fallofftime -= 0.1
 
 func cameraRotate() -> void:
-	#var tween = create_tween()
-	#var tmp = rotate + 1.0
-	#tween.tween_property(self, "rotate", tmp, 1.0)
 	pass
 
 func cameraRotationLerp(delta)->void:
@@ -220,8 +211,6 @@ func ySpeedIncrease()->void:
 	ySpeed += 12 + ySpeed/2
 
 func shatterScreen()->void:
-	#var firsttick = Time.get_ticks_msec()
-	#print(Time.get_ticks_msec() - firsttick)
 	var screenshot = get_viewport().get_texture().get_image()
 	var cracktemplates = []
 	var crackmovementscript = load("res://Scripts/crackmovement.gd")
@@ -247,14 +236,12 @@ func shatterScreen()->void:
 					cracktex.set_pixel(x,y,Color.TRANSPARENT)
 		
 		var crackclone = crack.duplicate()
-		#crackclone.name = crack.name + "Clone"
 		crackclone.texture = ImageTexture.create_from_image(cracktex)
 		crackclone.z_index = 10
 		crackclone.set_script(crackmovementscript)
 		crackclone.zoom = zoom
 		crackclone.modulate = Color(1.25,1.25,1.25, 1.0)
 		add_sibling(crackclone)
-	#print(Time.get_ticks_msec() - firsttick)
 
 func levelChange()->void:
 	if walls:

@@ -45,14 +45,11 @@ func _physics_process(delta: float) -> void:
 			enter()
 			
 			canAttack = true
-			#$AggressiveAnimal.play()
 		if mainSprite.animation == "idle":
 			xSpeed += fromLorCorR * 400 * delta
 		else:
 			xSpeed -= fromLorCorR * 5 * delta
-		#print(xSpeed)
 		attack()
-		#ySpeed += 200 * delta
 	else:
 		ySpeed += 400 * delta
 		if nonjitterPosition.y > 540/(2*RuleManager.zoom) + 500:
@@ -70,7 +67,6 @@ func enter()->void:
 	xSpeed = -fromLorCorR * randi_range(300,500)
 	
 	handStatus = randi_range(1,2) as HandStatus
-	#print(handStatus)
 	handAnimset()
 
 func handAnimset()->void:
@@ -120,10 +116,6 @@ func _on_area_entered(area: Area2D) -> void:
 			mainSprite.play("hurt")
 
 func getHurt()->void:
-	#hp -= RuleManager.damage
-	#if hp <= 0:
-		#xSpeed = 0
-		#ySpeed = 0
 	super()
 	if hp > 0:
 		xSpeed = xSpeedOld

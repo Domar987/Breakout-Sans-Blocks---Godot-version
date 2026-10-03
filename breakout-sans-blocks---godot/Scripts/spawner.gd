@@ -2,7 +2,6 @@ class_name Spawner extends Node
 
 @export var spawn:PackedScene
 @export var spawnWeight:Array[float]
-#@export var spawnAtDifficulty:int
 @export var spawnAtLevels:Array[int]
 @export var maxSpawned:Array[int]
 @onready var RuleManager = $/root/Ingame/RuleManager
