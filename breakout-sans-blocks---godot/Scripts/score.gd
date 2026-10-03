@@ -8,6 +8,9 @@ var timer:float = 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	position -= Vector2.ONE * 32
+	if point == 0:
+		queue_free()
 	scale = Vector2.ZERO
 	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(self,"scale",Vector2.ONE,0.5)
 	label_settings = LabelSettings.new()

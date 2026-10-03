@@ -28,7 +28,7 @@ func balltouched()->void:
 	speed = -250.0
 	ball.velocity.y = min(-88.5,ball.velocity.y)
 	timer = 0.5
-	RuleManager.points += pointCalculation()
+	pointAdd()
 
 func plattouched()->void:
 	bounces += 1

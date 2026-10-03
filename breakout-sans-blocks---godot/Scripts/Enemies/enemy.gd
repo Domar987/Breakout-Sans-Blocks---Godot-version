@@ -88,7 +88,7 @@ func getHurt()->void:
 		hp -= RuleManager.slamdamage
 	
 	if hp <= 0:
-		RuleManager.points += pointCalculation()
+		pointAdd()
 	if hp <= 0 and randi_range(0,100) < dropChance:
 		var projectile = load("res://Objects/Drop.tscn").instantiate()
 		projectile.position = position
@@ -134,8 +134,13 @@ func remove()->void:
 	queue_free()
 
 func pointBase()->int:
-	var projectile = pointext.instantiate()
-	add_sibling(projectile)
 	return point * (10 + RuleManager.difficulty)/10
 func pointCalculation()->int:
 	return pointBase()
+
+func pointAdd()->void:
+	var projectile = pointext.instantiate()
+	projectile.position = position
+	projectile.point = pointCalculation()
+	add_sibling(projectile)
+	RuleManager.points += pointCalculation()
