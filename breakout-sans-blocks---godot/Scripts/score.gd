@@ -36,15 +36,15 @@ func _physics_process(delta: float) -> void:
 func pointSetting()->void:
 	if point >= 5000:
 		setting(7,14,2.5)
-	elif point >= 1000:
+	elif point >= 2500:
 		setting(6,11,2.0)
-	elif point >= 500:
+	elif point >= 1000:
 		setting(5,9,1.5)
-	elif point >= 250:
+	elif point >= 500:
 		setting(4,8,1.25)
-	elif point >= 100:
+	elif point >= 250:
 		setting(3,8,1.0)
-	elif point >= 50:
+	elif point >= 100:
 		setting(2,7,0.8)
 	else:
 		setting(1,7,0.6)
