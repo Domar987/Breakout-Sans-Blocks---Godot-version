@@ -12,6 +12,8 @@ var texture:Texture2D
 @onready var platform:Area2D = $/root/Ingame/Platform
 @onready var RuleManager = $/root/Ingame/RuleManager
 
+var pointext = load("res://Objects/Score.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sprite.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
@@ -37,7 +39,7 @@ func _on_area_entered(area: Area2D) -> void:
 			plattouched()
 
 func balltouched()->void:
-	RuleManager.points += pointCalculation()
+	pointAdd()
 	ball.velocity.y = min(-88.5,ball.velocity.y)
 	sprite.play("blast")
 
@@ -53,3 +55,10 @@ func pointBase()->int:
 	return point * (10 + RuleManager.difficulty)/10
 func pointCalculation()->int:
 	return pointBase()
+
+func pointAdd()->void:
+	var projectile = pointext.instantiate()
+	projectile.position = position
+	projectile.point = pointCalculation()
+	add_sibling(projectile)
+	RuleManager.points += pointCalculation()

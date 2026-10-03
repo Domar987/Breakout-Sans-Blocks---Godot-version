@@ -41,6 +41,7 @@ var ySpeedOld:float
 
 var shoots:bool = true
 
+var pointext = load("res://Objects/Score.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -133,6 +134,8 @@ func remove()->void:
 	queue_free()
 
 func pointBase()->int:
+	var projectile = pointext.instantiate()
+	add_sibling(projectile)
 	return point * (10 + RuleManager.difficulty)/10
 func pointCalculation()->int:
 	return pointBase()
