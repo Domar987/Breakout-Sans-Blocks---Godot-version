@@ -89,7 +89,7 @@ var currentcolors:Array
 
 var yvalue:float
 var level:int = 0
-var levelvals:Array = [0,200,800,2000]
+var levelvals:Array = [0,200,1500,4000]
 
 var rect1:Rect2
 var rect2:Rect2

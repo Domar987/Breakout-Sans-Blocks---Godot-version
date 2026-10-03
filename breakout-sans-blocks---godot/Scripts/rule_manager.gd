@@ -64,7 +64,7 @@ func _ready() -> void:
 	Input.warp_mouse(get_viewport().size/2)
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)
+	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(ySpeed)+"\nHeight: "+str(background.yvalue)
 	if invitimer > 0:
 		invitimer -= delta
 		
@@ -217,7 +217,7 @@ func platformLengthEnd()->void:
 
 
 func ySpeedIncrease()->void:
-	ySpeed += 12
+	ySpeed += 12 + ySpeed/2
 
 func shatterScreen()->void:
 	#var firsttick = Time.get_ticks_msec()
