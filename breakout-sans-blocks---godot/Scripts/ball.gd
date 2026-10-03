@@ -197,7 +197,7 @@ func _on_area_exited(area: Area2D) -> void:
 		touchinground = false
 
 func statIncrease(area:Area2D)->void:
-	if position.y > area.position.y:
+	if position.y > area.position.y and not frozen:
 		print("Close call!")
 		RuleManager.points += 500 * RuleManager.difficulty
 	hitcounter += 1
