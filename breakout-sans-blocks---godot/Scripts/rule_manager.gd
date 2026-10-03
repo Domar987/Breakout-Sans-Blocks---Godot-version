@@ -64,7 +64,7 @@ func _ready() -> void:
 	Input.warp_mouse(get_viewport().size/2)
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(ySpeed)+"\nHeight: "+str(background.yvalue)
+	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
 	if invitimer > 0:
 		invitimer -= delta
 		
