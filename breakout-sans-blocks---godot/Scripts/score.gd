@@ -2,8 +2,14 @@ extends Label
 
 var point:int
 
+var speed:float = 0.0
+
+var timer:float = 3.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	scale = Vector2.ZERO
+	create_tween().set_trans(Tween.TRANS_BOUNCE).tween_property(self,"scale",Vector2.ONE,0.5)
 	point = randi_range(10,7500)
 	label_settings = LabelSettings.new()
 	text = str(point)
@@ -28,10 +34,13 @@ func _ready() -> void:
 	else:
 		label_settings.font = load("res://Sprites/scorefont1.png")
 		label_settings.font_size = 7
-	await get_tree().create_timer(1.0).timeout
-	_ready()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	timer -= delta
+	if timer < 0:
+		if speed < 0.1:
+			speed = 50
+		speed += 100 * delta
+		position.y -= delta * speed
