@@ -41,16 +41,23 @@ func _ready() -> void:
 
 func shootProjectile(fromTop:bool)->void:
 	var projectile = projectilesource.instantiate()
+	projectile.scale = Vector2.ONE
+	if randi_range(0,1) == 1:
+		scale.x = -1
 	if fromTop:
 		projectile.position.y = -540/(2*RuleManager.zoom) - 32
 	else:
 		projectile.position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
-	if randi_range(1,10) == 10:
-		projectile.sideObject = true
+	var tmpchanc = randi_range(0,1000)
+	
+	if tmpchanc <= 100:
+		projectile.special = 1
 		projectile.position.x = -960/(2*RuleManager.zoom) + randi_range(-32,8)
+		projectile.position.x *= projectile.scale.x
 	else:
 		projectile.position.x = randi_range(-960/(2*RuleManager.zoom),960/(2*RuleManager.zoom))
-	projectile.scale = Vector2.ONE
+		if tmpchanc == 1000:
+			projectile.special = 2
 	projectile.speed = RuleManager.ySpeed
 	projectile.parent = self
 	add_sibling.call_deferred(projectile,true)

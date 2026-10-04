@@ -5,7 +5,7 @@ var bgsprites = ["bricks1","bricks2","bricks3","bricks4","bricks5",
 var bgsprite
 var parent
 
-var sideObject:bool = false
+var special:int = 0
 
 var relocateCounter:int = 0
 
@@ -14,9 +14,22 @@ func _ready() -> void:
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	
-	var chance:int = randi_range(0,1000)
 	var texforshape:Texture2D
-	if sideObject:
+	if special == 0:
+		var chance:int = randi_range(0,1000)
+		if chance < 750:
+			bgsprite = "bricks" + str(randi_range(1,5))
+		elif chance < 800:
+			bgsprite = "grafitti"
+		elif chance <= 1000:
+			bgsprite = "tunnel"
+			if randi_range(0,1) == 1:
+				bgsprite += "small"
+			else:
+				bgsprite += "big"
+		texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
+		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
+	elif special == 1:
 		bgsprite = "pipe"
 		if randi_range(0,1) == 1:
 			bgsprite += "small"
@@ -25,23 +38,10 @@ func _ready() -> void:
 		texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
 		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
 	else:
-		if chance == 1000:
-			bgsprite = "howdidthisgethere"
-			texforshape = load("res://Sprites/Background/howdidthisgethere.png")
-		else:
-			if chance < 750:
-				bgsprite = "bricks" + str(randi_range(1,5))
-			elif chance < 800:
-				bgsprite = "grafitti"
-			elif chance < 1000:
-				bgsprite = "tunnel"
-				if randi_range(0,1) == 1:
-					bgsprite += "small"
-				else:
-					bgsprite += "big"
-			texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
-			tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
-	
+		bgsprite = "howdidthisgethere"
+		texforshape = load("res://Sprites/Background/howdidthisgethere.png")
+		scale.x = 1
+
 	$CollisionShape2D.shape = RectangleShape2D.new()
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
 	Animator.createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
@@ -49,10 +49,8 @@ func _ready() -> void:
 		Animator.createFramesAuto("res://Sprites/Background/howdidthisgethere.png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
 		Animator.createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
-		if randi_range(0,1) == 1 and bgsprite != "grafitti":
-			scale.x *= -1
-			if sideObject:
-				position.x *= -1
+		if bgsprite == "grafitti":
+			scale.x = 1
 	direction = Vector2.DOWN
 	
 	$AnimatedSprite2D.play("1")
