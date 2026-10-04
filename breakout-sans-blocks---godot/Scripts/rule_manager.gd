@@ -114,7 +114,7 @@ func cheats()->void:
 	if Input.is_action_just_pressed("Cheat6"):
 		shatterScreen()
 
-var platlenmod:float = 0.8
+var platlenmod:float = 0.85
 
 func difficultyChange()->void:
 	cameraZoom()
@@ -123,10 +123,9 @@ func difficultyChange()->void:
 		ySpeedIncrease()
 	if difficulty % 5 == 0:
 		platformLength(platform.length * platlenmod)
-		if platlenmod >= 0.999:
-			platlenmod = 1
-		else:
-			platlenmod += 1/3
+		print(platlenmod)
+		if platlenmod < 1:
+			platlenmod += 0.05
 
 func healthChange(dmg:int)->void:
 	if invitimer > 0:
@@ -214,7 +213,8 @@ func platformLengthEnd()->void:
 
 
 func ySpeedIncrease()->void:
-	ySpeed += 12 + ySpeed/2
+	var tmp = ySpeed + 12 + ySpeed/2
+	create_tween().tween_property(self,"ySpeed",tmp,1.0)
 
 func shatterScreen()->void:
 	var screenshot = get_viewport().get_texture().get_image()
