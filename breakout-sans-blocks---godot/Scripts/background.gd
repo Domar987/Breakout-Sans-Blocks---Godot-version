@@ -40,6 +40,8 @@ func _ready() -> void:
 	for i in range(0,randi_range(6,16)):
 		shootProjectile(false,0)
 
+var lastpos:float = -10000
+
 func shootProjectile(fromTop:bool,retry:int)->void:
 	if retry > 50:
 		return
@@ -48,7 +50,7 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 	if randi_range(0,1) == 1:
 		projectile.scale.x = -1
 	if fromTop:
-		projectile.position.y = -540/(2*RuleManager.zoom) - 32
+		projectile.position.y = -540/(2*RuleManager.zoom) - 50
 	else:
 		projectile.position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
 	var tmpchanc = randi_range(0,1000)
@@ -65,14 +67,20 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 	projectile.parent = self
 	
 	var overlap:bool = false
-	for oldPos in initialBGpos:
-		if abs(projectile.position.x - oldPos.x) < 90 and abs(projectile.position.y - oldPos.y) < 66:
+	if fromTop:
+		if abs(projectile.position.x - lastpos) < 90:
 			overlap = true
-			break
+	else:
+		for oldPos in initialBGpos:
+			if abs(projectile.position.x - oldPos.x) < 90 and abs(projectile.position.y - oldPos.y) < 66:
+				overlap = true
+				break
 	
 	if overlap:
 		shootProjectile(fromTop,retry+1)
 	else:
+		if fromTop:
+			lastpos = projectile.position.x
 		initialBGpos.append(projectile.position)
 		add_sibling.call_deferred(projectile,true)
 
