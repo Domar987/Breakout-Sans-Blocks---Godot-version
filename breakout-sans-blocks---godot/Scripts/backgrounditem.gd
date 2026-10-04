@@ -8,39 +8,14 @@ var parent
 var special:int = 0
 
 var relocateCounter:int = 0
+var texforshape:Texture2D
+var tex:Texture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	
-	var texforshape:Texture2D
-	if special == 0:
-		var chance:int = randi_range(0,1000)
-		if chance < 750:
-			bgsprite = "bricks" + str(randi_range(1,5))
-		elif chance < 800:
-			bgsprite = "grafitti"
-		elif chance <= 1000:
-			bgsprite = "tunnel"
-			if randi_range(0,1) == 1:
-				bgsprite += "small"
-			else:
-				bgsprite += "big"
-		texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
-		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
-	elif special == 1:
-		bgsprite = "pipe"
-		if randi_range(0,1) == 1:
-			bgsprite += "small"
-		else:
-			bgsprite += "big"
-		texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
-		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
-	else:
-		bgsprite = "howdidthisgethere"
-		texforshape = load("res://Sprites/Background/howdidthisgethere.png")
-		scale.x = 1
+	isSpecial()
 
 	$CollisionShape2D.shape = RectangleShape2D.new()
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
@@ -54,6 +29,36 @@ func _ready() -> void:
 	direction = Vector2.DOWN
 	
 	$AnimatedSprite2D.play("1")
+
+func isSpecial()->void:
+	if special == 0:
+		var chance:int = randi_range(0,1000)
+		if chance < 750:
+			bgsprite = "bricks" + str(randi_range(1,5))
+		elif chance < 800:
+			bgsprite = "grafitti"
+		elif chance <= 1000:
+			bgsprite = "tunnel"
+			smlOrBig()
+		texAdjust()
+	elif special == 1:
+		bgsprite = "pipe"
+		smlOrBig()
+		texAdjust()
+	else:
+		bgsprite = "howdidthisgethere"
+		texforshape = load("res://Sprites/Background/howdidthisgethere.png")
+		scale.x = 1
+
+func smlOrBig()->void:
+	if randi_range(0,1) == 1:
+		bgsprite += "small"
+	else:
+		bgsprite += "big"
+
+func texAdjust()->void:
+	texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
+	tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

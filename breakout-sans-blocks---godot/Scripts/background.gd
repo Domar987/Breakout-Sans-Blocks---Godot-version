@@ -43,7 +43,7 @@ func shootProjectile(fromTop:bool)->void:
 	var projectile = projectilesource.instantiate()
 	projectile.scale = Vector2.ONE
 	if randi_range(0,1) == 1:
-		scale.x = -1
+		projectile.scale.x = -1
 	if fromTop:
 		projectile.position.y = -540/(2*RuleManager.zoom) - 32
 	else:
