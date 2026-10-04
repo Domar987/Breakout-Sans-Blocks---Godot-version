@@ -27,7 +27,6 @@ func _ready() -> void:
 		if bgsprite == "grafitti":
 			scale.x = 1
 	direction = Vector2.DOWN
-	$AnimatedSprite2D.centered = true
 	$AnimatedSprite2D.play("1")
 
 func isSpecial()->void:
@@ -45,6 +44,7 @@ func isSpecial()->void:
 		bgsprite = "pipe"
 		smlOrBig()
 		texAdjust()
+		z_index += 1
 	else:
 		bgsprite = "howdidthisgethere"
 		texforshape = load("res://Sprites/Background/howdidthisgethere.png")

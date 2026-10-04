@@ -227,7 +227,7 @@ texture = ExtResource("42_ur0dt")
 script = ExtResource("6_35pev")
 
 [node name="Background" type="Sprite2D" parent="."]
-z_index = -5
+z_index = -10
 script = ExtResource("7_yl4g2")
 
 [node name="Label" type="Label" parent="Background"]
