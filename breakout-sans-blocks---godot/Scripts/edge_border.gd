@@ -10,8 +10,7 @@ var oldzoom:float
 
 func _physics_process(delta: float) -> void:
 	ySpeedAddition += RuleManager.ySpeed * delta
-	if ySpeedAddition >= 10:
-		ySpeedAddition = 0
+	ySpeedAddition = fmod(ySpeedAddition,10)
 	if RuleManager.zoom != oldzoom or RuleManager.ySpeed != 0:
 		queue_redraw()
 	oldzoom = RuleManager.zoom
