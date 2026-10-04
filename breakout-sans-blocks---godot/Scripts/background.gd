@@ -13,7 +13,7 @@ var currentcolors:Array
 
 var yvalue:float
 var level:int = 0
-var levelvals:Array = [0,200,1500,4000, 10000]
+var levelvals:Array = [0,1000,5000,16000, 40000]
 
 var rect1:Rect2
 var rect2:Rect2
@@ -30,6 +30,7 @@ var oldzoom:float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Time:",Time.get_time_dict_from_system())
 	currentcolors = bgcolors[level]
 	projectilesource = preload("res://Objects/Projectiles/BackgroundItem.tscn")
 	for i in range(0,randi_range(6,16)):
@@ -48,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
 	for i in range(1,4):
 		if yvalue > levelvals[i] and i > level:
+			print("Time:",Time.get_time_dict_from_system())
 			level = i
 			RuleManager.level = level + 1
 			if level >= 4:

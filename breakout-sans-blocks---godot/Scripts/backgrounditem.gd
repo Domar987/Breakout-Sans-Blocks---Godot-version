@@ -32,7 +32,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("1")
 
 func choosePosition()->void:
-	print("Choosing position for "+name)
+	#print("Choosing position for "+name)
 	if relocateCounter > 10:
 		$CollisionShape2D.shape = null
 		queue_free()

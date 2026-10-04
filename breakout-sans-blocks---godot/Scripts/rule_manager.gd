@@ -116,7 +116,7 @@ func cheats()->void:
 
 func difficultyChange()->void:
 	cameraZoom()
-	if difficulty % 3 == 0:
+	if (difficulty + 1) % 2 == 0:
 		cameraRotate()
 		ySpeedIncrease()
 	if difficulty % 5 == 0:
