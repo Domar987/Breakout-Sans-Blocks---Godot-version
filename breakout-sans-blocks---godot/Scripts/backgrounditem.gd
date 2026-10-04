@@ -27,7 +27,7 @@ func _ready() -> void:
 		if bgsprite == "grafitti":
 			scale.x = 1
 	direction = Vector2.DOWN
-	
+	$AnimatedSprite2D.centered = true
 	$AnimatedSprite2D.play("1")
 
 func isSpecial()->void:

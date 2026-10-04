@@ -37,9 +37,9 @@ func _ready() -> void:
 	projectilesource = preload("res://Objects/Projectiles/BackgroundItem.tscn")
 	for i in range(0,randi_range(6,16)):
 		shootProjectile(false)
-		print(initialBGpos)
 
 func shootProjectile(fromTop:bool)->void:
+	print(initialBGpos)
 	var projectile = projectilesource.instantiate()
 	projectile.scale = Vector2.ONE
 	if randi_range(0,1) == 1:
@@ -60,7 +60,19 @@ func shootProjectile(fromTop:bool)->void:
 			projectile.special = 2
 	projectile.speed = RuleManager.ySpeed
 	projectile.parent = self
-	add_sibling.call_deferred(projectile,true)
+	
+	var overlap:bool = false
+	for oldPos in initialBGpos:
+		if abs(projectile.position.x - oldPos.x) < 45 and abs(projectile.position.y - oldPos.y) < 33:
+			overlap = true
+			print("broke")
+			break
+	
+	if overlap:
+		shootProjectile(fromTop)
+	else:
+		initialBGpos.append(projectile.position)
+		add_sibling.call_deferred(projectile,true)
 
 
 func _physics_process(delta: float) -> void:
