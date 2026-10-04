@@ -26,6 +26,8 @@ var startY:float
 
 var oldzoom:float = 0.0
 
+#var endless:bool = true
+
 @onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 
 var initialBGpos:Array[Vector2] = []
@@ -39,7 +41,6 @@ func _ready() -> void:
 		shootProjectile(false,0)
 
 func shootProjectile(fromTop:bool,retry:int)->void:
-	print(initialBGpos)
 	if retry > 50:
 		return
 	var projectile = projectilesource.instantiate()
@@ -67,7 +68,6 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 	for oldPos in initialBGpos:
 		if abs(projectile.position.x - oldPos.x) < 90 and abs(projectile.position.y - oldPos.y) < 66:
 			overlap = true
-			print("broke")
 			break
 	
 	if overlap:
@@ -79,9 +79,18 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
-	for i in range(1,4):
+	for i in range(1,len(levelvals)):
 		if yvalue > levelvals[i] and i > level:
 			print("Time:",Time.get_time_dict_from_system())
+			#if endless:
+				#if yvalue > 16000:
+					#levelvals.append(levelvals[-1] * 2.5)
+				#var randlvl = randi_range(0,3)
+				#level = randlvl
+				#RuleManager.level = randlvl
+			#else:
+				#level = i
+				#RuleManager.level = level + 1
 			level = i
 			RuleManager.level = level + 1
 			if level >= 4:
