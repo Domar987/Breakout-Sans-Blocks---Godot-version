@@ -28,6 +28,8 @@ var oldzoom:float = 0.0
 
 @onready var CheevoHandler = $/root/Ingame/UI/BottomRight/CheevoHandler
 
+var initialBGpos:Array[Vector2] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Time:",Time.get_time_dict_from_system())
@@ -35,6 +37,7 @@ func _ready() -> void:
 	projectilesource = preload("res://Objects/Projectiles/BackgroundItem.tscn")
 	for i in range(0,randi_range(6,16)):
 		shootProjectile(false)
+		print(initialBGpos)
 
 func shootProjectile(fromTop:bool)->void:
 	var projectile = projectilesource.instantiate()

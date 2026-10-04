@@ -13,17 +13,37 @@ func _ready() -> void:
 	var tex:Texture2D
 	$AnimatedSprite2D.sprite_frames = SpriteFrames.new()
 	
-	bgsprite = bgsprites[randi_range(0,len(bgsprites)-1)]
-	var texforshape:Texture2D = load("res://Sprites/Background/bg"+bgsprite+".png")
+	var chance:int = randi_range(0,1000)
+	var texforshape:Texture2D
+	
+	if chance == 1000:
+		bgsprite = "howdidthisgethere"
+		texforshape = load("res://Sprites/Background/howdidthisgethere.png")
+	else:
+		if chance < 600:
+			bgsprite = "bricks" + str(randi_range(1,5))
+		elif chance < 650:
+			bgsprite = "grafitti"
+		elif chance < 750:
+			bgsprite = "pipe"
+			if randi_range(0,1) == 1:
+				bgsprite += "small"
+			else:
+				bgsprite += "big"
+		elif chance < 1000:
+			bgsprite = "tunnel"
+			if randi_range(0,1) == 1:
+				bgsprite += "small"
+			else:
+				bgsprite += "big"
+		texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
+		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
+	
 	$CollisionShape2D.shape = RectangleShape2D.new()
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
-	if randi_range(0,1000) == 1000:
-		bgsprite = "howdidthisgethere"
-	else:
-		tex = Animator.applyColor("res://Sprites/Background/bg"+bgsprite+".png",parent.currentcolors)
 	Animator.createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
 	if bgsprite == "howdidthisgethere":
-		Animator.createFramesAuto("res://Sprites/Background/"+bgsprite+".png",$AnimatedSprite2D.sprite_frames,1,"1")
+		Animator.createFramesAuto("res://Sprites/Background/howdidthisgethere.png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
 		Animator.createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
 	direction = Vector2.DOWN
@@ -49,8 +69,5 @@ func choosePosition()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	for area in get_overlapping_areas():
-		if area is BackgroundItem and int(str(name).substr(14)) > int(str(area.name).substr(14)):
-			choosePosition()
 	speed = RuleManager.ySpeed
 	super(delta)
