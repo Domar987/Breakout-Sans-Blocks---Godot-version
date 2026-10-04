@@ -114,13 +114,19 @@ func cheats()->void:
 	if Input.is_action_just_pressed("Cheat6"):
 		shatterScreen()
 
+var platlenmod:float = 0.8
+
 func difficultyChange()->void:
 	cameraZoom()
 	if (difficulty + 1) % 2 == 0:
 		cameraRotate()
 		ySpeedIncrease()
 	if difficulty % 5 == 0:
-		platformLength(platform.length * 0.8)
+		platformLength(platform.length * platlenmod)
+		if platlenmod >= 0.999:
+			platlenmod = 1
+		else:
+			platlenmod += 1/3
 
 func healthChange(dmg:int)->void:
 	if invitimer > 0:
