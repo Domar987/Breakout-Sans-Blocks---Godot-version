@@ -55,7 +55,7 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 		projectile.position.y = randi_range(-540/(2*RuleManager.zoom),540/(2*RuleManager.zoom))
 	var tmpchanc = randi_range(0,1000)
 	
-	if tmpchanc <= 100:
+	if tmpchanc <= 75:
 		projectile.special = 1
 		projectile.position.x = -960/(2*RuleManager.zoom) + randi_range(-32,8)
 		projectile.position.x *= projectile.scale.x

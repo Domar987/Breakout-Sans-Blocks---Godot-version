@@ -32,17 +32,20 @@ func _ready() -> void:
 func isSpecial()->void:
 	if special == 0:
 		var chance:int = randi_range(0,1000)
-		if chance < 750:
-			bgsprite = "bricks" + str(randi_range(1,5))
+		if chance < 700:
+			bgsprite = "bricks" + str(randi_range(1,8))
 		elif chance < 800:
+			bgsprite = "plant" + str(randi_range(1,3))
+		elif chance < 835:
 			bgsprite = "grafitti"
+		elif chance < 885:
+			bgsprite = "pipesmall"
 		elif chance <= 1000:
 			bgsprite = "tunnel"
 			smlOrBig()
 		texAdjust()
 	elif special == 1:
-		bgsprite = "pipe"
-		smlOrBig()
+		bgsprite = "pipebig"
 		texAdjust()
 		z_index += 1
 	else:
