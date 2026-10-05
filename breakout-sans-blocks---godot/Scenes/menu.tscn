@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=69 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -32,9 +32,15 @@
 [ext_resource type="Texture2D" uid="uid://ctyakewjm2d2y" path="res://Sprites/Menu/menupediabg.png" id="27_nakb8"]
 [ext_resource type="Texture2D" uid="uid://dr8xdrc3gc61p" path="res://Sprites/Menu/mural3.png" id="29_pde1v"]
 [ext_resource type="Texture2D" uid="uid://ck54o1iymh7vm" path="res://Sprites/achievements.png" id="31_48g0d"]
+[ext_resource type="Texture2D" uid="uid://dwn1cr2lg4xi8" path="res://Sprites/Menu/optionmenubg.png" id="31_ki2a1"]
 [ext_resource type="Texture2D" uid="uid://ckafrr34w76r5" path="res://Sprites/Menu/menuachievementsbg.png" id="31_lvy56"]
 [ext_resource type="Script" uid="uid://bbxtx5veyqek7" path="res://Scripts/profileachievement.gd" id="31_ygxe1"]
+[ext_resource type="Texture2D" uid="uid://ve6tk7we0t8y" path="res://Sprites/Menu/optionmenubuttonleft2.png" id="32_mucp4"]
+[ext_resource type="Texture2D" uid="uid://bguvleriffi5s" path="res://Sprites/Menu/optionmenubuttonleft1.png" id="33_v3l5l"]
 [ext_resource type="Texture2D" uid="uid://b4f2cmf4acflu" path="res://Sprites/Menu/menucheevotextbg.png" id="34_0idt7"]
+[ext_resource type="Texture2D" uid="uid://bj6ks66w0ff2o" path="res://Sprites/Menu/optionmenubuttonmiddle.png" id="34_qpa3c"]
+[ext_resource type="Texture2D" uid="uid://dvw085eejjpac" path="res://Sprites/Menu/optionmenubuttonright1.png" id="35_ui7cl"]
+[ext_resource type="Texture2D" uid="uid://c3i2vpoia2b30" path="res://Sprites/Menu/optionmenubuttonright2.png" id="36_0sm67"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -509,27 +515,79 @@ label_settings = SubResource("LabelSettings_l6llh")
 autowrap_mode = 2
 clip_text = true
 
-[node name="Options" type="HBoxContainer" parent="MiniMenu"]
-visible = false
+[node name="Options" type="ScrollContainer" parent="MiniMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="HScrollBar" type="HScrollBar" parent="MiniMenu/Options"]
+[node name="Control" type="Control" parent="MiniMenu/Options"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MiniMenu/Options/Control"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 41.0
+offset_right = 288.0
+offset_bottom = 169.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("31_ki2a1")
 
-[node name="Label" type="Label" parent="MiniMenu/Options"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="MiniMenu/Options/Control"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 23.0
+offset_right = 95.0
+offset_bottom = 69.0
 size_flags_horizontal = 4
-text = "Option stuff
-volume
-resolution"
+size_flags_vertical = 4
+texture_normal = ExtResource("32_mucp4")
+
+[node name="TextureButton2" type="TextureButton" parent="MiniMenu/Options/Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 86.0
+offset_top = 19.0
+offset_right = 139.0
+offset_bottom = 65.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("33_v3l5l")
+
+[node name="TextureButton3" type="TextureButton" parent="MiniMenu/Options/Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 130.0
+offset_top = 17.0
+offset_right = 189.0
+offset_bottom = 63.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("34_qpa3c")
+
+[node name="TextureButton4" type="TextureButton" parent="MiniMenu/Options/Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 183.0
+offset_top = 18.0
+offset_right = 238.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("35_ui7cl")
+
+[node name="TextureButton5" type="TextureButton" parent="MiniMenu/Options/Control"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 24.0
+offset_right = 281.0
+offset_bottom = 70.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("36_0sm67")
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
 visible = false
