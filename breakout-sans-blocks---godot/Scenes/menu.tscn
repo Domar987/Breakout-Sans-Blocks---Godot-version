@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=70 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -137,6 +137,10 @@ font_size = 14
 line_spacing = 1.0
 font = ExtResource("25_ocger")
 font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_mucp4"]
+font = ExtResource("25_ocger")
+font_size = 9
 
 [sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
 font = ExtResource("25_ocger")
@@ -589,44 +593,361 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("36_0sm67")
 
-[node name="GridContainer" type="GridContainer" parent="MiniMenu/Options/Control"]
-layout_mode = 0
+[node name="GridContainer" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
+anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
-columns = 2
 
-[node name="GridContainer2" type="GridContainer" parent="MiniMenu/Options/Control"]
+[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 62.0
-offset_right = 262.0
-offset_bottom = 137.0
-columns = 3
+offset_left = 43.0
+offset_top = 13.0
+offset_right = 129.0
+offset_bottom = 37.0
 
-[node name="GridContainer3" type="GridContainer" parent="MiniMenu/Options/Control"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/CheckBox"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 62.0
-offset_right = 262.0
-offset_bottom = 137.0
-columns = 2
+offset_left = -14.0
+offset_top = -8.0
+offset_right = 44.0
+offset_bottom = 15.0
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_mucp4")
 
-[node name="GridContainer4" type="GridContainer" parent="MiniMenu/Options/Control"]
+[node name="OptionButton" type="OptionButton" parent="MiniMenu/Options/Control/GridContainer"]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 62.0
-offset_right = 262.0
-offset_bottom = 137.0
-columns = 3
+offset_left = 87.0
+offset_top = 39.0
+offset_right = 173.0
+offset_bottom = 63.0
+theme_override_fonts/font = ExtResource("25_ocger")
+theme_override_font_sizes/font_size = 9
+selected = 4
+item_count = 5
+popup/item_0/text = "320x180"
+popup/item_0/id = 0
+popup/item_1/text = "640x360"
+popup/item_1/id = 1
+popup/item_2/text = "960x540"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+popup/item_4/text = "1920x1080"
+popup/item_4/id = 5
 
-[node name="GridContainer5" type="GridContainer" parent="MiniMenu/Options/Control"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/OptionButton"]
 layout_mode = 0
+offset_left = 12.0
+offset_top = -13.0
+offset_right = 69.0
+offset_bottom = 10.0
+text = "Resolution
+"
+label_settings = SubResource("LabelSettings_mucp4")
+
+[node name="GridContainer2" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
+anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
+
+[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 4.0
+offset_right = 176.0
+offset_bottom = 20.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 25.0
+text = "Master"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="HSlider2" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 26.0
+offset_right = 96.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider2"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 25.0
+text = "Music"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="HSlider3" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 27.0
+offset_right = 192.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider3"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 25.0
+text = "Misc"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="HSlider4" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 74.0
+offset_bottom = 66.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider4"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 25.0
+text = "Enemy"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="HSlider5" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 51.0
+offset_right = 208.0
+offset_bottom = 67.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider5"]
+layout_mode = 0
+offset_left = -80.0
+offset_top = 2.0
+offset_bottom = 25.0
+text = "Annoying Enemy"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="GridContainer3" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 62.0
+offset_right = 262.0
+offset_bottom = 137.0
+
+[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer3"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 4.0
+offset_right = 177.0
+offset_bottom = 20.0
+max_value = 2.0
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+layout_mode = 0
+offset_left = -76.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = 20.0
+text = "Level
+Borders"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 41.0
+text = "Wall"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 41.0
+text = "Portal"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 18.0
+offset_right = 151.0
+offset_bottom = 41.0
+text = "Alternating"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer3"]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 41.0
+offset_right = 200.0
+offset_bottom = 65.0
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/CheckBox"]
+layout_mode = 0
+offset_left = -98.0
+offset_top = 7.0
+offset_right = 3.0
+offset_bottom = 30.0
+text = "Floor at the start"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="GridContainer4" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 62.0
+offset_right = 262.0
+offset_bottom = 137.0
+
+[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer4"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 4.0
+offset_right = 177.0
+offset_bottom = 20.0
+max_value = 2.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+layout_mode = 0
+offset_left = -76.0
+offset_top = -3.0
+offset_right = -1.0
+offset_bottom = 20.0
+text = "Camera
+Shake"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 41.0
+text = "Off"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 18.0
+offset_right = 76.0
+offset_bottom = 41.0
+text = "Low"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 41.0
+text = "Medium"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 18.0
+offset_right = 151.0
+offset_bottom = 41.0
+text = "High"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 34.0
+offset_right = 224.0
+offset_bottom = 58.0
+button_pressed = true
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox"]
+layout_mode = 0
+offset_left = -98.0
+offset_top = 7.0
+offset_right = 3.0
+offset_bottom = 30.0
+text = "Hearts for HP bar"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="CheckBox2" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 52.0
+offset_right = 251.0
+offset_bottom = 76.0
+button_pressed = true
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox2"]
+layout_mode = 0
+offset_left = -150.0
+offset_top = 7.0
+offset_right = 3.0
+offset_bottom = 30.0
+text = "Tormented souls at the menu"
+label_settings = SubResource("LabelSettings_mucp4")
+horizontal_alignment = 2
+
+[node name="GridContainer5" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
+anchors_preset = 0
+offset_left = 62.0
+offset_top = 62.0
+offset_right = 262.0
+offset_bottom = 137.0
+
+[node name="Button" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 158.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("25_ocger")
+theme_override_font_sizes/font_size = 9
+text = "RESET ALL DATA (?!)"
+
+[node name="Button2" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 43.0
+offset_right = 177.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("25_ocger")
+theme_override_font_sizes/font_size = 9
+text = "Reset Boss Fight Cutscenes"
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
 visible = false
