@@ -48,7 +48,7 @@ var timer:float = 0.0
 var oldRotate:float = 0.0
 
 var ballPosCheat:bool = false
-var flying:bool = false
+var flytimer:float = 0
 
 var aura:PackedScene = load("res://Objects/aura.tscn")
 
@@ -67,6 +67,8 @@ func _physics_process(delta: float) -> void:
 	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
 	if invitimer > 0:
 		invitimer -= delta
+	if flytimer > 0:
+		flytimer -= delta
 		
 	uiTransform()
 	
@@ -266,10 +268,10 @@ func slamdamageBoost(amount:int,duration:int)->void:
 	slamdamage -= amount
 
 func flyEnable(duration:int)->void:
-	flying = true
+	flytimer += duration
 	addAura(Color.WEB_PURPLE,duration)
-	await get_tree().create_timer(duration).timeout
-	flying = false
+	#await get_tree().create_timer(duration).timeout
+	#flying = false
 
 func addAura(color:Color,duration:int)->void:
 	var inst = aura.instantiate()

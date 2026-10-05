@@ -102,7 +102,7 @@ func wallOrPortalInteraction()->void:
 
 func fall()->void:
 	if position.y > 540/(2*RuleManager.zoom) + 50 and RuleManager.health > 0:
-		if RuleManager.flying:
+		if RuleManager.flytimer > 0:
 			velocity.y = -sqrt(2*get_gravity()*(position.y + 540/(2*RuleManager.zoom)))
 		else:
 			moveToCenter(1.5,true)
