@@ -41,8 +41,7 @@ func isSpecial()->void:
 		elif chance < 885:
 			bgsprite = "pipesmall"
 		elif chance <= 1000:
-			bgsprite = "tunnel"
-			smlOrBig()
+			bgsprite = "tunnel" + str(randi_range(1,2))
 		texAdjust()
 	elif special == 1:
 		bgsprite = "pipebig"
@@ -52,12 +51,6 @@ func isSpecial()->void:
 		bgsprite = "howdidthisgethere"
 		texforshape = load("res://Sprites/Background/howdidthisgethere.png")
 		scale.x = 1
-
-func smlOrBig()->void:
-	if randi_range(0,1) == 1:
-		bgsprite += "small"
-	else:
-		bgsprite += "big"
 
 func texAdjust()->void:
 	texforshape = load("res://Sprites/Background/bg"+bgsprite+".png")
