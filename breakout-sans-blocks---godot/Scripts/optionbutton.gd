@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 func _toggled(toggled_on: bool) -> void:
 	if name == "Fullscreen":
 		DisplayServer.window_set_mode(int(toggled_on) * 3 as DisplayServer.WindowMode)
+		#DisplayServer.window_set_size(vec)
+		#DisplayServer.window_set_position(Vector2i(scr.x - vec.x/2 ,scr.y - vec.y/2 ) )
 	elif name == "Floor":
 		pass
 	elif name == "Hearts":

@@ -13,5 +13,7 @@ func _process(delta: float) -> void:
 
 func pressed(id:int)->void:
 	var tmp = get_item_text(id).split("x")
-	DisplayServer.window_set_size(Vector2i( int(tmp[0]),int(tmp[1]) ) )
-	DisplayServer.window_set_position(Vector2i(960 - int(tmp[0])/2 ,540 - int(tmp[1])/2 ) )
+	var vec = Vector2i( int(tmp[0]),int(tmp[1]) )
+	var scr = DisplayServer.screen_get_size()/2
+	DisplayServer.window_set_size(vec)
+	DisplayServer.window_set_position(Vector2i(scr.x - vec.x/2 ,scr.y - vec.y/2 ) )
