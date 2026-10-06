@@ -6,7 +6,7 @@ extends BaseButton
 @export var YesButton:BaseButton
 @export var NoButton:BaseButton
 
-var function:Callable
+static var activeWarning:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,10 +27,10 @@ func _process(delta: float) -> void:
 func _pressed() -> void:
 	if name == "RESET":
 		warning()
-		function = Callable(BigReset)
+		activeWarning = "BigReset"
 	elif name == "BossAgain":
 		warning()
-		function = Callable(BossReset)
+		activeWarning = "BossReset"
 
 func _toggled(toggled_on: bool) -> void:
 	if name == "Fullscreen":
@@ -47,14 +47,17 @@ func _toggled(toggled_on: bool) -> void:
 
 func warning()->void:
 	if Warning.scale <= Vector2.ONE * 0.01:
-		create_tween().tween_property(Warning,"scale",Vector2.ONE,0.5)
+		create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT).tween_property(Warning,"scale",Vector2.ONE,0.5)
 
 func Yes()->void:
 	if Warning.scale == Vector2.ONE:
-		function.call()
+		#print(activeWarning)
+		if (name == "RESET" and activeWarning == "BigReset") or (name == "BossAgain" and activeWarning == "BossReset"):
+			var tmp = Callable(self,activeWarning)
+			tmp.call()
 func No()->void:
 	if Warning.scale == Vector2.ONE:
-		create_tween().tween_property(Warning,"scale",Vector2.ZERO,0.5)
+		create_tween().tween_property(Warning,"scale",Vector2.ZERO,0.2)
 
 func BigReset()->void:
 	print("Reset everything")
