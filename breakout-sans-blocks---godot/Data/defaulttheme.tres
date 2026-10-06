@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dqhtxup3x3y2r"]
+
+[ext_resource type="FontFile" uid="uid://dj51o5hd3lu4v" path="res://Sprites/font.png" id="1_xji01"]
+[ext_resource type="Texture2D" uid="uid://bru8mhum3m7lj" path="res://Sprites/Menu/radiobuton.png" id="2_s7oh7"]
+[ext_resource type="Texture2D" uid="uid://cd7yfp0okfomu" path="res://Sprites/Menu/dropdownselectarrow.png" id="3_rbcds"]
+[ext_resource type="Texture2D" uid="uid://cxfbw0o0yleq" path="res://Sprites/Menu/regularbutton.png" id="4_irpax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8nev"]
+atlas = ExtResource("2_s7oh7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwrfa"]
+atlas = ExtResource("2_s7oh7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tyk3f"]
+texture = ExtResource("3_rbcds")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 8.0
+texture_margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 9, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8nev"]
+texture = ExtResource("4_irpax")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 11, 11)
+
+[resource]
+PopupMenu/constants/h_separation = 4
+PopupMenu/font_sizes/font_separator_size = 9
+PopupMenu/font_sizes/font_size = 9
+PopupMenu/fonts/font = ExtResource("1_xji01")
+PopupMenu/icons/radio_checked = SubResource("AtlasTexture_m8nev")
+PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_fwrfa")
+PopupMenu/styles/hover = SubResource("StyleBoxTexture_tyk3f")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_m8nev")

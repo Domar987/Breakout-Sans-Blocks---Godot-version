@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=123 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -47,9 +47,9 @@
 [ext_resource type="Texture2D" uid="uid://bdpdwfhxfwf8f" path="res://Sprites/Menu/bigredbutton.png" id="40_0sm67"]
 [ext_resource type="Texture2D" uid="uid://bs1kxiqcbenmn" path="res://Sprites/Menu/dropdownarrow.png" id="40_2t718"]
 [ext_resource type="Texture2D" uid="uid://8166rsfwtyv6" path="res://Sprites/Menu/slider1.png" id="40_cwemf"]
-[ext_resource type="Texture2D" uid="uid://bru8mhum3m7lj" path="res://Sprites/Menu/radiobuton.png" id="40_h7gyr"]
-[ext_resource type="Texture2D" uid="uid://cd7yfp0okfomu" path="res://Sprites/Menu/dropdownselectarrow.png" id="41_2sctt"]
+[ext_resource type="LabelSettings" uid="uid://bc24w1o78a11s" path="res://Data/defaultlabel.tres" id="40_hph2t"]
 [ext_resource type="Texture2D" uid="uid://cxfbw0o0yleq" path="res://Sprites/Menu/regularbutton.png" id="41_mg0t0"]
+[ext_resource type="Theme" uid="uid://dqhtxup3x3y2r" path="res://Data/defaulttheme.tres" id="41_oc4uc"]
 [ext_resource type="Texture2D" uid="uid://cbwu071sj8vvk" path="res://Sprites/Menu/slider2.png" id="41_ymfbl"]
 [ext_resource type="Texture2D" uid="uid://dwpe6sf11u4yn" path="res://Sprites/Menu/slidertick.png" id="42_ymfbl"]
 [ext_resource type="Texture2D" uid="uid://csdu8pkxqtoys" path="res://Sprites/Menu/sliderarea1.png" id="43_f55ex"]
@@ -222,46 +222,6 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("39_ui7cl")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="LabelSettings" id="LabelSettings_mucp4"]
-font = ExtResource("25_ocger")
-font_size = 9
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8nev"]
-atlas = ExtResource("40_h7gyr")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwrfa"]
-atlas = ExtResource("40_h7gyr")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tyk3f"]
-texture = ExtResource("41_2sctt")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 8.0
-texture_margin_bottom = 1.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-region_rect = Rect2(0, 0, 9, 22)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8nev"]
-texture = ExtResource("41_mg0t0")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-region_rect = Rect2(0, 0, 11, 11)
-
-[sub_resource type="Theme" id="Theme_h7gyr"]
-PopupMenu/constants/h_separation = 4
-PopupMenu/font_sizes/font_separator_size = 9
-PopupMenu/font_sizes/font_size = 9
-PopupMenu/fonts/font = ExtResource("25_ocger")
-PopupMenu/icons/radio_checked = SubResource("AtlasTexture_m8nev")
-PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_fwrfa")
-PopupMenu/styles/hover = SubResource("StyleBoxTexture_tyk3f")
-PopupMenu/styles/panel = SubResource("StyleBoxTexture_m8nev")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ui7cl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oc4uc"]
@@ -355,6 +315,14 @@ texture_margin_bottom = 5.0
 region_rect = Rect2(11, 0, 11, 11)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7gyr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tyk3f"]
+texture = ExtResource("41_mg0t0")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 11, 11)
 
 [sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
 font = ExtResource("25_ocger")
@@ -863,7 +831,7 @@ offset_top = -8.0
 offset_right = 44.0
 offset_bottom = 15.0
 text = "Fullscreen"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 
 [node name="Resolution" type="OptionButton" parent="MiniMenu/Options/Control/GridContainer"]
 layout_mode = 0
@@ -871,7 +839,7 @@ offset_left = 97.0
 offset_top = 48.0
 offset_right = 183.0
 offset_bottom = 72.0
-theme = SubResource("Theme_h7gyr")
+theme = ExtResource("41_oc4uc")
 theme_override_fonts/font = ExtResource("25_ocger")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ui7cl")
@@ -901,7 +869,7 @@ text = "Resolution
 window yourself for
 EXTRA customization!)
 "
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="GridContainer2" type="Control" parent="MiniMenu/Options/Control"]
@@ -931,7 +899,7 @@ offset_top = 2.0
 offset_right = -1.0
 offset_bottom = 25.0
 text = "Master"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Music" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
@@ -953,7 +921,7 @@ offset_top = 2.0
 offset_right = -1.0
 offset_bottom = 25.0
 text = "Music"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Misc" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
@@ -975,7 +943,7 @@ offset_top = 2.0
 offset_right = -1.0
 offset_bottom = 25.0
 text = "Misc"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Enemy" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
@@ -997,7 +965,7 @@ offset_top = 2.0
 offset_right = -1.0
 offset_bottom = 25.0
 text = "Enemy"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Annoying" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
@@ -1018,7 +986,7 @@ offset_left = -80.0
 offset_top = 2.0
 offset_bottom = 25.0
 text = "Annoying Enemy"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="GridContainer3" type="Control" parent="MiniMenu/Options/Control"]
@@ -1053,7 +1021,7 @@ offset_right = -1.0
 offset_bottom = 20.0
 text = "Level
 Borders"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
@@ -1063,7 +1031,7 @@ offset_top = 20.0
 offset_right = 41.0
 offset_bottom = 43.0
 text = "Wall"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
@@ -1073,7 +1041,7 @@ offset_top = 20.0
 offset_right = 94.0
 offset_bottom = 43.0
 text = "Portal"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
@@ -1083,7 +1051,7 @@ offset_top = 20.0
 offset_right = 151.0
 offset_bottom = 43.0
 text = "Alternating"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Floor" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer3"]
@@ -1105,7 +1073,7 @@ offset_top = 7.0
 offset_right = 3.0
 offset_bottom = 30.0
 text = "Floor at the start"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="GridContainer4" type="Control" parent="MiniMenu/Options/Control"]
@@ -1142,7 +1110,7 @@ offset_right = -3.0
 offset_bottom = 20.0
 text = "Camera
 Shake"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
@@ -1152,7 +1120,7 @@ offset_top = 20.0
 offset_right = 39.0
 offset_bottom = 43.0
 text = "Off"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
@@ -1162,7 +1130,7 @@ offset_top = 20.0
 offset_right = 75.0
 offset_bottom = 43.0
 text = "Low"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
@@ -1172,7 +1140,7 @@ offset_top = 20.0
 offset_right = 112.0
 offset_bottom = 43.0
 text = "Medium"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
@@ -1182,7 +1150,7 @@ offset_top = 20.0
 offset_right = 151.0
 offset_bottom = 43.0
 text = "High"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 1
 
 [node name="Hearts" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
@@ -1204,7 +1172,7 @@ offset_top = 7.0
 offset_right = 3.0
 offset_bottom = 30.0
 text = "Hearts for HP bar"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="Souls" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4" node_paths=PackedStringArray("Soul")]
@@ -1227,7 +1195,7 @@ offset_top = 7.0
 offset_right = 3.0
 offset_bottom = 30.0
 text = "Tormented souls at the menu"
-label_settings = SubResource("LabelSettings_mucp4")
+label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
 
 [node name="GridContainer5" type="Control" parent="MiniMenu/Options/Control"]
@@ -1238,7 +1206,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="RESET" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+[node name="RESET" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning")]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 3.0
@@ -1251,8 +1219,10 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_k5c6d")
 theme_override_styles/hover = SubResource("StyleBoxTexture_cwemf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ymfbl")
 text = "RESET ALL DATA (?!)"
+script = ExtResource("33_qpa3c")
+Warning = NodePath("../../Warning")
 
-[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning")]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 43.0
@@ -1265,6 +1235,64 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_qmlsk")
 theme_override_styles/hover = SubResource("StyleBoxTexture_je088")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
 text = "Reset Boss Fight Cutscenes"
+script = ExtResource("33_qpa3c")
+Warning = NodePath("../../Warning")
+
+[node name="Warning" type="VBoxContainer" parent="MiniMenu/Options/Control"]
+layout_mode = 0
+offset_left = 71.0
+offset_top = 67.0
+offset_right = 247.00003
+offset_bottom = 116.0
+pivot_offset = Vector2(89, 25)
+theme = ExtResource("41_oc4uc")
+
+[node name="Control" type="Control" parent="MiniMenu/Options/Control/Warning"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MiniMenu/Options/Control/Warning/Control"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -1.0
+offset_right = 180.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tyk3f")
+
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/Warning"]
+layout_mode = 2
+text = "WARNING"
+label_settings = ExtResource("40_hph2t")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MiniMenu/Options/Control/Warning"]
+layout_mode = 2
+text = "Are you sure you wanna do this?!"
+label_settings = ExtResource("40_hph2t")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MiniMenu/Options/Control/Warning"]
+layout_mode = 2
+alignment = 1
+
+[node name="Yes" type="Button" parent="MiniMenu/Options/Control/Warning/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_ocger")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_ymfbl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qmlsk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_je088")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
+text = "Yes"
+
+[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/Warning/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_ocger")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_ymfbl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qmlsk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_je088")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
+text = "NO!"
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
 visible = false
