@@ -15,7 +15,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if position == Vector2(-160,-90) and event is InputEventMouseButton:
 		var mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
-		if abs(mousePos.x) > 320 or abs(mousePos.y) > 160:
+		print (mousePos)
+		if abs(mousePos.x) > 360 or abs(mousePos.y) > 225:
 			disappear()
 
 func appear(child:int)->void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=97 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://bj6ks66w0ff2o" path="res://Sprites/Menu/optionmenubuttonmiddle.png" id="34_qpa3c"]
 [ext_resource type="Texture2D" uid="uid://dvw085eejjpac" path="res://Sprites/Menu/optionmenubuttonright1.png" id="35_ui7cl"]
 [ext_resource type="Texture2D" uid="uid://c3i2vpoia2b30" path="res://Sprites/Menu/optionmenubuttonright2.png" id="36_0sm67"]
+[ext_resource type="Texture2D" uid="uid://cx7j5ubpyxjes" path="res://Sprites/Menu/checkbox.png" id="39_ui7cl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -200,9 +201,35 @@ region = Rect2(51, 0, 51, 37)
 atlas = ExtResource("36_0sm67")
 region = Rect2(102, 0, 51, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpa3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hph2t"]
+atlas = ExtResource("39_ui7cl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmlsk"]
+atlas = ExtResource("39_ui7cl")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="LabelSettings" id="LabelSettings_mucp4"]
 font = ExtResource("25_ocger")
 font_size = 9
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ui7cl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sm67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je088"]
+atlas = ExtResource("39_ui7cl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyk3f"]
+atlas = ExtResource("39_ui7cl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mg0t0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5c6d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
 font = ExtResource("25_ocger")
@@ -582,6 +609,7 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="Options" type="ScrollContainer" parent="MiniMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -687,7 +715,6 @@ script = ExtResource("33_qpa3c")
 menuToLoad = NodePath("../GridContainer5")
 
 [node name="GridContainer" type="Control" parent="MiniMenu/Options/Control"]
-visible = false
 anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
@@ -698,8 +725,11 @@ offset_bottom = 137.0
 layout_mode = 0
 offset_left = 43.0
 offset_top = 13.0
-offset_right = 129.0
+offset_right = 67.0
 offset_bottom = 37.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qpa3c")
+theme_override_icons/checked = SubResource("AtlasTexture_hph2t")
+theme_override_icons/unchecked = SubResource("AtlasTexture_qmlsk")
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/CheckBox"]
 layout_mode = 0
@@ -718,6 +748,7 @@ offset_right = 173.0
 offset_bottom = 63.0
 theme_override_fonts/font = ExtResource("25_ocger")
 theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ui7cl")
 selected = 4
 item_count = 5
 popup/item_0/text = "320x180"
@@ -898,6 +929,9 @@ offset_left = 114.0
 offset_top = 41.0
 offset_right = 200.0
 offset_bottom = 65.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0sm67")
+theme_override_icons/checked = SubResource("AtlasTexture_je088")
+theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/CheckBox"]
 layout_mode = 0
@@ -984,6 +1018,9 @@ offset_left = 138.0
 offset_top = 34.0
 offset_right = 224.0
 offset_bottom = 58.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mg0t0")
+theme_override_icons/checked = SubResource("AtlasTexture_je088")
+theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox"]
@@ -1002,6 +1039,9 @@ offset_left = 165.0
 offset_top = 52.0
 offset_right = 251.0
 offset_bottom = 76.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k5c6d")
+theme_override_icons/checked = SubResource("AtlasTexture_je088")
+theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox2"]
@@ -1043,7 +1083,6 @@ theme_override_font_sizes/font_size = 9
 text = "Reset Boss Fight Cutscenes"
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
