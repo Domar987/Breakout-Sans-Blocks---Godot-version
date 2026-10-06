@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=128 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -47,11 +47,14 @@
 [ext_resource type="Texture2D" uid="uid://bdpdwfhxfwf8f" path="res://Sprites/Menu/bigredbutton.png" id="40_0sm67"]
 [ext_resource type="Texture2D" uid="uid://bs1kxiqcbenmn" path="res://Sprites/Menu/dropdownarrow.png" id="40_2t718"]
 [ext_resource type="Texture2D" uid="uid://8166rsfwtyv6" path="res://Sprites/Menu/slider1.png" id="40_cwemf"]
+[ext_resource type="Texture2D" uid="uid://bru8mhum3m7lj" path="res://Sprites/Menu/radiobuton.png" id="40_h7gyr"]
+[ext_resource type="Texture2D" uid="uid://cd7yfp0okfomu" path="res://Sprites/Menu/dropdownselectarrow.png" id="41_2sctt"]
 [ext_resource type="Texture2D" uid="uid://cxfbw0o0yleq" path="res://Sprites/Menu/regularbutton.png" id="41_mg0t0"]
 [ext_resource type="Texture2D" uid="uid://cbwu071sj8vvk" path="res://Sprites/Menu/slider2.png" id="41_ymfbl"]
 [ext_resource type="Texture2D" uid="uid://dwpe6sf11u4yn" path="res://Sprites/Menu/slidertick.png" id="42_ymfbl"]
 [ext_resource type="Texture2D" uid="uid://csdu8pkxqtoys" path="res://Sprites/Menu/sliderarea1.png" id="43_f55ex"]
 [ext_resource type="Texture2D" uid="uid://bo2k7cmu4sksk" path="res://Sprites/Menu/sliderarea2.png" id="44_2t718"]
+[ext_resource type="Script" uid="uid://dg0s64wxbjy50" path="res://Scripts/stupid.gd" id="44_oc4uc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -223,10 +226,41 @@ region = Rect2(0, 0, 16, 16)
 font = ExtResource("25_ocger")
 font_size = 9
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8nev"]
+atlas = ExtResource("40_h7gyr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwrfa"]
+atlas = ExtResource("40_h7gyr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tyk3f"]
+texture = ExtResource("41_2sctt")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 8.0
+texture_margin_bottom = 1.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 9, 22)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8nev"]
+texture = ExtResource("41_mg0t0")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(0, 0, 11, 11)
+
 [sub_resource type="Theme" id="Theme_h7gyr"]
+PopupMenu/constants/h_separation = 4
 PopupMenu/font_sizes/font_separator_size = 9
 PopupMenu/font_sizes/font_size = 9
 PopupMenu/fonts/font = ExtResource("25_ocger")
+PopupMenu/icons/radio_checked = SubResource("AtlasTexture_m8nev")
+PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_fwrfa")
+PopupMenu/styles/hover = SubResource("StyleBoxTexture_tyk3f")
+PopupMenu/styles/panel = SubResource("StyleBoxTexture_m8nev")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ui7cl"]
 
@@ -319,6 +353,8 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 region_rect = Rect2(11, 0, 11, 11)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h7gyr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
 font = ExtResource("25_ocger")
@@ -851,6 +887,7 @@ popup/item_3/text = "1280x720"
 popup/item_3/id = 3
 popup/item_4/text = "1920x1080"
 popup/item_4/id = 5
+script = ExtResource("44_oc4uc")
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/OptionButton"]
 layout_mode = 0
@@ -1217,6 +1254,7 @@ theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxTexture_ymfbl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_qmlsk")
 theme_override_styles/hover = SubResource("StyleBoxTexture_je088")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
 text = "Reset Boss Fight Cutscenes"
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
