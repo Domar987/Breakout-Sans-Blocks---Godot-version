@@ -839,13 +839,14 @@ script = ExtResource("33_qpa3c")
 menuToLoad = NodePath("../GridContainer5")
 
 [node name="GridContainer" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
 anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer"]
+[node name="Fullscreen" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer"]
 layout_mode = 0
 offset_left = 43.0
 offset_top = 13.0
@@ -854,8 +855,9 @@ offset_bottom = 37.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qpa3c")
 theme_override_icons/checked = SubResource("AtlasTexture_hph2t")
 theme_override_icons/unchecked = SubResource("AtlasTexture_qmlsk")
+script = ExtResource("33_qpa3c")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/CheckBox"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/Fullscreen"]
 layout_mode = 0
 offset_left = -14.0
 offset_top = -8.0
@@ -864,7 +866,7 @@ offset_bottom = 15.0
 text = "Fullscreen"
 label_settings = SubResource("LabelSettings_mucp4")
 
-[node name="OptionButton" type="OptionButton" parent="MiniMenu/Options/Control/GridContainer"]
+[node name="Resolution" type="OptionButton" parent="MiniMenu/Options/Control/GridContainer"]
 layout_mode = 0
 offset_left = 87.0
 offset_top = 39.0
@@ -889,7 +891,7 @@ popup/item_4/text = "1920x1080"
 popup/item_4/id = 5
 script = ExtResource("44_oc4uc")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/OptionButton"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer/Resolution"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = -13.0
@@ -907,7 +909,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+[node name="Master" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
 layout_mode = 0
 offset_left = 76.0
 offset_top = 4.0
@@ -919,7 +921,7 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Master"]
 layout_mode = 0
 offset_left = -58.0
 offset_top = 2.0
@@ -929,7 +931,7 @@ text = "Master"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="HSlider2" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+[node name="Music" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 26.0
@@ -941,7 +943,7 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider2"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Music"]
 layout_mode = 0
 offset_left = -58.0
 offset_top = 2.0
@@ -951,7 +953,7 @@ text = "Music"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="HSlider3" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+[node name="Misc" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
 layout_mode = 0
 offset_left = 132.0
 offset_top = 27.0
@@ -963,7 +965,7 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider3"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Misc"]
 layout_mode = 0
 offset_left = -58.0
 offset_top = 2.0
@@ -973,7 +975,7 @@ text = "Misc"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="HSlider4" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+[node name="Enemy" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 50.0
@@ -985,7 +987,7 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider4"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Enemy"]
 layout_mode = 0
 offset_left = -58.0
 offset_top = 2.0
@@ -995,7 +997,7 @@ text = "Enemy"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="HSlider5" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
+[node name="Annoying" type="HSlider" parent="MiniMenu/Options/Control/GridContainer2"]
 layout_mode = 0
 offset_left = 158.0
 offset_top = 51.0
@@ -1007,7 +1009,7 @@ theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/HSlider5"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Annoying"]
 layout_mode = 0
 offset_left = -80.0
 offset_top = 2.0
@@ -1024,7 +1026,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer3"]
+[node name="Borders" type="HSlider" parent="MiniMenu/Options/Control/GridContainer3"]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 4.0
@@ -1040,7 +1042,7 @@ max_value = 2.0
 tick_count = 3
 ticks_on_borders = true
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
 layout_mode = 0
 offset_left = -76.0
 offset_top = -3.0
@@ -1051,7 +1053,7 @@ Borders"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
 layout_mode = 0
 offset_left = -22.0
 offset_top = 20.0
@@ -1061,7 +1063,7 @@ text = "Wall"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 20.0
@@ -1071,7 +1073,7 @@ text = "Portal"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer3/HSlider"]
+[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Borders"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 20.0
@@ -1081,7 +1083,7 @@ text = "Alternating"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer3"]
+[node name="Floor" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer3"]
 layout_mode = 0
 offset_left = 114.0
 offset_top = 41.0
@@ -1091,8 +1093,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0sm67")
 theme_override_icons/checked = SubResource("AtlasTexture_je088")
 theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
+script = ExtResource("33_qpa3c")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/CheckBox"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer3/Floor"]
 layout_mode = 0
 offset_left = -98.0
 offset_top = 7.0
@@ -1110,7 +1113,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer4"]
+[node name="Shake" type="HSlider" parent="MiniMenu/Options/Control/GridContainer4"]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 3.0
@@ -1128,7 +1131,7 @@ value = 2.0
 tick_count = 4
 ticks_on_borders = true
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
 layout_mode = 0
 offset_left = -78.0
 offset_top = -3.0
@@ -1139,7 +1142,7 @@ Shake"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+[node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
 layout_mode = 0
 offset_left = -24.0
 offset_top = 20.0
@@ -1149,7 +1152,7 @@ text = "Off"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+[node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 20.0
@@ -1159,7 +1162,7 @@ text = "Low"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+[node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 20.0
@@ -1169,7 +1172,7 @@ text = "Medium"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
+[node name="Label5" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Shake"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 20.0
@@ -1179,7 +1182,7 @@ text = "High"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
+[node name="Hearts" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
 layout_mode = 0
 offset_left = 138.0
 offset_top = 34.0
@@ -1189,8 +1192,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_mg0t0")
 theme_override_icons/checked = SubResource("AtlasTexture_je088")
 theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
+script = ExtResource("33_qpa3c")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Hearts"]
 layout_mode = 0
 offset_left = -98.0
 offset_top = 7.0
@@ -1200,7 +1204,7 @@ text = "Hearts for HP bar"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="CheckBox2" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
+[node name="Souls" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 52.0
@@ -1210,8 +1214,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_k5c6d")
 theme_override_icons/checked = SubResource("AtlasTexture_je088")
 theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
+script = ExtResource("33_qpa3c")
 
-[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/CheckBox2"]
+[node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Souls"]
 layout_mode = 0
 offset_left = -150.0
 offset_top = 7.0
@@ -1229,7 +1234,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="Button" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+[node name="RESET" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 3.0
@@ -1243,7 +1248,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_cwemf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ymfbl")
 text = "RESET ALL DATA (?!)"
 
-[node name="Button2" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
+[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 43.0

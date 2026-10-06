@@ -1,4 +1,4 @@
-extends TextureButton
+extends BaseButton
 
 @export var menuToLoad:Control
 
@@ -9,7 +9,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if button_pressed:
-		menuToLoad.visible = true
-	else:
-		menuToLoad.visible = false
+	if name == "RESET":
+		pass
+	elif name == "BossAgain":
+		pass
+	elif name.right(6) == "Button":
+		if button_pressed:
+			menuToLoad.visible = true
+		else:
+			menuToLoad.visible = false
+
+func _toggled(toggled_on: bool) -> void:
+	if name == "Fullscreen":
+		DisplayServer.window_set_mode(int(toggled_on) * 3 as DisplayServer.WindowMode)
+	elif name == "Floor":
+		pass
+	elif name == "Hearts":
+		pass
+	elif name == "Souls":
+		pass
