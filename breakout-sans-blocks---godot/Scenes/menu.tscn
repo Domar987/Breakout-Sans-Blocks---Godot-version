@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=112 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -44,6 +44,13 @@
 [ext_resource type="Texture2D" uid="uid://dvw085eejjpac" path="res://Sprites/Menu/optionmenubuttonright1.png" id="35_ui7cl"]
 [ext_resource type="Texture2D" uid="uid://c3i2vpoia2b30" path="res://Sprites/Menu/optionmenubuttonright2.png" id="36_0sm67"]
 [ext_resource type="Texture2D" uid="uid://cx7j5ubpyxjes" path="res://Sprites/Menu/checkbox.png" id="39_ui7cl"]
+[ext_resource type="Texture2D" uid="uid://bdpdwfhxfwf8f" path="res://Sprites/Menu/bigredbutton.png" id="40_0sm67"]
+[ext_resource type="Texture2D" uid="uid://8166rsfwtyv6" path="res://Sprites/Menu/slider1.png" id="40_cwemf"]
+[ext_resource type="Texture2D" uid="uid://cxfbw0o0yleq" path="res://Sprites/Menu/regularbutton.png" id="41_mg0t0"]
+[ext_resource type="Texture2D" uid="uid://cbwu071sj8vvk" path="res://Sprites/Menu/slider2.png" id="41_ymfbl"]
+[ext_resource type="Texture2D" uid="uid://dwpe6sf11u4yn" path="res://Sprites/Menu/slidertick.png" id="42_ymfbl"]
+[ext_resource type="Texture2D" uid="uid://csdu8pkxqtoys" path="res://Sprites/Menu/sliderarea1.png" id="43_f55ex"]
+[ext_resource type="Texture2D" uid="uid://bo2k7cmu4sksk" path="res://Sprites/Menu/sliderarea2.png" id="44_2t718"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -227,9 +234,44 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("39_ui7cl")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="ImageTexture" id="ImageTexture_cwemf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f55ex"]
+texture = ExtResource("43_f55ex")
+texture_margin_left = 4.0
+texture_margin_top = 10.0
+texture_margin_right = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h7gyr"]
+texture = ExtResource("44_2t718")
+texture_margin_left = 4.0
+texture_margin_top = 8.0
+texture_margin_right = 4.0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mg0t0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k5c6d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mg0t0"]
+texture = ExtResource("40_0sm67")
+region_rect = Rect2(0, 0, 120, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5c6d"]
+texture = ExtResource("40_0sm67")
+region_rect = Rect2(240, 0, 120, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwemf"]
+texture = ExtResource("40_0sm67")
+region_rect = Rect2(120, 0, 120, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymfbl"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ymfbl"]
+texture = ExtResource("41_mg0t0")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_48g0d"]
 font = ExtResource("25_ocger")
@@ -609,7 +651,6 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="Options" type="ScrollContainer" parent="MiniMenu"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -715,6 +756,7 @@ script = ExtResource("33_qpa3c")
 menuToLoad = NodePath("../GridContainer5")
 
 [node name="GridContainer" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
 anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
@@ -944,7 +986,6 @@ label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
 [node name="GridContainer4" type="Control" parent="MiniMenu/Options/Control"]
-visible = false
 anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
@@ -954,18 +995,25 @@ offset_bottom = 137.0
 [node name="HSlider" type="HSlider" parent="MiniMenu/Options/Control/GridContainer4"]
 layout_mode = 0
 offset_left = 52.0
-offset_top = 4.0
+offset_top = 3.0
 offset_right = 177.0
-offset_bottom = 20.0
-max_value = 2.0
+offset_bottom = 19.0
+theme_override_icons/grabber = ExtResource("40_cwemf")
+theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_cwemf")
+theme_override_icons/tick = ExtResource("42_ymfbl")
+theme_override_styles/slider = SubResource("StyleBoxTexture_f55ex")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_h7gyr")
+max_value = 3.0
+value = 3.0
 tick_count = 4
 ticks_on_borders = true
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
 layout_mode = 0
-offset_left = -76.0
+offset_left = -78.0
 offset_top = -3.0
-offset_right = -1.0
+offset_right = -3.0
 offset_bottom = 20.0
 text = "Camera
 Shake"
@@ -974,30 +1022,30 @@ horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
 layout_mode = 0
-offset_left = -22.0
-offset_top = 18.0
-offset_right = 41.0
-offset_bottom = 41.0
+offset_left = -24.0
+offset_top = 20.0
+offset_right = 39.0
+offset_bottom = 43.0
 text = "Off"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = 18.0
-offset_right = 76.0
-offset_bottom = 41.0
+offset_left = 12.0
+offset_top = 20.0
+offset_right = 75.0
+offset_bottom = 43.0
 text = "Low"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
 
 [node name="Label4" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 18.0
-offset_right = 113.0
-offset_bottom = 41.0
+offset_left = 49.0
+offset_top = 20.0
+offset_right = 112.0
+offset_bottom = 43.0
 text = "Medium"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
@@ -1005,9 +1053,9 @@ horizontal_alignment = 1
 [node name="Label5" type="Label" parent="MiniMenu/Options/Control/GridContainer4/HSlider"]
 layout_mode = 0
 offset_left = 88.0
-offset_top = 18.0
+offset_top = 20.0
 offset_right = 151.0
-offset_bottom = 41.0
+offset_bottom = 43.0
 text = "High"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 1
@@ -1070,6 +1118,10 @@ offset_right = 158.0
 offset_bottom = 35.0
 theme_override_fonts/font = ExtResource("25_ocger")
 theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_mg0t0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k5c6d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cwemf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ymfbl")
 text = "RESET ALL DATA (?!)"
 
 [node name="Button2" type="Button" parent="MiniMenu/Options/Control/GridContainer5"]
@@ -1080,9 +1132,11 @@ offset_right = 177.0
 offset_bottom = 60.0
 theme_override_fonts/font = ExtResource("25_ocger")
 theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxTexture_ymfbl")
 text = "Reset Boss Fight Cutscenes"
 
 [node name="Achievements" type="VBoxContainer" parent="MiniMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
