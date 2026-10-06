@@ -3,11 +3,17 @@ extends BaseButton
 @export var menuToLoad:Control
 @export var Soul:Node2D
 @export var Warning:Container
+@export var YesButton:BaseButton
+@export var NoButton:BaseButton
+
+var function:Callable
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if name == "RESET":
+	if name == "RESET" or name == "BossAgain":
 		Warning.scale = Vector2.ZERO
+		YesButton.pressed.connect(Yes)
+		NoButton.pressed.connect(No)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,9 +26,11 @@ func _process(delta: float) -> void:
 
 func _pressed() -> void:
 	if name == "RESET":
-		warning(BigReset)
+		warning()
+		function = Callable(BigReset)
 	elif name == "BossAgain":
-		warning(BossReset)
+		warning()
+		function = Callable(BossReset)
 
 func _toggled(toggled_on: bool) -> void:
 	if name == "Fullscreen":
@@ -37,12 +45,19 @@ func _toggled(toggled_on: bool) -> void:
 		create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
 		$/root/Menu.disabledEffect = not toggled_on
 
-func warning(function:Callable)->void:
-	if Warning.scale == Vector2.ZERO:
-		create_tween().tween_property(Warning,"scale",Vector2(1,1),0.5)
+func warning()->void:
+	if Warning.scale <= Vector2.ONE * 0.01:
+		create_tween().tween_property(Warning,"scale",Vector2.ONE,0.5)
+
+func Yes()->void:
+	if Warning.scale == Vector2.ONE:
+		function.call()
+func No()->void:
+	if Warning.scale == Vector2.ONE:
+		create_tween().tween_property(Warning,"scale",Vector2.ZERO,0.5)
 
 func BigReset()->void:
-	pass
+	print("Reset everything")
 
 func BossReset()->void:
-	pass
+	print("See the boss cutscene again")

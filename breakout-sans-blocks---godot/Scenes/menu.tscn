@@ -1206,7 +1206,7 @@ offset_top = 62.0
 offset_right = 262.0
 offset_bottom = 137.0
 
-[node name="RESET" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning")]
+[node name="RESET" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning", "YesButton", "NoButton")]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 3.0
@@ -1221,8 +1221,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ymfbl")
 text = "RESET ALL DATA (?!)"
 script = ExtResource("33_qpa3c")
 Warning = NodePath("../../Warning")
+YesButton = NodePath("../../Warning/HBoxContainer/Yes")
+NoButton = NodePath("../../Warning/HBoxContainer/No")
 
-[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning")]
+[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/GridContainer5" node_paths=PackedStringArray("Warning", "YesButton", "NoButton")]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 43.0
@@ -1237,6 +1239,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
 text = "Reset Boss Fight Cutscenes"
 script = ExtResource("33_qpa3c")
 Warning = NodePath("../../Warning")
+YesButton = NodePath("../../Warning/HBoxContainer/Yes")
+NoButton = NodePath("../../Warning/HBoxContainer/No")
 
 [node name="Warning" type="VBoxContainer" parent="MiniMenu/Options/Control"]
 layout_mode = 0
@@ -1284,7 +1288,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_je088")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h7gyr")
 text = "Yes"
 
-[node name="BossAgain" type="Button" parent="MiniMenu/Options/Control/Warning/HBoxContainer"]
+[node name="No" type="Button" parent="MiniMenu/Options/Control/Warning/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("25_ocger")
 theme_override_font_sizes/font_size = 9
