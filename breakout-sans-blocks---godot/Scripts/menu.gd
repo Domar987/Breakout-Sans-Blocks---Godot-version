@@ -9,6 +9,8 @@ var mousePos:Vector2
 @onready var effect2 = $EffectParent/Effect2
 var startedTitleEffect:bool = false
 var effectSine:float = 0.0
+
+var disabledEffect:bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var startTween = create_tween().set_trans(Tween.TRANS_SPRING).set_parallel(true)
@@ -36,7 +38,10 @@ func _process(delta: float) -> void:
 	if startedTitleEffect:
 		effectSine += 1.5 * delta
 		var sine = sin(effectSine)/6.0 + 0.65
-		modulate = Color(sine,sine,sine,1)
+		if disabledEffect:
+			modulate = Color.WHITE
+		else:
+			modulate = Color(sine,sine,sine,1)
 		effect.modulate = Color(1/sine,1/sine,1/sine,sine)
 		effect2.modulate = Color(1/sine,1/sine,1/sine,sine)
 
@@ -72,8 +77,9 @@ func titleEffect()->void:
 		startedTitleEffect = true
 		effectSine = 0.0
 		var tween = create_tween().set_parallel(false)
-		tween.tween_property(self,"modulate",Color(10,10,10,1),0.1)
-		tween.tween_property(self,"modulate",Color.WHITE,0.2)
+		if not disabledEffect:
+			tween.tween_property(self,"modulate",Color(10,10,10,1),0.1)
+			tween.tween_property(self,"modulate",Color.WHITE,0.2)
 		effect.visible = true
 		effect2.visible = true
 		effectP.position = Vector2(0,80)
@@ -82,7 +88,10 @@ func titleEffect()->void:
 	if titleMusic.get_playback_position() >= 47.870 and startedTitleEffect:
 		startedTitleEffect = false
 		var tween = create_tween().set_parallel(false)
-		tween.tween_property(self,"modulate",Color(10,10,10,1),0.1)
+		if disabledEffect:
+			tween.tween_interval(0.1)
+		else:
+			tween.tween_property(self,"modulate",Color(10,10,10,1),0.1)
 		tween.tween_callback(boolstuf)
 		tween.tween_property(self,"modulate",Color.WHITE,0.2)
 

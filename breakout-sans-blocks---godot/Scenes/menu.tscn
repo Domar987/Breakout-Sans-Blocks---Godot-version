@@ -1207,7 +1207,7 @@ text = "Hearts for HP bar"
 label_settings = SubResource("LabelSettings_mucp4")
 horizontal_alignment = 2
 
-[node name="Souls" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4"]
+[node name="Souls" type="CheckBox" parent="MiniMenu/Options/Control/GridContainer4" node_paths=PackedStringArray("Soul")]
 layout_mode = 0
 offset_left = 165.0
 offset_top = 52.0
@@ -1218,6 +1218,7 @@ theme_override_icons/checked = SubResource("AtlasTexture_je088")
 theme_override_icons/unchecked = SubResource("AtlasTexture_tyk3f")
 button_pressed = true
 script = ExtResource("33_qpa3c")
+Soul = NodePath("../../../../../EffectParent")
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer4/Souls"]
 layout_mode = 0

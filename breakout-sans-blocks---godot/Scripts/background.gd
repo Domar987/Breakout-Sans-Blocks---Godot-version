@@ -99,11 +99,11 @@ func _physics_process(delta: float) -> void:
 			#else:
 				#level = i
 				#RuleManager.level = level + 1
-			level = i
 			RuleManager.level = level + 1
 			if level >= 4:
 				print("Boss fight")
 			else:
+				level = i
 				levelChange(yvalue)
 	
 	timer -= RuleManager.ySpeed * delta

@@ -1,6 +1,7 @@
 extends BaseButton
 
 @export var menuToLoad:Control
+@export var Soul:Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,4 +30,5 @@ func _toggled(toggled_on: bool) -> void:
 	elif name == "Hearts":
 		pass
 	elif name == "Souls":
-		pass
+		create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
+		$/root/Menu.disabledEffect = not toggled_on
