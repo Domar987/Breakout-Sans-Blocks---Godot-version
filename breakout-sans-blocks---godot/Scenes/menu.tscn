@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=125 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://csdu8pkxqtoys" path="res://Sprites/Menu/sliderarea1.png" id="43_f55ex"]
 [ext_resource type="Texture2D" uid="uid://bo2k7cmu4sksk" path="res://Sprites/Menu/sliderarea2.png" id="44_2t718"]
 [ext_resource type="Script" uid="uid://dg0s64wxbjy50" path="res://Scripts/stupid.gd" id="44_oc4uc"]
+[ext_resource type="Script" uid="uid://c6eehuomvvqhh" path="res://Scripts/slider.gd" id="48_qmlsk"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="56_hph2t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
@@ -894,6 +895,8 @@ theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
 theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
+script = ExtResource("48_qmlsk")
+indexToChange = 3
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Master"]
 layout_mode = 0
@@ -916,6 +919,8 @@ theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
 theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
+script = ExtResource("48_qmlsk")
+indexToChange = 4
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Music"]
 layout_mode = 0
@@ -938,6 +943,8 @@ theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
 theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
+script = ExtResource("48_qmlsk")
+indexToChange = 5
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Misc"]
 layout_mode = 0
@@ -960,6 +967,8 @@ theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
 theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
+script = ExtResource("48_qmlsk")
+indexToChange = 6
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Enemy"]
 layout_mode = 0
@@ -982,6 +991,8 @@ theme_override_icons/grabber_highlight = ExtResource("41_ymfbl")
 theme_override_styles/slider = SubResource("StyleBoxTexture_oc4uc")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hph2t")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hph2t")
+script = ExtResource("48_qmlsk")
+indexToChange = 7
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/GridContainer2/Annoying"]
 layout_mode = 0

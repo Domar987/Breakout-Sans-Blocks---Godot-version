@@ -11,6 +11,8 @@ func _ready() -> void:
 	DisplayServer.window_set_size(vec)
 	DisplayServer.window_set_position(Vector2i(scr.x - vec.x/2 ,scr.y - vec.y/2 ) )
 	DisplayServer.window_set_mode(int(fileArray[0]) * 3 as DisplayServer.WindowMode)
+	for i in range(3,8):
+		AudioServer.set_bus_volume_linear(i-3,fileArray[i]/100.0)
 	if get_parent().name == "Ingame":
 		var floor = get_node("../Floor")
 		var topLeft = get_node("../UI/TopLeft")
