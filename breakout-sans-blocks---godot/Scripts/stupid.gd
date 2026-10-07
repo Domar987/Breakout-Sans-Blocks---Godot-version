@@ -1,8 +1,12 @@
 extends OptionButton
 
+var testFile = FileAccess.get_file_as_string("res://Data/options.json")
+var testArray = JSON.parse_string(testFile)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	testArray[1] = str_to_var(testArray[1])
+	print(testArray)
 	get_popup().canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
 	get_popup().id_pressed.connect(pressed)
 

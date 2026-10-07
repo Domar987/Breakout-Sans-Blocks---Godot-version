@@ -807,6 +807,7 @@ script = ExtResource("33_qpa3c")
 menuToLoad = NodePath("../GridContainer5")
 
 [node name="GridContainer" type="Control" parent="MiniMenu/Options/Control"]
+visible = false
 anchors_preset = 0
 offset_left = 62.0
 offset_top = 62.0
@@ -1243,6 +1244,7 @@ YesButton = NodePath("../../Warning/HBoxContainer/Yes")
 NoButton = NodePath("../../Warning/HBoxContainer/No")
 
 [node name="Warning" type="VBoxContainer" parent="MiniMenu/Options/Control"]
+visible = false
 layout_mode = 0
 offset_left = 71.0
 offset_top = 67.0
