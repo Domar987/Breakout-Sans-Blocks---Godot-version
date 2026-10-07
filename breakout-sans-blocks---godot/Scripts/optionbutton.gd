@@ -8,6 +8,8 @@ extends BaseButton
 
 static var activeWarning:String
 
+var label:Label
+var labeltxt:String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var fileString = FileAccess.get_file_as_string("res://Data/options.json")
@@ -17,6 +19,8 @@ func _ready() -> void:
 			button_pressed = fileArray[0]
 		"Floor":
 			button_pressed = fileArray[9]
+			label = get_child(0)
+			labeltxt = label.text
 		"Hearts":
 			button_pressed = fileArray[11]
 		"Souls":
@@ -34,6 +38,8 @@ func _process(delta: float) -> void:
 			menuToLoad.visible = true
 		else:
 			menuToLoad.visible = false
+	if label != null:
+		label.text = labeltxt+"\n(x"+str(int(not button_pressed) * 0.05 + 1)+")"
 
 func changeFile(index:int,value:Variant)->void:
 	var fileString = FileAccess.get_file_as_string("res://Data/options.json")

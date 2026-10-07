@@ -1,6 +1,5 @@
 class_name RuleManager extends Node
 
-@export var wallspreselected = false
 var walls:bool
 
 var ballfile = FileAccess.get_file_as_string("res://Data/ball_colors.json")
@@ -10,6 +9,8 @@ var activecolor:Dictionary
 var difficulty = 0
 var oldDifficulty = 0
 var level = 1
+
+var difficultyFromRules:float = 1
 
 var maxHealth:int = 10
 var health:int = 10
@@ -25,6 +26,8 @@ var ySpeed:float=0.0
 var died:bool = false
 
 var points:int = 0
+
+var pointsFromDifficulty:int = 0
 
 var teeth:int = 0
 var ufocheevoFail:bool = false
@@ -52,16 +55,22 @@ var flytimer:float = 0
 
 var aura:PackedScene = load("res://Objects/aura.tscn")
 
+var fileString = FileAccess.get_file_as_string("res://Data/options.json")
+var Settings = JSON.parse_string(fileString)
+
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	Engine.time_scale = 1
 	activecolor = ballcolors[randi()%6]
-	if !wallspreselected:
+	if Settings[8] == 0:
 		walls = true
+	difficultyFromRules *= 1 + Settings[8] * 0.1
+	difficultyFromRules *= 1 + int(not Settings[9]) * 0.05
 func _ready() -> void:
 	get_parent().modulate = Color.BLACK
 	create_tween().set_trans(Tween.TRANS_QUAD).set_parallel(false).tween_property(get_parent(),"modulate",Color.WHITE,0.5)
 	Input.warp_mouse(get_viewport().size/2)
+	
 
 func _physics_process(delta: float) -> void:
 	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
@@ -173,6 +182,7 @@ func death()->void:
 	tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
 	platformLength(0)
 	var gameOver = load("res://Objects/game_over.tscn")
+	pointsFromDifficulty = points * difficultyFromRules
 	$/root/Ingame/UI/CenterRight.add_child(gameOver.instantiate())
 
 func cameraZoom()->void:
