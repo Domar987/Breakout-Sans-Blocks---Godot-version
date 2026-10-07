@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w3k1ybswoeq8"]
+
+[ext_resource type="Script" uid="uid://bt3vedwigwro7" path="res://Scripts/heartGenerator.gd" id="1_vc6ii"]
+
+[node name="heartGenerator" type="Node"]
+script = ExtResource("1_vc6ii")

@@ -36,7 +36,7 @@ var ufocheevoFail:bool = false
 @onready var portal:Area2D = $/root/Ingame/PortalVisual
 @onready var background:Sprite2D = $/root/Ingame/Background
 @onready var ui:Control = $/root/Ingame/UI
-@onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
+#@onready var heartGenerator:Node = $/root/Ingame/UI/TopLeft/heartGenerator
 @onready var camaBar:Node = $/root/Ingame/UI/TopLeft/Camabar
 
 @onready var zoom:float = camera.zoom.x
@@ -134,7 +134,11 @@ func healthChange(dmg:int)->void:
 		health += dmg
 	else:
 		invitimer = 2.0
-		camaBar.update(health)
+		if camaBar != null:
+			camaBar.update(health)
+		var tmp = ui.get_child(0).get_child(3)
+		if tmp.name == "heartGenerator":
+			tmp.generateHearts(health)
 		
 		hurtmodulatetween(dmg)
 		hurtpositiontween(dmg)

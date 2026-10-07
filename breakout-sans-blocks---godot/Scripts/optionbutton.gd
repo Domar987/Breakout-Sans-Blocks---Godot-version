@@ -15,6 +15,12 @@ func _ready() -> void:
 	match name:
 		"Fullscreen":
 			button_pressed = fileArray[0]
+		"Floor":
+			button_pressed = fileArray[9]
+		"Hearts":
+			button_pressed = fileArray[11]
+		"Souls":
+			button_pressed = fileArray[12]
 	if name == "RESET" or name == "BossAgain":
 		Warning.scale = Vector2.ZERO
 		YesButton.pressed.connect(Yes)
@@ -30,11 +36,11 @@ func _process(delta: float) -> void:
 			menuToLoad.visible = false
 
 func changeFile(index:int,value:Variant)->void:
-		var fileString = FileAccess.get_file_as_string("res://Data/options.json")
-		var fileArray = JSON.parse_string(fileString)
-		fileArray[index] = value
-		var fileUpdate = FileAccess.open("res://Data/options.json",FileAccess.WRITE)
-		fileUpdate.store_string(JSON.stringify(fileArray,"\t"))
+	var fileString = FileAccess.get_file_as_string("res://Data/options.json")
+	var fileArray = JSON.parse_string(fileString)
+	fileArray[index] = value
+	var fileUpdate = FileAccess.open("res://Data/options.json",FileAccess.WRITE)
+	fileUpdate.store_string(JSON.stringify(fileArray,"\t"))
 
 func _pressed() -> void:
 	if name == "RESET":
@@ -50,12 +56,13 @@ func _toggled(toggled_on: bool) -> void:
 			DisplayServer.window_set_mode(int(toggled_on) * 3 as DisplayServer.WindowMode)
 			changeFile(0,toggled_on)
 		"Floor":
-			pass
+			changeFile(9,toggled_on)
 		"Hearts":
-			pass
+			changeFile(11,toggled_on)
 		"Souls":
 			create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
 			$/root/Menu.disabledEffect = not toggled_on
+			changeFile(12,toggled_on)
 
 func warning()->void:
 	if Warning.scale <= Vector2.ONE * 0.01:
