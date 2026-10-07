@@ -74,6 +74,7 @@ func Yes()->void:
 		if (name == "RESET" and activeWarning == "BigReset") or (name == "BossAgain" and activeWarning == "BossReset"):
 			var tmp = Callable(self,activeWarning)
 			tmp.call()
+		create_tween().tween_property(Warning,"scale",Vector2.ZERO,0.2)
 func No()->void:
 	if Warning.scale == Vector2.ONE:
 		create_tween().tween_property(Warning,"scale",Vector2.ZERO,0.2)

@@ -611,7 +611,7 @@ stream = ExtResource("16_1by5w")
 autoplay = true
 bus = &"Music"
 
-[node name="MiniMenu" parent="." instance=ExtResource("15_owyel")]
+[node name="MiniMenu" parent="." node_paths=PackedStringArray("Warning") instance=ExtResource("15_owyel")]
 z_index = 5
 clip_contents = true
 anchors_preset = 0
@@ -624,6 +624,7 @@ offset_bottom = 90.0
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pde1v")
+Warning = NodePath("Options/Control/Warning")
 
 [node name="Encyclopedia" type="HBoxContainer" parent="MiniMenu"]
 visible = false
@@ -1245,7 +1246,6 @@ YesButton = NodePath("../../Warning/HBoxContainer/Yes")
 NoButton = NodePath("../../Warning/HBoxContainer/No")
 
 [node name="Warning" type="VBoxContainer" parent="MiniMenu/Options/Control"]
-visible = false
 layout_mode = 0
 offset_left = 71.0
 offset_top = 67.0
@@ -1264,6 +1264,38 @@ offset_top = -1.0
 offset_right = 180.0
 offset_bottom = 54.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_tyk3f")
+
+[node name="Panel2" type="Panel" parent="MiniMenu/Options/Control/Warning/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -71.0
+offset_top = -67.0
+offset_right = 57.0
+offset_bottom = 113.0
+
+[node name="Panel3" type="Panel" parent="MiniMenu/Options/Control/Warning/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 120.0
+offset_top = -67.0
+offset_right = 248.0
+offset_bottom = 113.0
+
+[node name="Panel4" type="Panel" parent="MiniMenu/Options/Control/Warning/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = -67.0
+offset_right = 152.0
+offset_bottom = 29.0
+
+[node name="Panel5" type="Panel" parent="MiniMenu/Options/Control/Warning/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 49.0
+offset_right = 152.0
+offset_bottom = 113.0
 
 [node name="Label" type="Label" parent="MiniMenu/Options/Control/Warning"]
 layout_mode = 2

@@ -3,6 +3,7 @@ extends Panel
 var clickable = true
 var childToShow:int
 var children:Array
+@export var Warning:Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,11 +14,12 @@ func _ready() -> void:
 		i.visible = false
 
 func _input(event: InputEvent) -> void:
-	if position == Vector2(-160,-90) and event is InputEventMouseButton:
-		var mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
-		#print (mousePos)
-		if abs(mousePos.x) > 360 or abs(mousePos.y) > 225:
-			disappear()
+	if Warning.scale <= Vector2(0.01,0.01):
+		if position == Vector2(-160,-90) and event is InputEventMouseButton:
+			var mousePos = get_viewport().get_mouse_position() - Vector2(480,270)
+			#print (mousePos)
+			if abs(mousePos.x) > 360 or abs(mousePos.y) > 225:
+				disappear()
 
 func appear(child:int)->void:
 	if clickable:
