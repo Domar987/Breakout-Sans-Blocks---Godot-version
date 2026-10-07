@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drr13y8tq32j2"]
+
+[ext_resource type="Script" uid="uid://n5q3epp315t0" path="res://Scripts/option_reader.gd" id="1_3n8wf"]
+
+[node name="OptionReader" type="Node"]
+script = ExtResource("1_3n8wf")

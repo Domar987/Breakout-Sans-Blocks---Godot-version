@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=124 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://csdu8pkxqtoys" path="res://Sprites/Menu/sliderarea1.png" id="43_f55ex"]
 [ext_resource type="Texture2D" uid="uid://bo2k7cmu4sksk" path="res://Sprites/Menu/sliderarea2.png" id="44_2t718"]
 [ext_resource type="Script" uid="uid://dg0s64wxbjy50" path="res://Scripts/stupid.gd" id="44_oc4uc"]
+[ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="56_hph2t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
 texture = ExtResource("5_wbdvm")
@@ -1390,3 +1391,5 @@ z_index = 10
 position = Vector2(-320, 47)
 sprite_frames = SubResource("SpriteFrames_lvy56")
 autoplay = "default"
+
+[node name="OptionReader" parent="." instance=ExtResource("56_hph2t")]

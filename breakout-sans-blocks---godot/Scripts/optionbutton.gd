@@ -10,6 +10,11 @@ static var activeWarning:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var fileString = FileAccess.get_file_as_string("res://Data/options.json")
+	var fileArray = JSON.parse_string(fileString)
+	match name:
+		"Fullscreen":
+			button_pressed = fileArray[0]
 	if name == "RESET" or name == "BossAgain":
 		Warning.scale = Vector2.ZERO
 		YesButton.pressed.connect(Yes)
@@ -24,6 +29,13 @@ func _process(delta: float) -> void:
 		else:
 			menuToLoad.visible = false
 
+func changeFile(index:int,value:Variant)->void:
+		var fileString = FileAccess.get_file_as_string("res://Data/options.json")
+		var fileArray = JSON.parse_string(fileString)
+		fileArray[index] = value
+		var fileUpdate = FileAccess.open("res://Data/options.json",FileAccess.WRITE)
+		fileUpdate.store_string(JSON.stringify(fileArray,"\t"))
+
 func _pressed() -> void:
 	if name == "RESET":
 		warning()
@@ -33,17 +45,17 @@ func _pressed() -> void:
 		activeWarning = "BossReset"
 
 func _toggled(toggled_on: bool) -> void:
-	if name == "Fullscreen":
-		DisplayServer.window_set_mode(int(toggled_on) * 3 as DisplayServer.WindowMode)
-		#DisplayServer.window_set_size(vec)
-		#DisplayServer.window_set_position(Vector2i(scr.x - vec.x/2 ,scr.y - vec.y/2 ) )
-	elif name == "Floor":
-		pass
-	elif name == "Hearts":
-		pass
-	elif name == "Souls":
-		create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
-		$/root/Menu.disabledEffect = not toggled_on
+	match name:
+		"Fullscreen":
+			DisplayServer.window_set_mode(int(toggled_on) * 3 as DisplayServer.WindowMode)
+			changeFile(0,toggled_on)
+		"Floor":
+			pass
+		"Hearts":
+			pass
+		"Souls":
+			create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
+			$/root/Menu.disabledEffect = not toggled_on
 
 func warning()->void:
 	if Warning.scale <= Vector2.ONE * 0.01:
