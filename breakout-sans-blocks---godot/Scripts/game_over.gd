@@ -10,9 +10,14 @@ var menuHovering:bool = false
 @onready var menutext = buttons[2].get_child(1)
 @onready var distancetext = get_child(1).get_child(0).get_child(1)
 @onready var scoretext = get_child(1).get_child(1).get_child(1)
+@onready var multtext = get_child(1).get_child(1).get_child(2)
 
 var distance:float = 0
 var score:int = 0
+var scoremulted:int = 0
+var mult:float = 1
+var tweendistance:float = -1
+var tweenscore:int = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +30,9 @@ func _ready() -> void:
 	buttons[2].mouse_exited.connect(menuHovEnd)
 	position = Vector2(100,-38)
 	buttons[0].position = Vector2(-54,150)
+	
+	multtext.text = "x"+str(mult)
+	
 	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self,"position",Vector2(-78,-38),0.6)
 	tween.tween_property(buttons[0],"position",Vector2(-54,105),0.5)
@@ -32,19 +40,25 @@ func _ready() -> void:
 	
 	var scorentexttween = create_tween()
 	scorentexttween.tween_interval(1.5)
-	scorentexttween.tween_property(self,"distance",1000,0.5)
+	scorentexttween.tween_property(self,"tweendistance",distance,0.5)
 	scorentexttween.tween_interval(0.4)
-	scorentexttween.tween_property(self,"score",1000,1.0)
+	scorentexttween.tween_property(self,"tweenscore",score,1.0)
+	scorentexttween.tween_property(multtext,"modulate",Color.WHITE,0.25)
+	scorentexttween.set_parallel().tween_property(multtext,"position",Vector2(-60,12),0.25)
+	scorentexttween.set_parallel(false).set_trans(Tween.TRANS_QUINT).tween_interval(0.75)
+	scorentexttween.tween_property(multtext,"position",Vector2(-34,12),0.5)
+	scorentexttween.set_parallel().tween_property(multtext,"modulate",Color.TRANSPARENT,0.5)
+	scorentexttween.tween_property(self,"tweenscore",scoremulted,1.0)
 
 func signanim()->void:
 	buttons[0].get_child(0).play("default_1")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if distance > 0:
-		distancetext.text = str(snappedf(distance,0.1))
-	if score > 0:
-		scoretext.text = str(score)
+	if tweendistance >= 0:
+		distancetext.text = str(snappedf(tweendistance,0.1))+" m"
+	if tweenscore >= 0:
+		scoretext.text = str(tweenscore)
 	if Input.is_key_pressed(KEY_R):
 		retryPressed()
 	if Input.is_key_pressed(KEY_M):

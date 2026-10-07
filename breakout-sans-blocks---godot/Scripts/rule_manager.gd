@@ -181,9 +181,14 @@ func death()->void:
 	tween.tween_property($/root/Ingame/Arkanoid,"pitch_scale",0.01,2.5)
 	tween.tween_property($/root/Ingame/Arkanoid,"playing",false,0.0)
 	platformLength(0)
-	var gameOver = load("res://Objects/game_over.tscn")
+	
 	pointsFromDifficulty = points * difficultyFromRules
-	$/root/Ingame/UI/CenterRight.add_child(gameOver.instantiate())
+	var gameOver = load("res://Objects/game_over.tscn").instantiate()
+	gameOver.distance = background.yvalue / 40.0
+	gameOver.score = points
+	gameOver.scoremulted = pointsFromDifficulty
+	gameOver.mult = difficultyFromRules
+	$/root/Ingame/UI/CenterRight.add_child(gameOver)
 
 func cameraZoom()->void:
 	var tween = create_tween()
