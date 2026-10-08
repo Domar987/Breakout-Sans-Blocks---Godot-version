@@ -84,6 +84,8 @@ func _physics_process(delta: float) -> void:
 				movedDown = true
 				xSpeed *= -1
 				position.y += 32
+				if position.y > 540/(2*RuleManager.zoom) + 8:
+					queue_free()
 				selectedcolors = selectColor(position.y)
 				mainSprite.sprite_frames.clear_all()
 				var tex = Animator.applyColor(aliensprite+str(variant)+".png",selectedcolors)

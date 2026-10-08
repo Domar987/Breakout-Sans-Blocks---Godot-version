@@ -16,8 +16,3 @@ func _ready() -> void:
 	tween.tween_property(self,"position",Vector2(-26,42),0.4)
 	tween.parallel().tween_property(sprite,"position",Vector2(32,32),0.4)
 	tween.tween_callback(queue_free)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

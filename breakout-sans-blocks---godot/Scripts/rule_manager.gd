@@ -138,6 +138,7 @@ func difficultyChange()->void:
 		if platlenmod < 1:
 			platlenmod += 0.05
 
+@onready var topLeft = ui.get_child(0)
 func healthChange(dmg:int)->void:
 	if invitimer > 0:
 		health += dmg
@@ -145,9 +146,10 @@ func healthChange(dmg:int)->void:
 		invitimer = 2.0
 		if camaBar != null:
 			camaBar.update(health)
-		var tmp = ui.get_child(0).get_child(3)
-		if tmp.name == "heartGenerator":
-			tmp.generateHearts(health)
+		if topLeft.get_child_count() >= 3:
+			var tmp = ui.get_child(3)
+			if tmp != null and tmp.name == "heartGenerator":
+				tmp.generateHearts(health)
 		
 		hurtmodulatetween(dmg)
 		hurtpositiontween(dmg)

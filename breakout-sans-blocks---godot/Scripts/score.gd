@@ -32,6 +32,8 @@ func _physics_process(delta: float) -> void:
 			speed = 50
 		speed += 100 * delta
 		position.y -= delta * speed
+	if position.y < -540/(2*RuleManager.zoom) - 32:
+		queue_free()
 
 func pointSetting()->void:
 	if point >= 5000:

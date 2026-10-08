@@ -1260,7 +1260,6 @@ YesButton = NodePath("../../Warning/HBoxContainer/Yes")
 NoButton = NodePath("../../Warning/HBoxContainer/No")
 
 [node name="Warning" type="VBoxContainer" parent="MiniMenu/Options/Control"]
-visible = false
 layout_mode = 0
 offset_left = 71.0
 offset_top = 67.0
