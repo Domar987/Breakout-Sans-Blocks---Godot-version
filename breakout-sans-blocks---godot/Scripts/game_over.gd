@@ -8,9 +8,14 @@ var menuHovering:bool = false
 @onready var retrytext = buttons[1].get_child(1)
 @onready var menutex = buttons[2].get_child(0)
 @onready var menutext = buttons[2].get_child(1)
-@onready var distancetext = get_child(1).get_child(0).get_child(1)
-@onready var scoretext = get_child(1).get_child(1).get_child(1)
-@onready var multtext = get_child(1).get_child(1).get_child(2)
+
+@onready var numerics:Array[TextureRect] = [get_child(1).get_child(0),get_child(1).get_child(1)]
+
+@onready var distancetext = numerics[0].get_child(1)
+@onready var distanceundertext = numerics[0].get_child(0)
+@onready var scoretext = numerics[1].get_child(1)
+@onready var scoreundertext = numerics[1].get_child(0)
+@onready var multtext = numerics[1].get_child(2)
 
 var distance:float = 0
 var score:int = 0
@@ -38,17 +43,23 @@ func _ready() -> void:
 	tween.tween_property(buttons[0],"position",Vector2(-54,105),0.5)
 	tween.tween_callback(signanim)
 	
+	var distancetime = pow(distance,1.0/3.0)/10.0 + 0.1
+	var scoretime1 = pow(score,1.0/6.0)/10.0
+	var scoretime2 = pow(scoremulted - score,1.0/6.0)/10.0
+	
 	var scorentexttween = create_tween()
 	scorentexttween.tween_interval(1.5)
-	scorentexttween.tween_property(self,"tweendistance",distance,0.5)
+	scorentexttween.tween_callback(func():distanceundertext.play("default"))
+	scorentexttween.tween_property(self,"tweendistance",distance,distancetime)
 	scorentexttween.tween_interval(0.4)
-	scorentexttween.tween_property(self,"tweenscore",score,1.0)
+	scorentexttween.tween_callback(func():scoreundertext.play("default"))
+	scorentexttween.tween_property(self,"tweenscore",score,scoretime1)
 	scorentexttween.tween_property(multtext,"modulate",Color.WHITE,0.25)
 	scorentexttween.set_parallel().tween_property(multtext,"position",Vector2(-60,12),0.25)
 	scorentexttween.set_parallel(false).set_trans(Tween.TRANS_QUINT).tween_interval(0.75)
 	scorentexttween.tween_property(multtext,"position",Vector2(-34,12),0.5)
 	scorentexttween.set_parallel().tween_property(multtext,"modulate",Color.TRANSPARENT,0.5)
-	scorentexttween.tween_property(self,"tweenscore",scoremulted,1.0)
+	scorentexttween.tween_property(self,"tweenscore",scoremulted,scoretime2)
 
 func signanim()->void:
 	buttons[0].get_child(0).play("default_1")

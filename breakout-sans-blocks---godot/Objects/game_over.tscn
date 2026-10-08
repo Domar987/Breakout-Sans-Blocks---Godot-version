@@ -47,9 +47,6 @@ animations = [{
 "duration": 1.0,
 "texture": null
 }, {
-"duration": 15.0,
-"texture": null
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xrpxl")
 }, {
@@ -97,9 +94,6 @@ region = Rect2(148, 0, 37, 7)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
-}, {
-"duration": 24.0,
 "texture": null
 }, {
 "duration": 1.0,
@@ -257,8 +251,7 @@ texture = ExtResource("4_d4ofv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Box/Distance"]
 position = Vector2(27, 25.5)
 sprite_frames = SubResource("SpriteFrames_lxyx1")
-autoplay = "default"
-frame = 7
+frame = 6
 frame_progress = 1.0
 
 [node name="Label" type="Label" parent="Box/Distance"]
@@ -281,8 +274,7 @@ texture = ExtResource("6_rrxsm")
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Box/Score"]
 position = Vector2(17.5, 25.5)
 sprite_frames = SubResource("SpriteFrames_23uwq")
-autoplay = "default"
-frame = 6
+frame = 5
 frame_progress = 1.0
 
 [node name="Label" type="Label" parent="Box/Score"]
