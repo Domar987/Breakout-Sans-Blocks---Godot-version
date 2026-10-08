@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cm3wnsrwv0utd"
-path="res://.godot/imported/bluemarine.wav-29d0c1a822cec9cae57d583e64c5db50.sample"
+path="res://.godot/imported/bluemarine.wav-d709456619276553c6ba2594752dace2.sample"
 
 [deps]
 
-source_file="res://Audio/Music/bluemarine.wav"
-dest_files=["res://.godot/imported/bluemarine.wav-29d0c1a822cec9cae57d583e64c5db50.sample"]
+source_file="res://Audio/Music/Ingame/bluemarine.wav"
+dest_files=["res://.godot/imported/bluemarine.wav-d709456619276553c6ba2594752dace2.sample"]
 
 [params]
 

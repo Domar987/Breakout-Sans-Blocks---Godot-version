@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://5c5h7kgmry21" path="res://Objects/Enemies/aeolosaurus.tscn" id="11_csxpc"]
 [ext_resource type="PackedScene" uid="uid://cydjvqceyxefe" path="res://Objects/Enemies/sewergator.tscn" id="12_6cchy"]
 [ext_resource type="PackedScene" uid="uid://ct3duf60c3y06" path="res://Objects/Enemies/AlienUfo.tscn" id="14_5mqjs"]
-[ext_resource type="AudioStream" uid="uid://b3ui2qkw1wco6" path="res://Audio/Music/arkanoid.wav" id="15_3jpny"]
 [ext_resource type="Texture2D" uid="uid://d1uuta2egal1e" path="res://Sprites/Cracks/cracksfulltest.png" id="16_0rcut"]
 [ext_resource type="Texture2D" uid="uid://bv0j2vesgwfbh" path="res://Sprites/Cracks/crack1.png" id="17_v7gd0"]
 [ext_resource type="Texture2D" uid="uid://d2dw554407sre" path="res://Sprites/Cracks/crack2.png" id="18_gyvwt"]
@@ -64,6 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://cqctgk0mdk2vh" path="res://Sprites/Camabar/camabar15-sheet.png" id="59_3iejp"]
 [ext_resource type="Texture2D" uid="uid://dber3etgymjoa" path="res://Sprites/Camabar/hpbar2.png" id="61_5uago"]
 [ext_resource type="Script" uid="uid://dovlagmep0g6t" path="res://Scripts/cheevo_handler.gd" id="61_mbnig"]
+[ext_resource type="Script" uid="uid://dmii2672u4n5p" path="res://Scripts/music.gd" id="62_23uwq"]
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
 
@@ -503,9 +503,9 @@ grow_vertical = 0
 script = ExtResource("61_mbnig")
 
 [node name="Arkanoid" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_3jpny")
 autoplay = true
 bus = &"Music"
+script = ExtResource("62_23uwq")
 
 [node name="Cracksfulltest" type="Sprite2D" parent="."]
 visible = false

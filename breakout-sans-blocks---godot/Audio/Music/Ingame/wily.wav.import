@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://eg1ra5fb1n5b"
-path="res://.godot/imported/wily.wav-034708c8164ca8fae84e630d14879a87.sample"
+path="res://.godot/imported/wily.wav-ac4c0f1682226b391c98a06908f1cdb7.sample"
 
 [deps]
 
-source_file="res://Audio/Music/wily.wav"
-dest_files=["res://.godot/imported/wily.wav-034708c8164ca8fae84e630d14879a87.sample"]
+source_file="res://Audio/Music/Ingame/wily.wav"
+dest_files=["res://.godot/imported/wily.wav-ac4c0f1682226b391c98a06908f1cdb7.sample"]
 
 [params]
 
