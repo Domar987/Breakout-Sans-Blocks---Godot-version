@@ -1,6 +1,6 @@
 extends EdgeBorder
 
-var animtimer = 30 * (Engine.get_frames_per_second() / 60)
+var animtimer:float = 0.5
 
 func _ready() -> void:
 	var leftportaltexture = load("res://Sprites/leftportal.png")
@@ -22,16 +22,17 @@ func _ready() -> void:
 		atlas.region = Rect2(texwidth * i, 0, texwidth, texheight)
 		righttexture.append(atlas)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(_delta: float) -> void:
-	animtimer -= 1
+func _physics_process(delta: float) -> void:
+	animtimer -= delta
 	if animtimer <= 0:
-		animtimer = 30 * (Engine.get_frames_per_second() / 60)
+		animtimer = 0.25
 		lefttexture.insert(0, lefttexture[-1])
 		righttexture.insert(0, righttexture[-1])
 		lefttexture.pop_back()
 		righttexture.pop_back()
-		queue_redraw()
-	super(_delta)
+		if RuleManager.ySpeed == 0:
+			queue_redraw()
+	super(delta)
 
 func _draw() -> void:
 	if not RuleManager.walls:

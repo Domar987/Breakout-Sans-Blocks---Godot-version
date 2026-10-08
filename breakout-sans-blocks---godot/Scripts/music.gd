@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
-var str = "res://Audio/Music/Ingame"
+var folder = "res://Audio/Music/Ingame"
 
-var dir = DirAccess.open(str)
+var dir = DirAccess.open(folder)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,10 +15,5 @@ func _ready() -> void:
 	for i in range(0,len(tmp),2):
 		list.append(tmp[i])
 	#print(list)
-	stream = load(str+"/"+list[randi_range(0,len(list)-1)])
+	stream = load(folder+"/"+list[randi_range(0,len(list)-1)])
 	play()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
