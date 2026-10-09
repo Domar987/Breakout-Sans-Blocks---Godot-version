@@ -253,9 +253,9 @@ script = ExtResource("7_yl4g2")
 
 [node name="Node2D" type="TextureRect" parent="Background"]
 material = SubResource("ShaderMaterial_ur0dt")
-offset_left = -259.0
+offset_left = -297.0
 offset_top = -540.0
-offset_right = 259.0
+offset_right = 297.0
 offset_bottom = 540.0
 texture = ExtResource("36_5uago")
 

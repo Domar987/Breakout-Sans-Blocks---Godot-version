@@ -11,7 +11,7 @@ void fragment() {
 	vec4 pixel = texture(screenshot,SCREEN_UV);
 	vec4 noise = texture(noisetex,vec2(UV.x,UV.y - yValue/1080.0));
 	int curr = 0;
-	if(noise.r > 0.5){noise = pixel;}
+	if(noise.r > 0.6){noise = pixel;}
 	else{
 		for(int i = 0;i<4;i++){
 			if(pixel.r - regularcolors[i].r < 0.001
@@ -20,7 +20,7 @@ void fragment() {
 				curr = i;
 			}
 		}
-		if(noise.r > 0.3){noise = darkcolors[curr];}
+		if(noise.r > 0.35){noise = darkcolors[curr];}
 		else{noise = darkercolors[curr];}
 	}
 	COLOR = mix(noise,darkercolors[curr],0.5);

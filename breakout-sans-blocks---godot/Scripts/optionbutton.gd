@@ -67,6 +67,8 @@ func _toggled(toggled_on: bool) -> void:
 			changeFile(11,toggled_on)
 		"Souls":
 			create_tween().tween_property(Soul,"modulate",Color(1,1,1,int(toggled_on)),0.25)
+			if $/root/Menu.startedTitleEffect and not toggled_on:
+				$Fart.play()
 			$/root/Menu.disabledEffect = not toggled_on
 			changeFile(12,toggled_on)
 

@@ -200,7 +200,7 @@ func _on_area_exited(area: Area2D) -> void:
 		touchinground = false
 
 func statIncrease(area:Area2D)->void:
-	if position.y > area.position.y + 4 and not frozen and floor == null:
+	if position.y > area.position.y and not frozen and (floor == null or not floor.visible) and not slamming:
 		print("Close call!")
 		spawnPointText(500 * (1 + RuleManager.difficulty/10))
 		RuleManager.points += 500 * (1 + RuleManager.difficulty/10)

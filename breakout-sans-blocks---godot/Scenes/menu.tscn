@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://bryxfhduq757w"]
+[gd_scene load_steps=126 format=3 uid="uid://bryxfhduq757w"]
 
 [ext_resource type="Script" uid="uid://ce4lu61m43feo" path="res://Scripts/menu.gd" id="1_g8i7c"]
 [ext_resource type="Texture2D" uid="uid://dac4m85viqmxm" path="res://Sprites/Menu/title.png" id="1_rfqti"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://bo2k7cmu4sksk" path="res://Sprites/Menu/sliderarea2.png" id="44_2t718"]
 [ext_resource type="Script" uid="uid://dg0s64wxbjy50" path="res://Scripts/stupid.gd" id="44_oc4uc"]
 [ext_resource type="Script" uid="uid://c6eehuomvvqhh" path="res://Scripts/slider.gd" id="48_qmlsk"]
+[ext_resource type="AudioStream" uid="uid://bpoxqk3mfhxnu" path="res://Audio/SFX/disablesouls.wav" id="50_je088"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="56_hph2t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6swd7"]
@@ -1226,6 +1227,11 @@ offset_bottom = 30.0
 text = "Tormented souls at the menu"
 label_settings = ExtResource("40_hph2t")
 horizontal_alignment = 2
+
+[node name="Fart" type="AudioStreamPlayer" parent="MiniMenu/Options/Control/GridContainer4/Souls"]
+stream = ExtResource("50_je088")
+volume_db = 6.0
+bus = &"Player"
 
 [node name="GridContainer5" type="Control" parent="MiniMenu/Options/Control"]
 visible = false
