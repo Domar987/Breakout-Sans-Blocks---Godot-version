@@ -40,6 +40,7 @@ func _ready() -> void:
 	for i in range(0,randi_range(6,16)):
 		shootProjectile(false,0)
 
+	get_child(0).modulate = Color(bgcolors[0][0],0.5)
 var lastpos:float = -10000
 
 func shootProjectile(fromTop:bool,retry:int)->void:
@@ -120,6 +121,7 @@ func levelChange(tmpY:float)->void:
 	currentcolors = bgcolors[level]
 	self.startY = tmpY + transheight
 	drawtrans = true
+	get_child(0).modulate = Color(bgcolors[level][0],0.5)
 	RuleManager.levelChange()
 	
 	cheevo()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=72 format=4 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -34,6 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://d16dvgya7k7xq" path="res://Sprites/Cracks/crack17.png" id="33_da58m"]
 [ext_resource type="Texture2D" uid="uid://ygjojoio6j86" path="res://Sprites/Cracks/crack18.png" id="34_lxyx1"]
 [ext_resource type="Texture2D" uid="uid://c50llaj4xahyi" path="res://Sprites/Cracks/crack19.png" id="35_pijtn"]
+[ext_resource type="Shader" uid="uid://cuhfy6c80yjg2" path="res://Data/bgnoise.gdshader" id="35_ur0dt"]
+[ext_resource type="Texture2D" uid="uid://cjbqgywr636eo" path="res://Sprites/Background/bgmodulate.png" id="36_5uago"]
 [ext_resource type="Texture2D" uid="uid://bygyndsdcnq37" path="res://Sprites/Cracks/crack20.png" id="36_iibis"]
 [ext_resource type="Texture2D" uid="uid://ddtuovcd5unhl" path="res://Sprites/Cracks/crack21.png" id="37_spvx0"]
 [ext_resource type="Texture2D" uid="uid://c55tnwthx2l8o" path="res://Sprites/Cracks/crack22.png" id="38_ckr2t"]
@@ -66,6 +68,22 @@
 [ext_resource type="Script" uid="uid://dmii2672u4n5p" path="res://Scripts/music.gd" id="62_23uwq"]
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ur0dt"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ur0dt"]
+width = 320
+height = 180
+noise = SubResource("FastNoiseLite_ur0dt")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfasi"]
+shader = ExtResource("35_ur0dt")
+shader_parameter/noisetex = SubResource("NoiseTexture2D_ur0dt")
+shader_parameter/regularcolors = PackedVector4Array(0.369, 0.443, 0.557, 1, 0.365, 0.608, 0.475, 1, 0.776, 0.522, 0.337, 1, 0.698, 0.322, 0.4, 1)
+shader_parameter/darkercolors = PackedVector4Array(0.157, 0.173, 0.235, 1, 0.173, 0.231, 0.224, 1, 0.31, 0.204, 0.184, 1, 0.165, 0.118, 0.137, 1)
+shader_parameter/ySpeed = 0.0
 
 [node name="Ingame" type="Node2D"]
 
@@ -231,24 +249,23 @@ script = ExtResource("6_35pev")
 z_index = -10
 script = ExtResource("7_yl4g2")
 
-[node name="Label" type="Label" parent="Background"]
+[node name="TextureRect" type="TextureRect" parent="Background"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -0.5
-offset_right = -64.0
-offset_bottom = 63.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 1
-metadata/_edit_use_anchors_ = true
+modulate = Color(1, 1, 1, 0.5)
+z_index = 5
+offset_left = -259.0
+offset_top = -146.0
+offset_right = 259.0
+offset_bottom = 146.0
+texture = ExtResource("36_5uago")
+
+[node name="Node2D" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_lfasi")
+offset_left = -259.0
+offset_top = -146.0
+offset_right = 259.0
+offset_bottom = 146.0
+texture = ExtResource("36_5uago")
 
 [node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
 spawn = ExtResource("6_6toak")
