@@ -66,5 +66,7 @@ func texAdjust()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if position.y > 540/(2*RuleManager.zoom) + 160 or abs(position.x) > (960/(2*RuleManager.zoom)) + 100:
+		$AnimatedSprite2D.material = null
 	speed = RuleManager.ySpeed
 	super(delta)

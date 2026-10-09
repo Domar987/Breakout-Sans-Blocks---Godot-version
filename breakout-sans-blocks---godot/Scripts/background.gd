@@ -96,12 +96,14 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 				break
 	
 	if overlap:
+		projectile.get_child(0).material = null
 		shootProjectile(fromTop,retry+1)
 	else:
 		if fromTop:
 			lastpos = projectile.position.x
 		initialBGpos.append(projectile.position)
 		add_sibling.call_deferred(projectile,true)
+		#projectile.get_child(0).material = null
 
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
