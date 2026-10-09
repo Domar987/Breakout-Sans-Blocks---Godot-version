@@ -21,8 +21,16 @@ func _ready() -> void:
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
 	Animator.createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
 	if bgsprite == "howdidthisgethere":
+		material = null
 		Animator.createFramesAuto("res://Sprites/Background/howdidthisgethere.png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
+		var vec4:Vector4
+		vec4.x = Color(parent.currentcolors[0]).r
+		vec4.y = Color(parent.currentcolors[0]).g
+		vec4.z = Color(parent.currentcolors[0]).b
+		vec4.w = 1
+		#print(vec4)
+		$AnimatedSprite2D.set_instance_shader_parameter("currentdark",vec4)
 		Animator.createFramesAutoTexture(tex,$AnimatedSprite2D.sprite_frames,1,"1")
 		if bgsprite == "grafitti":
 			scale.x = 1
