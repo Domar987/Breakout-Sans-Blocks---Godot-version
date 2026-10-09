@@ -68,7 +68,7 @@ func _init() -> void:
 		walls = true
 	elif Settings[8] == 2:
 		walls = bool(randi_range(0,1))
-		wallTimer = randf_range(5,50)
+		wallTimer = randf_range(5,30)
 	difficultyFromRules *= 1 + Settings[8] * 0.1
 	difficultyFromRules *= 1 + int(not Settings[9]) * 0.05
 func _ready() -> void:
@@ -85,9 +85,9 @@ func _physics_process(delta: float) -> void:
 	
 	cheats()
 	
-	if wallTimer <= 0:
+	if wallTimer <= 0 and wallTimer > -9:
 		walls = not walls
-		wallTimer = randf_range(5,50)
+		wallTimer = randf_range(2,30)
 	
 	if oldDifficulty != difficulty:
 		difficultyChange()
