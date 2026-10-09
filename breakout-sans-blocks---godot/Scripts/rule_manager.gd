@@ -58,12 +58,17 @@ var aura:PackedScene = load("res://Objects/aura.tscn")
 var fileString = FileAccess.get_file_as_string("res://Data/options.json")
 var Settings = JSON.parse_string(fileString)
 
+var tween
+var wallTimer:float = -10
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	Engine.time_scale = 1
 	activecolor = ballcolors[randi()%6]
 	if Settings[8] == 0:
 		walls = true
+	elif Settings[8] == 2:
+		walls = bool(randi_range(0,1))
+		wallTimer = randf_range(5,50)
 	difficultyFromRules *= 1 + Settings[8] * 0.1
 	difficultyFromRules *= 1 + int(not Settings[9]) * 0.05
 func _ready() -> void:
@@ -74,27 +79,41 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
-	if invitimer > 0:
-		invitimer -= delta
-	if flytimer > 0:
-		flytimer -= delta
+	timerStuff(delta)
 		
 	uiTransform()
 	
 	cheats()
+	
+	if wallTimer <= 0:
+		walls = not walls
+		wallTimer = randf_range(5,50)
 	
 	if oldDifficulty != difficulty:
 		difficultyChange()
 	if oldhealth != health and not died:
 		healthChange(oldhealth-health)
 	
-	$/root/Ingame/Wall.process_mode = (4 * int(!walls)) as ProcessMode
+	if walls:
+		$/root/Ingame/Wall/CollisionShape2D1.disabled = false
+		$/root/Ingame/Wall/CollisionShape2D2.disabled = false
+	else:
+		$/root/Ingame/Wall/CollisionShape2D1.disabled = true
+		$/root/Ingame/Wall/CollisionShape2D2.disabled = true
 	camera.zoom = Vector2(zoom,zoom)
 	
 	cameraRotationLerp(delta)
 	
 	oldDifficulty = difficulty
 	oldhealth = health
+
+func timerStuff(delta:float)->void:
+	if invitimer > 0:
+		invitimer -= delta
+	if flytimer > 0:
+		flytimer -= delta
+	if wallTimer > 0:
+		wallTimer -= delta
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
