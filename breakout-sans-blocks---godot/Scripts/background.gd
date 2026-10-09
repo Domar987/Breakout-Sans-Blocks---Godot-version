@@ -85,9 +85,12 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 		initialBGpos.append(projectile.position)
 		add_sibling.call_deferred(projectile,true)
 
+@onready var noise:TextureRect = get_child(0)
 
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
+	if yvalue > 0:
+		noise.set_instance_shader_parameter("yValue",yvalue)
 	for i in range(1,len(levelvals)):
 		if yvalue > levelvals[i] and i > level:
 			print("Time:",Time.get_time_dict_from_system())

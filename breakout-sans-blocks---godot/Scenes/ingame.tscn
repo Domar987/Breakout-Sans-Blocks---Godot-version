@@ -73,17 +73,18 @@
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ur0dt"]
-width = 320
-height = 180
+width = 518
+height = 1080
+generate_mipmaps = false
 noise = SubResource("FastNoiseLite_ur0dt")
 seamless = true
+seamless_blend_skirt = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lfasi"]
 shader = ExtResource("35_ur0dt")
 shader_parameter/noisetex = SubResource("NoiseTexture2D_ur0dt")
 shader_parameter/regularcolors = PackedVector4Array(0.369, 0.443, 0.557, 1, 0.365, 0.608, 0.475, 1, 0.776, 0.522, 0.337, 1, 0.698, 0.322, 0.4, 1)
 shader_parameter/darkercolors = PackedVector4Array(0.157, 0.173, 0.235, 1, 0.173, 0.231, 0.224, 1, 0.31, 0.204, 0.184, 1, 0.165, 0.118, 0.137, 1)
-shader_parameter/ySpeed = 0.0
 
 [node name="Ingame" type="Node2D"]
 
@@ -249,22 +250,12 @@ script = ExtResource("6_35pev")
 z_index = -10
 script = ExtResource("7_yl4g2")
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
-visible = false
-modulate = Color(1, 1, 1, 0.5)
-z_index = 5
-offset_left = -259.0
-offset_top = -146.0
-offset_right = 259.0
-offset_bottom = 146.0
-texture = ExtResource("36_5uago")
-
 [node name="Node2D" type="TextureRect" parent="Background"]
 material = SubResource("ShaderMaterial_lfasi")
 offset_left = -259.0
-offset_top = -146.0
+offset_top = -540.0
 offset_right = 259.0
-offset_bottom = 146.0
+offset_bottom = 540.0
 texture = ExtResource("36_5uago")
 
 [node name="AlienSpawner" parent="." instance=ExtResource("5_165j7")]
