@@ -21,7 +21,7 @@ func _ready() -> void:
 	$CollisionShape2D.shape.size = Vector2(texforshape.get_width(),texforshape.get_height())
 	Animator.createAnimation($AnimatedSprite2D.sprite_frames,"1",true,1.0)
 	if bgsprite == "howdidthisgethere":
-		material = null
+		$AnimatedSprite2D.material = null
 		Animator.createFramesAuto("res://Sprites/Background/howdidthisgethere.png",$AnimatedSprite2D.sprite_frames,1,"1")
 	else:
 		var vec4:Vector4

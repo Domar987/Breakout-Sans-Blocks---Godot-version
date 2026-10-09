@@ -35,23 +35,6 @@ var initialBGpos:Array[Vector2] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#var regcolors:Array[Vector4]
-	#var darcolors:Array[Vector4]
-	#for i in range(0,4):
-		#var vec4:Vector4
-		#vec4.x = Color(bgcolors[i][0]).r
-		#vec4.y = Color(bgcolors[i][0]).g
-		#vec4.z = Color(bgcolors[i][0]).b
-		#vec4.w = 1
-		#darcolors.append(vec4)
-		#vec4.x = Color(bgcolors[i][2]).r
-		#vec4.y = Color(bgcolors[i][2]).g
-		#vec4.z = Color(bgcolors[i][2]).b
-		#regcolors.append(vec4)
-	#print(darcolors)
-	#print(regcolors)
-	#noise.set_instance_shader_parameter("regularcolors",regcolors)
-	#noise.set_instance_shader_parameter("darkercolors",darcolors)
 	
 	print("Time:",Time.get_time_dict_from_system())
 	currentcolors = bgcolors[level]
@@ -103,7 +86,6 @@ func shootProjectile(fromTop:bool,retry:int)->void:
 			lastpos = projectile.position.x
 		initialBGpos.append(projectile.position)
 		add_sibling.call_deferred(projectile,true)
-		#projectile.get_child(0).material = null
 
 func _physics_process(delta: float) -> void:
 	yvalue += delta * RuleManager.ySpeed
