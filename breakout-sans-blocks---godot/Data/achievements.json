@@ -15,8 +15,18 @@
 		true
 	],
 	[
+		"Having Trampoline Fun",
+		"Kill an Aeolosaurus in a single bounce.",
+		false
+	],
+	[
 		"Second-Degree Murder",
 		"Kill the final boss.",
+		false
+	],
+	[
+		"Point Blank",
+		"Kill an Aeolosaurus or Ankylosaurus that is less than 5 pixels away from you.",
 		false
 	],
 	[

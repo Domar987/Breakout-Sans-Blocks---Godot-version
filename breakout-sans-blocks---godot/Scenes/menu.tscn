@@ -718,6 +718,7 @@ autowrap_mode = 2
 clip_text = true
 
 [node name="Options" type="ScrollContainer" parent="MiniMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1387,13 +1388,13 @@ script = ExtResource("31_ygxe1")
 [node name="EnemyIcon" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
 position = Vector2(40, 48)
 texture = ExtResource("31_48g0d")
-hframes = 22
+hframes = 26
 
 [node name="EnemyIcon2" type="Sprite2D" parent="MiniMenu/Achievements/Profile"]
 position = Vector2(40, 16)
 scale = Vector2(0.5, 1e-05)
 texture = ExtResource("31_48g0d")
-hframes = 22
+hframes = 26
 frame = 1
 
 [node name="BG" type="TextureRect" parent="MiniMenu/Achievements/Profile"]

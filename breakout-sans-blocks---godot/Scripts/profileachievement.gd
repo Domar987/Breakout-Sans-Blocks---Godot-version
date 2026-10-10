@@ -27,7 +27,7 @@ var onSprite2:bool = false
 func _ready() -> void:
 	title.text = enemydescs[0][0]
 	description.text = enemydescs[0][1]
-	sprite1.frame = 11 * (int(enemydescs[currentEnemy][2]))
+	sprite1.frame = 13 * (int(enemydescs[currentEnemy][2]))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,6 +85,6 @@ func enemyCounter(amount:float)->void:
 func swapImage()->void:
 	onSprite2 = not onSprite2
 	if onSprite2:
-		sprite2.frame = currentEnemy % enemies + 11 * (int(enemydescs[currentEnemy][2]))
+		sprite2.frame = currentEnemy % enemies + 13 * (int(enemydescs[currentEnemy][2]))
 	else:
-		sprite1.frame = currentEnemy % enemies + 11 * (int(enemydescs[currentEnemy][2]))
+		sprite1.frame = currentEnemy % enemies + 13 * (int(enemydescs[currentEnemy][2]))

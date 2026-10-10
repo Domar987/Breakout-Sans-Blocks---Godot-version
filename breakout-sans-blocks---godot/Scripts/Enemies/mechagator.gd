@@ -109,4 +109,4 @@ func shootProjectile()->void:
 
 func cheevo()->void:
 	if not shotAProjectile:
-		CheevoHandler.unlockCheevo(7)
+		CheevoHandler.unlockCheevo(9)

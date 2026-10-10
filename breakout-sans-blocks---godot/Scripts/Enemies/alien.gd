@@ -133,4 +133,4 @@ func shootProjectile()->void:
 
 func cheevo()->void:
 	if xSpeedModifier >= 5.0 * (int(variant == 2) + 1):
-		CheevoHandler.unlockCheevo(6)
+		CheevoHandler.unlockCheevo(8)
