@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=76 format=4 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://cqt32wdpr1126" path="res://Objects/heightslider.tscn" id="63_lfasi"]
 [ext_resource type="Texture2D" uid="uid://dna06qfx2rdoq" path="res://Sprites/toprightbg.png" id="64_2qq7b"]
+[ext_resource type="Script" uid="uid://bx861gi3mmv2j" path="res://Scripts/showpoints.gd" id="65_pyoi0"]
 [ext_resource type="Texture2D" uid="uid://cm4wt0ja0f73v" path="res://Sprites/pointslot.png" id="65_whsiv"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
 
@@ -304,10 +305,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -960.0
-offset_bottom = -540.0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(160, 90)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -453,13 +457,15 @@ offset_right = 27.0
 offset_bottom = 34.0
 background = NodePath("../../../Background")
 
-[node name="PointSlots" type="TextureRect" parent="UI/TopRight"]
+[node name="PointSlots" type="TextureRect" parent="UI/TopRight" node_paths=PackedStringArray("ruleManager")]
 layout_mode = 0
 offset_left = 19.0
 offset_top = -1.0
 offset_right = 41.0
 offset_bottom = 52.0
 texture = ExtResource("64_2qq7b")
+script = ExtResource("65_pyoi0")
+ruleManager = NodePath("../../../RuleManager")
 
 [node name="PointSlot" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 5)

@@ -126,8 +126,8 @@ func saveStuff() -> void:
 
 func uiTransform()->void:
 	ui.scale = Vector2.ONE * (3/zoom)
-	ui.size = Vector2(960,540)/(zoom * ui.scale)
-	ui.position = -Vector2(960,540)/(2*zoom)
+	#ui.size = Vector2(960,540)/(zoom * ui.scale)
+	#ui.position = -Vector2(960,540)/(2*zoom)
 
 func cheats()->void:
 	if Input.is_action_just_pressed("Cheat1"):
