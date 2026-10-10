@@ -516,7 +516,6 @@ ruleManager = NodePath("../../../RuleManager")
 position = Vector2(4, 61)
 sprite_frames = SubResource("SpriteFrames_g6pgj")
 autoplay = "default"
-frame_progress = 0.7850675
 
 [node name="PointSlot" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 6)

@@ -58,7 +58,9 @@ var aura:PackedScene = load("res://Objects/aura.tscn")
 var fileString = FileAccess.get_file_as_string("res://Data/options.json")
 var Settings = JSON.parse_string(fileString)
 
-var tween
+@onready var tweenzoom:float = camera.zoom.x
+@onready var tweenspeed:float = ySpeed
+@onready var tweenlength:float = platform.length
 var wallTimer:float = -10
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
@@ -154,7 +156,8 @@ func difficultyChange()->void:
 		cameraRotate()
 		ySpeedIncrease()
 	if difficulty % 5 == 0:
-		platformLength(platform.length * platlenmod)
+		tweenlength = tweenlength * platlenmod
+		platformLength(tweenlength)
 		print(platlenmod)
 		if platlenmod < 1:
 			platlenmod += 0.05
@@ -215,8 +218,8 @@ func death()->void:
 
 func cameraZoom()->void:
 	var tween = create_tween()
-	var tmp = zoom * zoommult
-	tween.tween_property(self, "zoom", tmp, 1.0)
+	tweenzoom = tweenzoom * zoommult
+	tween.tween_property(self, "zoom", tweenzoom, 1.0)
 	if (zoommult * 1.01 < 1):
 		zoommult *= 1.01
 	else:
@@ -257,8 +260,8 @@ func platformLengthEnd()->void:
 
 
 func ySpeedIncrease()->void:
-	var tmp = ySpeed + 12 + ySpeed/2
-	create_tween().tween_property(self,"ySpeed",tmp,1.0)
+	tweenspeed = tweenspeed + 12 + tweenspeed/2
+	create_tween().tween_property(self,"ySpeed",tweenspeed,1.0)
 
 func shatterScreen()->void:
 	var screenshot = get_viewport().get_texture().get_image()
