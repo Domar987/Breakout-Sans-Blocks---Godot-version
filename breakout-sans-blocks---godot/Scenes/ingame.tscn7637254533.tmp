@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=77 format=4 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -72,7 +72,7 @@
 [ext_resource type="Script" uid="uid://bx861gi3mmv2j" path="res://Scripts/showpoints.gd" id="65_pyoi0"]
 [ext_resource type="Texture2D" uid="uid://cm4wt0ja0f73v" path="res://Sprites/pointslot.png" id="65_whsiv"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
-[ext_resource type="Texture2D" uid="uid://ddlqbphl1pkyt" path="res://Sprites/toprightwire.png" id="67_8n0k6"]
+[ext_resource type="Texture2D" uid="uid://crfdj8rada8d4" path="res://Sprites/toprightwire.png" id="67_8n0k6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ur0dt"]
 noise_type = 2
@@ -91,49 +91,6 @@ shader_parameter/noisetex = SubResource("NoiseTexture2D_ur0dt")
 shader_parameter/regularcolors = PackedVector4Array(0.153, 0.537, 0.804, 1, 0.38, 0.647, 0.247, 1, 0.973, 0.773, 0.227, 1, 0.945, 0.392, 0.122, 1)
 shader_parameter/darkcolors = PackedVector4Array(0.169, 0.306, 0.584, 1, 0.278, 0.447, 0.22, 1, 0.91, 0.541, 0.212, 1, 0.725, 0.271, 0.114, 1)
 shader_parameter/darkercolors = PackedVector4Array(0.106, 0.141, 0.278, 1, 0.161, 0.247, 0.129, 1, 0.404, 0.224, 0.192, 1, 0.176, 0.106, 0.118, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8n0k6"]
-atlas = ExtResource("67_8n0k6")
-region = Rect2(0, 0, 6, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yrfc0"]
-atlas = ExtResource("67_8n0k6")
-region = Rect2(6, 0, 6, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h7uqc"]
-atlas = ExtResource("67_8n0k6")
-region = Rect2(12, 0, 6, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwsax"]
-atlas = ExtResource("67_8n0k6")
-region = Rect2(18, 0, 6, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3iejp"]
-atlas = ExtResource("67_8n0k6")
-region = Rect2(24, 0, 6, 12)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g6pgj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8n0k6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yrfc0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h7uqc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwsax")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3iejp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Ingame" type="Node2D"]
 
@@ -512,11 +469,10 @@ texture = ExtResource("64_2qq7b")
 script = ExtResource("65_pyoi0")
 ruleManager = NodePath("../../../RuleManager")
 
-[node name="Wire" type="AnimatedSprite2D" parent="UI/TopRight/PointSlots"]
-position = Vector2(4, 61)
-sprite_frames = SubResource("SpriteFrames_g6pgj")
-autoplay = "default"
-frame_progress = 0.7850675
+[node name="Sprite2D" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(3.5, 61)
+texture = ExtResource("67_8n0k6")
+hframes = 5
 
 [node name="PointSlot" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 6)
