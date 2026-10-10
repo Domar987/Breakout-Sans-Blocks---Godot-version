@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=75 format=4 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -68,6 +68,8 @@
 [ext_resource type="Script" uid="uid://dmii2672u4n5p" path="res://Scripts/music.gd" id="62_23uwq"]
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
 [ext_resource type="PackedScene" uid="uid://cqt32wdpr1126" path="res://Objects/heightslider.tscn" id="63_lfasi"]
+[ext_resource type="Texture2D" uid="uid://dna06qfx2rdoq" path="res://Sprites/toprightbg.png" id="64_2qq7b"]
+[ext_resource type="Texture2D" uid="uid://cm4wt0ja0f73v" path="res://Sprites/pointslot.png" id="65_whsiv"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ur0dt"]
@@ -318,9 +320,9 @@ offset_bottom = 40.0
 [node name="Camabar" type="Control" parent="UI/TopLeft"]
 anchors_preset = 0
 offset_left = 12.0
-offset_top = 1.0
+offset_top = -1.0
 offset_right = 76.0
-offset_bottom = 48.0
+offset_bottom = 46.0
 script = ExtResource("43_spvx0")
 
 [node name="Test" type="TextureRect" parent="UI/TopLeft/Camabar"]
@@ -445,11 +447,67 @@ grow_horizontal = 0
 
 [node name="HeightSlider" parent="UI/TopRight" node_paths=PackedStringArray("background") instance=ExtResource("63_lfasi")]
 layout_mode = 0
-offset_left = 17.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 26.0
+offset_right = 27.0
 offset_bottom = 34.0
 background = NodePath("../../../Background")
+
+[node name="PointSlots" type="TextureRect" parent="UI/TopRight"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 52.0
+texture = ExtResource("64_2qq7b")
+
+[node name="PointSlot" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 5)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot2" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 11)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot3" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 17)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot4" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 23)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot5" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 29)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot6" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 35)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot7" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 41)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
+
+[node name="PointSlot8" type="Sprite2D" parent="UI/TopRight/PointSlots"]
+position = Vector2(14.5, 47)
+texture = ExtResource("65_whsiv")
+hframes = 12
+frame = 2
 
 [node name="CenterLeft" type="Control" parent="UI"]
 layout_mode = 1
