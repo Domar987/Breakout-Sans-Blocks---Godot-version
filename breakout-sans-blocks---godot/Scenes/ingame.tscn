@@ -470,49 +470,49 @@ ruleManager = NodePath("../../../RuleManager")
 [node name="PointSlot" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 5)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot2" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 11)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot3" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 17)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot4" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 23)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot5" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 29)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot6" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 35)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot7" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 41)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="PointSlot8" type="Sprite2D" parent="UI/TopRight/PointSlots"]
 position = Vector2(14.5, 47)
 texture = ExtResource("65_whsiv")
-hframes = 12
+hframes = 13
 frame = 2
 
 [node name="CenterLeft" type="Control" parent="UI"]

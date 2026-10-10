@@ -18,13 +18,14 @@ func _physics_process(delta: float) -> void:
 	for i in range(len(values)):
 		values[i] = loop % 10
 		loop /= 10
-		slots[i].frame = lerpvalues[i] + 2
 	if spintimer <= 0:
 		spintimer = 0.05
 		for i in range(len(values)):
-			if lerpvalues[i] != values[i]:
+			if lerpvalues[i] == values[i]:
+				slots[i].frame = lerpvalues[i] + 3
+			else:
+				slots[i].frame = lerpvalues[randi_range(0,2)]
 				lerpvalues[i] += 1
 				lerpvalues[i] = lerpvalues[i] % 10
-		print(lerpvalues)
 	else:
 		spintimer -= delta
