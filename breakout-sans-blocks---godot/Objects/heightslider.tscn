@@ -17,7 +17,7 @@ script = ExtResource("2_654rx")
 [node name="Grabber" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 4.0
-offset_bottom = 3.0
+offset_bottom = 3.000002
 texture = ExtResource("2_qfej8")
 
 [node name="Tick" type="TextureRect" parent="."]
