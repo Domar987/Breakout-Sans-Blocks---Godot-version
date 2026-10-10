@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://bepfbskuj7i54"]
+[gd_scene load_steps=73 format=4 uid="uid://bepfbskuj7i54"]
 
 [ext_resource type="PackedScene" uid="uid://cg0el6mhfpp5a" path="res://Objects/ball.tscn" id="1_oybcm"]
 [ext_resource type="Script" uid="uid://cx6afprpkpiqr" path="res://Scripts/particlesystem.gd" id="2_2gt6l"]
@@ -67,6 +67,7 @@
 [ext_resource type="Script" uid="uid://dovlagmep0g6t" path="res://Scripts/cheevo_handler.gd" id="61_mbnig"]
 [ext_resource type="Script" uid="uid://dmii2672u4n5p" path="res://Scripts/music.gd" id="62_23uwq"]
 [ext_resource type="Texture2D" uid="uid://dm8thndclh4w6" path="res://Sprites/Camabar/hpbar3.png" id="62_ur0dt"]
+[ext_resource type="PackedScene" uid="uid://cqt32wdpr1126" path="res://Objects/heightslider.tscn" id="63_lfasi"]
 [ext_resource type="PackedScene" uid="uid://drr13y8tq32j2" path="res://Objects/option_reader.tscn" id="67_5uago"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ur0dt"]
@@ -296,6 +297,7 @@ rareChance = 20
 rareDelay = 2
 
 [node name="UI" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -440,6 +442,14 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+
+[node name="HeightSlider" parent="UI/TopRight" node_paths=PackedStringArray("background") instance=ExtResource("63_lfasi")]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 2.0
+offset_right = 26.0
+offset_bottom = 34.0
+background = NodePath("../../../Background")
 
 [node name="CenterLeft" type="Control" parent="UI"]
 layout_mode = 1
