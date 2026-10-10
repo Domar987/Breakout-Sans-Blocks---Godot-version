@@ -98,6 +98,7 @@ process_priority = 1
 script = ExtResource("4_lq36l")
 
 [node name="Label" type="Label" parent="RuleManager"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 

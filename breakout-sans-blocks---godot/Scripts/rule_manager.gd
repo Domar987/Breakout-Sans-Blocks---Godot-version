@@ -78,7 +78,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
+	#$Label.text = "Difficulty: "+str(difficulty)+"\nPoints: "+str(points)+"\nSpeed: "+str(snappedf(ySpeed/40,0.01))+" m/s\nHeight: "+str(snappedf(background.yvalue/40,0.1))+" m"
 	timerStuff(delta)
 		
 	uiTransform()
@@ -86,6 +86,8 @@ func _physics_process(delta: float) -> void:
 	cheats()
 	
 	if wallTimer <= 0 and wallTimer > -9:
+		wall.queue_redraw()
+		portal.queue_redraw()
 		walls = not walls
 		wallTimer = randf_range(2,30)
 	
@@ -292,7 +294,7 @@ func shatterScreen()->void:
 		add_sibling(crackclone)
 
 func levelChange()->void:
-	if walls:
+	if walls or wallTimer > -9:
 		wall.updateColor()
 
 func damageBoost(amount:int,duration:int)->void:
